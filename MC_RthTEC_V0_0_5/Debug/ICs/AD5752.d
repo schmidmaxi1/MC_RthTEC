@@ -1,9 +1,10 @@
-my_Timers.d my_Timers.o: .././my_Timers.c .././main.h .././helper.h \
+ICs/AD5752.d ICs/AD5752.o: ../ICs/AD5752.c ../ICs/AD5752.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+ ../ICs/../main.h ../ICs/../helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iom2560.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iomxx0_1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
@@ -18,26 +19,26 @@ my_Timers.d my_Timers.o: .././my_Timers.c .././main.h .././helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- .././uart0.h .././ad5752.h .././usart_spi.h .././LTC1864.h \
- .././my_Timers.h .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
- .././Cards/LED_Source.h .././ICs/MCP23S08.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ ../ICs/../uart0.h ../ICs/../ad5752.h ../ICs/../usart_spi.h \
+ ../ICs/../LTC1864.h ../ICs/../my_Timers.h ../ICs/../Cards/Slot_Tester.h \
+ ../ICs/../Cards/MOSFET_BreakDown.h ../ICs/../Cards/LED_Source.h \
+ ../ICs/../ICs/MCP23S08.h
 
-.././main.h:
+../ICs/AD5752.h:
 
-.././helper.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+
+../ICs/../main.h:
+
+../ICs/../helper.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iom2560.h:
 
@@ -67,26 +68,20 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-.././uart0.h:
+../ICs/../uart0.h:
 
-.././ad5752.h:
+../ICs/../ad5752.h:
 
-.././usart_spi.h:
+../ICs/../usart_spi.h:
 
-.././LTC1864.h:
+../ICs/../LTC1864.h:
 
-.././my_Timers.h:
+../ICs/../my_Timers.h:
 
-.././Cards/Slot_Tester.h:
+../ICs/../Cards/Slot_Tester.h:
 
-.././Cards/MOSFET_BreakDown.h:
+../ICs/../Cards/MOSFET_BreakDown.h:
 
-.././Cards/LED_Source.h:
+../ICs/../Cards/LED_Source.h:
 
-.././ICs/MCP23S08.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+../ICs/../ICs/MCP23S08.h:

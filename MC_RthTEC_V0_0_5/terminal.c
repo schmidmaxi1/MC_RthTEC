@@ -421,7 +421,24 @@ void TerminalParseCommand(char *string)
 				case 'L':					
 					switch(cmd){
 							
-						//1. Set Heat Current	
+						//1. Initialization
+						case _MK16('I','N'):
+							if (string[5] != '\n')
+							{
+								//to many signs
+								TransmitStringLn("FORMAT ERR");
+							}
+							else
+							{
+								LED_Source_Init(slotNr);
+												
+								//Answer
+								TransmitString("SIN");
+								TransmitInt(slotNr, 1);
+								TransmitStringLn("L");
+							}
+							break;
+						//2. Set Heat Current	
 						case _MK16('H','C'):
 								
 							if (!ParseIntLn(&string[6],4,&temp16))
@@ -445,13 +462,13 @@ void TerminalParseCommand(char *string)
 									heat_pulse_current = temp16;
 									eeprom_write_word(&heat_pulse_current_eeprom,temp16);
 
-									LEDSource_set_Heat_Current(heat_pulse_current, slotNr);
-									//DAC_Set((((uint32_t) heat_pulse_current) * 0xffff) / 1500, DAC_1, DAC_ADR_DAC_A);
+									LED_Source_Set_Heat_Current(heat_pulse_current, slotNr);
+									//LEDSource_set_Heat_Current(heat_pulse_current, slotNr);
 								}						
 							}
 							break;
 	
-						//2. Set Meas Current
+						//3. Set Meas Current
 						case _MK16('M','C'):
 						
 							if (!ParseIntLn(&string[6],3,&temp16))
@@ -475,8 +492,8 @@ void TerminalParseCommand(char *string)
 									measure_pulse_current = temp16;
 									eeprom_write_word(&measure_pulse_current_eeprom,temp16);
 									
-									LEDSource_set_Meas_Current(measure_pulse_current, slotNr);
-									//DAC_Set((((uint32_t) measure_pulse_current) * 0xffff) / 250, DAC_1, DAC_ADR_DAC_B);
+									LED_Source_Set_Meas_Current(measure_pulse_current, slotNr);
+									//LEDSource_set_Meas_Current(measure_pulse_current, slotNr);
 								}
 								
 							}
@@ -490,7 +507,7 @@ void TerminalParseCommand(char *string)
 						}			
 					break;
 					
-					#pragma endregion SettingsLED-Source
+				#pragma endregion SettingsLED-Source
 					
 				//2. MOSFET-Heat-Meas current Source
 				#pragma region SettingsMOSFET-Source

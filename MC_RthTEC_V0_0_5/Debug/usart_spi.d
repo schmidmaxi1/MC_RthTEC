@@ -22,7 +22,7 @@ usart_spi.d usart_spi.o: .././usart_spi.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  .././uart0.h .././ad5752.h .././usart_spi.h .././LTC1864.h \
  .././my_Timers.h .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
- .././ICs/MCP23S08.h \
+ .././Cards/LED_Source.h .././ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
@@ -84,6 +84,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 .././Cards/Slot_Tester.h:
 
 .././Cards/MOSFET_BreakDown.h:
+
+.././Cards/LED_Source.h:
 
 .././ICs/MCP23S08.h:
 

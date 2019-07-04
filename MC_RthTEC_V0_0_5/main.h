@@ -142,6 +142,7 @@
 
 #include "Cards/Slot_Tester.h"
 #include "Cards/MOSFET_BreakDown.h"
+#include "Cards/LED_Source.h"
 
 #include "ICs/MCP23S08.h"
 

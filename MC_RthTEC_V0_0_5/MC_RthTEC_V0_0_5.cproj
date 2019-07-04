@@ -144,6 +144,12 @@
     <Compile Include="ad5752.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Cards\LED_Source.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Cards\LED_Source.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Cards\MOSFET_BreakDown.c">
       <SubType>compile</SubType>
     </Compile>
@@ -157,6 +163,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="helper.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ICs\AD5752.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ICs\AD5752.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ICs\MCP23S08.c">

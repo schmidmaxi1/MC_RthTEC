@@ -225,6 +225,8 @@ void DAC_Set(uint16_t val, volatile uint8_t *port, uint8_t pin, uint8_t ch)
 	SPI_Send(val, port, pin);		
 }
 
+//AB hier nicht mehr in der DAC klasse
+
 // -------------------------------------------------------------
 // DAC Ausgangs-Spannung anpassen
 // -------------------------------------------------------------

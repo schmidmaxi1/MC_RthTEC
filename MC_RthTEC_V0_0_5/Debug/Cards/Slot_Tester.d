@@ -22,7 +22,7 @@ Cards/Slot_Tester.d Cards/Slot_Tester.o: ../Cards/Slot_Tester.c \
  ../Cards/../uart0.h ../Cards/../ad5752.h ../Cards/../usart_spi.h \
  ../Cards/../LTC1864.h ../Cards/../my_Timers.h \
  ../Cards/../Cards/Slot_Tester.h ../Cards/../Cards/MOSFET_BreakDown.h \
- ../Cards/../ICs/MCP23S08.h \
+ ../Cards/../Cards/LED_Source.h ../Cards/../ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
@@ -83,6 +83,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../Cards/../Cards/Slot_Tester.h:
 
 ../Cards/../Cards/MOSFET_BreakDown.h:
+
+../Cards/../Cards/LED_Source.h:
 
 ../Cards/../ICs/MCP23S08.h:
 

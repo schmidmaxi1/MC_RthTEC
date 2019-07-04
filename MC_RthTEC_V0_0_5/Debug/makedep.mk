@@ -4,9 +4,13 @@
 
 ad5752.c
 
+Cards\LED_Source.c
+
 Cards\MOSFET_BreakDown.c
 
 Cards\Slot_Tester.c
+
+ICs\AD5752.c
 
 ICs\MCP23S08.c
 

@@ -1,4 +1,5 @@
-my_Timers.d my_Timers.o: .././my_Timers.c .././main.h .././helper.h \
+Cards/LED_Source.d Cards/LED_Source.o: ../Cards/LED_Source.c \
+ ../Cards/../main.h ../Cards/../helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -18,16 +19,18 @@ my_Timers.d my_Timers.o: .././my_Timers.c .././main.h .././helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- .././uart0.h .././ad5752.h .././usart_spi.h .././LTC1864.h \
- .././my_Timers.h .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
- .././Cards/LED_Source.h .././ICs/MCP23S08.h \
+ ../Cards/../uart0.h ../Cards/../ad5752.h ../Cards/../usart_spi.h \
+ ../Cards/../LTC1864.h ../Cards/../my_Timers.h \
+ ../Cards/../Cards/Slot_Tester.h ../Cards/../Cards/MOSFET_BreakDown.h \
+ ../Cards/../Cards/LED_Source.h ../Cards/../ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../Cards/../helper.h ../Cards/LED_Source.h ../Cards/../ICs/AD5752.h
 
-.././main.h:
+../Cards/../main.h:
 
-.././helper.h:
+../Cards/../helper.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -67,26 +70,32 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-.././uart0.h:
+../Cards/../uart0.h:
 
-.././ad5752.h:
+../Cards/../ad5752.h:
 
-.././usart_spi.h:
+../Cards/../usart_spi.h:
 
-.././LTC1864.h:
+../Cards/../LTC1864.h:
 
-.././my_Timers.h:
+../Cards/../my_Timers.h:
 
-.././Cards/Slot_Tester.h:
+../Cards/../Cards/Slot_Tester.h:
 
-.././Cards/MOSFET_BreakDown.h:
+../Cards/../Cards/MOSFET_BreakDown.h:
 
-.././Cards/LED_Source.h:
+../Cards/../Cards/LED_Source.h:
 
-.././ICs/MCP23S08.h:
+../Cards/../ICs/MCP23S08.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../Cards/../helper.h:
+
+../Cards/LED_Source.h:
+
+../Cards/../ICs/AD5752.h:
