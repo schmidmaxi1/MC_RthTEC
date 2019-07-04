@@ -40,6 +40,7 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../ad5752.c \
+../Cards/MOSFET_BreakDown.c \
 ../Cards/Slot_Tester.c \
 ../ICs/MCP23S08.c \
 ../LTC1864.c \
@@ -58,6 +59,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 ad5752.o \
+Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
 ICs/MCP23S08.o \
 LTC1864.o \
@@ -69,6 +71,7 @@ usart_spi.o
 
 OBJS_AS_ARGS +=  \
 ad5752.o \
+Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
 ICs/MCP23S08.o \
 LTC1864.o \
@@ -80,6 +83,7 @@ usart_spi.o
 
 C_DEPS +=  \
 ad5752.d \
+Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
 ICs/MCP23S08.d \
 LTC1864.d \
@@ -91,6 +95,7 @@ usart_spi.d
 
 C_DEPS_AS_ARGS +=  \
 ad5752.d \
+Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
 ICs/MCP23S08.d \
 LTC1864.d \
@@ -114,6 +119,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

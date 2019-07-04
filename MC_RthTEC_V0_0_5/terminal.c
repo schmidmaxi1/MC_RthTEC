@@ -604,7 +604,7 @@ void TerminalParseCommand(char *string)
 				//3. Boost-Heat current Source
 				#pragma region SettingsPowerDiode-Source
 				
-				case 'B':
+				case 'H':
 					TransmitStringLn("Function not realized yet!");			
 					break;
 					
@@ -682,6 +682,150 @@ void TerminalParseCommand(char *string)
 					break;
 					
 				#pragma endregion Setting_SlotTester
+				
+				//4. BreakDownVoltage Test
+				#pragma region BreakDownCard
+								
+				case 'B':
+				switch(cmd){
+									
+					//1. Initialization
+					case _MK16('I','N'):
+					if (string[5] != '\n')
+					{
+						//to many signs
+						TransmitStringLn("FORMAT ERR");
+					}
+					else
+					{
+						MOSFET_BreakDown_Init(slotNr);
+						
+						//Answer
+						TransmitString("SIN");
+						TransmitInt(slotNr, 1);
+						TransmitStringLn("B");									
+					}
+					break;
+					
+					//2. Relays for Breakdown
+					case _MK16('R','B'):						
+						if (string[6] == '1' && string[7] == '\n')
+						{
+							//Switch Relays
+							B_Set_Relais_to_BreakDownTest(slotNr);
+
+							//Answer
+							TransmitString("SRB");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=1");
+						}
+						else if (string[6] == '0' && string[7] == '\n')
+						{
+							//Switch Relays
+							B_Set_Relais_all_off(slotNr);
+
+							//Answer
+							TransmitString("SRB");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=0");
+						}
+						else
+						{
+							//no number
+							TransmitStringLn("FORMAT ERR");
+						}
+						break;
+						
+					//3. Relays for Leakage
+					case _MK16('R','L'):						
+						if (string[6] == '1' && string[7] == '\n')
+						{
+							//Switch Relays
+							B_Set_Relais_to_Leakage_GS(slotNr);
+
+							//Answer
+							TransmitString("SRL");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=1");
+						}
+						else if (string[6] == '0' && string[7] == '\n')
+						{
+							//Switch Relays off
+							B_Set_Relais_all_off(slotNr);
+
+							//Answer
+							TransmitString("SRL");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=0");
+						}
+						else
+						{
+							//no number
+							TransmitStringLn("FORMAT ERR");
+						}
+						break;
+					
+					//4. Relays for Characteristic Curve
+					case _MK16('R','C'):						
+						if (string[6] == '1' && string[7] == '\n')
+						{
+							//Switch Relays
+							B_Set_Relais_to_Characteristic_Curve(slotNr);
+
+							//Answer
+							TransmitString("SRC");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=1");
+						}
+						else if (string[6] == '0' && string[7] == '\n')
+						{
+							//Switch Relays off
+							B_Set_Relais_all_off(slotNr);
+
+							//Answer
+							TransmitString("SRC");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=0");
+						}
+						else
+						{
+							//no number
+							TransmitStringLn("FORMAT ERR");
+						}
+						break;
+						
+					//5. Relays for BodyDiode
+					case _MK16('R','D'):						
+						if (string[6] == '1' && string[7] == '\n')
+						{
+							//Switch Relays
+							B_Set_Relais_to_BodyDiode_Curve(slotNr);
+
+							//Answer
+							TransmitString("SRD");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=1");
+						}
+						else if (string[6] == '0' && string[7] == '\n')
+						{
+							//Switch Relays off
+							B_Set_Relais_all_off(slotNr);
+
+							//Answer
+							TransmitString("SRD");
+							TransmitInt(slotNr, 1);
+							TransmitStringLn("B=0");
+						}
+						else
+						{
+							//no number
+							TransmitStringLn("FORMAT ERR");
+						}
+						break;
+				}
+				break;
+								
+				#pragma endregion BreakDown
 				
 				//Default --> Fehler
 				default:

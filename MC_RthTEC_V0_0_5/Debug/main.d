@@ -19,7 +19,8 @@ main.d main.o: .././main.c .././main.h .././helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  .././uart0.h .././ad5752.h .././usart_spi.h .././LTC1864.h \
- .././my_Timers.h .././Cards/Slot_Tester.h .././ICs/MCP23S08.h \
+ .././my_Timers.h .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
+ .././ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
@@ -78,6 +79,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 .././my_Timers.h:
 
 .././Cards/Slot_Tester.h:
+
+.././Cards/MOSFET_BreakDown.h:
 
 .././ICs/MCP23S08.h:
 

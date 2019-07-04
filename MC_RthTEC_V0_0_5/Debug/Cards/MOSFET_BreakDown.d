@@ -1,10 +1,10 @@
-ICs/MCP23S08.d ICs/MCP23S08.o: ../ICs/MCP23S08.c ../ICs/MCP23S08.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- ../ICs/../main.h ../ICs/../helper.h \
+Cards/MOSFET_BreakDown.d Cards/MOSFET_BreakDown.o: \
+ ../Cards/MOSFET_BreakDown.c ../Cards/../main.h ../Cards/../helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iom2560.h \
  C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iomxx0_1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
@@ -19,25 +19,29 @@ ICs/MCP23S08.d ICs/MCP23S08.o: ../ICs/MCP23S08.c ../ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- ../ICs/../uart0.h ../ICs/../ad5752.h ../ICs/../usart_spi.h \
- ../ICs/../LTC1864.h ../ICs/../my_Timers.h ../ICs/../Cards/Slot_Tester.h \
- ../ICs/../Cards/MOSFET_BreakDown.h ../ICs/../ICs/MCP23S08.h
+ ../Cards/../uart0.h ../Cards/../ad5752.h ../Cards/../usart_spi.h \
+ ../Cards/../LTC1864.h ../Cards/../my_Timers.h \
+ ../Cards/../Cards/Slot_Tester.h ../Cards/../Cards/MOSFET_BreakDown.h \
+ ../Cards/../ICs/MCP23S08.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../Cards/../helper.h ../Cards/MOSFET_BreakDown.h \
+ ../Cards/../ICs/MCP23S08.h
 
-../ICs/MCP23S08.h:
+../Cards/../main.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
-
-../ICs/../main.h:
-
-../ICs/../helper.h:
+../Cards/../helper.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
 C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include/avr/iom2560.h:
 
@@ -67,18 +71,30 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-../ICs/../uart0.h:
+../Cards/../uart0.h:
 
-../ICs/../ad5752.h:
+../Cards/../ad5752.h:
 
-../ICs/../usart_spi.h:
+../Cards/../usart_spi.h:
 
-../ICs/../LTC1864.h:
+../Cards/../LTC1864.h:
 
-../ICs/../my_Timers.h:
+../Cards/../my_Timers.h:
 
-../ICs/../Cards/Slot_Tester.h:
+../Cards/../Cards/Slot_Tester.h:
 
-../ICs/../Cards/MOSFET_BreakDown.h:
+../Cards/../Cards/MOSFET_BreakDown.h:
 
-../ICs/../ICs/MCP23S08.h:
+../Cards/../ICs/MCP23S08.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../Cards/../helper.h:
+
+../Cards/MOSFET_BreakDown.h:
+
+../Cards/../ICs/MCP23S08.h:
