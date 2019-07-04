@@ -70,8 +70,8 @@ void DAC_Init();
 //void DAC_Set(uint16_t val, uint8_t dac, uint8_t ch);
 void DAC_Set(uint16_t val, volatile uint8_t *port, uint8_t pin, uint8_t ch);
 
-void LEDSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot);
-void LEDSource_set_Meas_Current(uint16_t measCurrent, uint8_t slot);
+//void LEDSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot);
+//void LEDSource_set_Meas_Current(uint16_t measCurrent, uint8_t slot);
 
 void MOSFETSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot);
 void MOSFETSource_set_Meas_Current(uint16_t measCurrent, uint8_t slot);

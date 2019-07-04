@@ -91,8 +91,8 @@ void DAC_Init()
 	//DAC_Range_and_PowerUp(&IO_PORT4, 0);
 	
 	//Output werte setzen
-	LEDSource_set_Heat_Current(heat_pulse_current, 0);
-	LEDSource_set_Meas_Current(measure_pulse_current, 0);
+	//LEDSource_set_Heat_Current(heat_pulse_current, 0);
+	//LEDSource_set_Meas_Current(measure_pulse_current, 0);
 	
 	//DAC initialisieren(FrontEnd:
 	DAC_Range_and_PowerUp(&IO_Port3, 1);
@@ -231,14 +231,15 @@ void DAC_Set(uint16_t val, volatile uint8_t *port, uint8_t pin, uint8_t ch)
 // DAC Ausgangs-Spannung anpassen
 // -------------------------------------------------------------
 
+/* ALTER CODE
 void LEDSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot)
 {
-	/*
+	
 	Input:
 	-heatCurrent in mA
 	-channel (Einschubkarten-Platz)
 	-Heizquelle immer an ChipSelect [channel] & Kanal A
-	*/
+	
 	
 	//Binär Wert berechnen
 	uint16_t binary_value = (((uint32_t) heatCurrent) * 0xffff) / 1500;
@@ -251,12 +252,12 @@ void LEDSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot)
 
 void LEDSource_set_Meas_Current(uint16_t measCurrent, uint8_t slot)
 {
-	/*
+	
 	Input:
 	-measCurrent in 0,1mA
 	-channel (Einschubkarten-Platz)
 	-Heizquelle immer an ChipSelect [channel] & Kanal B
-	*/
+	
 	
 	//Binär Wert berechnen
 	uint16_t binary_value = (((uint32_t) measCurrent) * 0xffff) / 250;
@@ -267,6 +268,7 @@ void LEDSource_set_Meas_Current(uint16_t measCurrent, uint8_t slot)
 	SPI_Send(binary_value, &IO_Port3, slot);	
 		
 }
+*/
 
 void MOSFETSource_set_Heat_Current(uint16_t heatCurrent, uint8_t slot)
 {
