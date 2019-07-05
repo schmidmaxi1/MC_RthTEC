@@ -42,13 +42,15 @@ const char firmware_version[] PROGMEM = S(VER_START:FIRMWARE_VERSION:VER_END);
 //General
 uint16_t firmware_code_eeprom EEMEM;
 uint16_t heat_pulse_current_eeprom EEMEM;
-uint32_t heat_pulse_length_eeprom EEMEM;
+
 uint16_t measure_pulse_current_eeprom EEMEM;
-uint32_t measure_pulse_length_eeprom EEMEM;
+
 uint16_t measure_pulse_voltage_eeprom EEMEM;
 uint16_t window_offset_eeprom EEMEM;
 
 
+uint32_t measure_pulse_length_eeprom EEMEM;
+uint32_t heat_pulse_length_eeprom EEMEM;
 
 //Edit: Maxi 20.12.17
 uint16_t offset_voltage_eeprom EEMEM;
@@ -60,9 +62,13 @@ uint16_t deterministic_pulse_cycles;
 uint16_t deterministic_pulse_length_eeprom EEMEM;
 uint16_t deterministic_pulse_cycles_eeprom EEMEM;
 
-//For Pulse Output Register
+//For Pulse Output Register (Bit-Values if HP & MP are pulsed for this slot)
 uint8_t pulse_output_register;
 uint8_t pulse_output_register_eeprom EEMEM;
+
+//Which Card is in Slot (Char authenticates the Type of Card in Slot)
+char card_Type[8];
+char card_Type_register_eeprom[8] EEMEM;
 
 //Flags
 uint8_t flag_standard_TTA;
@@ -188,26 +194,9 @@ void Init()
         set_bit(LED_1B);
 		set_bit(LED_DATA);
         set_bit(LED_Pulse);
-
-        eeprom_write_word(&firmware_code_eeprom, FIRMWARE_CODE);
-        
-        eeprom_write_word(&heat_pulse_current_eeprom, 50);
-        eeprom_write_word(&measure_pulse_current_eeprom, 50);
-        eeprom_write_word(&window_offset_eeprom, 12000);
 		
-		//Edit: Maxi 20.12.17
-		eeprom_write_word(&offset_voltage_eeprom, 3000);
-
-        
-        eeprom_write_dword(&heat_pulse_length_eeprom, 25);
-        eeprom_write_dword(&measure_pulse_length_eeprom, 25);
-		
-		eeprom_write_word(&deterministic_pulse_length_eeprom, 10);
-		eeprom_write_word(&deterministic_pulse_cycles_eeprom, 100);
-		
-		eeprom_write_byte(&pulse_output_register_eeprom, 0);
-
-        
+		EEPROM_default_Values();
+      
         //Watchdog
         wdt_reset();
     }
@@ -227,15 +216,7 @@ void Init()
 	/************************************************************************/
 
 	//Variablen aus mit Werten aus EEPROM initialisiern
-    heat_pulse_current = eeprom_read_word(&heat_pulse_current_eeprom);
-    measure_pulse_current = eeprom_read_word(&measure_pulse_current_eeprom);
-    heat_pulse_length = eeprom_read_dword(&heat_pulse_length_eeprom);
-    measure_pulse_length = eeprom_read_dword(&measure_pulse_length_eeprom);
-    window_offset = eeprom_read_word(&window_offset_eeprom);
-	offset_voltage = eeprom_read_word(&offset_voltage_eeprom);	
-	deterministic_pulse_length = eeprom_read_word(&deterministic_pulse_length_eeprom);
-	deterministic_pulse_cycles = eeprom_read_word(&deterministic_pulse_cycles_eeprom);
-	pulse_output_register = eeprom_read_byte(&pulse_output_register_eeprom);
+	EEPROM_last_Values();
 
     current_source_enabled = 0;
 
@@ -359,6 +340,85 @@ void Lauflicht(){
 	}
 }
 
+void EEPROM_default_Values()
+{
+	eeprom_write_word(&firmware_code_eeprom, FIRMWARE_CODE);
+	
+	eeprom_write_word(&heat_pulse_current_eeprom, 50);
+	eeprom_write_word(&measure_pulse_current_eeprom, 50);
+	eeprom_write_word(&window_offset_eeprom, 12000);
+	
+	//Edit: Maxi 20.12.17
+	eeprom_write_word(&offset_voltage_eeprom, 3000);
+
+
+	
+	eeprom_write_dword(&heat_pulse_length_eeprom, 25);
+	eeprom_write_dword(&measure_pulse_length_eeprom, 25);
+	
+	eeprom_write_word(&deterministic_pulse_length_eeprom, 10);
+	eeprom_write_word(&deterministic_pulse_cycles_eeprom, 100);
+	
+	eeprom_write_byte(&pulse_output_register_eeprom, 0);
+	
+	char init_card_types[8] = "00000000"; 
+	eeprom_write_block(&card_Type_register_eeprom, init_card_types ,8);	
+}
+
+void EEPROM_last_Values()
+{
+	heat_pulse_length = eeprom_read_dword(&heat_pulse_length_eeprom);
+	measure_pulse_length = eeprom_read_dword(&measure_pulse_length_eeprom);
+	
+	deterministic_pulse_length = eeprom_read_word(&deterministic_pulse_length_eeprom);
+	deterministic_pulse_cycles = eeprom_read_word(&deterministic_pulse_cycles_eeprom);
+	
+	pulse_output_register = eeprom_read_byte(&pulse_output_register_eeprom);
+	eeprom_read_block(card_Type, &card_Type_register_eeprom ,8);
+
+	
+	
+    heat_pulse_current = eeprom_read_word(&heat_pulse_current_eeprom);
+    measure_pulse_current = eeprom_read_word(&measure_pulse_current_eeprom);
+		
+    window_offset = eeprom_read_word(&window_offset_eeprom);
+    offset_voltage = eeprom_read_word(&offset_voltage_eeprom);
+	
+}
+
+void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
+{
+	//Check all characters
+	for(int i = 0; i< 8; i++)
+	{
+		//If character has change --> Init Card
+		if(newCard_Type[i] != oldCard_Type[i])
+		{
+			//Depending on Card-Typ --> Init Card
+			switch(newCard_Type[i])
+			{
+				case 'L':
+					LED_Source_Init(i+1);
+					break;
+					
+				case 'M':
+					
+					break;
+					
+				case 'B':
+					MOSFET_BreakDown_Init(i+1);
+					break;
+					
+				case 'T':
+					Slot_Tester_Init(i+1);
+					break;
+					
+				default:
+					break;
+			}
+		}		
+	}	
+}
 
 // -------------------------------------------------------------
 // Stop all Pulses									  (complete)

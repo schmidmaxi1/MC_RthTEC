@@ -392,9 +392,37 @@ void TerminalParseCommand(char *string)
 						eeprom_write_byte(&pulse_output_register_eeprom,temp8);
 					}
 					break;
-
 								
 				#pragma endregion 3.Puls-settings
+				
+				//4.0 Set Card types
+				case _MK16('C','T'):
+				
+					if(strlen(string) != 13)
+					{
+						//Not 8 characters
+						TransmitStringLn("FORMAT ERR");
+					}					
+					else
+					{
+						//Save old setting temporary
+						char old_card_Type[8];
+						strcpy(old_card_Type, card_Type);
+						
+						//Get the substring and write it to card_Type and EEPROM
+						memcpy(card_Type, &string[4], 8);
+						eeprom_write_block(card_Type, &card_Type_register_eeprom,8);
+						
+						//If there were changes --> Card initialization
+						Init_All_Cards(card_Type, old_card_Type);
+							
+						//Answer
+						TransmitString("SCT=");
+						TransmitString(card_Type);
+						TransmitStringLn("");
+					}
+				
+					break;
 												
 				//Default --> Fehler***************************************************	
 				default:
@@ -872,97 +900,126 @@ void TerminalParseCommand(char *string)
 	{
 		switch (cmd)
 		{
-			//GEN, get enable status
-			case _MK16('E','N'):
-			
-			TransmitString("GEN=");
-			TransmitInt(current_source_enabled, 1);
-			TransmitStringLn("");
-			break;
+			//1.1 GEN, get enable status......................................................
+			case _MK16('E','N'):			
+				TransmitString("GEN=");
+				TransmitInt(current_source_enabled, 1);
+				TransmitStringLn("");
+				break;
+				
+			//3.1 GHP, get heat pulse length.................................................
+			case _MK16('H','P'):							
+				TransmitString("GHP=");
+				TransmitLong(heat_pulse_length, 1);
+				TransmitStringLn(" ms");
+				break;
 
-			//GHC, get heat pulse current
-			case _MK16('H','C'):
+			//3.2 GMP, get measure pulse length
+			case _MK16('M','P'):							
+				TransmitString("GMP=");
+				TransmitInt(measure_pulse_length, 1);
+				TransmitStringLn(" ms");
+				break;
+				
+			//3.3 GND, get deterministic pulse count
+			case _MK16('N','D'):			
+				TransmitString("GND=");
+				TransmitInt(deterministic_pulse_cycles, 1);
+				TransmitStringLn("");
+				break;
 			
+			//3.4 GTD, get deterministic pulse length
+			case _MK16('T','D'):
+				TransmitString("GTD=");
+				TransmitFloat(deterministic_pulse_length, 1, 1);
+				TransmitStringLn(" ms");
+				break;
+				
+			//3.5, get Slot pulse info
+			case _MK16('P','R'):
+				TransmitString("GPR=");
+				TransmitByte(pulse_output_register);
+				TransmitStringLn("");
+				break;
+				
+			//4.1, get Slot Card Type
+			case _MK16('C','T'):
+				TransmitString("GCT=");
+				TransmitString(card_Type);
+				TransmitStringLn("");
+				break;
+			
+			
+			
+			//GHV, get heat pulse voltage
+			case _MK16('H','V'):
+															
+				TransmitString("GHV=");
+				TransmitLong(heat_pulse_voltage,1);
+				TransmitStringLn(" mV");
+				break;
+			
+			//GMV, get heasure pulse voltage
+			case _MK16('M','V'):
+												
+				TransmitString("GMV=");
+				TransmitLong(measure_pulse_voltage,1);
+				TransmitStringLn(" mV");
+				break;
+
+
+				
+			//3.1 GHC, get heat pulse current
+			case _MK16('H','C'):
+							
 			TransmitString("GHC=");
 			TransmitInt(heat_pulse_current, 1);
 			TransmitStringLn(" mA");
 			break;
 
-			//GMC, get measure pulse current
+			//3.2 GMC, get measure pulse current
 			case _MK16('M','C'):
-			
 			TransmitString("GMC=");
 			TransmitFloat(measure_pulse_current, 1, 1);
 			TransmitStringLn(" mA");
 			break;
-			
-			//GHV, get heat pulse voltage
-			case _MK16('H','V'):
-															
-			TransmitString("GHV=");
-			TransmitLong(heat_pulse_voltage,1);
-			TransmitStringLn(" mV");
-			break;
-			
-			//GMV, get heasure pulse voltage
-			case _MK16('M','V'):
-												
-			TransmitString("GMV=");
-			TransmitLong(measure_pulse_voltage,1);
-			TransmitStringLn(" mV");
-			break;
-
-			//GHP, get heat pulse length
-			case _MK16('H','P'):
-			
-			TransmitString("GHP=");
-			TransmitLong(heat_pulse_length, 1);
-			TransmitStringLn(" ms");
-			break;
-
-			//GMP, get measure pulse length
-			case _MK16('M','P'):
-			
-			TransmitString("GMP=");
-			TransmitInt(measure_pulse_length, 1);
-			TransmitStringLn(" ms");
-			break;
+				
 
 			//GFW, get firmware version
 			case _MK16('F','W'):
 			
-			TransmitString("FW=");
-			TransmitStringLn(FIRMWARE_VERSION);
-			break;
+				TransmitString("FW=");
+				TransmitStringLn(FIRMWARE_VERSION);
+				break;
 			
 			//GFW, get firmware version
 			case _MK16('I','D'):
 			
-			TransmitString("ID=");
-			TransmitStringLn("RthTEC TTA-Equipment V1_0");
-			break;
+				TransmitString("ID=");
+				TransmitStringLn("RthTEC TTA-Equipment V1_0");
+				break;
 
 			//GPA, get parameters
 			case _MK16('P','A'):
 			
-			TransmitString("PARAMS=");
+				TransmitString("PARAMS=");
 
-			TransmitInt(current_source_enabled, 1);
+				TransmitInt(current_source_enabled, 1);
 
-			TransmitString(",");
-			TransmitInt(heat_pulse_current, 1);
+				TransmitString(",");
+				TransmitInt(heat_pulse_current, 1);
 
-			TransmitString(",");
-			TransmitFloat(measure_pulse_current, 1, 1);
+				TransmitString(",");
+				TransmitFloat(measure_pulse_current, 1, 1);
 
-			TransmitString(",");
-			TransmitLong(heat_pulse_length, 1);
+				TransmitString(",");
+				TransmitLong(heat_pulse_length, 1);
 
-			TransmitString(",");
-			TransmitInt(measure_pulse_length, 1);
+				TransmitString(",");
+				TransmitInt(measure_pulse_length, 1);
 
-			TransmitStringLn("");
-			break;
+				TransmitStringLn("");
+				break;
 
 			default:
 			TransmitStringLn("COMMAND ERR");

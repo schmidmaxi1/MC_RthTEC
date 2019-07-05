@@ -177,6 +177,7 @@ uint16_t measure_pulse_voltage;
 //Edit: Maxi 20.12.17
 uint16_t offset_voltage;
 
+
 extern uint16_t heat_pulse_current_eeprom EEMEM;
 extern uint32_t heat_pulse_length_eeprom EEMEM;
 extern uint16_t measure_pulse_current_eeprom EEMEM;
@@ -205,6 +206,9 @@ extern uint16_t deterministic_pulse_cycles_eeprom EEMEM;
 uint8_t pulse_output_register;
 extern uint8_t pulse_output_register_eeprom EEMEM;
 
+char card_Type[8];
+extern char card_Type_register_eeprom[8] EEMEM;
+
 //Flags
 uint8_t flag_standard_TTA;
 uint8_t flag_deterministic_TTA;
@@ -227,6 +231,9 @@ void PulseStart_Sensitivity();		//edit: Maxi 07112017
 
 void Init_IO_Pins();
 void Lauflicht();
+void EEPROM_default_Values();
+void EEPROM_last_Values();
+void Init_All_Cards(char newCard_Type[], char oldCard_Type[]);
 
 void PulseStart_detTTA();	//edit: Maxi 26.09.2018
 
