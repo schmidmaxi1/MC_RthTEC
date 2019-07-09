@@ -150,6 +150,9 @@ void TerminalParseCommand(char *string)
 		//*****************************************************************************
 		//Set-Commands, that apply for all 19''-Cards (Definition: Space @ 3 character)
 		//*****************************************************************************
+		
+		#pragma region General_Set_Commands
+		
 		if(string[3] == ' '){
 			
 			//Check the second two characters
@@ -395,7 +398,8 @@ void TerminalParseCommand(char *string)
 								
 				#pragma endregion 3.Puls-settings
 				
-				//4.0 Set Card types
+				//4.0 Set Card types***************************************************
+				#pragma region 4.SlotSettings
 				case _MK16('C','T'):
 				
 					if(strlen(string) != 13)
@@ -411,7 +415,7 @@ void TerminalParseCommand(char *string)
 						
 						//Get the substring and write it to card_Type and EEPROM
 						memcpy(card_Type, &string[4], 8);
-						eeprom_write_block(card_Type, &card_Type_register_eeprom,8);
+						eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
 						
 						//If there were changes --> Card initialization
 						Init_All_Cards(card_Type, old_card_Type);
@@ -423,7 +427,9 @@ void TerminalParseCommand(char *string)
 					}
 				
 					break;
-												
+					
+				#pragma endregion 4.SlotSettings	
+														
 				//Default --> Fehler***************************************************	
 				default:
 					TransmitStringLn("COMMAND ERR");
@@ -431,9 +437,13 @@ void TerminalParseCommand(char *string)
 			}						
 		}
 		
+		#pragma endregion General_Set_Commands
+		
 		//*****************************************************************************
 		//Set-Commands, that apply ONE 19''-Cards (Definition: Number @ 3 character)
 		//*****************************************************************************
+		
+		#pragma region Special_Set_Commands
 						
 		else if (slotNr >= 0 && slotNr < 8){
 			
@@ -481,17 +491,17 @@ void TerminalParseCommand(char *string)
 							}
 							else
 							{
-								TransmitString("SHC LED=");
+								TransmitString("SHC");
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
 								TransmitInt(temp16, 1);
 								TransmitStringLn(" mA");
 
-								if (heat_pulse_current != temp16)
+								if (led_Source_Heat_Current_mA[slotNr-1] != temp16)
 								{
-									heat_pulse_current = temp16;
-									eeprom_write_word(&heat_pulse_current_eeprom,temp16);
-
-									LED_Source_Set_Heat_Current(heat_pulse_current, slotNr);
-									//LEDSource_set_Heat_Current(heat_pulse_current, slotNr);
+									led_Source_Heat_Current_mA[slotNr-1] = temp16;
+									eeprom_write_word(&parameter1_eeprom[slotNr-1], temp16);
+									LED_Source_Set_Heat_Current(led_Source_Heat_Current_mA[slotNr-1], slotNr);
 								}						
 							}
 							break;
@@ -511,17 +521,17 @@ void TerminalParseCommand(char *string)
 							}
 							else
 							{
-								TransmitString("SMC LED=");
+								TransmitString("SMC");
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
 								TransmitFloat(temp16, 1, 1);
 								TransmitStringLn(" mA");
 
-								if (measure_pulse_current != temp16)
+								if (led_Source_Meas_Current_0mA1[slotNr-1] != temp16)
 								{
-									measure_pulse_current = temp16;
-									eeprom_write_word(&measure_pulse_current_eeprom,temp16);
-									
-									LED_Source_Set_Meas_Current(measure_pulse_current, slotNr);
-									//LEDSource_set_Meas_Current(measure_pulse_current, slotNr);
+									led_Source_Meas_Current_0mA1[slotNr-1] = temp16;
+									eeprom_write_word(&parameter2_eeprom[slotNr-1],temp16);									
+									LED_Source_Set_Meas_Current(led_Source_Meas_Current_0mA1[slotNr-1], slotNr);
 								}
 								
 							}
@@ -877,11 +887,12 @@ void TerminalParseCommand(char *string)
 					TransmitStringLn("COMMAND ERR");
 					break;
 				
-			}					
-		}
-		
-		else{
+			}
 			
+		#pragma endregion Special_Set_Commands		
+					
+		}		
+		else{			
 			//Set Command is not known
 			TransmitStringLn("COMMAND ERR");
 		}
@@ -895,137 +906,199 @@ void TerminalParseCommand(char *string)
 	//***************************************************************************
 	
 	#pragma region Get
-		
-	else if (string[0] == 'G' && string[3] == '\n')
+			
+	else if (string[0] == 'G')
 	{
-		switch (cmd)
-		{
-			//1.1 GEN, get enable status......................................................
-			case _MK16('E','N'):			
-				TransmitString("GEN=");
-				TransmitInt(current_source_enabled, 1);
-				TransmitStringLn("");
-				break;
+		//Must executed here, later no chance, before not safe
+		slotNr = string[3] - '0';
+		
+		//*****************************************************************************
+		//Get-Commands, that apply for all 19''-Cards (Definition: Space @ 3 character)
+		//*****************************************************************************
+		
+		#pragma region Gerneral_Get
+		
+		if(string[3] == '\n'){
+		
+			switch (cmd)
+			{
+				//1.1 GEN, get enable status......................................................
+				case _MK16('E','N'):			
+					TransmitString("GEN=");
+					TransmitInt(current_source_enabled, 1);
+					TransmitStringLn("");
+					break;
 				
-			//3.1 GHP, get heat pulse length.................................................
-			case _MK16('H','P'):							
-				TransmitString("GHP=");
-				TransmitLong(heat_pulse_length, 1);
-				TransmitStringLn(" ms");
-				break;
+				//3.1 GHP, get heat pulse length.................................................
+				case _MK16('H','P'):							
+					TransmitString("GHP=");
+					TransmitLong(heat_pulse_length, 1);
+					TransmitStringLn(" ms");
+					break;
 
-			//3.2 GMP, get measure pulse length
-			case _MK16('M','P'):							
-				TransmitString("GMP=");
-				TransmitInt(measure_pulse_length, 1);
-				TransmitStringLn(" ms");
-				break;
+				//3.2 GMP, get measure pulse length
+				case _MK16('M','P'):							
+					TransmitString("GMP=");
+					TransmitInt(measure_pulse_length, 1);
+					TransmitStringLn(" ms");
+					break;
 				
-			//3.3 GND, get deterministic pulse count
-			case _MK16('N','D'):			
-				TransmitString("GND=");
-				TransmitInt(deterministic_pulse_cycles, 1);
-				TransmitStringLn("");
-				break;
+				//3.3 GND, get deterministic pulse count
+				case _MK16('N','D'):			
+					TransmitString("GND=");
+					TransmitInt(deterministic_pulse_cycles, 1);
+					TransmitStringLn("");
+					break;
 			
-			//3.4 GTD, get deterministic pulse length
-			case _MK16('T','D'):
-				TransmitString("GTD=");
-				TransmitFloat(deterministic_pulse_length, 1, 1);
-				TransmitStringLn(" ms");
-				break;
+				//3.4 GTD, get deterministic pulse length
+				case _MK16('T','D'):
+					TransmitString("GTD=");
+					TransmitFloat(deterministic_pulse_length, 1, 1);
+					TransmitStringLn(" ms");
+					break;
 				
-			//3.5, get Slot pulse info
-			case _MK16('P','R'):
-				TransmitString("GPR=");
-				TransmitByte(pulse_output_register);
-				TransmitStringLn("");
-				break;
+				//3.5, get Slot pulse info
+				case _MK16('P','R'):
+					TransmitString("GPR=");
+					TransmitByte(pulse_output_register);
+					TransmitStringLn("");
+					break;
 				
-			//4.1, get Slot Card Type
-			case _MK16('C','T'):
-				TransmitString("GCT=");
-				TransmitString(card_Type);
-				TransmitStringLn("");
-				break;
+				//4.1, get Slot Card Type
+				case _MK16('C','T'):
+					TransmitString("GCT=");
+					TransmitString(card_Type);
+					TransmitStringLn("");
+					break;
 			
 			
 			
-			//GHV, get heat pulse voltage
-			case _MK16('H','V'):
+				//GHV, get heat pulse voltage
+				case _MK16('H','V'):
 															
-				TransmitString("GHV=");
-				TransmitLong(heat_pulse_voltage,1);
-				TransmitStringLn(" mV");
-				break;
+					TransmitString("GHV=");
+					TransmitLong(heat_pulse_voltage,1);
+					TransmitStringLn(" mV");
+					break;
 			
-			//GMV, get heasure pulse voltage
-			case _MK16('M','V'):
+				//GMV, get measure pulse voltage
+				case _MK16('M','V'):
 												
-				TransmitString("GMV=");
-				TransmitLong(measure_pulse_voltage,1);
-				TransmitStringLn(" mV");
-				break;
+					TransmitString("GMV=");
+					TransmitLong(measure_pulse_voltage,1);
+					TransmitStringLn(" mV");
+					break;
 
 
 				
-			//3.1 GHC, get heat pulse current
-			case _MK16('H','C'):
-							
-			TransmitString("GHC=");
-			TransmitInt(heat_pulse_current, 1);
-			TransmitStringLn(" mA");
-			break;
 
-			//3.2 GMC, get measure pulse current
-			case _MK16('M','C'):
-			TransmitString("GMC=");
-			TransmitFloat(measure_pulse_current, 1, 1);
-			TransmitStringLn(" mA");
-			break;
 				
 
-			//GFW, get firmware version
-			case _MK16('F','W'):
+				//GFW, get firmware version
+				case _MK16('F','W'):
 			
-				TransmitString("FW=");
-				TransmitStringLn(FIRMWARE_VERSION);
-				break;
+					TransmitString("FW=");
+					TransmitStringLn(FIRMWARE_VERSION);
+					break;
 			
-			//GFW, get firmware version
-			case _MK16('I','D'):
+				//GFW, get firmware version
+				case _MK16('I','D'):
 			
-				TransmitString("ID=");
-				TransmitStringLn("RthTEC TTA-Equipment V1_0");
-				break;
+					TransmitString("ID=");
+					TransmitStringLn("RthTEC TTA-Equipment V1_0");
+					break;
 
-			//GPA, get parameters
-			case _MK16('P','A'):
+				//GPA, get parameters
+				case _MK16('P','A'):
 			
-				TransmitString("PARAMS=");
+					TransmitString("PARAMS=");
 
-				TransmitInt(current_source_enabled, 1);
+					TransmitInt(current_source_enabled, 1);
 
-				TransmitString(",");
-				TransmitInt(heat_pulse_current, 1);
+					TransmitString(",");
+					TransmitInt(heat_pulse_current, 1);
 
-				TransmitString(",");
-				TransmitFloat(measure_pulse_current, 1, 1);
+					TransmitString(",");
+					TransmitFloat(measure_pulse_current, 1, 1);
 
-				TransmitString(",");
-				TransmitLong(heat_pulse_length, 1);
+					TransmitString(",");
+					TransmitLong(heat_pulse_length, 1);
 
-				TransmitString(",");
-				TransmitInt(measure_pulse_length, 1);
+					TransmitString(",");
+					TransmitInt(measure_pulse_length, 1);
 
-				TransmitStringLn("");
-				break;
+					TransmitStringLn("");
+					break;
 
-			default:
+				default:
+				TransmitStringLn("COMMAND ERR");
+			}
+		}
+		
+		#pragma endregion Gerneral_Get
+		
+		//*****************************************************************************
+		//Get-Commands, that apply ONE 19''-Cards (Definition: Number @ 3 character)
+		//*****************************************************************************
+		
+		#pragma region Special_Get
+		
+		else if (slotNr >= 0 && slotNr < 8){
+						
+			switch(string[4]){
+				
+				//4.1 LED-Source
+				#pragma region SettingsLED-Source
+				
+				case 'L':
+					switch(cmd){
+					
+						//2. Set Heat Current
+						case _MK16('H','C'):
+							TransmitString("GHC");
+							TransmitInt(slotNr, 1);
+							TransmitString("L=");
+							TransmitInt(led_Source_Heat_Current_mA[slotNr-1], 1);
+							TransmitStringLn(" mA");
+							break;
+										
+						//3. Set Meas Current
+						case _MK16('M','C'):
+							TransmitString("GMC");
+							TransmitInt(slotNr, 1);
+							TransmitString("L=");
+							TransmitFloat(led_Source_Meas_Current_0mA1[slotNr-1], 1, 1);
+							TransmitStringLn(" mA");
+							break;
+									
+						//Default --> Fehler
+						default:
+							TransmitStringLn("COMMAND ERR");
+							break;
+					
+					}
+					break;
+				
+				//Default --> Fehler
+				default:
+					TransmitStringLn("COMMAND ERR");
+					break;
+			}
+		}
+		
+		#pragma endregion Special_Get
+		
+		//*****************************************************************************
+		//Error
+		//*****************************************************************************
+		
+		else{
+			//Set Command is not known
 			TransmitStringLn("COMMAND ERR");
 		}
+		
 	}
-	
+		
 	#pragma endregion Get
 
 	//***************************************************************************

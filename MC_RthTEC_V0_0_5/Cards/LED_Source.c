@@ -14,6 +14,9 @@
 
 #include "../ICs/AD5752.h"
 
+uint16_t led_Source_Heat_Current_mA[8];
+uint16_t led_Source_Meas_Current_0mA1[8];
+
 /*
 PinBelegung:
 1. HP
@@ -23,14 +26,10 @@ PinBelegung:
 5. NC
 6. NC
 
-IO0: Relay0: DS --> COM
-IO1: Relay1: DS --> GND
-IO2: Relay2: DS --> SMU
-IO3: Relay3: GS --> SMU
-IO4: Relay4: GS --> DAC
-IO5: Relay5: GS --> GND
-IO6: N.C.
-IO7: N.C.
+EEPROM:
+Parameter1 = HeatCurrent in mA
+Parameter2 = MeasCurrent in 0,1mA
+Parameter3 = not used
 
 */
 
@@ -53,10 +52,30 @@ void LED_Source_Init(int slot_nr)
 	_set_out(IO_PORT6, slot_nr - 1);
 	
 
-	//ADC initialization and set to 0V
+	//ADC initialization
 	//Range: +5V
 	//Both Channels on
 	DAC_AD5752_Range_and_PowerUp(Range_p5V, PowerUp_AB, &IO_Port3, slot_nr-1);	
+	
+	//Set DAC output
+	LED_Source_Set_Heat_Current(led_Source_Heat_Current_mA[slot_nr-1], slot_nr);		
+	LED_Source_Set_Meas_Current(led_Source_Meas_Current_0mA1[slot_nr-1], slot_nr);	
+}
+
+void LED_Source_Variables_from_EEPROM(int slot_nr)
+{		
+	led_Source_Heat_Current_mA[slot_nr-1] = eeprom_read_word(&parameter1_eeprom[slot_nr-1]);
+	led_Source_Meas_Current_0mA1[slot_nr-1] = eeprom_read_word(&parameter2_eeprom[slot_nr-1]);
+}
+
+void LED_Source_Default_Values(int slot_nr)
+{
+	//Set default values (Local & EEPROM)
+	led_Source_Heat_Current_mA[slot_nr-1] = led_source_Heat_current_default;
+	led_Source_Meas_Current_0mA1[slot_nr-1] = led_source_Meas_current_default;
+	
+	eeprom_write_word(&parameter1_eeprom[slot_nr-1], led_Source_Heat_Current_mA[slot_nr-1]);
+	eeprom_write_word(&parameter2_eeprom[slot_nr-1], led_Source_Meas_Current_0mA1[slot_nr-1]);
 }
 
 

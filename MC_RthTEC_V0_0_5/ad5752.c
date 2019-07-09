@@ -112,15 +112,7 @@ void DAC_Init()
 	
 
 		
-	//Output werte setzen
-	
-
-	
-    //DAC_Set((((uint32_t) heat_pulse_current) * 0xffff) / 1500, &ChipSelect_Port , 1, DAC_ADR_DAC_A);
-    //DAC_Set((((uint32_t) measure_pulse_current) * 0xffff) / 250, &ChipSelect_Port , 1, DAC_ADR_DAC_B);
-	
-
-    
+	   
     clear_bit(DAC_LDAC);
    
 	/*

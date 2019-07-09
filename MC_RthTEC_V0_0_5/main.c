@@ -70,6 +70,11 @@ uint8_t pulse_output_register_eeprom EEMEM;
 char card_Type[8];
 char card_Type_register_eeprom[8] EEMEM;
 
+//EEPROM Register neu (08.07.2018, Maxi)
+uint16_t parameter1_eeprom[8] EEMEM;
+uint16_t parameter2_eeprom[8] EEMEM;
+uint16_t parameter3_eeprom[8] EEMEM;
+
 //Flags
 uint8_t flag_standard_TTA;
 uint8_t flag_deterministic_TTA;
@@ -208,24 +213,38 @@ void Init()
 	/*                                  Terminal                            */
 	/************************************************************************/
 	
-
     TerminalInit();
 	
 	/************************************************************************/
 	/*                              Variables init                          */
 	/************************************************************************/
-
+	
 	//Variablen aus mit Werten aus EEPROM initialisiern
 	EEPROM_last_Values();
 
     current_source_enabled = 0;
+	
+	/************************************************************************/
+	/*                              SPI										*/
+	/************************************************************************/
+		
+	USART_SPI_InitBaudrate(125);
+	
+	/************************************************************************/
+	/*                              Init Cards                              */
+	/************************************************************************/
+	
+	
+	//Is compared to 00...0 to initialize all used cards
+	char init_card_types[8] = "00000000"; 
+	Init_All_Cards(card_Type, init_card_types);
 
 
     /************************************************************************/
-    /*                            DAC                                       */
+    /*                            DAC     (alt)                             */
     /************************************************************************/
 	
-    DAC_Init();
+    //DAC_Init();
 
 
 #if DEBUG_ENABLE
@@ -255,7 +274,7 @@ void Init_IO_Pins(){
 	set_out(LED_Pulse);
 	set_out(LED_DATA);
 	
-	//2. HP, MP & ChipSelect [alle]
+	//2. HP, MP & ChipSelect [alle] (wahrscheinlich nicht notwendig)
 	for(int i = 0; i < 7; i++){
 		//Auf 0 setzen
 		_clear_bit(HP_Port, i);
@@ -269,10 +288,12 @@ void Init_IO_Pins(){
 		_set_out(IO_PORT4, i);
 	}
 	
-	//3. Alle anderen (für ADC_MOSFET)
-	set_out(IO_PORT5_3);
-	clear_bit(IO_PORT5_3);
-
+	//3. ADC (Latch und Clear) Beide auf HIGH damit gleich ausgegeben
+	set_bit(DAC_CLR);
+	set_bit(DAC_LDAC);
+	set_out(DAC_CLR);
+	set_out(DAC_LDAC);
+	
    
 	//4. Fail&Enable
 	clear_bit(ENABLE);
@@ -375,6 +396,20 @@ void EEPROM_last_Values()
 	
 	pulse_output_register = eeprom_read_byte(&pulse_output_register_eeprom);
 	eeprom_read_block(card_Type, &card_Type_register_eeprom ,8);
+	
+	//Je nach SlotBelegung die Parameter übernehmen
+	for(int i = 0; i < 8; i++)
+	{
+		switch(card_Type[i])
+		{
+			case '0':
+				break;
+			
+			case 'L':
+				LED_Source_Variables_from_EEPROM(i+1);
+				break;
+		}
+	}
 
 	
 	

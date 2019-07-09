@@ -193,8 +193,6 @@ int16_t window_offset;
 extern uint16_t window_offset_eeprom EEMEM;
 
 
-
-
 //Edit: Maxi 26.09.2018
 uint16_t deterministic_pulse_length;
 uint16_t deterministic_pulse_cycles;
@@ -208,6 +206,12 @@ extern uint8_t pulse_output_register_eeprom EEMEM;
 
 char card_Type[8];
 extern char card_Type_register_eeprom[8] EEMEM;
+
+//EEPROM Register neu (08.07.2018, Maxi)
+extern uint16_t parameter1_eeprom[8] EEMEM;
+extern uint16_t parameter2_eeprom[8] EEMEM;
+extern uint16_t parameter3_eeprom[8] EEMEM;
+
 
 //Flags
 uint8_t flag_standard_TTA;
