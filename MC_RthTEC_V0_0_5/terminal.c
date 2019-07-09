@@ -39,6 +39,7 @@ uint8_t ParseLongLn(char *string, uint8_t digits, int32_t *num);
 uint8_t ParseBool(char *string, uint8_t *value);
 uint8_t ParseByte(char *string, uint8_t *value);
 void TransmitByte(uint8_t byte);
+void TransmitByte_Reverse(uint8_t byte);
 
 //This line is used to suppress the warnings for code Folding
 // It is ignored by the compiler
@@ -345,7 +346,7 @@ void TerminalParseCommand(char *string)
 					{
 						TransmitString("SND=");
 						TransmitInt(temp16, 1);
-						TransmitStringLn(" ");
+						TransmitStringLn(" pulses");
 
 						deterministic_pulse_cycles = temp16;
 						eeprom_write_word(&deterministic_pulse_cycles_eeprom,temp16);	
@@ -379,16 +380,22 @@ void TerminalParseCommand(char *string)
 
 				//3.5 Set Pulse Register	
 				case _MK16('P','R'):
-								
-					if (!ParseByte(&string[4], &temp8))
+				
+					//!!!Reihenfolge wird getauscht!!!
+					if(strlen(string) != 13)
 					{
-						//no 8 bit 
+						//Not 8 characters
+						TransmitStringLn("FORMAT ERR");
+					}	
+					else if (!ParseByte(&string[4], &temp8))
+					{
+						//Conversion did not work
 						TransmitStringLn("FORMAT ERR");
 					}
 					else
 					{
 						TransmitString("SPR=");
-						TransmitByte(temp8);
+						TransmitByte_Reverse(temp8);
 						TransmitStringLn("");
 
 						pulse_output_register = temp8;
@@ -947,7 +954,7 @@ void TerminalParseCommand(char *string)
 				case _MK16('N','D'):			
 					TransmitString("GND=");
 					TransmitInt(deterministic_pulse_cycles, 1);
-					TransmitStringLn("");
+					TransmitStringLn(" pulses");
 					break;
 			
 				//3.4 GTD, get deterministic pulse length
@@ -960,7 +967,7 @@ void TerminalParseCommand(char *string)
 				//3.5, get Slot pulse info
 				case _MK16('P','R'):
 					TransmitString("GPR=");
-					TransmitByte(pulse_output_register);
+					TransmitByte_Reverse(pulse_output_register);
 					TransmitStringLn("");
 					break;
 				
@@ -1232,6 +1239,31 @@ uint8_t ParseBool(char *string, uint8_t *value)
 
 uint8_t ParseByte(char *string, uint8_t *value)
 {
+	uint8_t temp = 0;
+	for(int i = 0; i < 8 ; i++)
+	{
+		if(string[i] - '0' == 0)
+		{
+			//Nix zu tun
+		}
+		else if(string[i] - '0' == 1)
+		{
+			temp = temp + (1<<i);
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
+	*value = temp;
+	return 1;
+	
+}
+
+/*
+uint8_t ParseByte(char *string, uint8_t *value)
+{
 	uint8_t temp[10];
 	uint8_t bit = 0;
 	uint8_t i = 0;
@@ -1271,6 +1303,7 @@ uint8_t ParseByte(char *string, uint8_t *value)
 	
 	return 1;
 }
+*/
 
 // -------------------------------------------------------------
 // String auf Interface ausgeben
@@ -1492,6 +1525,25 @@ void TransmitByte(uint8_t byte)
 		}
 		else{
 			str[7-i] = '0';		
+		}
+	}
+	
+
+	//send
+	TransmitString(str);
+}
+
+void TransmitByte_Reverse(uint8_t byte)
+{
+	char str[] = "00000000";
+	
+	for(int i = 0; i < 8; i++)
+	{
+		if(byte & (1 << i)){
+			str[i] = '1';
+		}
+		else{
+			str[i] = '0';
 		}
 	}
 	
