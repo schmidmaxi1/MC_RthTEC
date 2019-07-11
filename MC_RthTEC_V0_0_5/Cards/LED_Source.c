@@ -21,7 +21,7 @@ uint16_t led_Source_Meas_Current_0mA1[8];
 PinBelegung:
 1. HP
 2. MP
-3. /ChipSelect DAC
+3. /ChipSelect DAC (Channel A: Heat_Current, Channel B: Meas_Current)
 4. NC
 5. NC
 6. NC

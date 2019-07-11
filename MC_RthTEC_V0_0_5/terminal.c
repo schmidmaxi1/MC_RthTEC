@@ -483,6 +483,8 @@ void TerminalParseCommand(char *string)
 								TransmitStringLn("L");
 							}
 							break;
+							
+							
 						//2. Set Heat Current	
 						case _MK16('H','C'):
 								
@@ -678,41 +680,89 @@ void TerminalParseCommand(char *string)
 				case 'A':
 					switch(cmd){
 						
-						//1. Set Heat Current
+						//1. Initialization
+						case _MK16('I','N'):
+							if (string[5] != '\n')
+							{
+								//to many signs
+								TransmitStringLn("FORMAT ERR");
+							}
+							else
+							{
+								Amplifier_Init(slotNr);
+							
+								//Answer
+								TransmitString("SIN");
+								TransmitInt(slotNr, 1);
+								TransmitStringLn("A");
+							}
+							break;
+						
+						//2. Window Gain (Fixed to 2)
+						case _MK16('W','G'):
+						
+							if (!ParseIntLn(&string[6],4,&temp16))
+							{
+								//no number
+								TransmitStringLn("FORMAT ERR");
+							}
+							else if (temp16 > 100 || temp16 < 1)
+							{
+								//Kp mit der versterkung
+								TransmitStringLn("NUMBER ERR");
+							}
+							else
+							{
+								TransmitString("SWG");
+								TransmitInt(slotNr, 1);
+								TransmitString("A=");
+								//TransmitInt(temp16, 1);
+								TransmitInt(2, 1);
+								TransmitStringLn(" W/O-Unit");
+
+								if (amplifier_gain[slotNr-1] != temp16)
+								{
+									amplifier_gain[slotNr-1] = 2;
+									eeprom_write_word(&parameter1_eeprom[slotNr-1], 2);
+									Amplifier_Set_Gain(amplifier_gain[slotNr-1], slotNr);
+								}
+							}
+							break;
+						//3. Set Window Offset Voltage
 						case _MK16('W','O'):
 						
-						if (!ParseIntLn(&string[6],4,&temp16))
-						{
-							//no number
-							TransmitStringLn("FORMAT ERR");
-						}
-						else if (temp16 > 10000 || temp16 < 0)
-						{
-							//new current limit not between 0 and 1.5A
-							TransmitStringLn("NUMBER ERR");
-						}
-						else
-						{
-							TransmitString("SWO Amp=");
-							TransmitInt(temp16, 1);
-							TransmitStringLn(" mV");
-							
-							offset_voltage = temp16;
-							eeprom_write_word(&offset_voltage_eeprom,temp16);
-
-
-							if (offset_voltage != temp16)
+							if (!ParseIntLn(&string[6],4,&temp16))
 							{
-								offset_voltage = temp16;
-								eeprom_write_word(&offset_voltage_eeprom,temp16);
-
-								FrontEnd_set_Offset_Voltage(offset_voltage, slotNr);
+								//no number
+								TransmitStringLn("FORMAT ERR");
 							}
-						}
-						break;
-					}						
-					break;
-					
+							else if (temp16 > 10000 || temp16 < 0)
+							{
+								//0 bis 10 V
+								TransmitStringLn("NUMBER ERR");
+							}
+							else
+							{
+								TransmitString("SWO");
+								TransmitInt(slotNr, 1);
+								TransmitString("A=");
+								TransmitFloat(temp16,1, 3);
+								TransmitStringLn(" V");
+
+								if (amplifier_offset_voltage_mV[slotNr-1] != temp16)
+								{
+									amplifier_offset_voltage_mV[slotNr-1] = temp16;
+									eeprom_write_word(&parameter2_eeprom[slotNr-1], temp16);
+									Amplifier_Set_Offset_Voltage(amplifier_offset_voltage_mV[slotNr-1], slotNr);
+								}
+							}
+							break;
+							
+						//Default --> Fehler
+						default:
+							TransmitStringLn("COMMAND ERR");
+							break;
+					}
 					#pragma endregion SettingsFrontend
 					
 				//5. SlotTester
@@ -1085,6 +1135,43 @@ void TerminalParseCommand(char *string)
 					
 					}
 					break;
+					
+					#pragma endregion SettingsLED-Source
+					
+				//4.1 Amplifier
+				#pragma region Amplifier
+				
+				case 'A':
+					switch(cmd){
+					
+						//2. Gain
+						case _MK16('W','G'):
+							TransmitString("GWG");
+							TransmitInt(slotNr, 1);
+							TransmitString("A=");
+							TransmitInt(amplifier_gain[slotNr-1], 1);
+							TransmitStringLn(" W/O-Unit");
+							break;
+					
+						//3. Set Meas Current
+						case _MK16('W','O'):
+							TransmitString("GWO");
+							TransmitInt(slotNr, 1);
+							TransmitString("A=");
+							TransmitFloat(amplifier_offset_voltage_mV[slotNr-1], 1, 3);
+							TransmitStringLn(" V");
+							break;
+					
+						//Default --> Fehler
+						default:
+							TransmitStringLn("COMMAND ERR");
+							break;
+					
+				}
+				break;
+				
+				#pragma endregion Amplifier
+				
 				
 				//Default --> Fehler
 				default:

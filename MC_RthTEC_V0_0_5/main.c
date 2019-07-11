@@ -404,6 +404,10 @@ void EEPROM_last_Values()
 		{
 			case '0':
 				break;
+				
+			case 'A':
+				Amplifier_Variables_from_EEPROM(i+1);
+				break;
 			
 			case 'L':
 				LED_Source_Variables_from_EEPROM(i+1);
@@ -432,6 +436,10 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 			//Depending on Card-Typ --> Init Card
 			switch(newCard_Type[i])
 			{
+				case 'A':
+					Amplifier_Init(i+1);
+					break;
+					
 				case 'L':
 					LED_Source_Init(i+1);
 					break;
