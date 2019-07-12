@@ -92,7 +92,7 @@ void Amplifier_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 	*/
 	
 	//Binär Wert berechnen
-	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 10000;
+	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 10000 / 2;
 	
 	//Senden
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);

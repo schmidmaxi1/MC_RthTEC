@@ -457,7 +457,7 @@ void Amplifier_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
      2c0:	cf 93       	push	r28
 	
 	//Binär Wert berechnen
-	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 10000;
+	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 10000 / 2;
 	
 	//Senden
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);
@@ -467,8 +467,8 @@ void Amplifier_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
      2c8:	af ef       	ldi	r26, 0xFF	; 255
      2ca:	bf ef       	ldi	r27, 0xFF	; 255
      2cc:	0e 94 30 19 	call	0x3260	; 0x3260 <__umulhisi3>
-     2d0:	20 e1       	ldi	r18, 0x10	; 16
-     2d2:	37 e2       	ldi	r19, 0x27	; 39
+     2d0:	20 e2       	ldi	r18, 0x20	; 32
+     2d2:	3e e4       	ldi	r19, 0x4E	; 78
      2d4:	40 e0       	ldi	r20, 0x00	; 0
      2d6:	50 e0       	ldi	r21, 0x00	; 0
      2d8:	0e 94 06 19 	call	0x320c	; 0x320c <__udivmodsi4>
