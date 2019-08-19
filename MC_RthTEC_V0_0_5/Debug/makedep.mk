@@ -6,6 +6,8 @@ ad5752.c
 
 Cards\Amplifier.c
 
+Cards\FrontEnd.c
+
 Cards\LED_Source.c
 
 Cards\MOSFET_BreakDown.c

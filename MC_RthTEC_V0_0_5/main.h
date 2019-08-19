@@ -144,6 +144,7 @@
 #include "Cards/MOSFET_BreakDown.h"
 #include "Cards/LED_Source.h"
 #include "Cards/Amplifier.h"
+#include "Cards/FrontEnd.h"
 
 #include "ICs/MCP23S08.h"
 

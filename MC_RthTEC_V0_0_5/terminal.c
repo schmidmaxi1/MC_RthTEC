@@ -939,6 +939,15 @@ void TerminalParseCommand(char *string)
 								
 				#pragma endregion BreakDown
 				
+				//7. Heller Frontend (F)
+				#pragma region HellerFrontEND
+								
+				case 'F':
+					Terminal_SET_FrontEND(string);
+					break;
+								
+				#pragma endregion HellerFrontEND
+				
 				//Default --> Fehler
 				default:
 					TransmitStringLn("COMMAND ERR");

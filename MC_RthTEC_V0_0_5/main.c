@@ -412,6 +412,10 @@ void EEPROM_last_Values()
 			case 'L':
 				LED_Source_Variables_from_EEPROM(i+1);
 				break;
+				
+			case 'F':
+				FrontEnd_Variables_from_EEPROM(i+1);
+				break;				
 		}
 	}
 
@@ -454,6 +458,10 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 					
 				case 'T':
 					Slot_Tester_Init(i+1);
+					break;
+					
+				case 'F':
+					FrontEnd_Init(i+1);
 					break;
 					
 				default:

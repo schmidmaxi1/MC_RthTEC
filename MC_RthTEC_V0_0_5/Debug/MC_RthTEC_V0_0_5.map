@@ -5,11 +5,11 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
                               ad5752.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                              C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o (exit)
+                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
                               Cards/Slot_Tester.o (__tablejump2__)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
-                              main.o (__do_copy_data)
+                              Cards/FrontEnd.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
                               ad5752.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
@@ -32,27 +32,29 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o) (__utoa_common)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
                               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ultoa_ncheck.o) (strrev)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
                               main.o (eeprom_read_block)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
                               main.o (eeprom_read_byte)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
                               main.o (eeprom_read_dword)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
                               Cards/Amplifier.o (eeprom_read_word)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
                               main.o (eeprom_write_block)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
                               main.o (eeprom_write_byte)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
                               main.o (eeprom_write_dword)
-C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
                               Cards/Amplifier.o (eeprom_write_word)
 
 Allocating common symbols
 Common symbol       size              file
 
 heat_pulse_voltage  0x4               ad5752.o
+frontEnd_offset_voltage_mV
+                    0x10              ad5752.o
 measure_pulse_voltage
                     0x2               ad5752.o
 led_Source_Meas_Current_0mA1
@@ -78,6 +80,7 @@ led_Source_Heat_Current_mA
 usart_spi_tx_buffer
                     0x40              usart_spi.o
 offset_voltage      0x2               ad5752.o
+frontEnd_gain       0x10              ad5752.o
 led_hp              0x1               ad5752.o
 heat_pulse_current  0x2               ad5752.o
 led_mp              0x1               ad5752.o
@@ -117,8 +120,8 @@ card_Type           0x8               ad5752.o
 
 Discarded input sections
 
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
  .text          0x00000000        0x0 ad5752.o
  .data          0x00000000        0x0 ad5752.o
  .bss           0x00000000        0x0 ad5752.o
@@ -136,6 +139,13 @@ Discarded input sections
  .bss           0x00000000        0x0 Cards/Amplifier.o
  .text.Amplifier_Default_Values
                 0x00000000       0x56 Cards/Amplifier.o
+ .text          0x00000000        0x0 Cards/FrontEnd.o
+ .data          0x00000000        0x0 Cards/FrontEnd.o
+ .bss           0x00000000        0x0 Cards/FrontEnd.o
+ .text.FrontEnd_Default_Values
+                0x00000000       0x56 Cards/FrontEnd.o
+ .text.FrontEnd_Set_Gain
+                0x00000000        0x2 Cards/FrontEnd.o
  .text          0x00000000        0x0 Cards/LED_Source.o
  .data          0x00000000        0x0 Cards/LED_Source.o
  .bss           0x00000000        0x0 Cards/LED_Source.o
@@ -173,8 +183,6 @@ Discarded input sections
  .bss           0x00000000        0x0 terminal.o
  .text.ParseBool
                 0x00000000       0x20 terminal.o
- .text.TransmitString
-                0x00000000        0x6 terminal.o
  .text.TransmitInt0
                 0x00000000      0x104 terminal.o
  .text.TransmitByte
@@ -359,30 +367,30 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .text          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
- .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
- .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
+ .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
+ .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
 
 Memory Configuration
 
@@ -399,9 +407,10 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 Address of section .data set to 0x800200
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
 LOAD ad5752.o
 LOAD Cards/Amplifier.o
+LOAD Cards/FrontEnd.o
 LOAD Cards/LED_Source.o
 LOAD Cards/MOSFET_BreakDown.o
 LOAD Cards/Slot_Tester.o
@@ -420,7 +429,7 @@ START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a
-LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a
+LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a
 END GROUP
                 0x00100000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x100000
                 0x0000fe00                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xfe00
@@ -520,53 +529,55 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x340c
+.text           0x00000000     0x3746
  *(.vectors)
- .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .vectors       0x00000000       0xe4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
                 0x00000000                __vector_default
                 0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table.Slot_Tester_set_7Segment
                 0x000000e4       0x14 Cards/Slot_Tester.o
-                0x000000f8                . = ALIGN (0x2)
-                0x000000f8                __trampolines_start = .
+ .progmem.gcc_sw_table.TerminalParseCommand
+                0x000000f8       0x28 terminal.o
+                0x00000120                . = ALIGN (0x2)
+                0x00000120                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x000000f8        0x0 linker stubs
+ .trampolines   0x00000120        0x0 linker stubs
  *(.trampolines*)
-                0x000000f8                __trampolines_end = .
+                0x00000120                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x000000f8                . = ALIGN (0x2)
+                0x00000120                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x000000f8                __ctors_start = .
+                0x00000120                __ctors_start = .
  *(.ctors)
-                0x000000f8                __ctors_end = .
-                0x000000f8                __dtors_start = .
+                0x00000120                __ctors_end = .
+                0x00000120                __dtors_start = .
  *(.dtors)
-                0x000000f8                __dtors_end = .
+                0x00000120                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000000f8        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x000000f8                __init
+ .init0         0x00000120        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+                0x00000120                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000000f8       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init2         0x00000120       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000108       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
-                0x00000108                __do_copy_data
- .init4         0x00000122       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                0x00000122                __do_clear_bss
+ .init4         0x00000130       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+                0x00000130                __do_copy_data
+ .init4         0x0000014a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
+                0x0000014a                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -577,390 +588,405 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000132        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init9         0x0000015a        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
  *(.init9)
  *(.text)
- .text          0x00000138        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x00000138                __vector_38
-                0x00000138                __vector_22
-                0x00000138                __vector_28
-                0x00000138                __vector_1
-                0x00000138                __vector_32
-                0x00000138                __vector_34
-                0x00000138                __vector_12
-                0x00000138                __vector_55
-                0x00000138                __vector_46
-                0x00000138                __bad_interrupt
-                0x00000138                __vector_6
-                0x00000138                __vector_31
-                0x00000138                __vector_35
-                0x00000138                __vector_39
-                0x00000138                __vector_3
-                0x00000138                __vector_23
-                0x00000138                __vector_30
-                0x00000138                __vector_45
-                0x00000138                __vector_11
-                0x00000138                __vector_54
-                0x00000138                __vector_17
-                0x00000138                __vector_19
-                0x00000138                __vector_56
-                0x00000138                __vector_7
-                0x00000138                __vector_41
-                0x00000138                __vector_43
-                0x00000138                __vector_5
-                0x00000138                __vector_33
-                0x00000138                __vector_52
-                0x00000138                __vector_37
-                0x00000138                __vector_4
-                0x00000138                __vector_44
-                0x00000138                __vector_9
-                0x00000138                __vector_2
-                0x00000138                __vector_21
-                0x00000138                __vector_15
-                0x00000138                __vector_36
-                0x00000138                __vector_29
-                0x00000138                __vector_40
-                0x00000138                __vector_8
-                0x00000138                __vector_26
-                0x00000138                __vector_14
-                0x00000138                __vector_53
-                0x00000138                __vector_10
-                0x00000138                __vector_16
-                0x00000138                __vector_18
-                0x00000138                __vector_20
-                0x00000138                __vector_42
-                0x0000013a                . = ALIGN (0x2)
+ .text          0x00000162        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+                0x00000162                __vector_38
+                0x00000162                __vector_22
+                0x00000162                __vector_28
+                0x00000162                __vector_1
+                0x00000162                __vector_32
+                0x00000162                __vector_34
+                0x00000162                __vector_12
+                0x00000162                __vector_55
+                0x00000162                __vector_46
+                0x00000162                __bad_interrupt
+                0x00000162                __vector_6
+                0x00000162                __vector_31
+                0x00000162                __vector_35
+                0x00000162                __vector_39
+                0x00000162                __vector_3
+                0x00000162                __vector_23
+                0x00000162                __vector_30
+                0x00000162                __vector_45
+                0x00000162                __vector_11
+                0x00000162                __vector_54
+                0x00000162                __vector_17
+                0x00000162                __vector_19
+                0x00000162                __vector_56
+                0x00000162                __vector_7
+                0x00000162                __vector_41
+                0x00000162                __vector_43
+                0x00000162                __vector_5
+                0x00000162                __vector_33
+                0x00000162                __vector_52
+                0x00000162                __vector_37
+                0x00000162                __vector_4
+                0x00000162                __vector_44
+                0x00000162                __vector_9
+                0x00000162                __vector_2
+                0x00000162                __vector_21
+                0x00000162                __vector_15
+                0x00000162                __vector_36
+                0x00000162                __vector_29
+                0x00000162                __vector_40
+                0x00000162                __vector_8
+                0x00000162                __vector_26
+                0x00000162                __vector_14
+                0x00000162                __vector_53
+                0x00000162                __vector_10
+                0x00000162                __vector_16
+                0x00000162                __vector_18
+                0x00000162                __vector_20
+                0x00000162                __vector_42
+                0x00000164                . = ALIGN (0x2)
  *(.text.*)
  .text.SPI_Send
-                0x0000013a       0x5a ad5752.o
-                0x0000013a                SPI_Send
+                0x00000164       0x5a ad5752.o
+                0x00000164                SPI_Send
  .text.MOSFETSource_set_Heat_Current
-                0x00000194       0x48 ad5752.o
-                0x00000194                MOSFETSource_set_Heat_Current
+                0x000001be       0x48 ad5752.o
+                0x000001be                MOSFETSource_set_Heat_Current
  .text.MOSFETSource_set_Meas_Current
-                0x000001dc       0x48 ad5752.o
-                0x000001dc                MOSFETSource_set_Meas_Current
+                0x00000206       0x48 ad5752.o
+                0x00000206                MOSFETSource_set_Meas_Current
  .text.MOSFETSource_set_Meas_Voltage
-                0x00000224       0x62 ad5752.o
-                0x00000224                MOSFETSource_set_Meas_Voltage
+                0x0000024e       0x62 ad5752.o
+                0x0000024e                MOSFETSource_set_Meas_Voltage
  .text.Amplifier_Variables_from_EEPROM
-                0x00000286       0x38 Cards/Amplifier.o
-                0x00000286                Amplifier_Variables_from_EEPROM
+                0x000002b0       0x38 Cards/Amplifier.o
+                0x000002b0                Amplifier_Variables_from_EEPROM
  .text.Amplifier_Set_Gain
-                0x000002be        0x2 Cards/Amplifier.o
-                0x000002be                Amplifier_Set_Gain
+                0x000002e8        0x2 Cards/Amplifier.o
+                0x000002e8                Amplifier_Set_Gain
  .text.Amplifier_Set_Offset_Voltage
-                0x000002c0       0x2e Cards/Amplifier.o
-                0x000002c0                Amplifier_Set_Offset_Voltage
+                0x000002ea       0x2e Cards/Amplifier.o
+                0x000002ea                Amplifier_Set_Offset_Voltage
  .text.Amplifier_Init
-                0x000002ee       0xaa Cards/Amplifier.o
-                0x000002ee                Amplifier_Init
+                0x00000318       0xaa Cards/Amplifier.o
+                0x00000318                Amplifier_Init
+ .text.FrontEnd_Variables_from_EEPROM
+                0x000003c2       0x38 Cards/FrontEnd.o
+                0x000003c2                FrontEnd_Variables_from_EEPROM
+ .text.FrontEnd_Set_Offset_Voltage
+                0x000003fa       0x2e Cards/FrontEnd.o
+                0x000003fa                FrontEnd_Set_Offset_Voltage
+ .text.FrontEnd_Init
+                0x00000428       0xaa Cards/FrontEnd.o
+                0x00000428                FrontEnd_Init
+ .text.Terminal_SET_FrontEND
+                0x000004d2      0x1de Cards/FrontEnd.o
+                0x000004d2                Terminal_SET_FrontEND
  .text.LED_Source_Variables_from_EEPROM
-                0x00000398       0x38 Cards/LED_Source.o
-                0x00000398                LED_Source_Variables_from_EEPROM
+                0x000006b0       0x38 Cards/LED_Source.o
+                0x000006b0                LED_Source_Variables_from_EEPROM
  .text.LED_Source_Set_Heat_Current
-                0x000003d0       0x2e Cards/LED_Source.o
-                0x000003d0                LED_Source_Set_Heat_Current
+                0x000006e8       0x2e Cards/LED_Source.o
+                0x000006e8                LED_Source_Set_Heat_Current
  .text.LED_Source_Set_Meas_Current
-                0x000003fe       0x2e Cards/LED_Source.o
-                0x000003fe                LED_Source_Set_Meas_Current
+                0x00000716       0x2e Cards/LED_Source.o
+                0x00000716                LED_Source_Set_Meas_Current
  .text.LED_Source_Init
-                0x0000042c       0xb8 Cards/LED_Source.o
-                0x0000042c                LED_Source_Init
+                0x00000744       0xb8 Cards/LED_Source.o
+                0x00000744                LED_Source_Init
  .text.MOSFET_BreakDown_Init
-                0x000004e4       0x9a Cards/MOSFET_BreakDown.o
-                0x000004e4                MOSFET_BreakDown_Init
+                0x000007fc       0x9a Cards/MOSFET_BreakDown.o
+                0x000007fc                MOSFET_BreakDown_Init
  .text.B_Set_Relais_to_BreakDownTest
-                0x0000057e       0x34 Cards/MOSFET_BreakDown.o
-                0x0000057e                B_Set_Relais_to_BreakDownTest
+                0x00000896       0x34 Cards/MOSFET_BreakDown.o
+                0x00000896                B_Set_Relais_to_BreakDownTest
  .text.B_Set_Relais_to_Leakage_GS
-                0x000005b2       0x34 Cards/MOSFET_BreakDown.o
-                0x000005b2                B_Set_Relais_to_Leakage_GS
+                0x000008ca       0x34 Cards/MOSFET_BreakDown.o
+                0x000008ca                B_Set_Relais_to_Leakage_GS
  .text.B_Set_Relais_to_Characteristic_Curve
-                0x000005e6       0x34 Cards/MOSFET_BreakDown.o
-                0x000005e6                B_Set_Relais_to_Characteristic_Curve
+                0x000008fe       0x34 Cards/MOSFET_BreakDown.o
+                0x000008fe                B_Set_Relais_to_Characteristic_Curve
  .text.B_Set_Relais_to_BodyDiode_Curve
-                0x0000061a       0x34 Cards/MOSFET_BreakDown.o
-                0x0000061a                B_Set_Relais_to_BodyDiode_Curve
+                0x00000932       0x34 Cards/MOSFET_BreakDown.o
+                0x00000932                B_Set_Relais_to_BodyDiode_Curve
  .text.B_Set_Relais_all_off
-                0x0000064e       0x22 Cards/MOSFET_BreakDown.o
-                0x0000064e                B_Set_Relais_all_off
+                0x00000966       0x22 Cards/MOSFET_BreakDown.o
+                0x00000966                B_Set_Relais_all_off
  .text.Slot_Tester_Init
-                0x00000670       0xb8 Cards/Slot_Tester.o
-                0x00000670                Slot_Tester_Init
+                0x00000988       0xb8 Cards/Slot_Tester.o
+                0x00000988                Slot_Tester_Init
  .text.Slot_Tester_set_7Segment
-                0x00000728       0xae Cards/Slot_Tester.o
-                0x00000728                Slot_Tester_set_7Segment
+                0x00000a40       0xae Cards/Slot_Tester.o
+                0x00000a40                Slot_Tester_set_7Segment
  .text.Slot_Tester_get_7Segment
-                0x000007d6       0xc8 Cards/Slot_Tester.o
-                0x000007d6                Slot_Tester_get_7Segment
+                0x00000aee       0xc8 Cards/Slot_Tester.o
+                0x00000aee                Slot_Tester_get_7Segment
  .text.Slot_Tester_IO_Lauflicht
-                0x0000089e       0xe6 Cards/Slot_Tester.o
-                0x0000089e                Slot_Tester_IO_Lauflicht
+                0x00000bb6       0xe6 Cards/Slot_Tester.o
+                0x00000bb6                Slot_Tester_IO_Lauflicht
  .text.Slot_Tester_Gesamtablauf
-                0x00000984       0x1c Cards/Slot_Tester.o
-                0x00000984                Slot_Tester_Gesamtablauf
+                0x00000c9c       0x1c Cards/Slot_Tester.o
+                0x00000c9c                Slot_Tester_Gesamtablauf
  .text.DAC_AD5752_Range_and_PowerUp
-                0x000009a0       0x56 ICs/AD5752.o
-                0x000009a0                DAC_AD5752_Range_and_PowerUp
+                0x00000cb8       0x56 ICs/AD5752.o
+                0x00000cb8                DAC_AD5752_Range_and_PowerUp
  .text.DAC_AD5752_Set
-                0x000009f6       0x4a ICs/AD5752.o
-                0x000009f6                DAC_AD5752_Set
+                0x00000d0e       0x4a ICs/AD5752.o
+                0x00000d0e                DAC_AD5752_Set
  .text.IO_Expander_set_Register
-                0x00000a40       0x44 ICs/MCP23S08.o
-                0x00000a40                IO_Expander_set_Register
+                0x00000d58       0x44 ICs/MCP23S08.o
+                0x00000d58                IO_Expander_set_Register
  .text.IO_Expander_get_Register
-                0x00000a84       0x64 ICs/MCP23S08.o
-                0x00000a84                IO_Expander_get_Register
+                0x00000d9c       0x64 ICs/MCP23S08.o
+                0x00000d9c                IO_Expander_get_Register
  .text.Measure_Voltage_MOSFET_with_DataAnalyse
-                0x00000ae8       0x72 LTC1864.o
-                0x00000ae8                Measure_Voltage_MOSFET_with_DataAnalyse
+                0x00000e00       0x72 LTC1864.o
+                0x00000e00                Measure_Voltage_MOSFET_with_DataAnalyse
  .text.Measure_Voltage_MOSFET_without_DataAnalyse
-                0x00000b5a       0x46 LTC1864.o
-                0x00000b5a                Measure_Voltage_MOSFET_without_DataAnalyse
+                0x00000e72       0x46 LTC1864.o
+                0x00000e72                Measure_Voltage_MOSFET_without_DataAnalyse
  .text.Measure_Voltage_MOSFET_get_Data
-                0x00000ba0       0x26 LTC1864.o
-                0x00000ba0                Measure_Voltage_MOSFET_get_Data
+                0x00000eb8       0x26 LTC1864.o
+                0x00000eb8                Measure_Voltage_MOSFET_get_Data
  .text.Init_IO_Pins
-                0x00000bc6       0xc4 main.o
-                0x00000bc6                Init_IO_Pins
+                0x00000ede       0xc4 main.o
+                0x00000ede                Init_IO_Pins
  .text.Lauflicht
-                0x00000c8a       0x84 main.o
-                0x00000c8a                Lauflicht
+                0x00000fa2       0x84 main.o
+                0x00000fa2                Lauflicht
  .text.EEPROM_default_Values
-                0x00000d0e       0xc8 main.o
-                0x00000d0e                EEPROM_default_Values
+                0x00001026       0xc8 main.o
+                0x00001026                EEPROM_default_Values
  .text.EEPROM_last_Values
-                0x00000dd6       0xe8 main.o
-                0x00000dd6                EEPROM_last_Values
+                0x000010ee       0xf0 main.o
+                0x000010ee                EEPROM_last_Values
  .text.Init_All_Cards
-                0x00000ebe       0x68 main.o
-                0x00000ebe                Init_All_Cards
+                0x000011de       0x72 main.o
+                0x000011de                Init_All_Cards
  .text.PulseStop
-                0x00000f26        0xe main.o
-                0x00000f26                PulseStop
- .text.Init     0x00000f34       0x90 main.o
-                0x00000f34                Init
- .text.main     0x00000fc4       0x70 main.o
-                0x00000fc4                main
+                0x00001250        0xe main.o
+                0x00001250                PulseStop
+ .text.Init     0x0000125e       0x90 main.o
+                0x0000125e                Init
+ .text.main     0x000012ee       0x70 main.o
+                0x000012ee                main
  .text.PulseStart_stdTTA
-                0x00001034       0x3c main.o
-                0x00001034                PulseStart_stdTTA
+                0x0000135e       0x3c main.o
+                0x0000135e                PulseStart_stdTTA
  .text.PulseStart_Sensitivity
-                0x00001070        0xc main.o
-                0x00001070                PulseStart_Sensitivity
+                0x0000139a        0xc main.o
+                0x0000139a                PulseStart_Sensitivity
  .text.PulseStart_detTTA
-                0x0000107c       0x1c main.o
-                0x0000107c                PulseStart_detTTA
+                0x000013a6       0x1c main.o
+                0x000013a6                PulseStart_detTTA
  .text.PulseStart_PrePulse
-                0x00001098       0x20 main.o
-                0x00001098                PulseStart_PrePulse
+                0x000013c2       0x20 main.o
+                0x000013c2                PulseStart_PrePulse
  .text.Init_Timer_1ms
-                0x000010b8       0x1a my_Timers.o
-                0x000010b8                Init_Timer_1ms
+                0x000013e2       0x1a my_Timers.o
+                0x000013e2                Init_Timer_1ms
  .text.__vector_13
-                0x000010d2       0x22 my_Timers.o
-                0x000010d2                __vector_13
+                0x000013fc       0x22 my_Timers.o
+                0x000013fc                __vector_13
  .text.Init_Timer_100us
-                0x000010f4       0x3c my_Timers.o
-                0x000010f4                Init_Timer_100us
+                0x0000141e       0x3c my_Timers.o
+                0x0000141e                Init_Timer_100us
  .text.Start_Timer_100us
-                0x00001130        0xc my_Timers.o
-                0x00001130                Start_Timer_100us
+                0x0000145a        0xc my_Timers.o
+                0x0000145a                Start_Timer_100us
  .text.Stop_Timer_100us
-                0x0000113c       0x18 my_Timers.o
-                0x0000113c                Stop_Timer_100us
+                0x00001466       0x18 my_Timers.o
+                0x00001466                Stop_Timer_100us
  .text.Init_Counter_100us
-                0x00001154       0x3c my_Timers.o
-                0x00001154                Init_Counter_100us
+                0x0000147e       0x3c my_Timers.o
+                0x0000147e                Init_Counter_100us
  .text.Setup_Counter_for_stdTTA
-                0x00001190      0x184 my_Timers.o
-                0x00001190                Setup_Counter_for_stdTTA
+                0x000014ba      0x184 my_Timers.o
+                0x000014ba                Setup_Counter_for_stdTTA
  .text.Setup_Counter_for_detTTA
-                0x00001314       0x66 my_Timers.o
-                0x00001314                Setup_Counter_for_detTTA
+                0x0000163e       0x66 my_Timers.o
+                0x0000163e                Setup_Counter_for_detTTA
  .text.__vector_50
-                0x0000137a       0xc8 my_Timers.o
-                0x0000137a                __vector_50
+                0x000016a4       0xc8 my_Timers.o
+                0x000016a4                __vector_50
  .text.__vector_47
-                0x00001442       0x18 my_Timers.o
-                0x00001442                __vector_47
+                0x0000176c       0x18 my_Timers.o
+                0x0000176c                __vector_47
  .text.__vector_48
-                0x0000145a       0x82 my_Timers.o
-                0x0000145a                __vector_48
+                0x00001784       0x82 my_Timers.o
+                0x00001784                __vector_48
  .text.__vector_49
-                0x000014dc       0x54 my_Timers.o
-                0x000014dc                __vector_49
+                0x00001806       0x54 my_Timers.o
+                0x00001806                __vector_49
  .text.TerminalInit
-                0x00001530        0xa terminal.o
-                0x00001530                TerminalInit
+                0x0000185a        0xa terminal.o
+                0x0000185a                TerminalInit
  .text.ParseIntLn
-                0x0000153a       0xea terminal.o
-                0x0000153a                ParseIntLn
+                0x00001864       0xea terminal.o
+                0x00001864                ParseIntLn
  .text.ParseLongLn
-                0x00001624      0x140 terminal.o
-                0x00001624                ParseLongLn
+                0x0000194e      0x140 terminal.o
+                0x0000194e                ParseLongLn
  .text.ParseByte
-                0x00001764       0x3c terminal.o
-                0x00001764                ParseByte
+                0x00001a8e       0x3c terminal.o
+                0x00001a8e                ParseByte
+ .text.TransmitString
+                0x00001aca        0x6 terminal.o
+                0x00001aca                TransmitString
  .text.TransmitStringLn
-                0x000017a0        0x6 terminal.o
-                0x000017a0                TransmitStringLn
+                0x00001ad0        0x6 terminal.o
+                0x00001ad0                TransmitStringLn
  .text.TransmitInt
-                0x000017a6       0xcc terminal.o
-                0x000017a6                TransmitInt
+                0x00001ad6       0xcc terminal.o
+                0x00001ad6                TransmitInt
  .text.TransmitLong
-                0x00001872       0xd4 terminal.o
-                0x00001872                TransmitLong
+                0x00001ba2       0xd4 terminal.o
+                0x00001ba2                TransmitLong
  .text.TransmitFloat
-                0x00001946      0x198 terminal.o
-                0x00001946                TransmitFloat
+                0x00001c76      0x198 terminal.o
+                0x00001c76                TransmitFloat
  .text.TransmitByte_Reverse
-                0x00001ade       0x72 terminal.o
-                0x00001ade                TransmitByte_Reverse
+                0x00001e0e       0x72 terminal.o
+                0x00001e0e                TransmitByte_Reverse
  .text.TerminalParseCommand
-                0x00001b50      0xfd8 terminal.o
-                0x00001b50                TerminalParseCommand
+                0x00001e80      0xfe2 terminal.o
+                0x00001e80                TerminalParseCommand
  .text.TerminalCheckCommand
-                0x00002b28       0x1a terminal.o
-                0x00002b28                TerminalCheckCommand
+                0x00002e62       0x1a terminal.o
+                0x00002e62                TerminalCheckCommand
  .text.__vector_25
-                0x00002b42       0xa8 uart0.o
-                0x00002b42                __vector_25
+                0x00002e7c       0xa8 uart0.o
+                0x00002e7c                __vector_25
  .text.__vector_27
-                0x00002bea       0x74 uart0.o
-                0x00002bea                __vector_27
+                0x00002f24       0x74 uart0.o
+                0x00002f24                __vector_27
  .text.UART0InitBaudrate
-                0x00002c5e       0x82 uart0.o
-                0x00002c5e                UART0InitBaudrate
+                0x00002f98       0x82 uart0.o
+                0x00002f98                UART0InitBaudrate
  .text.UART0Init
-                0x00002ce0        0x8 uart0.o
-                0x00002ce0                UART0Init
+                0x0000301a        0x8 uart0.o
+                0x0000301a                UART0Init
  .text.UART0ClearRx
-                0x00002ce8       0x2c uart0.o
-                0x00002ce8                UART0ClearRx
+                0x00003022       0x2c uart0.o
+                0x00003022                UART0ClearRx
  .text.UART0ReceiveLine
-                0x00002d14       0x9c uart0.o
-                0x00002d14                UART0ReceiveLine
+                0x0000304e       0x9c uart0.o
+                0x0000304e                UART0ReceiveLine
  .text.UART0TxByte
-                0x00002db0       0x6c uart0.o
-                0x00002db0                UART0TxByte
+                0x000030ea       0x6c uart0.o
+                0x000030ea                UART0TxByte
  .text.UART0TransmitString
-                0x00002e1c       0x22 uart0.o
-                0x00002e1c                UART0TransmitString
+                0x00003156       0x22 uart0.o
+                0x00003156                UART0TransmitString
  .text.UART0TransmitStringLn
-                0x00002e3e       0x2a uart0.o
-                0x00002e3e                UART0TransmitStringLn
+                0x00003178       0x2a uart0.o
+                0x00003178                UART0TransmitStringLn
  .text.USART_SPI_InitBaudrate
-                0x00002e68       0x28 usart_spi.o
-                0x00002e68                USART_SPI_InitBaudrate
+                0x000031a2       0x28 usart_spi.o
+                0x000031a2                USART_SPI_InitBaudrate
  .text.USART_SPI_SetCS
-                0x00002e90       0x16 usart_spi.o
-                0x00002e90                USART_SPI_SetCS
+                0x000031ca       0x16 usart_spi.o
+                0x000031ca                USART_SPI_SetCS
  .text.USART_SPI_ToggleCS
-                0x00002ea6       0x58 usart_spi.o
-                0x00002ea6                USART_SPI_ToggleCS
+                0x000031e0       0x58 usart_spi.o
+                0x000031e0                USART_SPI_ToggleCS
  .text.USART_SPI_ReceiveLen
-                0x00002efe       0x56 usart_spi.o
-                0x00002efe                USART_SPI_ReceiveLen
+                0x00003238       0x56 usart_spi.o
+                0x00003238                USART_SPI_ReceiveLen
  .text.USART_SPI_RXWaiting
-                0x00002f54       0x18 usart_spi.o
-                0x00002f54                USART_SPI_RXWaiting
+                0x0000328e       0x18 usart_spi.o
+                0x0000328e                USART_SPI_RXWaiting
  .text.USART_SPI_TXWaiting
-                0x00002f6c        0xc usart_spi.o
-                0x00002f6c                USART_SPI_TXWaiting
+                0x000032a6        0xc usart_spi.o
+                0x000032a6                USART_SPI_TXWaiting
  .text.USART_SPI_ClearRx
-                0x00002f78       0x20 usart_spi.o
-                0x00002f78                USART_SPI_ClearRx
+                0x000032b2       0x20 usart_spi.o
+                0x000032b2                USART_SPI_ClearRx
  .text.__vector_51
-                0x00002f98       0xa6 usart_spi.o
-                0x00002f98                __vector_51
+                0x000032d2       0xa6 usart_spi.o
+                0x000032d2                __vector_51
  .text.__vector_24
-                0x0000303e      0x108 usart_spi.o
-                0x0000303e                __vector_24
+                0x00003378      0x108 usart_spi.o
+                0x00003378                __vector_24
  .text.USART_SPI_TxByte
-                0x00003146       0x70 usart_spi.o
-                0x00003146                USART_SPI_TxByte
+                0x00003480       0x70 usart_spi.o
+                0x00003480                USART_SPI_TxByte
  .text.USART_SPI_TxBytes
-                0x000031b6       0x24 usart_spi.o
-                0x000031b6                USART_SPI_TxBytes
+                0x000034f0       0x24 usart_spi.o
+                0x000034f0                USART_SPI_TxBytes
  .text.USART_SPI_RxBytes
-                0x000031da        0xa usart_spi.o
-                0x000031da                USART_SPI_RxBytes
+                0x00003514        0xa usart_spi.o
+                0x00003514                USART_SPI_RxBytes
  .text.libgcc.div
-                0x000031e4       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodhi4.o)
-                0x000031e4                __udivmodhi4
+                0x0000351e       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodhi4.o)
+                0x0000351e                __udivmodhi4
  .text.libgcc.div
-                0x0000320c       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                0x0000320c                __udivmodsi4
- .text.libgcc   0x00003250       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00003250                __tablejump2__
+                0x00003546       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
+                0x00003546                __udivmodsi4
+ .text.libgcc   0x0000358a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x0000358a                __tablejump2__
  .text.libgcc.mul
-                0x00003260       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x00003260                __umulhisi3
+                0x0000359a       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x0000359a                __umulhisi3
  .text.libgcc.mul
-                0x0000327e        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
-                0x0000327e                __usmulhisi3
-                0x00003280                __usmulhisi3_tail
+                0x000035b8        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
+                0x000035b8                __usmulhisi3
+                0x000035ba                __usmulhisi3_tail
  .text.libgcc.mul
-                0x0000328a       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
-                0x0000328a                __muluhisi3
+                0x000035c4       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
+                0x000035c4                __muluhisi3
  .text.avr-libc
-                0x0000329e       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcat.o)
-                0x0000329e                strcat
+                0x000035d8       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcat.o)
+                0x000035d8                strcat
  .text.avr-libc
-                0x000032b4        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
-                0x000032b4                strcpy
+                0x000035ee        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
+                0x000035ee                strcpy
  .text.avr-libc
-                0x000032c2       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
-                0x000032c2                __itoa_ncheck
+                0x000035fc       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+                0x000035fc                __itoa_ncheck
  .text.avr-libc
-                0x000032d6       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ltoa_ncheck.o)
-                0x000032d6                __ltoa_ncheck
+                0x00003610       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ltoa_ncheck.o)
+                0x00003610                __ltoa_ncheck
  .text.avr-libc
-                0x000032f2       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ultoa_ncheck.o)
-                0x000032f2                __ultoa_ncheck
-                0x000032f4                __ultoa_common
+                0x0000362c       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ultoa_ncheck.o)
+                0x0000362c                __ultoa_ncheck
+                0x0000362e                __ultoa_common
  .text.avr-libc
-                0x00003334       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
-                0x00003334                __utoa_ncheck
-                0x00003336                __utoa_common
+                0x0000366e       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+                0x0000366e                __utoa_ncheck
+                0x00003670                __utoa_common
  .text.avr-libc
-                0x00003366       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
-                0x00003366                strrev
+                0x000036a0       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
+                0x000036a0                strrev
  .text.avr-libc
-                0x00003386       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
-                0x00003386                eeprom_read_block
-                0x0000338a                eeprom_read_blraw
+                0x000036c0       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
+                0x000036c0                eeprom_read_block
+                0x000036c4                eeprom_read_blraw
  .text.avr-libc
-                0x000033a6       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
-                0x000033a6                eeprom_read_byte
+                0x000036e0       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
+                0x000036e0                eeprom_read_byte
  .text.avr-libc
-                0x000033b6        0xa C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
-                0x000033b6                eeprom_read_float
-                0x000033b6                eeprom_read_dword
+                0x000036f0        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
+                0x000036f0                eeprom_read_float
+                0x000036f0                eeprom_read_dword
  .text.avr-libc
-                0x000033c0        0xa C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
-                0x000033c0                eeprom_read_word
+                0x000036fa        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
+                0x000036fa                eeprom_read_word
  .text.avr-libc
-                0x000033ca       0x12 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
-                0x000033ca                eeprom_write_block
+                0x00003704       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
+                0x00003704                eeprom_write_block
  .text.avr-libc
-                0x000033dc       0x1c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
-                0x000033dc                eeprom_write_byte
-                0x000033de                eeprom_write_r18
+                0x00003716       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
+                0x00003716                eeprom_write_byte
+                0x00003718                eeprom_write_r18
  .text.avr-libc
-                0x000033f8        0xa C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
-                0x000033f8                eeprom_write_dword
-                0x000033f8                eeprom_write_float
+                0x00003732        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
+                0x00003732                eeprom_write_dword
+                0x00003732                eeprom_write_float
  .text.avr-libc
-                0x00003402        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
-                0x00003402                eeprom_write_word
-                0x00003408                . = ALIGN (0x2)
+                0x0000373c        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
+                0x0000373c                eeprom_write_word
+                0x00003742                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00003408        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x00003408                _exit
-                0x00003408                exit
+ .fini9         0x00003742        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00003742                _exit
+                0x00003742                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -979,11 +1005,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00003408        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00003742        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000340c                _etext = .
+                0x00003746                _etext = .
 
-.data           0x00800200      0x1cc load address 0x0000340c
+.data           0x00800200      0x1d2 load address 0x00003746
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -999,134 +1025,140 @@ END GROUP
  .data.usart_spi_tx_buffer_empty
                 0x00800204        0x1 usart_spi.o
                 0x00800204                usart_spi_tx_buffer_empty
+ *(.gnu.linkonce.d*)
  *(.rodata)
  .rodata        0x00800205        0x9 main.o
  *(.rodata*)
  .rodata.str1.1
-                0x0080020e      0x1bb terminal.o
+                0x0080020e       0x40 Cards/FrontEnd.o
+ .rodata.str1.1
+                0x0080024e      0x180 terminal.o
                                 0x1c2 (size before relaxing)
  .rodata.str1.1
-                0x008003c9        0x3 usart_spi.o
- *(.gnu.linkonce.d*)
-                0x008003cc                . = ALIGN (0x2)
-                0x008003cc                _edata = .
-                0x008003cc                PROVIDE (__data_end, .)
+                0x008003ce        0x3 usart_spi.o
+ *(.gnu.linkonce.r*)
+                0x008003d2                . = ALIGN (0x2)
+ *fill*         0x008003d1        0x1 
+                0x008003d2                _edata = .
+                0x008003d2                PROVIDE (__data_end, .)
 
-.bss            0x008003cc      0x2d2
-                0x008003cc                PROVIDE (__bss_start, .)
+.bss            0x008003d2      0x2f2
+                0x008003d2                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.last_ChipSelectPin
-                0x008003cc        0x1 ad5752.o
-                0x008003cc                last_ChipSelectPin
+                0x008003d2        0x1 ad5752.o
+                0x008003d2                last_ChipSelectPin
  .bss.last_ChipSelectPort
-                0x008003cd        0x2 ad5752.o
-                0x008003cd                last_ChipSelectPort
+                0x008003d3        0x2 ad5752.o
+                0x008003d3                last_ChipSelectPort
  .bss.uart0_tx_char_write
-                0x008003cf        0x1 uart0.o
-                0x008003cf                uart0_tx_char_write
- .bss.uart0_tx_char_read
-                0x008003d0        0x1 uart0.o
-                0x008003d0                uart0_tx_char_read
- .bss.uart0_rx_blocked
-                0x008003d1        0x1 uart0.o
-                0x008003d1                uart0_rx_blocked
- .bss.uart0_rx_lines
-                0x008003d2        0x1 uart0.o
-                0x008003d2                uart0_rx_lines
- .bss.uart0_rx_overrun
-                0x008003d3        0x1 uart0.o
-                0x008003d3                uart0_rx_overrun
- .bss.uart0_rx_char_write
-                0x008003d4        0x1 uart0.o
-                0x008003d4                uart0_rx_char_write
- .bss.uart0_rx_char_read
                 0x008003d5        0x1 uart0.o
-                0x008003d5                uart0_rx_char_read
+                0x008003d5                uart0_tx_char_write
+ .bss.uart0_tx_char_read
+                0x008003d6        0x1 uart0.o
+                0x008003d6                uart0_tx_char_read
+ .bss.uart0_rx_blocked
+                0x008003d7        0x1 uart0.o
+                0x008003d7                uart0_rx_blocked
+ .bss.uart0_rx_lines
+                0x008003d8        0x1 uart0.o
+                0x008003d8                uart0_rx_lines
+ .bss.uart0_rx_overrun
+                0x008003d9        0x1 uart0.o
+                0x008003d9                uart0_rx_overrun
+ .bss.uart0_rx_char_write
+                0x008003da        0x1 uart0.o
+                0x008003da                uart0_rx_char_write
+ .bss.uart0_rx_char_read
+                0x008003db        0x1 uart0.o
+                0x008003db                uart0_rx_char_read
  .bss.usart_spi_byte_count
-                0x008003d6        0x1 usart_spi.o
-                0x008003d6                usart_spi_byte_count
- .bss.usart_spi_cs_neg
-                0x008003d7        0x1 usart_spi.o
-                0x008003d7                usart_spi_cs_neg
- .bss.usart_spi_cs_pin
-                0x008003d8        0x1 usart_spi.o
-                0x008003d8                usart_spi_cs_pin
- .bss.usart_spi_tx_char_write
-                0x008003d9        0x1 usart_spi.o
-                0x008003d9                usart_spi_tx_char_write
- .bss.usart_spi_tx_char_read
-                0x008003da        0x1 usart_spi.o
-                0x008003da                usart_spi_tx_char_read
- .bss.usart_spi_rx_flag
-                0x008003db        0x1 usart_spi.o
-                0x008003db                usart_spi_rx_flag
- .bss.usart_spi_rx_buffer_overrun
                 0x008003dc        0x1 usart_spi.o
-                0x008003dc                usart_spi_rx_buffer_overrun
- .bss.usart_spi_rx_char_write
+                0x008003dc                usart_spi_byte_count
+ .bss.usart_spi_cs_neg
                 0x008003dd        0x1 usart_spi.o
-                0x008003dd                usart_spi_rx_char_write
- .bss.usart_spi_rx_char_read
+                0x008003dd                usart_spi_cs_neg
+ .bss.usart_spi_cs_pin
                 0x008003de        0x1 usart_spi.o
-                0x008003de                usart_spi_rx_char_read
+                0x008003de                usart_spi_cs_pin
+ .bss.usart_spi_tx_char_write
+                0x008003df        0x1 usart_spi.o
+                0x008003df                usart_spi_tx_char_write
+ .bss.usart_spi_tx_char_read
+                0x008003e0        0x1 usart_spi.o
+                0x008003e0                usart_spi_tx_char_read
+ .bss.usart_spi_rx_flag
+                0x008003e1        0x1 usart_spi.o
+                0x008003e1                usart_spi_rx_flag
+ .bss.usart_spi_rx_buffer_overrun
+                0x008003e2        0x1 usart_spi.o
+                0x008003e2                usart_spi_rx_buffer_overrun
+ .bss.usart_spi_rx_char_write
+                0x008003e3        0x1 usart_spi.o
+                0x008003e3                usart_spi_rx_char_write
+ .bss.usart_spi_rx_char_read
+                0x008003e4        0x1 usart_spi.o
+                0x008003e4                usart_spi_rx_char_read
  *(COMMON)
- COMMON         0x008003df      0x134 ad5752.o
-                0x008003df                heat_pulse_voltage
-                0x008003e3                measure_pulse_voltage
-                0x008003e5                led_Source_Meas_Current_0mA1
-                0x008003f5                deterministic_pulse_length
-                0x008003f7                interrupt_1ms
-                0x008003f8                heat_pulse_length
-                0x008003fc                deterministic_pulse_cycles
-                0x008003fe                interrupt_1hz
-                0x008003ff                uart0_rx
-                0x00800480                measure_pulse_current
-                0x00800482                led_Source_Heat_Current_mA
-                0x00800492                offset_voltage
-                0x00800494                led_hp
-                0x00800495                heat_pulse_current
-                0x00800497                led_mp
-                0x00800498                amplifier_gain
-                0x008004a8                usart_spi_rx
-                0x008004e8                measure_pulse_length
-                0x008004ec                debug_send
-                0x008004ed                amplifier_offset_voltage_mV
-                0x008004fd                current_source_enabled
-                0x008004fe                startup_wait_counter
-                0x008004ff                measure_pules_voltage
-                0x00800503                flag_standard_TTA
-                0x00800504                window_offset
-                0x00800506                interrupt_10hz
-                0x00800507                uart0_active_timer
-                0x00800508                flag_deterministic_TTA
-                0x00800509                pulse_output_register
-                0x0080050a                terminal_timeout
-                0x0080050b                card_Type
- COMMON         0x00800513        0x8 my_Timers.o
-                0x00800513                deterministic_pulse_counter
-                0x00800515                heat_pulse_precount
-                0x00800516                heat_pulse_lastcount
-                0x00800518                measure_pulse_precount
-                0x00800519                measure_pulse_lastcount
- COMMON         0x0080051b        0x3 terminal.o
-                0x0080051b                string
-                0x0080051d                len
- COMMON         0x0080051e      0x100 uart0.o
-                0x0080051e                uart0_tx_buffer
-                0x0080059e                uart0_rx_buffer
- COMMON         0x0080061e       0x80 usart_spi.o
-                0x0080061e                usart_spi_tx_buffer
-                0x0080065e                usart_spi_rx_buffer
-                0x0080069e                PROVIDE (__bss_end, .)
-                0x0000340c                __data_load_start = LOADADDR (.data)
-                0x000035d8                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x008003e5      0x154 ad5752.o
+                0x008003e5                heat_pulse_voltage
+                0x008003e9                frontEnd_offset_voltage_mV
+                0x008003f9                measure_pulse_voltage
+                0x008003fb                led_Source_Meas_Current_0mA1
+                0x0080040b                deterministic_pulse_length
+                0x0080040d                interrupt_1ms
+                0x0080040e                heat_pulse_length
+                0x00800412                deterministic_pulse_cycles
+                0x00800414                interrupt_1hz
+                0x00800415                uart0_rx
+                0x00800496                measure_pulse_current
+                0x00800498                led_Source_Heat_Current_mA
+                0x008004a8                offset_voltage
+                0x008004aa                frontEnd_gain
+                0x008004ba                led_hp
+                0x008004bb                heat_pulse_current
+                0x008004bd                led_mp
+                0x008004be                amplifier_gain
+                0x008004ce                usart_spi_rx
+                0x0080050e                measure_pulse_length
+                0x00800512                debug_send
+                0x00800513                amplifier_offset_voltage_mV
+                0x00800523                current_source_enabled
+                0x00800524                startup_wait_counter
+                0x00800525                measure_pules_voltage
+                0x00800529                flag_standard_TTA
+                0x0080052a                window_offset
+                0x0080052c                interrupt_10hz
+                0x0080052d                uart0_active_timer
+                0x0080052e                flag_deterministic_TTA
+                0x0080052f                pulse_output_register
+                0x00800530                terminal_timeout
+                0x00800531                card_Type
+ COMMON         0x00800539        0x8 my_Timers.o
+                0x00800539                deterministic_pulse_counter
+                0x0080053b                heat_pulse_precount
+                0x0080053c                heat_pulse_lastcount
+                0x0080053e                measure_pulse_precount
+                0x0080053f                measure_pulse_lastcount
+ COMMON         0x00800541        0x3 terminal.o
+                0x00800541                string
+                0x00800543                len
+ COMMON         0x00800544      0x100 uart0.o
+                0x00800544                uart0_tx_buffer
+                0x008005c4                uart0_rx_buffer
+ COMMON         0x00800644       0x80 usart_spi.o
+                0x00800644                usart_spi_tx_buffer
+                0x00800684                usart_spi_rx_buffer
+                0x008006c4                PROVIDE (__bss_end, .)
+                0x00003746                __data_load_start = LOADADDR (.data)
+                0x00003918                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080069e        0x0
+.noinit         0x008006c4        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080069e                _end = .
+                0x008006c4                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000       0x51
@@ -1187,6 +1219,7 @@ END GROUP
  .comment       0x00000000       0x30 ad5752.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 Cards/Amplifier.o
+ .comment       0x00000030       0x31 Cards/FrontEnd.o
  .comment       0x00000030       0x31 Cards/LED_Source.o
  .comment       0x00000030       0x31 Cards/MOSFET_BreakDown.o
  .comment       0x00000030       0x31 Cards/Slot_Tester.o
@@ -1202,7 +1235,7 @@ END GROUP
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
  .note.gnu.avr.deviceinfo
-                0x00000000       0x40 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x00000000       0x40 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
 
 .note.gnu.build-id
  *(.note.gnu.build-id)
@@ -1219,190 +1252,159 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x588
+.debug_aranges  0x00000000      0x4d0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x60 ad5752.o
  .debug_aranges
                 0x00000060       0x40 Cards/Amplifier.o
  .debug_aranges
-                0x000000a0       0x40 Cards/LED_Source.o
+                0x000000a0       0x48 Cards/FrontEnd.o
  .debug_aranges
-                0x000000e0       0x48 Cards/MOSFET_BreakDown.o
+                0x000000e8       0x40 Cards/LED_Source.o
  .debug_aranges
-                0x00000128       0x40 Cards/Slot_Tester.o
+                0x00000128       0x48 Cards/MOSFET_BreakDown.o
  .debug_aranges
-                0x00000168       0x28 ICs/AD5752.o
+                0x00000170       0x40 Cards/Slot_Tester.o
  .debug_aranges
-                0x00000190       0x30 ICs/MCP23S08.o
+                0x000001b0       0x28 ICs/AD5752.o
  .debug_aranges
-                0x000001c0       0x38 LTC1864.o
+                0x000001d8       0x30 ICs/MCP23S08.o
  .debug_aranges
-                0x000001f8       0x78 main.o
+                0x00000208       0x38 LTC1864.o
  .debug_aranges
-                0x00000270       0x78 my_Timers.o
+                0x00000240       0x78 main.o
  .debug_aranges
-                0x000002e8       0x90 terminal.o
+                0x000002b8       0x78 my_Timers.o
  .debug_aranges
-                0x00000378       0x88 uart0.o
+                0x00000330       0x90 terminal.o
  .debug_aranges
-                0x00000400       0x88 usart_spi.o
+                0x000003c0       0x88 uart0.o
  .debug_aranges
-                0x00000488       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .debug_aranges
-                0x000004a8       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .debug_aranges
-                0x000004c8       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .debug_aranges
-                0x000004e8       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .debug_aranges
-                0x00000508       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .debug_aranges
-                0x00000528       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .debug_aranges
-                0x00000548       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .debug_aranges
-                0x00000568       0x20 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+                0x00000448       0x88 usart_spi.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x9fb5
+.debug_info     0x00000000     0xa52c
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x9cb ad5752.o
- .debug_info    0x00001587      0x4f3 Cards/Amplifier.o
- .debug_info    0x00001a7a      0x537 Cards/LED_Source.o
- .debug_info    0x00001fb1      0x71b Cards/MOSFET_BreakDown.o
- .debug_info    0x000026cc      0x80d Cards/Slot_Tester.o
- .debug_info    0x00002ed9      0x4f5 ICs/AD5752.o
- .debug_info    0x000033ce      0x50b ICs/MCP23S08.o
- .debug_info    0x000038d9      0x5d2 LTC1864.o
- .debug_info    0x00003eab      0xc9c main.o
- .debug_info    0x00004b47      0x4e7 my_Timers.o
- .debug_info    0x0000502e     0x3b63 terminal.o
- .debug_info    0x00008b91      0x6de uart0.o
- .debug_info    0x0000926f      0x7e2 usart_spi.o
- .debug_info    0x00009a51       0xad C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .debug_info    0x00009afe       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .debug_info    0x00009baa       0xad C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .debug_info    0x00009c57       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .debug_info    0x00009d03       0xad C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .debug_info    0x00009db0       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .debug_info    0x00009e5c       0xad C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .debug_info    0x00009f09       0xac C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+ .debug_info    0x00000000      0xbbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+ .debug_info    0x00000bbc      0x9ef ad5752.o
+ .debug_info    0x000015ab      0x517 Cards/Amplifier.o
+ .debug_info    0x00001ac2      0x876 Cards/FrontEnd.o
+ .debug_info    0x00002338      0x55b Cards/LED_Source.o
+ .debug_info    0x00002893      0x73f Cards/MOSFET_BreakDown.o
+ .debug_info    0x00002fd2      0x831 Cards/Slot_Tester.o
+ .debug_info    0x00003803      0x519 ICs/AD5752.o
+ .debug_info    0x00003d1c      0x52f ICs/MCP23S08.o
+ .debug_info    0x0000424b      0x5f6 LTC1864.o
+ .debug_info    0x00004841      0xd0c main.o
+ .debug_info    0x0000554d      0x50b my_Timers.o
+ .debug_info    0x00005a58     0x3bcc terminal.o
+ .debug_info    0x00009624      0x702 uart0.o
+ .debug_info    0x00009d26      0x806 usart_spi.o
 
-.debug_abbrev   0x00000000     0x2000
+.debug_abbrev   0x00000000     0x20b8
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .debug_abbrev  0x00000000      0xb1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x14f ad5752.o
  .debug_abbrev  0x00000c69      0x116 Cards/Amplifier.o
- .debug_abbrev  0x00000d7f       0xed Cards/LED_Source.o
- .debug_abbrev  0x00000e6c      0x144 Cards/MOSFET_BreakDown.o
- .debug_abbrev  0x00000fb0      0x17e Cards/Slot_Tester.o
- .debug_abbrev  0x0000112e       0xe5 ICs/AD5752.o
- .debug_abbrev  0x00001213      0x126 ICs/MCP23S08.o
- .debug_abbrev  0x00001339      0x18e LTC1864.o
- .debug_abbrev  0x000014c7      0x227 main.o
- .debug_abbrev  0x000016ee       0xe0 my_Timers.o
- .debug_abbrev  0x000017ce      0x32e terminal.o
- .debug_abbrev  0x00001afc      0x1fd uart0.o
- .debug_abbrev  0x00001cf9      0x267 usart_spi.o
- .debug_abbrev  0x00001f60       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .debug_abbrev  0x00001f74       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .debug_abbrev  0x00001f88       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .debug_abbrev  0x00001f9c       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .debug_abbrev  0x00001fb0       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .debug_abbrev  0x00001fc4       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .debug_abbrev  0x00001fd8       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .debug_abbrev  0x00001fec       0x14 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+ .debug_abbrev  0x00000d7f      0x140 Cards/FrontEnd.o
+ .debug_abbrev  0x00000ebf       0xed Cards/LED_Source.o
+ .debug_abbrev  0x00000fac      0x144 Cards/MOSFET_BreakDown.o
+ .debug_abbrev  0x000010f0      0x17e Cards/Slot_Tester.o
+ .debug_abbrev  0x0000126e       0xe5 ICs/AD5752.o
+ .debug_abbrev  0x00001353      0x126 ICs/MCP23S08.o
+ .debug_abbrev  0x00001479      0x18e LTC1864.o
+ .debug_abbrev  0x00001607      0x227 main.o
+ .debug_abbrev  0x0000182e       0xe0 my_Timers.o
+ .debug_abbrev  0x0000190e      0x346 terminal.o
+ .debug_abbrev  0x00001c54      0x1fd uart0.o
+ .debug_abbrev  0x00001e51      0x267 usart_spi.o
 
-.debug_line     0x00000000     0x3f30
+.debug_line     0x00000000     0x3dc9
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_line    0x000001f9      0x2d3 ad5752.o
- .debug_line    0x000004cc      0x258 Cards/Amplifier.o
- .debug_line    0x00000724      0x264 Cards/LED_Source.o
- .debug_line    0x00000988      0x2c6 Cards/MOSFET_BreakDown.o
- .debug_line    0x00000c4e      0x467 Cards/Slot_Tester.o
- .debug_line    0x000010b5      0x16f ICs/AD5752.o
- .debug_line    0x00001224      0x17e ICs/MCP23S08.o
- .debug_line    0x000013a2      0x243 LTC1864.o
- .debug_line    0x000015e5      0x6f6 main.o
- .debug_line    0x00001cdb      0x360 my_Timers.o
- .debug_line    0x0000203b     0x10ff terminal.o
- .debug_line    0x0000313a      0x533 uart0.o
- .debug_line    0x0000366d      0x4ee usart_spi.o
- .debug_line    0x00003b5b       0xab C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_block.o)
- .debug_line    0x00003c06       0x7a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_byte.o)
- .debug_line    0x00003c80       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_dword.o)
- .debug_line    0x00003ce8       0x67 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eerd_word.o)
- .debug_line    0x00003d4f       0x80 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_block.o)
- .debug_line    0x00003dcf       0x9e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_byte.o)
- .debug_line    0x00003e6d       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_dword.o)
- .debug_line    0x00003ed5       0x5b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6\libatmega2560.a(eewr_word.o)
+ .debug_line    0x00000000       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+ .debug_line    0x0000001a      0x2e1 ad5752.o
+ .debug_line    0x000002fb      0x266 Cards/Amplifier.o
+ .debug_line    0x00000561      0x36b Cards/FrontEnd.o
+ .debug_line    0x000008cc      0x272 Cards/LED_Source.o
+ .debug_line    0x00000b3e      0x2d4 Cards/MOSFET_BreakDown.o
+ .debug_line    0x00000e12      0x475 Cards/Slot_Tester.o
+ .debug_line    0x00001287      0x17d ICs/AD5752.o
+ .debug_line    0x00001404      0x18c ICs/MCP23S08.o
+ .debug_line    0x00001590      0x251 LTC1864.o
+ .debug_line    0x000017e1      0x71c main.o
+ .debug_line    0x00001efd      0x36e my_Timers.o
+ .debug_line    0x0000226b     0x1121 terminal.o
+ .debug_line    0x0000338c      0x541 uart0.o
+ .debug_line    0x000038cd      0x4fc usart_spi.o
 
-.debug_frame    0x00000000      0xdf0
+.debug_frame    0x00000000      0xec4
  *(.debug_frame)
  .debug_frame   0x00000000      0x124 ad5752.o
  .debug_frame   0x00000124       0xa0 Cards/Amplifier.o
- .debug_frame   0x000001c4       0xa8 Cards/LED_Source.o
- .debug_frame   0x0000026c       0x9c Cards/MOSFET_BreakDown.o
- .debug_frame   0x00000308       0x98 Cards/Slot_Tester.o
- .debug_frame   0x000003a0       0x70 ICs/AD5752.o
- .debug_frame   0x00000410       0x84 ICs/MCP23S08.o
- .debug_frame   0x00000494       0x74 LTC1864.o
- .debug_frame   0x00000508      0x158 main.o
- .debug_frame   0x00000660      0x1c8 my_Timers.o
- .debug_frame   0x00000828      0x29c terminal.o
- .debug_frame   0x00000ac4      0x198 uart0.o
- .debug_frame   0x00000c5c      0x194 usart_spi.o
+ .debug_frame   0x000001c4       0xd4 Cards/FrontEnd.o
+ .debug_frame   0x00000298       0xa8 Cards/LED_Source.o
+ .debug_frame   0x00000340       0x9c Cards/MOSFET_BreakDown.o
+ .debug_frame   0x000003dc       0x98 Cards/Slot_Tester.o
+ .debug_frame   0x00000474       0x70 ICs/AD5752.o
+ .debug_frame   0x000004e4       0x84 ICs/MCP23S08.o
+ .debug_frame   0x00000568       0x74 LTC1864.o
+ .debug_frame   0x000005dc      0x158 main.o
+ .debug_frame   0x00000734      0x1c8 my_Timers.o
+ .debug_frame   0x000008fc      0x29c terminal.o
+ .debug_frame   0x00000b98      0x198 uart0.o
+ .debug_frame   0x00000d30      0x194 usart_spi.o
 
-.debug_str      0x00000000     0x16c0
+.debug_str      0x00000000     0x17b8
  *(.debug_str)
- .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x4ec ad5752.o
-                                0x541 (size before relaxing)
- .debug_str     0x000008d2      0x116 Cards/Amplifier.o
-                                0x4e6 (size before relaxing)
- .debug_str     0x000009e8       0xb4 Cards/LED_Source.o
-                                0x4fa (size before relaxing)
- .debug_str     0x00000a9c      0x120 Cards/MOSFET_BreakDown.o
-                                0x4e6 (size before relaxing)
- .debug_str     0x00000bbc       0xab Cards/Slot_Tester.o
-                                0x4d2 (size before relaxing)
- .debug_str     0x00000c67       0x1e ICs/AD5752.o
-                                0x442 (size before relaxing)
- .debug_str     0x00000c85       0x66 ICs/MCP23S08.o
-                                0x496 (size before relaxing)
- .debug_str     0x00000ceb       0xb1 LTC1864.o
-                                0x4f5 (size before relaxing)
- .debug_str     0x00000d9c      0x36f main.o
-                                0x869 (size before relaxing)
- .debug_str     0x0000110b       0xc1 my_Timers.o
-                                0x58c (size before relaxing)
- .debug_str     0x000011cc      0x16d terminal.o
-                                0x93f (size before relaxing)
- .debug_str     0x00001339      0x1a3 uart0.o
-                                0x5bf (size before relaxing)
- .debug_str     0x000014dc      0x1e4 usart_spi.o
-                                0x65d (size before relaxing)
+ .debug_str     0x00000000      0x3e6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
+ .debug_str     0x000003e6      0x52e ad5752.o
+                                0x583 (size before relaxing)
+ .debug_str     0x00000914      0x116 Cards/Amplifier.o
+                                0x528 (size before relaxing)
+ .debug_str     0x00000a2a       0xe2 Cards/FrontEnd.o
+                                0x5a4 (size before relaxing)
+ .debug_str     0x00000b0c       0xb4 Cards/LED_Source.o
+                                0x53c (size before relaxing)
+ .debug_str     0x00000bc0      0x120 Cards/MOSFET_BreakDown.o
+                                0x528 (size before relaxing)
+ .debug_str     0x00000ce0       0xab Cards/Slot_Tester.o
+                                0x514 (size before relaxing)
+ .debug_str     0x00000d8b       0x1e ICs/AD5752.o
+                                0x484 (size before relaxing)
+ .debug_str     0x00000da9       0x66 ICs/MCP23S08.o
+                                0x4d8 (size before relaxing)
+ .debug_str     0x00000e0f       0xb1 LTC1864.o
+                                0x537 (size before relaxing)
+ .debug_str     0x00000ec0      0x36f main.o
+                                0x8d8 (size before relaxing)
+ .debug_str     0x0000122f       0xc1 my_Timers.o
+                                0x5ce (size before relaxing)
+ .debug_str     0x000012f0      0x141 terminal.o
+                                0x997 (size before relaxing)
+ .debug_str     0x00001431      0x1a3 uart0.o
+                                0x601 (size before relaxing)
+ .debug_str     0x000015d4      0x1e4 usart_spi.o
+                                0x69f (size before relaxing)
 
-.debug_loc      0x00000000     0x4a05
+.debug_loc      0x00000000     0x4d9e
  *(.debug_loc)
  .debug_loc     0x00000000      0x50e ad5752.o
  .debug_loc     0x0000050e      0x212 Cards/Amplifier.o
- .debug_loc     0x00000720      0x2c5 Cards/LED_Source.o
- .debug_loc     0x000009e5      0x2f6 Cards/MOSFET_BreakDown.o
- .debug_loc     0x00000cdb      0x64d Cards/Slot_Tester.o
- .debug_loc     0x00001328      0x227 ICs/AD5752.o
- .debug_loc     0x0000154f      0x21a ICs/MCP23S08.o
- .debug_loc     0x00001769      0x2ae LTC1864.o
- .debug_loc     0x00001a17      0x30c main.o
- .debug_loc     0x00001d23      0x2cc my_Timers.o
- .debug_loc     0x00001fef     0x232c terminal.o
- .debug_loc     0x0000431b      0x386 uart0.o
- .debug_loc     0x000046a1      0x364 usart_spi.o
+ .debug_loc     0x00000720      0x3bf Cards/FrontEnd.o
+ .debug_loc     0x00000adf      0x2c5 Cards/LED_Source.o
+ .debug_loc     0x00000da4      0x2f6 Cards/MOSFET_BreakDown.o
+ .debug_loc     0x0000109a      0x64d Cards/Slot_Tester.o
+ .debug_loc     0x000016e7      0x227 ICs/AD5752.o
+ .debug_loc     0x0000190e      0x21a ICs/MCP23S08.o
+ .debug_loc     0x00001b28      0x2ae LTC1864.o
+ .debug_loc     0x00001dd6      0x30c main.o
+ .debug_loc     0x000020e2      0x2cc my_Timers.o
+ .debug_loc     0x000023ae     0x2306 terminal.o
+ .debug_loc     0x000046b4      0x386 uart0.o
+ .debug_loc     0x00004a3a      0x364 usart_spi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1422,21 +1424,22 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x420
+.debug_ranges   0x00000000      0x458
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x50 ad5752.o
  .debug_ranges  0x00000050       0x30 Cards/Amplifier.o
- .debug_ranges  0x00000080       0x30 Cards/LED_Source.o
- .debug_ranges  0x000000b0       0x38 Cards/MOSFET_BreakDown.o
- .debug_ranges  0x000000e8       0x30 Cards/Slot_Tester.o
- .debug_ranges  0x00000118       0x18 ICs/AD5752.o
- .debug_ranges  0x00000130       0x20 ICs/MCP23S08.o
- .debug_ranges  0x00000150       0x28 LTC1864.o
- .debug_ranges  0x00000178       0x68 main.o
- .debug_ranges  0x000001e0       0x68 my_Timers.o
- .debug_ranges  0x00000248       0xe8 terminal.o
- .debug_ranges  0x00000330       0x78 uart0.o
- .debug_ranges  0x000003a8       0x78 usart_spi.o
+ .debug_ranges  0x00000080       0x38 Cards/FrontEnd.o
+ .debug_ranges  0x000000b8       0x30 Cards/LED_Source.o
+ .debug_ranges  0x000000e8       0x38 Cards/MOSFET_BreakDown.o
+ .debug_ranges  0x00000120       0x30 Cards/Slot_Tester.o
+ .debug_ranges  0x00000150       0x18 ICs/AD5752.o
+ .debug_ranges  0x00000168       0x20 ICs/MCP23S08.o
+ .debug_ranges  0x00000188       0x28 LTC1864.o
+ .debug_ranges  0x000001b0       0x68 main.o
+ .debug_ranges  0x00000218       0x68 my_Timers.o
+ .debug_ranges  0x00000280       0xe8 terminal.o
+ .debug_ranges  0x00000368       0x78 uart0.o
+ .debug_ranges  0x000003e0       0x78 usart_spi.o
 
 .debug_macro
  *(.debug_macro)

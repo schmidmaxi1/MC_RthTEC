@@ -41,6 +41,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../ad5752.c \
 ../Cards/Amplifier.c \
+../Cards/FrontEnd.c \
 ../Cards/LED_Source.c \
 ../Cards/MOSFET_BreakDown.c \
 ../Cards/Slot_Tester.c \
@@ -63,6 +64,7 @@ ASM_SRCS +=
 OBJS +=  \
 ad5752.o \
 Cards/Amplifier.o \
+Cards/FrontEnd.o \
 Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
@@ -78,6 +80,7 @@ usart_spi.o
 OBJS_AS_ARGS +=  \
 ad5752.o \
 Cards/Amplifier.o \
+Cards/FrontEnd.o \
 Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
@@ -93,6 +96,7 @@ usart_spi.o
 C_DEPS +=  \
 ad5752.d \
 Cards/Amplifier.d \
+Cards/FrontEnd.d \
 Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
@@ -108,6 +112,7 @@ usart_spi.d
 C_DEPS_AS_ARGS +=  \
 ad5752.d \
 Cards/Amplifier.d \
+Cards/FrontEnd.d \
 Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
@@ -134,6 +139,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
