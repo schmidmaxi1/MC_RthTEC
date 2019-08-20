@@ -138,11 +138,11 @@ void FrontEnd_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 //							  Terminal
 //*******************************************************************
 
-void Terminal_SET_FrontEND(char *myMessage)
+void Terminal_SET_FrontEnd(char *myMessage)
 {
-	//myCMD:		2 indicator Chars
 	//myMessage:	whole message
-	//mySlotNr:		Slot Number
+	//myCMD:		2 indicator Chars (Position 1 and 2)
+	//mySlotNr:		Slot Number (Position 3)
 	
 	//Local variables
 	uint16_t myCMD = _MK16(myMessage[1],myMessage[2]);
@@ -237,4 +237,42 @@ void Terminal_SET_FrontEND(char *myMessage)
 			break;		
 				
 	}
+}
+
+void Terminal_GET_FrontEnd(char *myMessage)
+{
+	//myMessage:	whole message
+	//myCMD:		2 indicator Chars (Position 1 and 2)
+	//mySlotNr:		Slot Number (Position 3)
+		
+	//Local variables
+	uint16_t myCMD = _MK16(myMessage[1],myMessage[2]);
+	int8_t mySlotNr = myMessage[3] - '0';
+	
+	switch(myCMD){
+							
+		//1. Gain
+		case _MK16('W','G'):
+			TransmitString("GWG");
+			TransmitInt(mySlotNr, 1);
+			TransmitString("F=");
+			TransmitInt(frontEnd_gain[mySlotNr-1], 1);
+			TransmitStringLn(" W/O-Unit");
+			break;
+							
+		//2. Set Meas Current
+		case _MK16('W','O'):
+			TransmitString("GWO");
+			TransmitInt(mySlotNr, 1);
+			TransmitString("F=");
+			TransmitFloat(frontEnd_offset_voltage_mV[mySlotNr-1], 1, 3);
+			TransmitStringLn(" V");
+			break;
+							
+		//Default --> Fehler
+		default:
+			TransmitStringLn("COMMAND ERR");
+			break;							
+	}
+
 }

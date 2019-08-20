@@ -939,14 +939,11 @@ void TerminalParseCommand(char *string)
 								
 				#pragma endregion BreakDown
 				
-				//7. Heller Frontend (F)
-				#pragma region HellerFrontEND
-								
+				//7. Heller Frontend (F)								
 				case 'F':
-					Terminal_SET_FrontEND(string);
+					Terminal_SET_FrontEnd(string);
 					break;
 								
-				#pragma endregion HellerFrontEND
 				
 				//Default --> Fehler
 				default:
@@ -1147,7 +1144,7 @@ void TerminalParseCommand(char *string)
 					
 					#pragma endregion SettingsLED-Source
 					
-				//4.1 Amplifier
+				//4.2 Amplifier
 				#pragma region Amplifier
 				
 				case 'A':
@@ -1176,10 +1173,15 @@ void TerminalParseCommand(char *string)
 							TransmitStringLn("COMMAND ERR");
 							break;
 					
-				}
+					}
 				break;
 				
 				#pragma endregion Amplifier
+				
+				//7. Heller FrontEnd (F)	
+				case 'F':
+					Terminal_GET_FrontEnd(string);
+					break;
 				
 				
 				//Default --> Fehler
