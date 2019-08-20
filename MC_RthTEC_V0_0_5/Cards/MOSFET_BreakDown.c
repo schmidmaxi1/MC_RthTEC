@@ -57,9 +57,10 @@ void MOSFET_BreakDown_Init(int slot_nr)
 	
 	//Register in MCP23S08:
 	//All as Outputs
+	//0 means OUT, 1 means IN
 	IO_Expander_set_Register(register_IODIR, 0x00, &IO_PORT6, slot_nr-1);
 
-	//All to LOW (LEDs off)
+	//All to LOW (Relais off)
 	IO_Expander_set_Register(register_OLAT, 0x00, &IO_PORT6, slot_nr-1);
 
 }

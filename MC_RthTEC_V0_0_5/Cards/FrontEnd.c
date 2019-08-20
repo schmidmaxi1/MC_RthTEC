@@ -33,6 +33,16 @@ Parameter1 = Gain
 Parameter2 = Offset_Voltage_in_mV
 Parameter3 = not used
 
+IO-Expander:
+IO_0: (OUT) W0 (Window Select 0)
+IO_1: (OUT) W1 (Window Select 0)
+IO_2: (OUT) FlipFlop RST (LOW--> RST of FlipFlops)
+IO_3: (IN)  WINDOWIII (at least on out of Range appeared)
+IO_4: (IN)  OUT_Q_IC58 (last out of Range was too LOW)
+IO_5: (IN)  OUT_Q_IC49 (last out of Range was too HIGH)
+IO_6: (IN)  N$157 (not over Range right now)
+IO_7: (IN)  N$148 (not under Ranger rigth now)
+
 */
 
 void FrontEnd_Init(int slot_nr)
@@ -59,9 +69,18 @@ void FrontEnd_Init(int slot_nr)
 	//DAC_AD5752_Range_and_PowerUp(Range_p5V, PowerUp_A, &IO_Port3, slot_nr-1);	
 	DAC_AD5752_Range_and_PowerUp(Range_p10V, PowerUp_A, &IO_Port3, slot_nr-1);	
 	
-	//Set DAC output
-	FrontEnd_Set_Gain(frontEnd_gain[slot_nr-1], slot_nr);		
-	FrontEnd_Set_Offset_Voltage(frontEnd_offset_voltage_mV[slot_nr-1], slot_nr);	
+	//IO Expander:
+	//Set Direction (0:2 is OUT, 3:7 is IN)
+	//0 means OUT, 1 means IN
+	IO_Expander_set_Register(register_IODIR, 0b11111000, &IO_PORT4, slot_nr -1 );
+	
+	//All Output to Low, exept FlipFlop RST
+	IO_Expander_set_Register(register_OLAT, 0b00000100,  &IO_PORT4, slot_nr -1);
+	
+	
+	//Set Offset and GAIN
+	FrontEnd_Set_Gain(frontEnd_gain[slot_nr-1], slot_nr-1);		
+	FrontEnd_Set_Offset_Voltage(frontEnd_offset_voltage_mV[slot_nr-1], slot_nr-1);			
 }
 
 void FrontEnd_Variables_from_EEPROM(int slot_nr)
@@ -83,7 +102,20 @@ void FrontEnd_Default_Values(int slot_nr)
 
 void FrontEnd_Set_Gain(uint16_t gain, int slot_nr)
 {
-	//Is fixed to 2		
+	switch(gain)
+	{
+		case 25:
+			IO_Expander_set_Register(register_OLAT, 0b00000000,  &IO_PORT4, slot_nr -1);
+			break;
+		case 50:
+			IO_Expander_set_Register(register_OLAT, 0b00000001,  &IO_PORT4, slot_nr -1);
+			break;
+		case 100:
+			IO_Expander_set_Register(register_OLAT, 0b00000010,  &IO_PORT4, slot_nr -1);
+			break;
+		default:
+			break;
+	}	
 }
 void FrontEnd_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 {
@@ -138,7 +170,7 @@ void Terminal_SET_FrontEND(char *myMessage)
 			break;
 			
 			
-		//2. Window Gain (Fixed to 2)
+		//2. Window Gain 
 		case _MK16('W','G'):
 						
 			if (!ParseIntLn(&myMessage[6],4,&temp16))
@@ -161,8 +193,8 @@ void Terminal_SET_FrontEND(char *myMessage)
 
 				if (frontEnd_gain[mySlotNr-1] != temp16)
 				{
-					frontEnd_gain[mySlotNr-1] = 2;
-					eeprom_write_word(&parameter1_eeprom[mySlotNr-1], 2);
+					frontEnd_gain[mySlotNr-1] = temp16;
+					eeprom_write_word(&parameter1_eeprom[mySlotNr-1], temp16);
 					FrontEnd_Set_Gain(frontEnd_gain[mySlotNr-1], mySlotNr);
 				}
 			}
