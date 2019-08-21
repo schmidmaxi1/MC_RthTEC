@@ -110,16 +110,17 @@ void FrontEnd_Default_Values(int slot_nr)
 
 void FrontEnd_Set_Gain(uint16_t gain, int slot_nr)
 {
+	//Reset bit for FlipFlops always HIGH
 	switch(gain)
 	{
 		case 25:
-			IO_Expander_set_Register(register_OLAT, 0b00000000,  &IO_PORT4, slot_nr -1);
+			IO_Expander_set_Register(register_OLAT, 0b00000100,  &IO_PORT4, slot_nr -1);
 			break;
 		case 50:
-			IO_Expander_set_Register(register_OLAT, 0b00000001,  &IO_PORT4, slot_nr -1);
+			IO_Expander_set_Register(register_OLAT, 0b00000101,  &IO_PORT4, slot_nr -1);
 			break;
 		case 100:
-			IO_Expander_set_Register(register_OLAT, 0b00000010,  &IO_PORT4, slot_nr -1);
+			IO_Expander_set_Register(register_OLAT, 0b00000110,  &IO_PORT4, slot_nr -1);
 			break;
 		default:
 			break;
@@ -143,7 +144,7 @@ void FrontEnd_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 } 
 
 //*******************************************************************
-//							 Get - FCTs
+//						Further - FCTs
 //*******************************************************************
 
 uint16_t FrontEnd_Get_Voltage_in_mV_FullRange(int slot_nr)
@@ -153,6 +154,17 @@ uint16_t FrontEnd_Get_Voltage_in_mV_FullRange(int slot_nr)
 	
 	//Convert (DAC Range: 0...2,5V / Pre-Divider: 4 --> Whole Range 0...10000mV)
 	return (temp * 10000)>>16; 	
+}
+
+void FrontEnd_Reset_FlipFlops(int slot_nr)
+{
+	//Get current setup of IO-Expander (only the two gain bit necessary; last two)
+	uint8_t temp = IO_Expander_get_Register(register_GPIO, &IO_PORT4, slot_nr -1 ) & 0x03;
+	
+	//Reset Bit (3 Position) to LOW 
+	IO_Expander_set_Register(register_OLAT, temp, &IO_PORT4, slot_nr-1);
+	//Reset Bit (3 Position) to HIGH
+	IO_Expander_set_Register(register_OLAT, temp | 0x04, &IO_PORT4, slot_nr-1);	
 }
 
 //*******************************************************************
@@ -251,7 +263,24 @@ void Terminal_SET_FrontEnd(char *myMessage)
 				}
 			}
 			break;
-						
+
+		case _MK16('R','F'):
+			if (myMessage[5] != '\n')
+			{
+				//to many signs
+				TransmitStringLn("FORMAT ERR");
+			}
+			else
+			{
+				FrontEnd_Reset_FlipFlops(mySlotNr);
+				//Answer
+				TransmitString("SRF");
+				TransmitInt(mySlotNr, 1);
+				TransmitStringLn("F");
+			}
+			break;
+			
+								
 		//Default --> Fehler
 		default:
 			TransmitStringLn("COMMAND ERR");
@@ -295,7 +324,7 @@ void Terminal_GET_FrontEnd(char *myMessage)
 			TransmitString("GSI");
 			TransmitInt(mySlotNr, 1);
 			TransmitString("F=");
-			TransmitByte((char)IO_Expander_get_Register(register_GPIO, &IO_PORT4, mySlotNr-1));
+			TransmitByte(IO_Expander_get_Register(register_GPIO, &IO_PORT4, mySlotNr-1));
 			TransmitStringLn("");
 			break;			
 			
