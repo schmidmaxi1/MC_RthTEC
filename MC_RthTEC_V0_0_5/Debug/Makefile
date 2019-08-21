@@ -46,6 +46,7 @@ C_SRCS +=  \
 ../Cards/MOSFET_BreakDown.c \
 ../Cards/Slot_Tester.c \
 ../ICs/AD5752.c \
+../ICs/LTC1864.c \
 ../ICs/MCP23S08.c \
 ../LTC1864.c \
 ../main.c \
@@ -69,6 +70,7 @@ Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
 ICs/AD5752.o \
+ICs/LTC1864.o \
 ICs/MCP23S08.o \
 LTC1864.o \
 main.o \
@@ -85,6 +87,7 @@ Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/Slot_Tester.o \
 ICs/AD5752.o \
+ICs/LTC1864.o \
 ICs/MCP23S08.o \
 LTC1864.o \
 main.o \
@@ -101,6 +104,7 @@ Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
 ICs/AD5752.d \
+ICs/LTC1864.d \
 ICs/MCP23S08.d \
 LTC1864.d \
 main.d \
@@ -117,6 +121,7 @@ Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/Slot_Tester.d \
 ICs/AD5752.d \
+ICs/LTC1864.d \
 ICs/MCP23S08.d \
 LTC1864.d \
 main.d \
@@ -139,6 +144,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

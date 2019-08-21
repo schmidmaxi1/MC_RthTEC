@@ -16,6 +16,8 @@ Cards\Slot_Tester.c
 
 ICs\AD5752.c
 
+ICs\LTC1864.c
+
 ICs\MCP23S08.c
 
 LTC1864.c

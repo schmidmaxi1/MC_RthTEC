@@ -183,6 +183,12 @@
     <Compile Include="ICs\AD5752.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ICs\LTC1864.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ICs\LTC1864.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="ICs\MCP23S08.c">
       <SubType>compile</SubType>
     </Compile>
