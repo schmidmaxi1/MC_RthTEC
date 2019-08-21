@@ -7,13 +7,14 @@
 
 
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-#include <util/delay.h>
 #include "../helper.h"
+
 
 #include "FrontEnd.h"
 
 #include "../ICs/AD5752.h"
 #include "../ICs/MCP23S08.h"
+#include "../ICs/LTC1864.h"
 
 
 uint16_t frontEnd_gain[8];
@@ -25,7 +26,7 @@ PinBelegung:
 2. MP
 3. /ChipSelect DAC (Channel A: Offset_Voltage)
 4. /ChipSelect IO-Expander
-5. /ChipSelect ADC (Grob)
+5. /ChipSelect ADC (Complete Range)
 6. NC
 
 EEPROM:
@@ -41,9 +42,13 @@ IO_3: (IN)  WINDOWIII (at least on out of Range appeared)
 IO_4: (IN)  OUT_Q_IC58 (last out of Range was too LOW)
 IO_5: (IN)  OUT_Q_IC49 (last out of Range was too HIGH)
 IO_6: (IN)  N$157 (not over Range right now)
-IO_7: (IN)  N$148 (not under Ranger rigth now)
+IO_7: (IN)  N$148 (not under Ranger right now)
 
 */
+
+//*******************************************************************
+//						 Init & EEPROM
+//*******************************************************************
 
 void FrontEnd_Init(int slot_nr)
 {
@@ -74,7 +79,7 @@ void FrontEnd_Init(int slot_nr)
 	//0 means OUT, 1 means IN
 	IO_Expander_set_Register(register_IODIR, 0b11111000, &IO_PORT4, slot_nr -1 );
 	
-	//All Output to Low, exept FlipFlop RST
+	//All Output to Low, except FlipFlop RST
 	IO_Expander_set_Register(register_OLAT, 0b00000100,  &IO_PORT4, slot_nr -1);
 	
 	
@@ -99,6 +104,9 @@ void FrontEnd_Default_Values(int slot_nr)
 	eeprom_write_word(&parameter2_eeprom[slot_nr-1], frontEnd_offset_voltage_mV[slot_nr-1]);
 }
 
+//*******************************************************************
+//						 Setting - FCTs
+//*******************************************************************
 
 void FrontEnd_Set_Gain(uint16_t gain, int slot_nr)
 {
@@ -117,6 +125,7 @@ void FrontEnd_Set_Gain(uint16_t gain, int slot_nr)
 			break;
 	}	
 }
+
 void FrontEnd_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 {
 		/*
@@ -133,6 +142,18 @@ void FrontEnd_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);	
 } 
 
+//*******************************************************************
+//							 Get - FCTs
+//*******************************************************************
+
+uint16_t FrontEnd_Get_Voltage_in_mV_FullRange(int slot_nr)
+{
+	//get binary value
+	uint32_t temp = LTC1864_getBIT_OneShot(&IO_PORT5, slot_nr-1);
+	
+	//Convert (DAC Range: 0...2,5V / Pre-Divider: 4 --> Whole Range 0...10000mV)
+	return (temp * 10000)>>16; 	
+}
 
 //*******************************************************************
 //							  Terminal
@@ -260,7 +281,7 @@ void Terminal_GET_FrontEnd(char *myMessage)
 			TransmitStringLn(" W/O-Unit");
 			break;
 							
-		//2. Set Meas Current
+		//2. Offset
 		case _MK16('W','O'):
 			TransmitString("GWO");
 			TransmitInt(mySlotNr, 1);
@@ -268,6 +289,26 @@ void Terminal_GET_FrontEnd(char *myMessage)
 			TransmitFloat(frontEnd_offset_voltage_mV[mySlotNr-1], 1, 3);
 			TransmitStringLn(" V");
 			break;
+			
+		//3. Status Info
+		case _MK16('S','I'):
+			TransmitString("GSI");
+			TransmitInt(mySlotNr, 1);
+			TransmitString("F=");
+			TransmitByte((char)IO_Expander_get_Register(register_GPIO, &IO_PORT4, mySlotNr-1));
+			TransmitStringLn("");
+			break;			
+			
+		//4. Voltage at full range DAC
+		case _MK16('V','F'):
+			TransmitString("GVF");
+			TransmitInt(mySlotNr, 1);
+			TransmitString("F=");
+			//Measure and return
+			TransmitInt(FrontEnd_Get_Voltage_in_mV_FullRange(mySlotNr), 1);
+			TransmitStringLn(" mV");
+			break;
+			
 							
 		//Default --> Fehler
 		default:

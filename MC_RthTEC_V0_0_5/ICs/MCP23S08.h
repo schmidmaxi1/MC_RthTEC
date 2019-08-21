@@ -23,17 +23,17 @@
 //2bits über Pins: 00
 //1bit für Read/Write
 
-#define register_IODIR		0x00
-#define register_IPOL		0x01
-#define register_GPINTEN	0x02
-#define register_DEFVAL		0x03
-#define register_INTCON		0x04
-#define register_IOCON		0x05
-#define register_GPPU		0x06
-#define register_INTF		0x07
-#define register_INTCAP		0x08
-#define register_GPIO		0x09
-#define register_OLAT		0x0A
+#define register_IODIR		0x00		//IO- Direction
+#define register_IPOL		0x01		//Input Polarity
+#define register_GPINTEN	0x02		//Interupt on Change Control
+#define register_DEFVAL		0x03		//Default on Change (Interupt)
+#define register_INTCON		0x04		//Interupt Controll
+#define register_IOCON		0x05		//Configuration Register
+#define register_GPPU		0x06		//Pull Up Resistior Config
+#define register_INTF		0x07		//Interrupt Flag
+#define register_INTCAP		0x08		//Interrupt Capture
+#define register_GPIO		0x09		//Value
+#define register_OLAT		0x0A		//Output Value
 
 
 /*
