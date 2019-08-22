@@ -415,7 +415,11 @@ void EEPROM_last_Values()
 				
 			case 'F':
 				FrontEnd_Variables_from_EEPROM(i+1);
-				break;				
+				break;	
+				
+			case 'B':
+				BreakDown_Variables_from_EEPROM(i+1);
+				break;			
 		}
 	}
 
