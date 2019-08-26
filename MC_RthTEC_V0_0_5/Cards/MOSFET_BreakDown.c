@@ -185,6 +185,27 @@ void BreakDown_Set_V_GS_mV(int16_t V_GS_mV, int slot_nr)
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);		
 }
 
+//*******************************************************************
+//						 Getting - FCTs
+//*******************************************************************
+
+int B_Get_V_DS_in_mV(int slot_nr)
+{
+	//get binary value
+	uint32_t temp = LTC1864_getBIT_OneShot(&IO_PORT4, slot_nr-1);
+	
+	//Convert (DAC Range: 0...2,5V / Pre-Divider: 16 --> Whole Range 0...40000mV)
+	return (temp * 40000)>>16;
+}
+
+int B_Get_I_DS_in_mA(int slot_nr)
+{
+	//get binary value
+	uint32_t temp = LTC1864_getBIT_OneShot(&IO_PORT5, slot_nr-1);
+	
+	//Convert (DAC Range: 0...2,5V / R=50mOhm, Gain = 25 --> 0...2A)
+	return (temp * 2000)>>16;
+}
 
 //*******************************************************************
 //							  Terminal
@@ -386,7 +407,7 @@ void Terminal_GET_BreakDown(char *myMessage)
 	
 	switch(myCMD){
 							
-		//1. Gain
+		//1. Voltage GS (set)
 		case _MK16('V','G'):
 			TransmitString("GVG");
 			TransmitInt(mySlotNr, 1);
@@ -394,8 +415,25 @@ void Terminal_GET_BreakDown(char *myMessage)
 			TransmitInt(breakDown_V_GS_mV[mySlotNr-1], 1);
 			TransmitStringLn(" V");
 			break;
-							
-										
+			
+		//2. Voltage DS (measured)
+		case _MK16('V','D'):
+			TransmitString("GVD");
+			TransmitInt(mySlotNr, 1);
+			TransmitString("B=");
+			TransmitInt(B_Get_V_DS_in_mV(mySlotNr), 1);
+			TransmitStringLn(" mV");
+			break;			
+
+		//3. Current DS (measured)
+		case _MK16('C','D'):
+		TransmitString("GCD");
+		TransmitInt(mySlotNr, 1);
+		TransmitString("B=");
+		TransmitInt(B_Get_I_DS_in_mA(mySlotNr), 1);
+		TransmitStringLn(" mA");
+		break;
+												
 		//Default --> Fehler
 		default:
 			TransmitStringLn("COMMAND ERR");
