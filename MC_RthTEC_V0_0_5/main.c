@@ -412,6 +412,14 @@ void EEPROM_last_Values()
 			case 'L':
 				LED_Source_Variables_from_EEPROM(i+1);
 				break;
+				
+			case 'F':
+				FrontEnd_Variables_from_EEPROM(i+1);
+				break;	
+				
+			case 'B':
+				BreakDown_Variables_from_EEPROM(i+1);
+				break;			
 		}
 	}
 
@@ -421,8 +429,7 @@ void EEPROM_last_Values()
     measure_pulse_current = eeprom_read_word(&measure_pulse_current_eeprom);
 		
     window_offset = eeprom_read_word(&window_offset_eeprom);
-    offset_voltage = eeprom_read_word(&offset_voltage_eeprom);
-	
+    offset_voltage = eeprom_read_word(&offset_voltage_eeprom);	
 }
 
 void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
@@ -454,6 +461,10 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 					
 				case 'T':
 					Slot_Tester_Init(i+1);
+					break;
+					
+				case 'F':
+					FrontEnd_Init(i+1);
 					break;
 					
 				default:
