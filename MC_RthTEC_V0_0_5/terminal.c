@@ -240,7 +240,7 @@ void TerminalParseCommand(char *string)
 					{
 						TransmitStringLn("SDS=1");
 						
-						PulseStart_detTTA();
+						PulseStart_DPA_TTA_HighStart();
 					}
 					else if (string[4] == '0' && string[5] == '\n')
 					{

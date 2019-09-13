@@ -37,4 +37,5 @@ void Stop_Timer_100us();
 
 void Init_Counter_100us();
 void Setup_Counter_for_stdTTA();
-void Setup_Counter_for_detTTA();
+void Setup_Counter_for_DPA_TTA();
+void Setup_Counter_for_DPA_TTA_HighLevel();

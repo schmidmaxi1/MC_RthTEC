@@ -216,8 +216,9 @@ extern uint16_t parameter3_eeprom[8] EEMEM;
 
 
 //Flags
-uint8_t flag_standard_TTA;
-uint8_t flag_deterministic_TTA;
+uint8_t flag_std_TTA;
+uint8_t flag_DPA_TTA;
+uint8_t flag_HPP_TTA;
 
 //Edit: Maxi 20.11.2018
 uint32_t heat_pulse_voltage;
@@ -241,7 +242,10 @@ void EEPROM_default_Values();
 void EEPROM_last_Values();
 void Init_All_Cards(char newCard_Type[], char oldCard_Type[]);
 
-void PulseStart_detTTA();	//edit: Maxi 26.09.2018
+void PulseStart_DPA_TTA();	//edit: Maxi 26.09.2018
+
+void PulseStart_DPA_TTA_HighStart();			//edit: Maxi 12.9.2018
+void PulseStart_DPA_TTA_fromHPP();
 
 void PulseStart_PrePulse();			//edit: Maxi 27.09.2018
 

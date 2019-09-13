@@ -246,12 +246,12 @@ void Setup_Counter_for_stdTTA()
 }
 
 //Setup for det. TTA
-void Setup_Counter_for_detTTA()
+void Setup_Counter_for_DPA_TTA()
 {	
 	/*
 	Explanation:
 	-HP on at Overflow
-	-HP of at OCR5A
+	-HP off at OCR5A
 	-MP always on
 	*/
 	ICR5 = 2 * deterministic_pulse_length - 1;		//Overflow at periode: 2*length - 1bit (start @ 0 not 1)
@@ -265,11 +265,38 @@ void Setup_Counter_for_detTTA()
 	deterministic_pulse_counter =deterministic_pulse_cycles;
 }
 
+void Setup_Counter_for_DPA_TTA_HighLevel()
+{
+	//Reset overflow and Counter
+	TCNT5 = 59999;      //Timer 5 reset
+	ICR5 = 60000;		//6000ms = 6s
+		
+	// *10 wegen umstieg von 1ms auf 100µs
+	if (heat_pulse_length < 6000)
+	{
+		OCR5A = heat_pulse_length * 10;
+		heat_pulse_lastcount = heat_pulse_length * 10;
+		heat_pulse_precount = 0;
+			
+		//Spannungsmessung 5ms vor Puls-Ende
+		//OCR5C = (heat_pulse_length - 5)* 10;
+	}
+	else
+	{
+		OCR5A = -1;
+		heat_pulse_lastcount = (heat_pulse_length % 6000) * 10;
+		heat_pulse_precount = (heat_pulse_length) / 6000; //Aufrunden			
+	}
+	//Comp B is not needed
+	OCR5B = -1;	
+}
+
+
 //Interrupt: OverFlow:
 ISR(TIMER5_OVF_vect)
 {	
 	//If Deterministic Pulses are running (switch on HP)
-	if(flag_deterministic_TTA)
+	if(flag_DPA_TTA)
 	{			
 		//--> Wieder anschalten
 		HP_Port = pulse_output_register;
@@ -285,7 +312,7 @@ ISR(TIMER5_OVF_vect)
 		}
 	}
 	//If standard TTA (change compare register for overflow)	
-	else if(flag_standard_TTA)
+	else if(flag_std_TTA)
 	{
 		if (--heat_pulse_precount <= 0)
 		{
@@ -296,6 +323,13 @@ ISR(TIMER5_OVF_vect)
 		{
 			OCR5B = measure_pulse_lastcount;
 		}
+	}
+	else if (flag_HPP_TTA)
+	{
+		if (--heat_pulse_precount <= 0)
+		{
+			OCR5A = heat_pulse_lastcount;
+		}		
 	}
 	//Should not be possible
 	else
@@ -308,8 +342,19 @@ ISR(TIMER5_OVF_vect)
 //Interrupt: Compare A: Switch of Heat pulse
 ISR(TIMER5_COMPA_vect)
 {
+	//Wenn es ein Heat PrePulse ist, in DPA gehn
+	if(flag_HPP_TTA)
+	{
+		PulseStart_DPA_TTA_fromHPP();
+	}
+	else
+	{
+		HP_Port = 0;	
+	}
+	
+	//OLD***********************
 	//Switch of all Heat Pulses
-	HP_Port = 0;	
+	//HP_Port = 0;	
 }
 
 //Interrupt: Compare B: Switch of Meas pulse

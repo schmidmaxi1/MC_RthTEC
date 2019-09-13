@@ -76,8 +76,9 @@ uint16_t parameter2_eeprom[8] EEMEM;
 uint16_t parameter3_eeprom[8] EEMEM;
 
 //Flags
-uint8_t flag_standard_TTA;
-uint8_t flag_deterministic_TTA;
+uint8_t flag_std_TTA;
+uint8_t flag_DPA_TTA;
+uint8_t flag_HPP_TTA;	//Heat Pre Pulse
 
 /*
  ** Functions
@@ -501,8 +502,9 @@ void PulseStart_stdTTA()
 	Stop_Timer_100us();
 	
 	//Set flags
-	flag_standard_TTA = 1;
-	flag_deterministic_TTA = 0;
+	flag_std_TTA = 1;
+	flag_DPA_TTA = 0;
+	flag_HPP_TTA = 0;
 	
 	//Reset Timer 5 and change Compare Values
 	Setup_Counter_for_stdTTA();
@@ -539,17 +541,18 @@ void PulseStart_Sensitivity()
 // Deterministic Pulses (edit Maxi 26.09.2018)		  (complete)
 // -------------------------------------------------------------
 
-void PulseStart_detTTA()
+void PulseStart_DPA_TTA()
 {
 	//Stop Timer 1
 	Stop_Timer_100us();
 	
 	// Set Flags
-	flag_deterministic_TTA = 1;
-	flag_standard_TTA = 0;
+	flag_DPA_TTA = 1;
+	flag_std_TTA = 0;
+	flag_HPP_TTA = 0;
 		
 	//Setup for det TTA
-	Setup_Counter_for_detTTA();
+	Setup_Counter_for_DPA_TTA();
 		
 	//Status LED for Pulses
 	set_bit(LED_Pulse);
@@ -560,6 +563,59 @@ void PulseStart_detTTA()
 	
 	//Start Timer 1
 	Start_Timer_100us();	    	
+}
+
+// -------------------------------------------------------------
+// Deterministic Pulses with Heat PrePulse (edit Maxi 12.09.2019)		  
+//													  ()
+// -------------------------------------------------------------
+
+void PulseStart_DPA_TTA_HighStart()
+{
+	//Stop Timer 1
+	Stop_Timer_100us();
+		
+	// Set Flags
+	flag_DPA_TTA = 0;
+	flag_std_TTA = 0;
+	flag_HPP_TTA = 1;
+	
+	//Setup for HeatPrePulse
+	Setup_Counter_for_DPA_TTA_HighLevel();
+	
+	//Status LED for Pulses
+	set_bit(LED_Pulse);
+		
+	//Switch ON all pulses
+	HP_Port = pulse_output_register;
+	MP_Port = pulse_output_register;
+		
+	//Start Timer 1
+	Start_Timer_100us();
+}
+
+void PulseStart_DPA_TTA_fromHPP()
+{
+	//Stop Timer 1
+	Stop_Timer_100us();
+	
+	// Set Flags
+	flag_DPA_TTA = 1;
+	flag_std_TTA = 0;
+	flag_HPP_TTA = 0;
+	
+	//Setup for det TTA
+	Setup_Counter_for_DPA_TTA();
+	
+	//Status LED for Pulses
+	set_bit(LED_Pulse);
+	
+	//Switch off all Heat pulses (don't switch off here)
+	//HP_Port = 0;
+	//MP_Port = 0;
+	
+	//Start Timer 1
+	Start_Timer_100us();
 }
 
 // -------------------------------------------------------------

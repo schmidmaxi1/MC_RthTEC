@@ -86,15 +86,17 @@ void Amplifier_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 {
 		/*
 	Input:
-	-measCurrent in 0,1mA
-	-channel (Einschubkarten-Platz)
-	-Offset immer an ChipSelect [channel] & Kanal A
+	-measCurrent in mV
+	-channel (Slot-Number)
+	-Offset always at ChipSelect [channel] & Chanel A
+	-Adjustable from 0V ... 5V
+	-Additional OpAmp with Gain 2
 	*/
 	
-	//Binär Wert berechnen
-	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 10000 / 2;
+	//Calculate binary value
+	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 5000 / 2;
 	
-	//Senden
+	//Send
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);
 	
 }
