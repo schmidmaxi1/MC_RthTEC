@@ -239,8 +239,8 @@ void TerminalParseCommand(char *string)
 					if (string[4] == '1' && string[5] == '\n')
 					{
 						TransmitStringLn("SDS=1");
-						
-						PulseStart_DPA_TTA_HighStart();
+						PulseStart_DPA_TTA();
+						//PulseStart_DPA_TTA_HighStart();
 					}
 					else if (string[4] == '0' && string[5] == '\n')
 					{

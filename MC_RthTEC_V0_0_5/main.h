@@ -134,6 +134,7 @@
 #include "avr/wdt.h"
 #include "stdlib.h"
 #include "stdio.h"
+#include "avr/power.h"
 
 #include "uart0.h"
 #include "ad5752.h"
