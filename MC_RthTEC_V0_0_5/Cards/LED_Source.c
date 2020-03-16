@@ -88,6 +88,7 @@ void LED_Source_Set_Heat_Current(uint16_t current_mA, int slot_nr)
 	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);
 	
 }
+
 void LED_Source_Set_Meas_Current(uint16_t current_10th_mA, int slot_nr)
 {
 		/*

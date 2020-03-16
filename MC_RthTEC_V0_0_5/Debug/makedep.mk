@@ -12,6 +12,8 @@ Cards\LED_Source.c
 
 Cards\MOSFET_BreakDown.c
 
+Cards\MOSFET_Source.c
+
 Cards\Slot_Tester.c
 
 ICs\AD5752.c

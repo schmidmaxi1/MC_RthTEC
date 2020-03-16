@@ -1001,9 +1001,43 @@ void TerminalParseCommand(char *string)
 					}
 					break;
 					
-					#pragma endregion SettingsLED-Source
+				#pragma endregion SettingsLED-Source
+				
+				//4.2 MOSFET heat-meas current source
+				#pragma region SettingsMOSFET-Source
+								
+				case 'M':
+					switch(cmd){
+									
+						//2. Set Heat Current
+						case _MK16('H','C'):
+							TransmitString("GHC");
+							TransmitInt(slotNr, 1);
+							TransmitString("M=");
+							TransmitInt(mosfet_Source_Heat_Current_mA[slotNr-1], 1);
+							TransmitStringLn(" mA");
+							break;
+									
+						//3. Set Meas Current
+							case _MK16('M','C'):
+							TransmitString("GMC");
+							TransmitInt(slotNr, 1);
+							TransmitString("M=");
+							TransmitFloat(mosfet_Source_Meas_Current_0mA1[slotNr-1], 1, 1);
+							TransmitStringLn(" mA");
+							break;
+									
+						//Default --> Fehler
+						default:
+						TransmitStringLn("COMMAND ERR");
+						break;
+									
+					}
+					break;
+								
+				#pragma endregion SettingsMOSFET-Source
 					
-				//4.2 Amplifier
+				//4.3 Amplifier
 				#pragma region Amplifier
 				
 				case 'A':
@@ -1036,6 +1070,7 @@ void TerminalParseCommand(char *string)
 				break;
 				
 				#pragma endregion Amplifier
+								
 				
 				//6. BreakDown (B)
 				case 'B':

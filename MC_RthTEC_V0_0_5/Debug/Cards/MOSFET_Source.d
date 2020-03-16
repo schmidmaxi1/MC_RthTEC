@@ -1,5 +1,5 @@
-Cards/MOSFET_BreakDown.d Cards/MOSFET_BreakDown.o: \
- ../Cards/MOSFET_BreakDown.c ../Cards/../main.h ../Cards/../helper.h \
+Cards/MOSFET_Source.d Cards/MOSFET_Source.o: ../Cards/MOSFET_Source.c \
+ ../Cards/../main.h ../Cards/../helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -28,8 +28,7 @@ Cards/MOSFET_BreakDown.d Cards/MOSFET_BreakDown.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../Cards/../helper.h ../Cards/MOSFET_BreakDown.h \
- ../Cards/../ICs/AD5752.h ../Cards/../ICs/MCP23S08.h \
+ ../Cards/../helper.h ../Cards/MOSFET_Source.h ../Cards/../ICs/AD5752.h \
  ../Cards/../ICs/LTC1864.h
 
 ../Cards/../main.h:
@@ -106,10 +105,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../Cards/../helper.h:
 
-../Cards/MOSFET_BreakDown.h:
+../Cards/MOSFET_Source.h:
 
 ../Cards/../ICs/AD5752.h:
-
-../Cards/../ICs/MCP23S08.h:
 
 ../Cards/../ICs/LTC1864.h:

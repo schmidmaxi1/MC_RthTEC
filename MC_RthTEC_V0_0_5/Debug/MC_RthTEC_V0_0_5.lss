@@ -25,11 +25,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  10 .debug_frame  000010a8  00000000  00000000  000172c8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    000019e0  00000000  00000000  00018370  2**0
+ 11 .debug_str    000019f9  00000000  00000000  00018370  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    0000567e  00000000  00000000  00019d50  2**0
+ 12 .debug_loc    0000567e  00000000  00000000  00019d69  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 000004d8  00000000  00000000  0001f3ce  2**0
+ 13 .debug_ranges 000004d8  00000000  00000000  0001f3e7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1481,12 +1481,12 @@ void Terminal_GET_FrontEnd(char *myMessage)
      8c2:	92 e0       	ldi	r25, 0x02	; 2
      8c4:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
 			break;
+     8c8:	04 c0       	rjmp	.+8      	; 0x8d2 <Terminal_GET_FrontEnd+0x126>
 			
 							
 		//Default --> Fehler
 		default:
 			TransmitStringLn("COMMAND ERR");
-     8c8:	04 c0       	rjmp	.+8      	; 0x8d2 <Terminal_GET_FrontEnd+0x126>
      8ca:	84 e4       	ldi	r24, 0x44	; 68
      8cc:	92 e0       	ldi	r25, 0x02	; 2
      8ce:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
@@ -1566,6 +1566,7 @@ void LED_Source_Set_Heat_Current(uint16_t current_mA, int slot_nr)
      93c:	08 95       	ret
 
 0000093e <LED_Source_Set_Meas_Current>:
+
 void LED_Source_Set_Meas_Current(uint16_t current_10th_mA, int slot_nr)
 {
      93e:	cf 93       	push	r28
@@ -2374,18 +2375,18 @@ void Terminal_SET_BreakDown(char *myMessage)
      d84:	a9 f4       	brne	.+42     	; 0xdb0 <Terminal_SET_BreakDown+0x15e>
      d86:	87 81       	ldd	r24, Z+7	; 0x07
      d88:	8a 30       	cpi	r24, 0x0A	; 10
+     d8a:	91 f4       	brne	.+36     	; 0xdb0 <Terminal_SET_BreakDown+0x15e>
 			{
 				//Switch Relays off
 				B_Set_Relais_all_off(mySlotNr);
-     d8a:	91 f4       	brne	.+36     	; 0xdb0 <Terminal_SET_BreakDown+0x15e>
      d8c:	00 2e       	mov	r0, r16
      d8e:	00 0c       	add	r0, r0
      d90:	11 0b       	sbc	r17, r17
      d92:	c8 01       	movw	r24, r16
+     d94:	c1 de       	rcall	.-638    	; 0xb18 <B_Set_Relais_all_off>
 
 				//Answer
 				TransmitString("SRL");
-     d94:	c1 de       	rcall	.-638    	; 0xb18 <B_Set_Relais_all_off>
      d96:	80 e7       	ldi	r24, 0x70	; 112
      d98:	92 e0       	ldi	r25, 0x02	; 2
      d9a:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
@@ -2397,39 +2398,39 @@ void Terminal_SET_BreakDown(char *myMessage)
      da6:	8c e6       	ldi	r24, 0x6C	; 108
      da8:	92 e0       	ldi	r25, 0x02	; 2
      daa:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     dae:	c2 c0       	rjmp	.+388    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else
 			{
 				//no number
 				TransmitStringLn("FORMAT ERR");
-     dae:	c2 c0       	rjmp	.+388    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      db0:	8e e0       	ldi	r24, 0x0E	; 14
      db2:	92 e0       	ldi	r25, 0x02	; 2
      db4:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     db8:	bd c0       	rjmp	.+378    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			break;
 		
 		//4. Relays for Characteristic Curve
 		case _MK16('R','C'):
 			if (myMessage[6] == '1' && myMessage[7] == '\n')
-     db8:	bd c0       	rjmp	.+378    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      dba:	86 81       	ldd	r24, Z+6	; 0x06
      dbc:	81 33       	cpi	r24, 0x31	; 49
      dbe:	a9 f4       	brne	.+42     	; 0xdea <Terminal_SET_BreakDown+0x198>
      dc0:	87 81       	ldd	r24, Z+7	; 0x07
+     dc2:	8a 30       	cpi	r24, 0x0A	; 10
 			{
 				//Switch Relays
 				B_Set_Relais_to_Characteristic_Curve(mySlotNr);
-     dc2:	8a 30       	cpi	r24, 0x0A	; 10
      dc4:	49 f5       	brne	.+82     	; 0xe18 <Terminal_SET_BreakDown+0x1c6>
      dc6:	00 2e       	mov	r0, r16
      dc8:	00 0c       	add	r0, r0
      dca:	11 0b       	sbc	r17, r17
      dcc:	c8 01       	movw	r24, r16
+     dce:	70 de       	rcall	.-800    	; 0xab0 <B_Set_Relais_to_Characteristic_Curve>
 
 				//Answer
 				TransmitString("SRC");
-     dce:	70 de       	rcall	.-800    	; 0xab0 <B_Set_Relais_to_Characteristic_Curve>
      dd0:	84 e7       	ldi	r24, 0x74	; 116
      dd2:	92 e0       	ldi	r25, 0x02	; 2
      dd4:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
@@ -2441,25 +2442,25 @@ void Terminal_SET_BreakDown(char *myMessage)
      de0:	88 e6       	ldi	r24, 0x68	; 104
      de2:	92 e0       	ldi	r25, 0x02	; 2
      de4:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     de8:	a5 c0       	rjmp	.+330    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else if (myMessage[6] == '0' && myMessage[7] == '\n')
-     de8:	a5 c0       	rjmp	.+330    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      dea:	80 33       	cpi	r24, 0x30	; 48
      dec:	a9 f4       	brne	.+42     	; 0xe18 <Terminal_SET_BreakDown+0x1c6>
      dee:	87 81       	ldd	r24, Z+7	; 0x07
+     df0:	8a 30       	cpi	r24, 0x0A	; 10
 			{
 				//Switch Relays off
 				B_Set_Relais_all_off(mySlotNr);
-     df0:	8a 30       	cpi	r24, 0x0A	; 10
      df2:	91 f4       	brne	.+36     	; 0xe18 <Terminal_SET_BreakDown+0x1c6>
      df4:	00 2e       	mov	r0, r16
      df6:	00 0c       	add	r0, r0
      df8:	11 0b       	sbc	r17, r17
      dfa:	c8 01       	movw	r24, r16
+     dfc:	8d de       	rcall	.-742    	; 0xb18 <B_Set_Relais_all_off>
 
 				//Answer
 				TransmitString("SRC");
-     dfc:	8d de       	rcall	.-742    	; 0xb18 <B_Set_Relais_all_off>
      dfe:	84 e7       	ldi	r24, 0x74	; 116
      e00:	92 e0       	ldi	r25, 0x02	; 2
      e02:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
@@ -2471,96 +2472,96 @@ void Terminal_SET_BreakDown(char *myMessage)
      e0e:	8c e6       	ldi	r24, 0x6C	; 108
      e10:	92 e0       	ldi	r25, 0x02	; 2
      e12:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     e16:	8e c0       	rjmp	.+284    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else
 			{
 				//no number
 				TransmitStringLn("FORMAT ERR");
-     e16:	8e c0       	rjmp	.+284    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      e18:	8e e0       	ldi	r24, 0x0E	; 14
      e1a:	92 e0       	ldi	r25, 0x02	; 2
      e1c:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     e20:	89 c0       	rjmp	.+274    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			break;
 		
 		//5. Relays for BodyDiode
 		case _MK16('R','D'):
 			if (myMessage[6] == '1' && myMessage[7] == '\n')
-     e20:	89 c0       	rjmp	.+274    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      e22:	86 81       	ldd	r24, Z+6	; 0x06
      e24:	81 33       	cpi	r24, 0x31	; 49
      e26:	a9 f4       	brne	.+42     	; 0xe52 <Terminal_SET_BreakDown+0x200>
+     e28:	87 81       	ldd	r24, Z+7	; 0x07
+     e2a:	8a 30       	cpi	r24, 0x0A	; 10
 			{
 				//Switch Relays
 				B_Set_Relais_to_BodyDiode_Curve(mySlotNr);
-     e28:	87 81       	ldd	r24, Z+7	; 0x07
-     e2a:	8a 30       	cpi	r24, 0x0A	; 10
      e2c:	49 f5       	brne	.+82     	; 0xe80 <Terminal_SET_BreakDown+0x22e>
      e2e:	00 2e       	mov	r0, r16
      e30:	00 0c       	add	r0, r0
      e32:	11 0b       	sbc	r17, r17
+     e34:	c8 01       	movw	r24, r16
+     e36:	56 de       	rcall	.-852    	; 0xae4 <B_Set_Relais_to_BodyDiode_Curve>
 
 				//Answer
 				TransmitString("SRD");
-     e34:	c8 01       	movw	r24, r16
-     e36:	56 de       	rcall	.-852    	; 0xae4 <B_Set_Relais_to_BodyDiode_Curve>
      e38:	88 e7       	ldi	r24, 0x78	; 120
      e3a:	92 e0       	ldi	r25, 0x02	; 2
-				TransmitInt(mySlotNr, 1);
      e3c:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
+				TransmitInt(mySlotNr, 1);
      e40:	61 e0       	ldi	r22, 0x01	; 1
      e42:	c8 01       	movw	r24, r16
-				TransmitStringLn("B=1");
      e44:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+				TransmitStringLn("B=1");
      e48:	88 e6       	ldi	r24, 0x68	; 104
      e4a:	92 e0       	ldi	r25, 0x02	; 2
      e4c:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     e50:	71 c0       	rjmp	.+226    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else if (myMessage[6] == '0' && myMessage[7] == '\n')
-     e50:	71 c0       	rjmp	.+226    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      e52:	80 33       	cpi	r24, 0x30	; 48
      e54:	a9 f4       	brne	.+42     	; 0xe80 <Terminal_SET_BreakDown+0x22e>
+     e56:	87 81       	ldd	r24, Z+7	; 0x07
+     e58:	8a 30       	cpi	r24, 0x0A	; 10
 			{
 				//Switch Relays off
 				B_Set_Relais_all_off(mySlotNr);
-     e56:	87 81       	ldd	r24, Z+7	; 0x07
-     e58:	8a 30       	cpi	r24, 0x0A	; 10
      e5a:	91 f4       	brne	.+36     	; 0xe80 <Terminal_SET_BreakDown+0x22e>
      e5c:	00 2e       	mov	r0, r16
      e5e:	00 0c       	add	r0, r0
      e60:	11 0b       	sbc	r17, r17
+     e62:	c8 01       	movw	r24, r16
+     e64:	59 de       	rcall	.-846    	; 0xb18 <B_Set_Relais_all_off>
 
 				//Answer
 				TransmitString("SRD");
-     e62:	c8 01       	movw	r24, r16
-     e64:	59 de       	rcall	.-846    	; 0xb18 <B_Set_Relais_all_off>
      e66:	88 e7       	ldi	r24, 0x78	; 120
      e68:	92 e0       	ldi	r25, 0x02	; 2
-				TransmitInt(mySlotNr, 1);
      e6a:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
+				TransmitInt(mySlotNr, 1);
      e6e:	61 e0       	ldi	r22, 0x01	; 1
      e70:	c8 01       	movw	r24, r16
-				TransmitStringLn("B=0");
      e72:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+				TransmitStringLn("B=0");
      e76:	8c e6       	ldi	r24, 0x6C	; 108
      e78:	92 e0       	ldi	r25, 0x02	; 2
      e7a:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     e7e:	5a c0       	rjmp	.+180    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else
 			{
 				//no number
 				TransmitStringLn("FORMAT ERR");
-     e7e:	5a c0       	rjmp	.+180    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      e80:	8e e0       	ldi	r24, 0x0E	; 14
      e82:	92 e0       	ldi	r25, 0x02	; 2
      e84:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     e88:	55 c0       	rjmp	.+170    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			break;
 			
 		//6. Set V_GS voltage
 		case _MK16('V', 'G'):
 			if (!ParseIntLn(&myMessage[6],5,&temp16))
-     e88:	55 c0       	rjmp	.+170    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      e8a:	ae 01       	movw	r20, r28
      e8c:	4f 5f       	subi	r20, 0xFF	; 255
      e8e:	5f 4f       	sbci	r21, 0xFF	; 255
@@ -2568,61 +2569,61 @@ void Terminal_SET_BreakDown(char *myMessage)
      e92:	cf 01       	movw	r24, r30
      e94:	06 96       	adiw	r24, 0x06	; 6
      e96:	0e 94 27 10 	call	0x204e	; 0x204e <ParseIntLn>
+     e9a:	81 11       	cpse	r24, r1
+     e9c:	05 c0       	rjmp	.+10     	; 0xea8 <Terminal_SET_BreakDown+0x256>
 			{
 				//no number
 				TransmitStringLn("FORMAT ERR");
-     e9a:	81 11       	cpse	r24, r1
-     e9c:	05 c0       	rjmp	.+10     	; 0xea8 <Terminal_SET_BreakDown+0x256>
      e9e:	8e e0       	ldi	r24, 0x0E	; 14
      ea0:	92 e0       	ldi	r25, 0x02	; 2
      ea2:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     ea6:	46 c0       	rjmp	.+140    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else if (temp16 > 20000 || temp16 < -20000)
-     ea6:	46 c0       	rjmp	.+140    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      ea8:	89 81       	ldd	r24, Y+1	; 0x01
      eaa:	9a 81       	ldd	r25, Y+2	; 0x02
      eac:	80 5e       	subi	r24, 0xE0	; 224
      eae:	91 4b       	sbci	r25, 0xB1	; 177
      eb0:	81 34       	cpi	r24, 0x41	; 65
+     eb2:	9c 49       	sbci	r25, 0x9C	; 156
+     eb4:	28 f0       	brcs	.+10     	; 0xec0 <Terminal_SET_BreakDown+0x26e>
 			{
 				//0 bis 10 V
 				TransmitStringLn("NUMBER ERR");
-     eb2:	9c 49       	sbci	r25, 0x9C	; 156
-     eb4:	28 f0       	brcs	.+10     	; 0xec0 <Terminal_SET_BreakDown+0x26e>
      eb6:	8d e1       	ldi	r24, 0x1D	; 29
      eb8:	92 e0       	ldi	r25, 0x02	; 2
      eba:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
+     ebe:	3a c0       	rjmp	.+116    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 			}
 			else
 			{
 				TransmitString("SVG");
-     ebe:	3a c0       	rjmp	.+116    	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      ec0:	8c e7       	ldi	r24, 0x7C	; 124
      ec2:	92 e0       	ldi	r25, 0x02	; 2
-				TransmitInt(mySlotNr, 1);
      ec4:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
+				TransmitInt(mySlotNr, 1);
      ec8:	00 2e       	mov	r0, r16
      eca:	00 0c       	add	r0, r0
      ecc:	11 0b       	sbc	r17, r17
      ece:	61 e0       	ldi	r22, 0x01	; 1
      ed0:	c8 01       	movw	r24, r16
-				TransmitString("B=");
      ed2:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+				TransmitString("B=");
      ed6:	80 e8       	ldi	r24, 0x80	; 128
      ed8:	92 e0       	ldi	r25, 0x02	; 2
-				TransmitFloat(temp16,1, 3);
      eda:	0e 94 5a 11 	call	0x22b4	; 0x22b4 <TransmitString>
+				TransmitFloat(temp16,1, 3);
      ede:	43 e0       	ldi	r20, 0x03	; 3
      ee0:	61 e0       	ldi	r22, 0x01	; 1
      ee2:	89 81       	ldd	r24, Y+1	; 0x01
      ee4:	9a 81       	ldd	r25, Y+2	; 0x02
-				TransmitStringLn(" V");
      ee6:	0e 94 30 12 	call	0x2460	; 0x2460 <TransmitFloat>
+				TransmitStringLn(" V");
      eea:	8d e3       	ldi	r24, 0x3D	; 61
      eec:	92 e0       	ldi	r25, 0x02	; 2
+     eee:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
 
 				if (breakDown_V_GS_mV[mySlotNr-1] != temp16)
-     eee:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
      ef2:	c8 01       	movw	r24, r16
      ef4:	01 97       	sbiw	r24, 0x01	; 1
      ef6:	69 81       	ldd	r22, Y+1	; 0x01
@@ -2635,39 +2636,39 @@ void Terminal_SET_BreakDown(char *myMessage)
      f04:	20 81       	ld	r18, Z
      f06:	31 81       	ldd	r19, Z+1	; 0x01
      f08:	26 17       	cp	r18, r22
-				{
-					breakDown_V_GS_mV[mySlotNr-1] = temp16;
      f0a:	37 07       	cpc	r19, r23
      f0c:	99 f0       	breq	.+38     	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
+				{
+					breakDown_V_GS_mV[mySlotNr-1] = temp16;
      f0e:	88 0f       	add	r24, r24
      f10:	99 1f       	adc	r25, r25
-					eeprom_write_word(&parameter1_eeprom[mySlotNr-1], temp16);
      f12:	7f 01       	movw	r14, r30
      f14:	71 83       	std	Z+1, r23	; 0x01
+					eeprom_write_word(&parameter1_eeprom[mySlotNr-1], temp16);
      f16:	60 83       	st	Z, r22
      f18:	80 5e       	subi	r24, 0xE0	; 224
-					BreakDown_Set_V_GS_mV(breakDown_V_GS_mV[mySlotNr-1], mySlotNr);
      f1a:	9f 4f       	sbci	r25, 0xFF	; 255
      f1c:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
+					BreakDown_Set_V_GS_mV(breakDown_V_GS_mV[mySlotNr-1], mySlotNr);
      f20:	b8 01       	movw	r22, r16
      f22:	f7 01       	movw	r30, r14
      f24:	80 81       	ld	r24, Z
      f26:	91 81       	ldd	r25, Z+1	; 0x01
+     f28:	08 de       	rcall	.-1008   	; 0xb3a <BreakDown_Set_V_GS_mV>
+     f2a:	04 c0       	rjmp	.+8      	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
 				}
 			}
 			break;
 			
 		default:
 			TransmitStringLn("COMMAND ERR");
-     f28:	08 de       	rcall	.-1008   	; 0xb3a <BreakDown_Set_V_GS_mV>
-     f2a:	04 c0       	rjmp	.+8      	; 0xf34 <Terminal_SET_BreakDown+0x2e2>
      f2c:	84 e4       	ldi	r24, 0x44	; 68
      f2e:	92 e0       	ldi	r25, 0x02	; 2
+     f30:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
 			break;
 		
 	}
 }
-     f30:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
      f34:	0f 90       	pop	r0
      f36:	0f 90       	pop	r0
      f38:	df 91       	pop	r29
@@ -2804,11 +2805,11 @@ void Terminal_GET_BreakDown(char *myMessage)
     100c:	92 e0       	ldi	r25, 0x02	; 2
     100e:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
 		break;
+    1012:	04 c0       	rjmp	.+8      	; 0x101c <Terminal_GET_BreakDown+0xd6>
 												
 		//Default --> Fehler
 		default:
 			TransmitStringLn("COMMAND ERR");
-    1012:	04 c0       	rjmp	.+8      	; 0x101c <Terminal_GET_BreakDown+0xd6>
     1014:	84 e4       	ldi	r24, 0x44	; 68
     1016:	92 e0       	ldi	r25, 0x02	; 2
     1018:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
@@ -3418,37 +3419,37 @@ void Slot_Tester_Gesamtablauf(int slot_nr)
 {
     1336:	cf 93       	push	r28
     1338:	df 93       	push	r29
+    133a:	ec 01       	movw	r28, r24
 	//Nummer in 7 Segment schreiben (SPI In test)
 	Slot_Tester_set_7Segment(slot_nr);
+    133c:	ce de       	rcall	.-612    	; 0x10da <Slot_Tester_set_7Segment>
 	//Nummer in 7 Segment lesen (SPI Out test)
 	if(Slot_Tester_get_7Segment(slot_nr) == slot_nr)
-    133a:	ec 01       	movw	r28, r24
-    133c:	ce de       	rcall	.-612    	; 0x10da <Slot_Tester_set_7Segment>
     133e:	ce 01       	movw	r24, r28
     1340:	23 df       	rcall	.-442    	; 0x1188 <Slot_Tester_get_7Segment>
-	{
-		//Lauflicht starten
-		Slot_Tester_IO_Lauflicht(slot_nr);
     1342:	c8 17       	cp	r28, r24
     1344:	d9 07       	cpc	r29, r25
     1346:	11 f4       	brne	.+4      	; 0x134c <Slot_Tester_Gesamtablauf+0x16>
-	}
-	
-}
+	{
+		//Lauflicht starten
+		Slot_Tester_IO_Lauflicht(slot_nr);
     1348:	ce 01       	movw	r24, r28
     134a:	82 df       	rcall	.-252    	; 0x1250 <Slot_Tester_IO_Lauflicht>
     134c:	df 91       	pop	r29
+	}
+	
+}
     134e:	cf 91       	pop	r28
     1350:	08 95       	ret
 
 00001352 <DAC_AD5752_Range_and_PowerUp>:
+    1352:	ff 92       	push	r15
 // DAC Initialisieren
 // -------------------------------------------------------------
 
 
 void DAC_AD5752_Range_and_PowerUp(uint8_t range, uint8_t powerUP, volatile uint8_t *port, uint8_t pin)
 {
-    1352:	ff 92       	push	r15
     1354:	0f 93       	push	r16
     1356:	1f 93       	push	r17
     1358:	cf 93       	push	r28
@@ -4553,20 +4554,54 @@ void Measure_Voltage_MOSFET_without_DataAnalyse()
 
 void PulseStart_DPA_TTA_fromHPP()
 {
+	//Stop Timer 1
+	Stop_Timer_100us();
     1b28:	5d d0       	rcall	.+186    	; 0x1be4 <Stop_Timer_100us>
+	
+	// Set Flags
+	flag_DPA_TTA = 1;
     1b2a:	81 e0       	ldi	r24, 0x01	; 1
     1b2c:	80 93 29 04 	sts	0x0429, r24	; 0x800429 <flag_DPA_TTA>
+	flag_std_TTA = 0;
     1b30:	10 92 da 04 	sts	0x04DA, r1	; 0x8004da <flag_std_TTA>
+	flag_HPP_TTA = 0;
     1b34:	10 92 4c 05 	sts	0x054C, r1	; 0x80054c <flag_HPP_TTA>
+	
+	//Setup for det TTA
+	Setup_Counter_for_DPA_TTA();
+	
+	//Status LED for Pulses
+	set_bit(LED_Pulse);
     1b38:	41 d1       	rcall	.+642    	; 0x1dbc <Setup_Counter_for_DPA_TTA>
+	//Switch off all Heat pulses (don't switch off here)
+	//HP_Port = 0;
+	//MP_Port = 0;
+	
+	//Start Timer 1
+	Start_Timer_100us();
     1b3a:	a1 9a       	sbi	0x14, 1	; 20
     1b3c:	4d c0       	rjmp	.+154    	; 0x1bd8 <Start_Timer_100us>
     1b3e:	08 95       	ret
 
 00001b40 <PulseStart_PrePulse>:
+// -------------------------------------------------------------
+
+void PulseStart_PrePulse()
+{
+	//Stop all Pulses
+	PulseStop();
     1b40:	2d df       	rcall	.-422    	; 0x199c <PulseStop>
+
+	//Start Pulse
+	MP_Port = pulse_output_register;
     1b42:	80 91 4b 05 	lds	r24, 0x054B	; 0x80054b <pulse_output_register>
     1b46:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x700108>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
     1b4a:	2f ef       	ldi	r18, 0xFF	; 255
     1b4c:	89 ef       	ldi	r24, 0xF9	; 249
     1b4e:	90 e0       	ldi	r25, 0x00	; 0
@@ -4575,6 +4610,12 @@ void PulseStart_DPA_TTA_fromHPP()
     1b54:	90 40       	sbci	r25, 0x00	; 0
     1b56:	e1 f7       	brne	.-8      	; 0x1b50 <PulseStart_PrePulse+0x10>
     1b58:	00 c0       	rjmp	.+0      	; 0x1b5a <PulseStart_PrePulse+0x1a>
+	
+	//Wait
+	_delay_ms(20);
+	
+	//Stop all Pulses
+	PulseStop();
     1b5a:	00 00       	nop
     1b5c:	1f cf       	rjmp	.-450    	; 0x199c <PulseStop>
     1b5e:	08 95       	ret
@@ -4906,77 +4947,77 @@ ISR(TIMER5_OVF_vect)
     1e6e:	30 93 67 05 	sts	0x0567, r19	; 0x800567 <deterministic_pulse_counter+0x1>
     1e72:	20 93 66 05 	sts	0x0566, r18	; 0x800566 <deterministic_pulse_counter>
     1e76:	89 2b       	or	r24, r25
+    1e78:	c9 f5       	brne	.+114    	; 0x1eec <__vector_50+0xca>
 		{
 			//Stop Timer
 			Stop_Timer_100us();
+    1e7a:	b4 de       	rcall	.-664    	; 0x1be4 <Stop_Timer_100us>
 									
 			//Start standard TTA
 			PulseStart_stdTTA();
-    1e78:	c9 f5       	brne	.+114    	; 0x1eec <__vector_50+0xca>
-    1e7a:	b4 de       	rcall	.-664    	; 0x1be4 <Stop_Timer_100us>
     1e7c:	1f de       	rcall	.-962    	; 0x1abc <PulseStart_stdTTA>
+    1e7e:	36 c0       	rjmp	.+108    	; 0x1eec <__vector_50+0xca>
+    1e80:	80 91 da 04 	lds	r24, 0x04DA	; 0x8004da <flag_std_TTA>
 		}
 	}
 	//If standard TTA (change compare register for overflow)	
 	else if(flag_std_TTA)
-    1e7e:	36 c0       	rjmp	.+108    	; 0x1eec <__vector_50+0xca>
-    1e80:	80 91 da 04 	lds	r24, 0x04DA	; 0x8004da <flag_std_TTA>
     1e84:	88 23       	and	r24, r24
-	{
-		if (--heat_pulse_precount <= 0)
     1e86:	f9 f0       	breq	.+62     	; 0x1ec6 <__vector_50+0xa4>
     1e88:	80 91 68 05 	lds	r24, 0x0568	; 0x800568 <heat_pulse_precount>
+	{
+		if (--heat_pulse_precount <= 0)
     1e8c:	81 50       	subi	r24, 0x01	; 1
     1e8e:	80 93 68 05 	sts	0x0568, r24	; 0x800568 <heat_pulse_precount>
     1e92:	81 11       	cpse	r24, r1
-		{
-			OCR5A = heat_pulse_lastcount;
     1e94:	08 c0       	rjmp	.+16     	; 0x1ea6 <__vector_50+0x84>
     1e96:	80 91 69 05 	lds	r24, 0x0569	; 0x800569 <heat_pulse_lastcount>
+		{
+			OCR5A = heat_pulse_lastcount;
     1e9a:	90 91 6a 05 	lds	r25, 0x056A	; 0x80056a <heat_pulse_lastcount+0x1>
     1e9e:	90 93 29 01 	sts	0x0129, r25	; 0x800129 <__TEXT_REGION_LENGTH__+0x700129>
     1ea2:	80 93 28 01 	sts	0x0128, r24	; 0x800128 <__TEXT_REGION_LENGTH__+0x700128>
+    1ea6:	80 91 6b 05 	lds	r24, 0x056B	; 0x80056b <measure_pulse_precount>
 		}
 
 		if (--measure_pulse_precount <= 0)
-    1ea6:	80 91 6b 05 	lds	r24, 0x056B	; 0x80056b <measure_pulse_precount>
     1eaa:	81 50       	subi	r24, 0x01	; 1
     1eac:	80 93 6b 05 	sts	0x056B, r24	; 0x80056b <measure_pulse_precount>
     1eb0:	81 11       	cpse	r24, r1
-		{
-			OCR5B = measure_pulse_lastcount;
     1eb2:	1c c0       	rjmp	.+56     	; 0x1eec <__vector_50+0xca>
     1eb4:	80 91 6c 05 	lds	r24, 0x056C	; 0x80056c <measure_pulse_lastcount>
+		{
+			OCR5B = measure_pulse_lastcount;
     1eb8:	90 91 6d 05 	lds	r25, 0x056D	; 0x80056d <measure_pulse_lastcount+0x1>
     1ebc:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <__TEXT_REGION_LENGTH__+0x70012b>
     1ec0:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <__TEXT_REGION_LENGTH__+0x70012a>
+    1ec4:	13 c0       	rjmp	.+38     	; 0x1eec <__vector_50+0xca>
+    1ec6:	80 91 4c 05 	lds	r24, 0x054C	; 0x80054c <flag_HPP_TTA>
 		}
 	}
 	else if (flag_HPP_TTA)
-    1ec4:	13 c0       	rjmp	.+38     	; 0x1eec <__vector_50+0xca>
-    1ec6:	80 91 4c 05 	lds	r24, 0x054C	; 0x80054c <flag_HPP_TTA>
     1eca:	88 23       	and	r24, r24
-	{
-		if (--heat_pulse_precount <= 0)
     1ecc:	79 f0       	breq	.+30     	; 0x1eec <__vector_50+0xca>
     1ece:	80 91 68 05 	lds	r24, 0x0568	; 0x800568 <heat_pulse_precount>
+	{
+		if (--heat_pulse_precount <= 0)
     1ed2:	81 50       	subi	r24, 0x01	; 1
     1ed4:	80 93 68 05 	sts	0x0568, r24	; 0x800568 <heat_pulse_precount>
     1ed8:	81 11       	cpse	r24, r1
-		{
-			OCR5A = heat_pulse_lastcount;
     1eda:	08 c0       	rjmp	.+16     	; 0x1eec <__vector_50+0xca>
     1edc:	80 91 69 05 	lds	r24, 0x0569	; 0x800569 <heat_pulse_lastcount>
+		{
+			OCR5A = heat_pulse_lastcount;
     1ee0:	90 91 6a 05 	lds	r25, 0x056A	; 0x80056a <heat_pulse_lastcount+0x1>
     1ee4:	90 93 29 01 	sts	0x0129, r25	; 0x800129 <__TEXT_REGION_LENGTH__+0x700129>
     1ee8:	80 93 28 01 	sts	0x0128, r24	; 0x800128 <__TEXT_REGION_LENGTH__+0x700128>
+    1eec:	ff 91       	pop	r31
 	else
 	{
 	}
 	
 		
 }
-    1eec:	ff 91       	pop	r31
     1eee:	ef 91       	pop	r30
     1ef0:	bf 91       	pop	r27
     1ef2:	af 91       	pop	r26
@@ -4997,11 +5038,11 @@ ISR(TIMER5_OVF_vect)
     1f10:	18 95       	reti
 
 00001f12 <__vector_47>:
+    1f12:	1f 92       	push	r1
 
 //Interrupt: Compare A: Switch of Heat pulse
 ISR(TIMER5_COMPA_vect)
 {
-    1f12:	1f 92       	push	r1
     1f14:	0f 92       	push	r0
     1f16:	0f b6       	in	r0, 0x3f	; 63
     1f18:	0f 92       	push	r0
@@ -5024,15 +5065,15 @@ ISR(TIMER5_COMPA_vect)
 	if(flag_HPP_TTA)
     1f38:	80 91 4c 05 	lds	r24, 0x054C	; 0x80054c <flag_HPP_TTA>
     1f3c:	88 23       	and	r24, r24
+    1f3e:	11 f0       	breq	.+4      	; 0x1f44 <__vector_47+0x32>
 	{
 		PulseStart_DPA_TTA_fromHPP();
-    1f3e:	11 f0       	breq	.+4      	; 0x1f44 <__vector_47+0x32>
     1f40:	f3 dd       	rcall	.-1050   	; 0x1b28 <PulseStart_DPA_TTA_fromHPP>
+    1f42:	02 c0       	rjmp	.+4      	; 0x1f48 <__vector_47+0x36>
 	}
 	else
 	{
 		HP_Port = 0;	
-    1f42:	02 c0       	rjmp	.+4      	; 0x1f48 <__vector_47+0x36>
     1f44:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <__TEXT_REGION_LENGTH__+0x700102>
 	}
 	
@@ -5089,45 +5130,45 @@ ISR(TIMER5_COMPB_vect)
 	SREG |= _BV(SREG_I); 
     1f94:	8f b7       	in	r24, 0x3f	; 63
     1f96:	80 68       	ori	r24, 0x80	; 128
+    1f98:	8f bf       	out	0x3f, r24	; 63
 
 	//Timer 4  stopen-> Prescaler
 	Stop_Timer_100us();
+    1f9a:	24 de       	rcall	.-952    	; 0x1be4 <Stop_Timer_100us>
 	
 	//Daten der Heat-Puls Spannungsmessung abholen
 	heat_pulse_voltage = Measure_Voltage_MOSFET_get_Data();
-    1f98:	8f bf       	out	0x3f, r24	; 63
-    1f9a:	24 de       	rcall	.-952    	; 0x1be4 <Stop_Timer_100us>
     1f9c:	26 db       	rcall	.-2484   	; 0x15ea <Measure_Voltage_MOSFET_get_Data>
     1f9e:	60 93 01 04 	sts	0x0401, r22	; 0x800401 <heat_pulse_voltage>
     1fa2:	70 93 02 04 	sts	0x0402, r23	; 0x800402 <heat_pulse_voltage+0x1>
     1fa6:	80 93 03 04 	sts	0x0403, r24	; 0x800403 <heat_pulse_voltage+0x2>
+    1faa:	90 93 04 04 	sts	0x0404, r25	; 0x800404 <heat_pulse_voltage+0x3>
 	}
 	
 	//Measurment Puls Spannung messen und abholen
 	measure_pulse_voltage = Measure_Voltage_MOSFET_get_Data();
 	*/
 	measure_pulse_voltage = Measure_Voltage_MOSFET_with_DataAnalyse();
-    1faa:	90 93 04 04 	sts	0x0404, r25	; 0x800404 <heat_pulse_voltage+0x3>
     1fae:	c1 da       	rcall	.-2686   	; 0x1532 <Measure_Voltage_MOSFET_with_DataAnalyse>
     1fb0:	70 93 16 04 	sts	0x0416, r23	; 0x800416 <measure_pulse_voltage+0x1>
     1fb4:	60 93 15 04 	sts	0x0415, r22	; 0x800415 <measure_pulse_voltage>
+    1fb8:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <__TEXT_REGION_LENGTH__+0x700108>
 	
 	//Switch of STD_TTA
 	MP_Port = 0;
-    1fb8:	10 92 08 01 	sts	0x0108, r1	; 0x800108 <__TEXT_REGION_LENGTH__+0x700108>
+    1fbc:	8f ef       	ldi	r24, 0xFF	; 255
 		
 	//clear Compare Register
 	OCR5B = -1;
-    1fbc:	8f ef       	ldi	r24, 0xFF	; 255
     1fbe:	9f ef       	ldi	r25, 0xFF	; 255
     1fc0:	90 93 2b 01 	sts	0x012B, r25	; 0x80012b <__TEXT_REGION_LENGTH__+0x70012b>
     1fc4:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <__TEXT_REGION_LENGTH__+0x70012a>
+    1fc8:	a1 98       	cbi	0x14, 1	; 20
 						
 	//Status LED for Pulses
 	clear_bit(LED_Pulse);
-}
-    1fc8:	a1 98       	cbi	0x14, 1	; 20
     1fca:	ff 91       	pop	r31
+}
     1fcc:	ef 91       	pop	r30
     1fce:	bf 91       	pop	r27
     1fd0:	af 91       	pop	r26
@@ -5148,11 +5189,11 @@ ISR(TIMER5_COMPB_vect)
     1fee:	18 95       	reti
 
 00001ff0 <__vector_49>:
+    1ff0:	1f 92       	push	r1
 
 //Interrupt: Compare C: Voltage_Measurement ADC
 ISR(TIMER5_COMPC_vect)
 {
-    1ff0:	1f 92       	push	r1
     1ff2:	0f 92       	push	r0
     1ff4:	0f b6       	in	r0, 0x3f	; 63
     1ff6:	0f 92       	push	r0
@@ -5176,11 +5217,11 @@ ISR(TIMER5_COMPC_vect)
 	SREG |= _BV(SREG_I); 
     2016:	8f b7       	in	r24, 0x3f	; 63
     2018:	80 68       	ori	r24, 0x80	; 128
+    201a:	8f bf       	out	0x3f, r24	; 63
 
 	Measure_Voltage_MOSFET_without_DataAnalyse();	
-    201a:	8f bf       	out	0x3f, r24	; 63
-}
     201c:	c3 da       	rcall	.-2682   	; 0x15a4 <Measure_Voltage_MOSFET_without_DataAnalyse>
+}
     201e:	ff 91       	pop	r31
     2020:	ef 91       	pop	r30
     2022:	bf 91       	pop	r27
@@ -6598,239 +6639,235 @@ void TransmitStringLn(char *string)
 					{
 						current_source_enabled = 0;
     286a:	10 92 41 05 	sts	0x0541, r1	; 0x800541 <current_source_enabled>
+						PulseStop();
+    286e:	96 d8       	rcall	.-3796   	; 0x199c <PulseStop>
+						clear_bit(ENABLE);
+    2870:	72 98       	cbi	0x0e, 2	; 14
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    286e:	96 d8       	rcall	.-3796   	; 0x199c <PulseStop>
-    2870:	72 98       	cbi	0x0e, 2	; 14
     2872:	87 eb       	ldi	r24, 0xB7	; 183
     2874:	92 e0       	ldi	r25, 0x02	; 2
     2876:	ae d7       	rcall	.+3932   	; 0x37d4 <UART0TransmitStringLn>
     2878:	14 c6       	rjmp	.+3112   	; 0x34a2 <TerminalParseCommand+0xdc4>
     287a:	8e e0       	ldi	r24, 0x0E	; 14
     287c:	92 e0       	ldi	r25, 0x02	; 2
+    287e:	aa d7       	rcall	.+3924   	; 0x37d4 <UART0TransmitStringLn>
+    2880:	10 c6       	rjmp	.+3104   	; 0x34a2 <TerminalParseCommand+0xdc4>
 				//2. Start pulses******************************************************
 				#pragma region 2.PulseStarten
 				//2.1 Start Standard TTA			
 				case _MK16('P','S'):
 				
 					if (string[4] == '1' && string[5] == '\n')
-    287e:	aa d7       	rcall	.+3924   	; 0x37d4 <UART0TransmitStringLn>
-    2880:	10 c6       	rjmp	.+3104   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2882:	f8 01       	movw	r30, r16
     2884:	84 81       	ldd	r24, Z+4	; 0x04
     2886:	81 33       	cpi	r24, 0x31	; 49
-					{
-						PulseStart_stdTTA();
     2888:	41 f4       	brne	.+16     	; 0x289a <TerminalParseCommand+0x1bc>
     288a:	85 81       	ldd	r24, Z+5	; 0x05
+    288c:	8a 30       	cpi	r24, 0x0A	; 10
+					{
+						PulseStart_stdTTA();
+    288e:	79 f4       	brne	.+30     	; 0x28ae <TerminalParseCommand+0x1d0>
+    2890:	15 d9       	rcall	.-3542   	; 0x1abc <PulseStart_stdTTA>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    288c:	8a 30       	cpi	r24, 0x0A	; 10
-    288e:	79 f4       	brne	.+30     	; 0x28ae <TerminalParseCommand+0x1d0>
-    2890:	15 d9       	rcall	.-3542   	; 0x1abc <PulseStart_stdTTA>
     2892:	8d eb       	ldi	r24, 0xBD	; 189
+    2894:	92 e0       	ldi	r25, 0x02	; 2
+    2896:	9e d7       	rcall	.+3900   	; 0x37d4 <UART0TransmitStringLn>
+    2898:	04 c6       	rjmp	.+3080   	; 0x34a2 <TerminalParseCommand+0xdc4>
 					{
 						PulseStart_stdTTA();
 
 						TransmitStringLn("SPS=1");
 					}
 					else if (string[4] == '0' && string[5] == '\n')
-    2894:	92 e0       	ldi	r25, 0x02	; 2
-    2896:	9e d7       	rcall	.+3900   	; 0x37d4 <UART0TransmitStringLn>
-    2898:	04 c6       	rjmp	.+3080   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    289a:	80 33       	cpi	r24, 0x30	; 48
+    289c:	41 f4       	brne	.+16     	; 0x28ae <TerminalParseCommand+0x1d0>
+    289e:	85 81       	ldd	r24, Z+5	; 0x05
+    28a0:	8a 30       	cpi	r24, 0x0A	; 10
 					{
 						PulseStop();
-    289a:	80 33       	cpi	r24, 0x30	; 48
+    28a2:	29 f4       	brne	.+10     	; 0x28ae <TerminalParseCommand+0x1d0>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    289c:	41 f4       	brne	.+16     	; 0x28ae <TerminalParseCommand+0x1d0>
-    289e:	85 81       	ldd	r24, Z+5	; 0x05
-    28a0:	8a 30       	cpi	r24, 0x0A	; 10
-    28a2:	29 f4       	brne	.+10     	; 0x28ae <TerminalParseCommand+0x1d0>
     28a4:	7b d8       	rcall	.-3850   	; 0x199c <PulseStop>
     28a6:	83 ec       	ldi	r24, 0xC3	; 195
     28a8:	92 e0       	ldi	r25, 0x02	; 2
     28aa:	94 d7       	rcall	.+3880   	; 0x37d4 <UART0TransmitStringLn>
     28ac:	fa c5       	rjmp	.+3060   	; 0x34a2 <TerminalParseCommand+0xdc4>
     28ae:	8e e0       	ldi	r24, 0x0E	; 14
+    28b0:	92 e0       	ldi	r25, 0x02	; 2
+    28b2:	90 d7       	rcall	.+3872   	; 0x37d4 <UART0TransmitStringLn>
+    28b4:	f6 c5       	rjmp	.+3052   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    28b6:	f8 01       	movw	r30, r16
 					break;
 					
 				//2.2 Start Sensitivity
 				case _MK16('S','S'):
 					
 					if (string[4] == '1' && string[5] == '\n')
-    28b0:	92 e0       	ldi	r25, 0x02	; 2
-    28b2:	90 d7       	rcall	.+3872   	; 0x37d4 <UART0TransmitStringLn>
-    28b4:	f6 c5       	rjmp	.+3052   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    28b6:	f8 01       	movw	r30, r16
     28b8:	84 81       	ldd	r24, Z+4	; 0x04
+    28ba:	81 33       	cpi	r24, 0x31	; 49
+    28bc:	41 f4       	brne	.+16     	; 0x28ce <TerminalParseCommand+0x1f0>
+    28be:	85 81       	ldd	r24, Z+5	; 0x05
+    28c0:	8a 30       	cpi	r24, 0x0A	; 10
 					{
 						PulseStart_Sensitivity();
-    28ba:	81 33       	cpi	r24, 0x31	; 49
+    28c2:	79 f4       	brne	.+30     	; 0x28e2 <TerminalParseCommand+0x204>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    28bc:	41 f4       	brne	.+16     	; 0x28ce <TerminalParseCommand+0x1f0>
-    28be:	85 81       	ldd	r24, Z+5	; 0x05
-    28c0:	8a 30       	cpi	r24, 0x0A	; 10
-    28c2:	79 f4       	brne	.+30     	; 0x28e2 <TerminalParseCommand+0x204>
+    28c4:	1b d9       	rcall	.-3530   	; 0x1afc <PulseStart_Sensitivity>
+    28c6:	89 ec       	ldi	r24, 0xC9	; 201
+    28c8:	92 e0       	ldi	r25, 0x02	; 2
+    28ca:	84 d7       	rcall	.+3848   	; 0x37d4 <UART0TransmitStringLn>
 					{
 						PulseStart_Sensitivity();
 
 						TransmitStringLn("SSS=1");
 					}
 					else if (string[4] == '0' && string[5] == '\n')
-    28c4:	1b d9       	rcall	.-3530   	; 0x1afc <PulseStart_Sensitivity>
-    28c6:	89 ec       	ldi	r24, 0xC9	; 201
-    28c8:	92 e0       	ldi	r25, 0x02	; 2
-    28ca:	84 d7       	rcall	.+3848   	; 0x37d4 <UART0TransmitStringLn>
-					{
-						PulseStop();
     28cc:	ea c5       	rjmp	.+3028   	; 0x34a2 <TerminalParseCommand+0xdc4>
     28ce:	80 33       	cpi	r24, 0x30	; 48
+    28d0:	41 f4       	brne	.+16     	; 0x28e2 <TerminalParseCommand+0x204>
+    28d2:	85 81       	ldd	r24, Z+5	; 0x05
+					{
+						PulseStop();
+    28d4:	8a 30       	cpi	r24, 0x0A	; 10
+    28d6:	29 f4       	brne	.+10     	; 0x28e2 <TerminalParseCommand+0x204>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    28d0:	41 f4       	brne	.+16     	; 0x28e2 <TerminalParseCommand+0x204>
-    28d2:	85 81       	ldd	r24, Z+5	; 0x05
-    28d4:	8a 30       	cpi	r24, 0x0A	; 10
-    28d6:	29 f4       	brne	.+10     	; 0x28e2 <TerminalParseCommand+0x204>
     28d8:	61 d8       	rcall	.-3902   	; 0x199c <PulseStop>
     28da:	8f ec       	ldi	r24, 0xCF	; 207
     28dc:	92 e0       	ldi	r25, 0x02	; 2
     28de:	7a d7       	rcall	.+3828   	; 0x37d4 <UART0TransmitStringLn>
     28e0:	e0 c5       	rjmp	.+3008   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    28e2:	8e e0       	ldi	r24, 0x0E	; 14
+    28e4:	92 e0       	ldi	r25, 0x02	; 2
+    28e6:	76 d7       	rcall	.+3820   	; 0x37d4 <UART0TransmitStringLn>
+    28e8:	dc c5       	rjmp	.+3000   	; 0x34a2 <TerminalParseCommand+0xdc4>
 					break;
 					
 				//2.3 Start deterministic Pulse
 				case _MK16('D','S'):
 					
 					if (string[4] == '1' && string[5] == '\n')
-    28e2:	8e e0       	ldi	r24, 0x0E	; 14
-    28e4:	92 e0       	ldi	r25, 0x02	; 2
-    28e6:	76 d7       	rcall	.+3820   	; 0x37d4 <UART0TransmitStringLn>
-    28e8:	dc c5       	rjmp	.+3000   	; 0x34a2 <TerminalParseCommand+0xdc4>
     28ea:	f8 01       	movw	r30, r16
+    28ec:	84 81       	ldd	r24, Z+4	; 0x04
+    28ee:	81 33       	cpi	r24, 0x31	; 49
+    28f0:	41 f4       	brne	.+16     	; 0x2902 <TerminalParseCommand+0x224>
+    28f2:	85 81       	ldd	r24, Z+5	; 0x05
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    28ec:	84 81       	ldd	r24, Z+4	; 0x04
-    28ee:	81 33       	cpi	r24, 0x31	; 49
+    28f4:	8a 30       	cpi	r24, 0x0A	; 10
+    28f6:	79 f4       	brne	.+30     	; 0x2916 <TerminalParseCommand+0x238>
+    28f8:	85 ed       	ldi	r24, 0xD5	; 213
 				case _MK16('D','S'):
 					
 					if (string[4] == '1' && string[5] == '\n')
 					{
 						TransmitStringLn("SDS=1");
 						PulseStart_DPA_TTA();
-    28f0:	41 f4       	brne	.+16     	; 0x2902 <TerminalParseCommand+0x224>
-    28f2:	85 81       	ldd	r24, Z+5	; 0x05
-    28f4:	8a 30       	cpi	r24, 0x0A	; 10
-						//PulseStart_DPA_TTA_HighStart();
-					}
-					else if (string[4] == '0' && string[5] == '\n')
-    28f6:	79 f4       	brne	.+30     	; 0x2916 <TerminalParseCommand+0x238>
-    28f8:	85 ed       	ldi	r24, 0xD5	; 213
     28fa:	92 e0       	ldi	r25, 0x02	; 2
     28fc:	6b d7       	rcall	.+3798   	; 0x37d4 <UART0TransmitStringLn>
     28fe:	04 d9       	rcall	.-3576   	; 0x1b08 <PulseStart_DPA_TTA>
+						//PulseStart_DPA_TTA_HighStart();
+					}
+					else if (string[4] == '0' && string[5] == '\n')
+    2900:	d0 c5       	rjmp	.+2976   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2902:	80 33       	cpi	r24, 0x30	; 48
+    2904:	41 f4       	brne	.+16     	; 0x2916 <TerminalParseCommand+0x238>
+    2906:	85 81       	ldd	r24, Z+5	; 0x05
+    2908:	8a 30       	cpi	r24, 0x0A	; 10
 					{
 						PulseStop();
-    2900:	d0 c5       	rjmp	.+2976   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    290a:	29 f4       	brne	.+10     	; 0x2916 <TerminalParseCommand+0x238>
+    290c:	47 d8       	rcall	.-3954   	; 0x199c <PulseStop>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2902:	80 33       	cpi	r24, 0x30	; 48
-    2904:	41 f4       	brne	.+16     	; 0x2916 <TerminalParseCommand+0x238>
-    2906:	85 81       	ldd	r24, Z+5	; 0x05
-    2908:	8a 30       	cpi	r24, 0x0A	; 10
-    290a:	29 f4       	brne	.+10     	; 0x2916 <TerminalParseCommand+0x238>
-    290c:	47 d8       	rcall	.-3954   	; 0x199c <PulseStop>
     290e:	8b ed       	ldi	r24, 0xDB	; 219
     2910:	92 e0       	ldi	r25, 0x02	; 2
-					break;
-					
-				//2.4 Pre-pulse to get V(Sense, 25°C)
-				case _MK16('M','S'):
-									
-					if (string[4] == '1' && string[5] == '\n')
     2912:	60 d7       	rcall	.+3776   	; 0x37d4 <UART0TransmitStringLn>
     2914:	c6 c5       	rjmp	.+2956   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2916:	8e e0       	ldi	r24, 0x0E	; 14
     2918:	92 e0       	ldi	r25, 0x02	; 2
     291a:	5c d7       	rcall	.+3768   	; 0x37d4 <UART0TransmitStringLn>
     291c:	c2 c5       	rjmp	.+2948   	; 0x34a2 <TerminalParseCommand+0xdc4>
+					break;
+					
+				//2.4 Pre-pulse to get V(Sense, 25°C)
+				case _MK16('M','S'):
+									
+					if (string[4] == '1' && string[5] == '\n')
+    291e:	f8 01       	movw	r30, r16
+    2920:	84 81       	ldd	r24, Z+4	; 0x04
+    2922:	81 33       	cpi	r24, 0x31	; 49
+    2924:	41 f4       	brne	.+16     	; 0x2936 <TerminalParseCommand+0x258>
+    2926:	85 81       	ldd	r24, Z+5	; 0x05
+    2928:	8a 30       	cpi	r24, 0x0A	; 10
+    292a:	79 f4       	brne	.+30     	; 0x294a <TerminalParseCommand+0x26c>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    291e:	f8 01       	movw	r30, r16
-    2920:	84 81       	ldd	r24, Z+4	; 0x04
-    2922:	81 33       	cpi	r24, 0x31	; 49
+    292c:	81 ee       	ldi	r24, 0xE1	; 225
+    292e:	92 e0       	ldi	r25, 0x02	; 2
+    2930:	51 d7       	rcall	.+3746   	; 0x37d4 <UART0TransmitStringLn>
 									
 					if (string[4] == '1' && string[5] == '\n')
 					{
 						TransmitStringLn("SMS=1");
 							
 						PulseStart_PrePulse();
-    2924:	41 f4       	brne	.+16     	; 0x2936 <TerminalParseCommand+0x258>
-    2926:	85 81       	ldd	r24, Z+5	; 0x05
-    2928:	8a 30       	cpi	r24, 0x0A	; 10
-					}
-					else if (string[4] == '0' && string[5] == '\n')
-    292a:	79 f4       	brne	.+30     	; 0x294a <TerminalParseCommand+0x26c>
-    292c:	81 ee       	ldi	r24, 0xE1	; 225
-    292e:	92 e0       	ldi	r25, 0x02	; 2
-    2930:	51 d7       	rcall	.+3746   	; 0x37d4 <UART0TransmitStringLn>
-					{
-						PulseStop();
     2932:	06 d9       	rcall	.-3572   	; 0x1b40 <PulseStart_PrePulse>
     2934:	b6 c5       	rjmp	.+2924   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2936:	80 33       	cpi	r24, 0x30	; 48
+					}
+					else if (string[4] == '0' && string[5] == '\n')
+    2938:	41 f4       	brne	.+16     	; 0x294a <TerminalParseCommand+0x26c>
+    293a:	85 81       	ldd	r24, Z+5	; 0x05
+    293c:	8a 30       	cpi	r24, 0x0A	; 10
+    293e:	29 f4       	brne	.+10     	; 0x294a <TerminalParseCommand+0x26c>
+					{
+						PulseStop();
+    2940:	2d d8       	rcall	.-4006   	; 0x199c <PulseStop>
+    2942:	87 ee       	ldi	r24, 0xE7	; 231
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2936:	80 33       	cpi	r24, 0x30	; 48
-    2938:	41 f4       	brne	.+16     	; 0x294a <TerminalParseCommand+0x26c>
-    293a:	85 81       	ldd	r24, Z+5	; 0x05
-    293c:	8a 30       	cpi	r24, 0x0A	; 10
-    293e:	29 f4       	brne	.+10     	; 0x294a <TerminalParseCommand+0x26c>
-    2940:	2d d8       	rcall	.-4006   	; 0x199c <PulseStop>
-    2942:	87 ee       	ldi	r24, 0xE7	; 231
     2944:	92 e0       	ldi	r25, 0x02	; 2
-				//3. Puls settings*****************************************************
-				#pragma region 3.Puls-settings
-				//3.1 Set Heat Pulse Length
-				case _MK16('H','P'):
-			
-					if (!ParseLongLn(&string[4],6,&temp32))
     2946:	46 d7       	rcall	.+3724   	; 0x37d4 <UART0TransmitStringLn>
     2948:	ac c5       	rjmp	.+2904   	; 0x34a2 <TerminalParseCommand+0xdc4>
     294a:	8e e0       	ldi	r24, 0x0E	; 14
@@ -6839,32 +6876,38 @@ void TransmitStringLn(char *string)
     2950:	a8 c5       	rjmp	.+2896   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2952:	ae 01       	movw	r20, r28
     2954:	4c 5f       	subi	r20, 0xFC	; 252
+				//3. Puls settings*****************************************************
+				#pragma region 3.Puls-settings
+				//3.1 Set Heat Pulse Length
+				case _MK16('H','P'):
+			
+					if (!ParseLongLn(&string[4],6,&temp32))
     2956:	5f 4f       	sbci	r21, 0xFF	; 255
+    2958:	66 e0       	ldi	r22, 0x06	; 6
+    295a:	c8 01       	movw	r24, r16
+    295c:	04 96       	adiw	r24, 0x04	; 4
+    295e:	ec db       	rcall	.-2088   	; 0x2138 <ParseLongLn>
+    2960:	81 11       	cpse	r24, r1
+    2962:	04 c0       	rjmp	.+8      	; 0x296c <TerminalParseCommand+0x28e>
+    2964:	8e e0       	ldi	r24, 0x0E	; 14
+    2966:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2958:	66 e0       	ldi	r22, 0x06	; 6
-    295a:	c8 01       	movw	r24, r16
-    295c:	04 96       	adiw	r24, 0x04	; 4
-    295e:	ec db       	rcall	.-2088   	; 0x2138 <ParseLongLn>
-    2960:	81 11       	cpse	r24, r1
+    2968:	35 d7       	rcall	.+3690   	; 0x37d4 <UART0TransmitStringLn>
+    296a:	9b c5       	rjmp	.+2870   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    296c:	8c 81       	ldd	r24, Y+4	; 0x04
+    296e:	9d 81       	ldd	r25, Y+5	; 0x05
+    2970:	ae 81       	ldd	r26, Y+6	; 0x06
 					if (!ParseLongLn(&string[4],6,&temp32))
 					{
 						//no number
 						TransmitStringLn("FORMAT ERR");
 					}
 					else if ((temp32 > 120000 || temp32 < 25) && temp32 != 0)
-    2962:	04 c0       	rjmp	.+8      	; 0x296c <TerminalParseCommand+0x28e>
-    2964:	8e e0       	ldi	r24, 0x0E	; 14
-    2966:	92 e0       	ldi	r25, 0x02	; 2
-    2968:	35 d7       	rcall	.+3690   	; 0x37d4 <UART0TransmitStringLn>
-    296a:	9b c5       	rjmp	.+2870   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    296c:	8c 81       	ldd	r24, Y+4	; 0x04
-    296e:	9d 81       	ldd	r25, Y+5	; 0x05
-    2970:	ae 81       	ldd	r26, Y+6	; 0x06
     2972:	bf 81       	ldd	r27, Y+7	; 0x07
     2974:	ac 01       	movw	r20, r24
     2976:	bd 01       	movw	r22, r26
@@ -6874,106 +6917,106 @@ void TransmitStringLn(char *string)
     297e:	71 09       	sbc	r23, r1
     2980:	48 3a       	cpi	r20, 0xA8	; 168
     2982:	54 4d       	sbci	r21, 0xD4	; 212
+    2984:	61 40       	sbci	r22, 0x01	; 1
+    2986:	71 05       	cpc	r23, r1
+    2988:	40 f0       	brcs	.+16     	; 0x299a <TerminalParseCommand+0x2bc>
+    298a:	89 2b       	or	r24, r25
+    298c:	8a 2b       	or	r24, r26
+    298e:	8b 2b       	or	r24, r27
+    2990:	21 f0       	breq	.+8      	; 0x299a <TerminalParseCommand+0x2bc>
+    2992:	8d e1       	ldi	r24, 0x1D	; 29
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2984:	61 40       	sbci	r22, 0x01	; 1
-    2986:	71 05       	cpc	r23, r1
-    2988:	40 f0       	brcs	.+16     	; 0x299a <TerminalParseCommand+0x2bc>
-    298a:	89 2b       	or	r24, r25
+    2994:	92 e0       	ldi	r25, 0x02	; 2
+    2996:	1e d7       	rcall	.+3644   	; 0x37d4 <UART0TransmitStringLn>
+    2998:	84 c5       	rjmp	.+2824   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    299a:	8d ee       	ldi	r24, 0xED	; 237
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    298c:	8a 2b       	or	r24, r26
-    298e:	8b 2b       	or	r24, r27
-    2990:	21 f0       	breq	.+8      	; 0x299a <TerminalParseCommand+0x2bc>
+    299c:	92 e0       	ldi	r25, 0x02	; 2
+    299e:	09 d7       	rcall	.+3602   	; 0x37b2 <UART0TransmitString>
+    29a0:	6c 81       	ldd	r22, Y+4	; 0x04
 						TransmitStringLn("NUMBER ERR");
 					}
 					else
 					{
 						TransmitString("SHP=");
 						TransmitLong(temp32, 1);
-    2992:	8d e1       	ldi	r24, 0x1D	; 29
-    2994:	92 e0       	ldi	r25, 0x02	; 2
-    2996:	1e d7       	rcall	.+3644   	; 0x37d4 <UART0TransmitStringLn>
-    2998:	84 c5       	rjmp	.+2824   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    299a:	8d ee       	ldi	r24, 0xED	; 237
-    299c:	92 e0       	ldi	r25, 0x02	; 2
-    299e:	09 d7       	rcall	.+3602   	; 0x37b2 <UART0TransmitString>
+    29a2:	7d 81       	ldd	r23, Y+5	; 0x05
+    29a4:	8e 81       	ldd	r24, Y+6	; 0x06
+    29a6:	9f 81       	ldd	r25, Y+7	; 0x07
+    29a8:	41 e0       	ldi	r20, 0x01	; 1
+    29aa:	f0 dc       	rcall	.-1568   	; 0x238c <TransmitLong>
+    29ac:	82 ef       	ldi	r24, 0xF2	; 242
+    29ae:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    29a0:	6c 81       	ldd	r22, Y+4	; 0x04
-    29a2:	7d 81       	ldd	r23, Y+5	; 0x05
-    29a4:	8e 81       	ldd	r24, Y+6	; 0x06
-    29a6:	9f 81       	ldd	r25, Y+7	; 0x07
+    29b0:	11 d7       	rcall	.+3618   	; 0x37d4 <UART0TransmitStringLn>
+    29b2:	4c 81       	ldd	r20, Y+4	; 0x04
+    29b4:	5d 81       	ldd	r21, Y+5	; 0x05
+    29b6:	6e 81       	ldd	r22, Y+6	; 0x06
 					{
 						TransmitString("SHP=");
 						TransmitLong(temp32, 1);
 						TransmitStringLn(" ms");
 
 						heat_pulse_length = temp32;
-    29a8:	41 e0       	ldi	r20, 0x01	; 1
-    29aa:	f0 dc       	rcall	.-1568   	; 0x238c <TransmitLong>
-    29ac:	82 ef       	ldi	r24, 0xF2	; 242
-    29ae:	92 e0       	ldi	r25, 0x02	; 2
-    29b0:	11 d7       	rcall	.+3618   	; 0x37d4 <UART0TransmitStringLn>
-    29b2:	4c 81       	ldd	r20, Y+4	; 0x04
-    29b4:	5d 81       	ldd	r21, Y+5	; 0x05
-    29b6:	6e 81       	ldd	r22, Y+6	; 0x06
     29b8:	7f 81       	ldd	r23, Y+7	; 0x07
     29ba:	40 93 2b 04 	sts	0x042B, r20	; 0x80042b <heat_pulse_length>
-						eeprom_write_dword(&heat_pulse_length_eeprom,temp32);
     29be:	50 93 2c 04 	sts	0x042C, r21	; 0x80042c <heat_pulse_length+0x1>
     29c2:	60 93 2d 04 	sts	0x042D, r22	; 0x80042d <heat_pulse_length+0x2>
+    29c6:	70 93 2e 04 	sts	0x042E, r23	; 0x80042e <heat_pulse_length+0x3>
+    29ca:	89 e4       	ldi	r24, 0x49	; 73
+    29cc:	90 e0       	ldi	r25, 0x00	; 0
+						eeprom_write_dword(&heat_pulse_length_eeprom,temp32);
+    29ce:	0e 94 e3 1e 	call	0x3dc6	; 0x3dc6 <eeprom_write_dword>
+    29d2:	67 c5       	rjmp	.+2766   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    29d4:	ae 01       	movw	r20, r28
 					break;
 
 				//3.2 Set Measurement Pulse Length
 				case _MK16('M','P'):
 			
 					if (!ParseLongLn(&string[4],6,&temp32))
-    29c6:	70 93 2e 04 	sts	0x042E, r23	; 0x80042e <heat_pulse_length+0x3>
-    29ca:	89 e4       	ldi	r24, 0x49	; 73
-    29cc:	90 e0       	ldi	r25, 0x00	; 0
-    29ce:	0e 94 e3 1e 	call	0x3dc6	; 0x3dc6 <eeprom_write_dword>
-    29d2:	67 c5       	rjmp	.+2766   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    29d4:	ae 01       	movw	r20, r28
     29d6:	4c 5f       	subi	r20, 0xFC	; 252
     29d8:	5f 4f       	sbci	r21, 0xFF	; 255
+    29da:	66 e0       	ldi	r22, 0x06	; 6
+    29dc:	c8 01       	movw	r24, r16
+    29de:	04 96       	adiw	r24, 0x04	; 4
+    29e0:	ab db       	rcall	.-2218   	; 0x2138 <ParseLongLn>
+    29e2:	81 11       	cpse	r24, r1
+    29e4:	04 c0       	rjmp	.+8      	; 0x29ee <TerminalParseCommand+0x310>
+    29e6:	8e e0       	ldi	r24, 0x0E	; 14
+    29e8:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    29da:	66 e0       	ldi	r22, 0x06	; 6
-    29dc:	c8 01       	movw	r24, r16
-    29de:	04 96       	adiw	r24, 0x04	; 4
-    29e0:	ab db       	rcall	.-2218   	; 0x2138 <ParseLongLn>
-    29e2:	81 11       	cpse	r24, r1
+    29ea:	f4 d6       	rcall	.+3560   	; 0x37d4 <UART0TransmitStringLn>
+    29ec:	5a c5       	rjmp	.+2740   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    29ee:	8c 81       	ldd	r24, Y+4	; 0x04
+    29f0:	9d 81       	ldd	r25, Y+5	; 0x05
+    29f2:	ae 81       	ldd	r26, Y+6	; 0x06
 					if (!ParseLongLn(&string[4],6,&temp32))
 					{
 						//no number
 						TransmitStringLn("FORMAT ERR");
 					}
 					else if ((temp32 > 120000 || temp32 < 25) && temp32 != 0)
-    29e4:	04 c0       	rjmp	.+8      	; 0x29ee <TerminalParseCommand+0x310>
-    29e6:	8e e0       	ldi	r24, 0x0E	; 14
-    29e8:	92 e0       	ldi	r25, 0x02	; 2
-    29ea:	f4 d6       	rcall	.+3560   	; 0x37d4 <UART0TransmitStringLn>
-    29ec:	5a c5       	rjmp	.+2740   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    29ee:	8c 81       	ldd	r24, Y+4	; 0x04
-    29f0:	9d 81       	ldd	r25, Y+5	; 0x05
-    29f2:	ae 81       	ldd	r26, Y+6	; 0x06
     29f4:	bf 81       	ldd	r27, Y+7	; 0x07
     29f6:	ac 01       	movw	r20, r24
     29f8:	bd 01       	movw	r22, r26
@@ -6981,273 +7024,261 @@ void TransmitStringLn(char *string)
     29fc:	51 09       	sbc	r21, r1
     29fe:	61 09       	sbc	r22, r1
     2a00:	71 09       	sbc	r23, r1
+    2a02:	48 3a       	cpi	r20, 0xA8	; 168
+    2a04:	54 4d       	sbci	r21, 0xD4	; 212
+    2a06:	61 40       	sbci	r22, 0x01	; 1
+    2a08:	71 05       	cpc	r23, r1
+    2a0a:	40 f0       	brcs	.+16     	; 0x2a1c <TerminalParseCommand+0x33e>
+    2a0c:	89 2b       	or	r24, r25
+    2a0e:	8a 2b       	or	r24, r26
+    2a10:	8b 2b       	or	r24, r27
+    2a12:	21 f0       	breq	.+8      	; 0x2a1c <TerminalParseCommand+0x33e>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2a02:	48 3a       	cpi	r20, 0xA8	; 168
-    2a04:	54 4d       	sbci	r21, 0xD4	; 212
-    2a06:	61 40       	sbci	r22, 0x01	; 1
-    2a08:	71 05       	cpc	r23, r1
+    2a14:	8d e1       	ldi	r24, 0x1D	; 29
+    2a16:	92 e0       	ldi	r25, 0x02	; 2
+    2a18:	dd d6       	rcall	.+3514   	; 0x37d4 <UART0TransmitStringLn>
+    2a1a:	43 c5       	rjmp	.+2694   	; 0x34a2 <TerminalParseCommand+0xdc4>
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2a0a:	40 f0       	brcs	.+16     	; 0x2a1c <TerminalParseCommand+0x33e>
-    2a0c:	89 2b       	or	r24, r25
-    2a0e:	8a 2b       	or	r24, r26
-    2a10:	8b 2b       	or	r24, r27
+    2a1c:	86 ef       	ldi	r24, 0xF6	; 246
+    2a1e:	92 e0       	ldi	r25, 0x02	; 2
+    2a20:	c8 d6       	rcall	.+3472   	; 0x37b2 <UART0TransmitString>
+    2a22:	6c 81       	ldd	r22, Y+4	; 0x04
 						TransmitStringLn("NUMBER ERR");
 					}
 					else
 					{
 						TransmitString("SMP=");
 						TransmitLong(temp32, 1);
-    2a12:	21 f0       	breq	.+8      	; 0x2a1c <TerminalParseCommand+0x33e>
-    2a14:	8d e1       	ldi	r24, 0x1D	; 29
-    2a16:	92 e0       	ldi	r25, 0x02	; 2
-    2a18:	dd d6       	rcall	.+3514   	; 0x37d4 <UART0TransmitStringLn>
-    2a1a:	43 c5       	rjmp	.+2694   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2a1c:	86 ef       	ldi	r24, 0xF6	; 246
-    2a1e:	92 e0       	ldi	r25, 0x02	; 2
+    2a24:	7d 81       	ldd	r23, Y+5	; 0x05
+    2a26:	8e 81       	ldd	r24, Y+6	; 0x06
+    2a28:	9f 81       	ldd	r25, Y+7	; 0x07
+    2a2a:	41 e0       	ldi	r20, 0x01	; 1
+    2a2c:	af dc       	rcall	.-1698   	; 0x238c <TransmitLong>
+    2a2e:	82 ef       	ldi	r24, 0xF2	; 242
+    2a30:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2a20:	c8 d6       	rcall	.+3472   	; 0x37b2 <UART0TransmitString>
-    2a22:	6c 81       	ldd	r22, Y+4	; 0x04
-    2a24:	7d 81       	ldd	r23, Y+5	; 0x05
-    2a26:	8e 81       	ldd	r24, Y+6	; 0x06
+    2a32:	d0 d6       	rcall	.+3488   	; 0x37d4 <UART0TransmitStringLn>
+    2a34:	4c 81       	ldd	r20, Y+4	; 0x04
+    2a36:	5d 81       	ldd	r21, Y+5	; 0x05
+    2a38:	6e 81       	ldd	r22, Y+6	; 0x06
 					{
 						TransmitString("SMP=");
 						TransmitLong(temp32, 1);
 						TransmitStringLn(" ms");
 
 						measure_pulse_length = temp32;
-    2a28:	9f 81       	ldd	r25, Y+7	; 0x07
-    2a2a:	41 e0       	ldi	r20, 0x01	; 1
-    2a2c:	af dc       	rcall	.-1698   	; 0x238c <TransmitLong>
-    2a2e:	82 ef       	ldi	r24, 0xF2	; 242
-    2a30:	92 e0       	ldi	r25, 0x02	; 2
-    2a32:	d0 d6       	rcall	.+3488   	; 0x37d4 <UART0TransmitStringLn>
-    2a34:	4c 81       	ldd	r20, Y+4	; 0x04
-    2a36:	5d 81       	ldd	r21, Y+5	; 0x05
-    2a38:	6e 81       	ldd	r22, Y+6	; 0x06
     2a3a:	7f 81       	ldd	r23, Y+7	; 0x07
-						eeprom_write_dword(&measure_pulse_length_eeprom,temp32);
     2a3c:	40 93 2c 05 	sts	0x052C, r20	; 0x80052c <measure_pulse_length>
     2a40:	50 93 2d 05 	sts	0x052D, r21	; 0x80052d <measure_pulse_length+0x1>
     2a44:	60 93 2e 05 	sts	0x052E, r22	; 0x80052e <measure_pulse_length+0x2>
+    2a48:	70 93 2f 05 	sts	0x052F, r23	; 0x80052f <measure_pulse_length+0x3>
+    2a4c:	83 e4       	ldi	r24, 0x43	; 67
+						eeprom_write_dword(&measure_pulse_length_eeprom,temp32);
+    2a4e:	90 e0       	ldi	r25, 0x00	; 0
+    2a50:	0e 94 e3 1e 	call	0x3dc6	; 0x3dc6 <eeprom_write_dword>
+    2a54:	26 c5       	rjmp	.+2636   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2a56:	ae 01       	movw	r20, r28
 					break;
 					
 				//3.3 Set Number of deterministic pulses
 				case _MK16('N','D'):
 									
 					if (!ParseIntLn(&string[4],6,&temp16)) 
-    2a48:	70 93 2f 05 	sts	0x052F, r23	; 0x80052f <measure_pulse_length+0x3>
-    2a4c:	83 e4       	ldi	r24, 0x43	; 67
-    2a4e:	90 e0       	ldi	r25, 0x00	; 0
-    2a50:	0e 94 e3 1e 	call	0x3dc6	; 0x3dc6 <eeprom_write_dword>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2a54:	26 c5       	rjmp	.+2636   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2a56:	ae 01       	movw	r20, r28
     2a58:	4e 5f       	subi	r20, 0xFE	; 254
-					if (!ParseIntLn(&string[4],6,&temp16)) 
-					{
-						//no number
-						TransmitStringLn("FORMAT ERR");
-					}
-					else if ((temp16 > 1000 || temp16 < 1))
     2a5a:	5f 4f       	sbci	r21, 0xFF	; 255
     2a5c:	66 e0       	ldi	r22, 0x06	; 6
     2a5e:	c8 01       	movw	r24, r16
     2a60:	04 96       	adiw	r24, 0x04	; 4
     2a62:	f5 da       	rcall	.-2582   	; 0x204e <ParseIntLn>
     2a64:	81 11       	cpse	r24, r1
+    2a66:	04 c0       	rjmp	.+8      	; 0x2a70 <TerminalParseCommand+0x392>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2a66:	04 c0       	rjmp	.+8      	; 0x2a70 <TerminalParseCommand+0x392>
     2a68:	8e e0       	ldi	r24, 0x0E	; 14
     2a6a:	92 e0       	ldi	r25, 0x02	; 2
     2a6c:	b3 d6       	rcall	.+3430   	; 0x37d4 <UART0TransmitStringLn>
+					if (!ParseIntLn(&string[4],6,&temp16)) 
+					{
+						//no number
+						TransmitStringLn("FORMAT ERR");
+					}
+					else if ((temp16 > 1000 || temp16 < 1))
     2a6e:	19 c5       	rjmp	.+2610   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2a70:	8a 81       	ldd	r24, Y+2	; 0x02
+    2a72:	9b 81       	ldd	r25, Y+3	; 0x03
+    2a74:	01 97       	sbiw	r24, 0x01	; 1
+    2a76:	88 3e       	cpi	r24, 0xE8	; 232
+    2a78:	93 40       	sbci	r25, 0x03	; 3
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2a7a:	20 f0       	brcs	.+8      	; 0x2a84 <TerminalParseCommand+0x3a6>
+    2a7c:	8d e1       	ldi	r24, 0x1D	; 29
+    2a7e:	92 e0       	ldi	r25, 0x02	; 2
+    2a80:	a9 d6       	rcall	.+3410   	; 0x37d4 <UART0TransmitStringLn>
+    2a82:	0f c5       	rjmp	.+2590   	; 0x34a2 <TerminalParseCommand+0xdc4>
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2a70:	8a 81       	ldd	r24, Y+2	; 0x02
-    2a72:	9b 81       	ldd	r25, Y+3	; 0x03
-    2a74:	01 97       	sbiw	r24, 0x01	; 1
-    2a76:	88 3e       	cpi	r24, 0xE8	; 232
+    2a84:	8b ef       	ldi	r24, 0xFB	; 251
+    2a86:	92 e0       	ldi	r25, 0x02	; 2
+    2a88:	94 d6       	rcall	.+3368   	; 0x37b2 <UART0TransmitString>
+    2a8a:	61 e0       	ldi	r22, 0x01	; 1
 						TransmitStringLn("NUMBER ERR");
 					}
 					else
 					{
 						TransmitString("SND=");
 						TransmitInt(temp16, 1);
-    2a78:	93 40       	sbci	r25, 0x03	; 3
-    2a7a:	20 f0       	brcs	.+8      	; 0x2a84 <TerminalParseCommand+0x3a6>
-    2a7c:	8d e1       	ldi	r24, 0x1D	; 29
-    2a7e:	92 e0       	ldi	r25, 0x02	; 2
+    2a8c:	8a 81       	ldd	r24, Y+2	; 0x02
+    2a8e:	9b 81       	ldd	r25, Y+3	; 0x03
+    2a90:	17 dc       	rcall	.-2002   	; 0x22c0 <TransmitInt>
+    2a92:	80 e0       	ldi	r24, 0x00	; 0
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2a80:	a9 d6       	rcall	.+3410   	; 0x37d4 <UART0TransmitStringLn>
-    2a82:	0f c5       	rjmp	.+2590   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2a84:	8b ef       	ldi	r24, 0xFB	; 251
+    2a94:	93 e0       	ldi	r25, 0x03	; 3
+    2a96:	9e d6       	rcall	.+3388   	; 0x37d4 <UART0TransmitStringLn>
+    2a98:	6a 81       	ldd	r22, Y+2	; 0x02
 					{
 						TransmitString("SND=");
 						TransmitInt(temp16, 1);
 						TransmitStringLn(" pulses");
 
 						deterministic_pulse_cycles = temp16;
-    2a86:	92 e0       	ldi	r25, 0x02	; 2
-    2a88:	94 d6       	rcall	.+3368   	; 0x37b2 <UART0TransmitString>
-    2a8a:	61 e0       	ldi	r22, 0x01	; 1
-    2a8c:	8a 81       	ldd	r24, Y+2	; 0x02
-    2a8e:	9b 81       	ldd	r25, Y+3	; 0x03
-    2a90:	17 dc       	rcall	.-2002   	; 0x22c0 <TransmitInt>
+    2a9a:	7b 81       	ldd	r23, Y+3	; 0x03
+    2a9c:	70 93 30 04 	sts	0x0430, r23	; 0x800430 <deterministic_pulse_cycles+0x1>
+    2aa0:	60 93 2f 04 	sts	0x042F, r22	; 0x80042f <deterministic_pulse_cycles>
+    2aa4:	89 e3       	ldi	r24, 0x39	; 57
 						eeprom_write_word(&deterministic_pulse_cycles_eeprom,temp16);	
-    2a92:	80 e0       	ldi	r24, 0x00	; 0
-    2a94:	93 e0       	ldi	r25, 0x03	; 3
-    2a96:	9e d6       	rcall	.+3388   	; 0x37d4 <UART0TransmitStringLn>
+    2aa6:	90 e0       	ldi	r25, 0x00	; 0
+    2aa8:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
+    2aac:	fa c4       	rjmp	.+2548   	; 0x34a2 <TerminalParseCommand+0xdc4>
 					break;
 					
 				//3.4 Set Length of deterministic pulses
 				case _MK16('T','D'):
 									
 					if (!ParseIntLn(&string[4],6,&temp16))
-    2a98:	6a 81       	ldd	r22, Y+2	; 0x02
-    2a9a:	7b 81       	ldd	r23, Y+3	; 0x03
-    2a9c:	70 93 30 04 	sts	0x0430, r23	; 0x800430 <deterministic_pulse_cycles+0x1>
-    2aa0:	60 93 2f 04 	sts	0x042F, r22	; 0x80042f <deterministic_pulse_cycles>
-    2aa4:	89 e3       	ldi	r24, 0x39	; 57
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2aa6:	90 e0       	ldi	r25, 0x00	; 0
-    2aa8:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
-    2aac:	fa c4       	rjmp	.+2548   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2aae:	ae 01       	movw	r20, r28
-					if (!ParseIntLn(&string[4],6,&temp16))
-					{
-						//no number
-						TransmitStringLn("FORMAT ERR");
-					}
-					else if ((temp16 > 1000 || temp16 < 1))
     2ab0:	4e 5f       	subi	r20, 0xFE	; 254
     2ab2:	5f 4f       	sbci	r21, 0xFF	; 255
     2ab4:	66 e0       	ldi	r22, 0x06	; 6
     2ab6:	c8 01       	movw	r24, r16
     2ab8:	04 96       	adiw	r24, 0x04	; 4
     2aba:	c9 da       	rcall	.-2670   	; 0x204e <ParseIntLn>
+    2abc:	81 11       	cpse	r24, r1
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2abc:	81 11       	cpse	r24, r1
     2abe:	04 c0       	rjmp	.+8      	; 0x2ac8 <TerminalParseCommand+0x3ea>
     2ac0:	8e e0       	ldi	r24, 0x0E	; 14
     2ac2:	92 e0       	ldi	r25, 0x02	; 2
     2ac4:	87 d6       	rcall	.+3342   	; 0x37d4 <UART0TransmitStringLn>
+    2ac6:	ed c4       	rjmp	.+2522   	; 0x34a2 <TerminalParseCommand+0xdc4>
+					if (!ParseIntLn(&string[4],6,&temp16))
+					{
+						//no number
+						TransmitStringLn("FORMAT ERR");
+					}
+					else if ((temp16 > 1000 || temp16 < 1))
+    2ac8:	8a 81       	ldd	r24, Y+2	; 0x02
+    2aca:	9b 81       	ldd	r25, Y+3	; 0x03
+    2acc:	01 97       	sbiw	r24, 0x01	; 1
+    2ace:	88 3e       	cpi	r24, 0xE8	; 232
+    2ad0:	93 40       	sbci	r25, 0x03	; 3
+    2ad2:	20 f0       	brcs	.+8      	; 0x2adc <TerminalParseCommand+0x3fe>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2ad4:	8d e1       	ldi	r24, 0x1D	; 29
+    2ad6:	92 e0       	ldi	r25, 0x02	; 2
+    2ad8:	7d d6       	rcall	.+3322   	; 0x37d4 <UART0TransmitStringLn>
+    2ada:	e3 c4       	rjmp	.+2502   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2adc:	88 e0       	ldi	r24, 0x08	; 8
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2ac6:	ed c4       	rjmp	.+2522   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2ac8:	8a 81       	ldd	r24, Y+2	; 0x02
-    2aca:	9b 81       	ldd	r25, Y+3	; 0x03
-    2acc:	01 97       	sbiw	r24, 0x01	; 1
+    2ade:	93 e0       	ldi	r25, 0x03	; 3
+    2ae0:	68 d6       	rcall	.+3280   	; 0x37b2 <UART0TransmitString>
+    2ae2:	41 e0       	ldi	r20, 0x01	; 1
+    2ae4:	61 e0       	ldi	r22, 0x01	; 1
 						TransmitStringLn("NUMBER ERR");
 					}
 					else
 					{
 						TransmitString("STD=");
 						TransmitFloat(temp16, 1, 1);
-    2ace:	88 3e       	cpi	r24, 0xE8	; 232
-    2ad0:	93 40       	sbci	r25, 0x03	; 3
-    2ad2:	20 f0       	brcs	.+8      	; 0x2adc <TerminalParseCommand+0x3fe>
-    2ad4:	8d e1       	ldi	r24, 0x1D	; 29
-    2ad6:	92 e0       	ldi	r25, 0x02	; 2
+    2ae6:	8a 81       	ldd	r24, Y+2	; 0x02
+    2ae8:	9b 81       	ldd	r25, Y+3	; 0x03
+    2aea:	ba dc       	rcall	.-1676   	; 0x2460 <TransmitFloat>
+    2aec:	82 ef       	ldi	r24, 0xF2	; 242
+    2aee:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2ad8:	7d d6       	rcall	.+3322   	; 0x37d4 <UART0TransmitStringLn>
-    2ada:	e3 c4       	rjmp	.+2502   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2adc:	88 e0       	ldi	r24, 0x08	; 8
+    2af0:	71 d6       	rcall	.+3298   	; 0x37d4 <UART0TransmitStringLn>
+    2af2:	6a 81       	ldd	r22, Y+2	; 0x02
+    2af4:	7b 81       	ldd	r23, Y+3	; 0x03
 					{
 						TransmitString("STD=");
 						TransmitFloat(temp16, 1, 1);
 						TransmitStringLn(" ms");
 
 						deterministic_pulse_length = temp16;
-    2ade:	93 e0       	ldi	r25, 0x03	; 3
-    2ae0:	68 d6       	rcall	.+3280   	; 0x37b2 <UART0TransmitString>
-    2ae2:	41 e0       	ldi	r20, 0x01	; 1
-    2ae4:	61 e0       	ldi	r22, 0x01	; 1
-    2ae6:	8a 81       	ldd	r24, Y+2	; 0x02
+    2af6:	70 93 28 04 	sts	0x0428, r23	; 0x800428 <deterministic_pulse_length+0x1>
+    2afa:	60 93 27 04 	sts	0x0427, r22	; 0x800427 <deterministic_pulse_length>
+    2afe:	8b e3       	ldi	r24, 0x3B	; 59
 						eeprom_write_word(&deterministic_pulse_length_eeprom,temp16);
-    2ae8:	9b 81       	ldd	r25, Y+3	; 0x03
-    2aea:	ba dc       	rcall	.-1676   	; 0x2460 <TransmitFloat>
-    2aec:	82 ef       	ldi	r24, 0xF2	; 242
+    2b00:	90 e0       	ldi	r25, 0x00	; 0
+    2b02:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
 
 				//3.5 Set Pulse Register	
 				case _MK16('P','R'):
 				
 					//!!!Reihenfolge wird getauscht!!!
 					if(strlen(string) != 13)
-    2aee:	92 e0       	ldi	r25, 0x02	; 2
-    2af0:	71 d6       	rcall	.+3298   	; 0x37d4 <UART0TransmitStringLn>
-    2af2:	6a 81       	ldd	r22, Y+2	; 0x02
-    2af4:	7b 81       	ldd	r23, Y+3	; 0x03
-    2af6:	70 93 28 04 	sts	0x0428, r23	; 0x800428 <deterministic_pulse_length+0x1>
-    2afa:	60 93 27 04 	sts	0x0427, r22	; 0x800427 <deterministic_pulse_length>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2afe:	8b e3       	ldi	r24, 0x3B	; 59
-    2b00:	90 e0       	ldi	r25, 0x00	; 0
-    2b02:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
     2b06:	cd c4       	rjmp	.+2458   	; 0x34a2 <TerminalParseCommand+0xdc4>
-					if(strlen(string) != 13)
-					{
-						//Not 8 characters
-						TransmitStringLn("FORMAT ERR");
-					}	
-					else if (!ParseByte(&string[4], &temp8))
     2b08:	f8 01       	movw	r30, r16
     2b0a:	01 90       	ld	r0, Z+
     2b0c:	00 20       	and	r0, r0
@@ -7255,34 +7286,28 @@ void TransmitStringLn(char *string)
     2b10:	cf 01       	movw	r24, r30
     2b12:	0e 97       	sbiw	r24, 0x0e	; 14
     2b14:	80 17       	cp	r24, r16
-    2b16:	91 07       	cpc	r25, r17
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
+    2b16:	91 07       	cpc	r25, r17
     2b18:	21 f0       	breq	.+8      	; 0x2b22 <TerminalParseCommand+0x444>
     2b1a:	8e e0       	ldi	r24, 0x0E	; 14
     2b1c:	92 e0       	ldi	r25, 0x02	; 2
     2b1e:	5a d6       	rcall	.+3252   	; 0x37d4 <UART0TransmitStringLn>
+					if(strlen(string) != 13)
+					{
+						//Not 8 characters
+						TransmitStringLn("FORMAT ERR");
+					}	
+					else if (!ParseByte(&string[4], &temp8))
     2b20:	c0 c4       	rjmp	.+2432   	; 0x34a2 <TerminalParseCommand+0xdc4>
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
     2b22:	be 01       	movw	r22, r28
     2b24:	6f 5f       	subi	r22, 0xFF	; 255
     2b26:	7f 4f       	sbci	r23, 0xFF	; 255
     2b28:	c8 01       	movw	r24, r16
-						TransmitStringLn("FORMAT ERR");
-					}
-					else
-					{
-						TransmitString("SPR=");
-						TransmitByte_Reverse(temp8);
     2b2a:	04 96       	adiw	r24, 0x04	; 4
     2b2c:	a5 db       	rcall	.-2230   	; 0x2278 <ParseByte>
     2b2e:	81 11       	cpse	r24, r1
@@ -7296,157 +7321,169 @@ void TransmitStringLn(char *string)
     2b32:	8e e0       	ldi	r24, 0x0E	; 14
     2b34:	92 e0       	ldi	r25, 0x02	; 2
     2b36:	4e d6       	rcall	.+3228   	; 0x37d4 <UART0TransmitStringLn>
-					{
-						TransmitString("SPR=");
-						TransmitByte_Reverse(temp8);
-						TransmitStringLn("");
-
-						pulse_output_register = temp8;
     2b38:	b4 c4       	rjmp	.+2408   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2b3a:	8d e0       	ldi	r24, 0x0D	; 13
-    2b3c:	93 e0       	ldi	r25, 0x03	; 3
-						eeprom_write_byte(&pulse_output_register_eeprom,temp8);
-    2b3e:	39 d6       	rcall	.+3186   	; 0x37b2 <UART0TransmitString>
-    2b40:	89 81       	ldd	r24, Y+1	; 0x01
-    2b42:	94 dd       	rcall	.-1240   	; 0x266c <TransmitByte_Reverse>
-    2b44:	83 e7       	ldi	r24, 0x73	; 115
-    2b46:	93 e0       	ldi	r25, 0x03	; 3
-				
-				//4.0 Set Card types***************************************************
-				#pragma region 4.SlotSettings
-				case _MK16('C','T'):
-				
-					if(strlen(string) != 13)
-    2b48:	45 d6       	rcall	.+3210   	; 0x37d4 <UART0TransmitStringLn>
-    2b4a:	69 81       	ldd	r22, Y+1	; 0x01
-    2b4c:	60 93 4b 05 	sts	0x054B, r22	; 0x80054b <pulse_output_register>
-    2b50:	88 e3       	ldi	r24, 0x38	; 56
-    2b52:	90 e0       	ldi	r25, 0x00	; 0
-    2b54:	0e 94 d5 1e 	call	0x3daa	; 0x3daa <eeprom_write_byte>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2b58:	a4 c4       	rjmp	.+2376   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2b5a:	f8 01       	movw	r30, r16
-    2b5c:	01 90       	ld	r0, Z+
-					}					
-					else
-					{
-						//Save old setting temporary
-						char old_card_Type[8];
-						strcpy(old_card_Type, card_Type);
-    2b5e:	00 20       	and	r0, r0
-    2b60:	e9 f7       	brne	.-6      	; 0x2b5c <TerminalParseCommand+0x47e>
-    2b62:	cf 01       	movw	r24, r30
-    2b64:	0e 97       	sbiw	r24, 0x0e	; 14
-						
-						//Get the substring and write it to card_Type and EEPROM
-						memcpy(card_Type, &string[4], 8);
-    2b66:	80 17       	cp	r24, r16
-    2b68:	91 07       	cpc	r25, r17
-    2b6a:	21 f0       	breq	.+8      	; 0x2b74 <TerminalParseCommand+0x496>
-    2b6c:	8e e0       	ldi	r24, 0x0E	; 14
-    2b6e:	92 e0       	ldi	r25, 0x02	; 2
-    2b70:	31 d6       	rcall	.+3170   	; 0x37d4 <UART0TransmitStringLn>
-    2b72:	97 c4       	rjmp	.+2350   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2b74:	6e e4       	ldi	r22, 0x4E	; 78
-    2b76:	75 e0       	ldi	r23, 0x05	; 5
-						eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
-    2b78:	ce 01       	movw	r24, r28
-    2b7a:	08 96       	adiw	r24, 0x08	; 8
-    2b7c:	0e 94 41 1e 	call	0x3c82	; 0x3c82 <strcpy>
-    2b80:	88 e0       	ldi	r24, 0x08	; 8
-    2b82:	f8 01       	movw	r30, r16
-    2b84:	34 96       	adiw	r30, 0x04	; 4
-    2b86:	ae e4       	ldi	r26, 0x4E	; 78
-						
-						//If there were changes --> Card initialization
-						Init_All_Cards(card_Type, old_card_Type);
-    2b88:	b5 e0       	ldi	r27, 0x05	; 5
-    2b8a:	01 90       	ld	r0, Z+
-    2b8c:	0d 92       	st	X+, r0
-    2b8e:	8a 95       	dec	r24
-    2b90:	e1 f7       	brne	.-8      	; 0x2b8a <TerminalParseCommand+0x4ac>
-    2b92:	48 e0       	ldi	r20, 0x08	; 8
-    2b94:	50 e0       	ldi	r21, 0x00	; 0
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2b96:	60 e3       	ldi	r22, 0x30	; 48
-    2b98:	70 e0       	ldi	r23, 0x00	; 0
-    2b9a:	8e e4       	ldi	r24, 0x4E	; 78
-    2b9c:	95 e0       	ldi	r25, 0x05	; 5
-    2b9e:	0e 94 cc 1e 	call	0x3d98	; 0x3d98 <eeprom_write_block>
-    2ba2:	be 01       	movw	r22, r28
-    2ba4:	68 5f       	subi	r22, 0xF8	; 248
+    2b3a:	8d e0       	ldi	r24, 0x0D	; 13
+    2b3c:	93 e0       	ldi	r25, 0x03	; 3
+    2b3e:	39 d6       	rcall	.+3186   	; 0x37b2 <UART0TransmitString>
+    2b40:	89 81       	ldd	r24, Y+1	; 0x01
+						TransmitStringLn("FORMAT ERR");
+					}
+					else
+					{
+						TransmitString("SPR=");
+						TransmitByte_Reverse(temp8);
+    2b42:	94 dd       	rcall	.-1240   	; 0x266c <TransmitByte_Reverse>
+    2b44:	83 e7       	ldi	r24, 0x73	; 115
+    2b46:	93 e0       	ldi	r25, 0x03	; 3
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
+    2b48:	45 d6       	rcall	.+3210   	; 0x37d4 <UART0TransmitStringLn>
+    2b4a:	69 81       	ldd	r22, Y+1	; 0x01
+    2b4c:	60 93 4b 05 	sts	0x054B, r22	; 0x80054b <pulse_output_register>
+					{
+						TransmitString("SPR=");
+						TransmitByte_Reverse(temp8);
+						TransmitStringLn("");
+
+						pulse_output_register = temp8;
+    2b50:	88 e3       	ldi	r24, 0x38	; 56
+    2b52:	90 e0       	ldi	r25, 0x00	; 0
+    2b54:	0e 94 d5 1e 	call	0x3daa	; 0x3daa <eeprom_write_byte>
+						eeprom_write_byte(&pulse_output_register_eeprom,temp8);
+    2b58:	a4 c4       	rjmp	.+2376   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2b5a:	f8 01       	movw	r30, r16
+    2b5c:	01 90       	ld	r0, Z+
+    2b5e:	00 20       	and	r0, r0
+				
+				//4.0 Set Card types***************************************************
+				#pragma region 4.SlotSettings
+				case _MK16('C','T'):
+				
+					if(strlen(string) != 13)
+    2b60:	e9 f7       	brne	.-6      	; 0x2b5c <TerminalParseCommand+0x47e>
+    2b62:	cf 01       	movw	r24, r30
+    2b64:	0e 97       	sbiw	r24, 0x0e	; 14
+    2b66:	80 17       	cp	r24, r16
+    2b68:	91 07       	cpc	r25, r17
+    2b6a:	21 f0       	breq	.+8      	; 0x2b74 <TerminalParseCommand+0x496>
+    2b6c:	8e e0       	ldi	r24, 0x0E	; 14
+    2b6e:	92 e0       	ldi	r25, 0x02	; 2
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2b70:	31 d6       	rcall	.+3170   	; 0x37d4 <UART0TransmitStringLn>
+    2b72:	97 c4       	rjmp	.+2350   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2b74:	6e e4       	ldi	r22, 0x4E	; 78
+    2b76:	75 e0       	ldi	r23, 0x05	; 5
+					}					
+					else
+					{
+						//Save old setting temporary
+						char old_card_Type[8];
+						strcpy(old_card_Type, card_Type);
+    2b78:	ce 01       	movw	r24, r28
+    2b7a:	08 96       	adiw	r24, 0x08	; 8
+    2b7c:	0e 94 41 1e 	call	0x3c82	; 0x3c82 <strcpy>
+						
+						//Get the substring and write it to card_Type and EEPROM
+						memcpy(card_Type, &string[4], 8);
+    2b80:	88 e0       	ldi	r24, 0x08	; 8
+    2b82:	f8 01       	movw	r30, r16
+    2b84:	34 96       	adiw	r30, 0x04	; 4
+    2b86:	ae e4       	ldi	r26, 0x4E	; 78
+    2b88:	b5 e0       	ldi	r27, 0x05	; 5
+    2b8a:	01 90       	ld	r0, Z+
+    2b8c:	0d 92       	st	X+, r0
+    2b8e:	8a 95       	dec	r24
+    2b90:	e1 f7       	brne	.-8      	; 0x2b8a <TerminalParseCommand+0x4ac>
+						eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
+    2b92:	48 e0       	ldi	r20, 0x08	; 8
+    2b94:	50 e0       	ldi	r21, 0x00	; 0
+    2b96:	60 e3       	ldi	r22, 0x30	; 48
+    2b98:	70 e0       	ldi	r23, 0x00	; 0
+    2b9a:	8e e4       	ldi	r24, 0x4E	; 78
+    2b9c:	95 e0       	ldi	r25, 0x05	; 5
+    2b9e:	0e 94 cc 1e 	call	0x3d98	; 0x3d98 <eeprom_write_block>
+						
+						//If there were changes --> Card initialization
+						Init_All_Cards(card_Type, old_card_Type);
+    2ba2:	be 01       	movw	r22, r28
+    2ba4:	68 5f       	subi	r22, 0xF8	; 248
     2ba6:	7f 4f       	sbci	r23, 0xFF	; 255
     2ba8:	8e e4       	ldi	r24, 0x4E	; 78
     2baa:	95 e0       	ldi	r25, 0x05	; 5
     2bac:	0e 94 92 0c 	call	0x1924	; 0x1924 <Init_All_Cards>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     2bb0:	82 e1       	ldi	r24, 0x12	; 18
     2bb2:	93 e0       	ldi	r25, 0x03	; 3
     2bb4:	fe d5       	rcall	.+3068   	; 0x37b2 <UART0TransmitString>
     2bb6:	8e e4       	ldi	r24, 0x4E	; 78
     2bb8:	95 e0       	ldi	r25, 0x05	; 5
+    2bba:	fb d5       	rcall	.+3062   	; 0x37b2 <UART0TransmitString>
+    2bbc:	83 e7       	ldi	r24, 0x73	; 115
+    2bbe:	93 e0       	ldi	r25, 0x03	; 3
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2bc0:	09 d6       	rcall	.+3090   	; 0x37d4 <UART0TransmitStringLn>
+    2bc2:	6f c4       	rjmp	.+2270   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2bc4:	84 e4       	ldi	r24, 0x44	; 68
+    2bc6:	92 e0       	ldi	r25, 0x02	; 2
+    2bc8:	05 d6       	rcall	.+3082   	; 0x37d4 <UART0TransmitStringLn>
+    2bca:	6b c4       	rjmp	.+2262   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2bcc:	0f 2e       	mov	r0, r31
+    2bce:	f0 ed       	ldi	r31, 0xD0	; 208
+    2bd0:	df 2e       	mov	r13, r31
+    2bd2:	f0 2d       	mov	r31, r0
 	#pragma region Set
 
 	else if (string[0] == 'S')
 	{
 		//Must executed here, later no chance, before not safe
 		slotNr = string[3] - '0';
-    2bba:	fb d5       	rcall	.+3062   	; 0x37b2 <UART0TransmitString>
-    2bbc:	83 e7       	ldi	r24, 0x73	; 115
-    2bbe:	93 e0       	ldi	r25, 0x03	; 3
-    2bc0:	09 d6       	rcall	.+3090   	; 0x37d4 <UART0TransmitStringLn>
-    2bc2:	6f c4       	rjmp	.+2270   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2bd4:	d8 0e       	add	r13, r24
+    2bd6:	87 e0       	ldi	r24, 0x07	; 7
+    2bd8:	8d 15       	cp	r24, r13
+    2bda:	08 f4       	brcc	.+2      	; 0x2bde <TerminalParseCommand+0x500>
+    2bdc:	90 c2       	rjmp	.+1312   	; 0x30fe <TerminalParseCommand+0xa20>
 		//Set-Commands, that apply ONE 19''-Cards (Definition: Number @ 3 character)
 		//*****************************************************************************
 		
 		#pragma region Special_Set_Commands
 						
 		else if (slotNr >= 0 && slotNr < 8){
-    2bc4:	84 e4       	ldi	r24, 0x44	; 68
-    2bc6:	92 e0       	ldi	r25, 0x02	; 2
-    2bc8:	05 d6       	rcall	.+3082   	; 0x37d4 <UART0TransmitStringLn>
-    2bca:	6b c4       	rjmp	.+2262   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2bde:	d8 01       	movw	r26, r16
+    2be0:	14 96       	adiw	r26, 0x04	; 4
+    2be2:	ec 91       	ld	r30, X
+    2be4:	8e 2f       	mov	r24, r30
 			
 			//*****************************************************************************
 			//Differentiation between card-Types
 			//*****************************************************************************
 			
 			switch(string[4]){
-    2bcc:	0f 2e       	mov	r0, r31
-    2bce:	f0 ed       	ldi	r31, 0xD0	; 208
-    2bd0:	df 2e       	mov	r13, r31
-    2bd2:	f0 2d       	mov	r31, r0
-    2bd4:	d8 0e       	add	r13, r24
-    2bd6:	87 e0       	ldi	r24, 0x07	; 7
-    2bd8:	8d 15       	cp	r24, r13
-    2bda:	08 f4       	brcc	.+2      	; 0x2bde <TerminalParseCommand+0x500>
-    2bdc:	90 c2       	rjmp	.+1312   	; 0x30fe <TerminalParseCommand+0xa20>
-    2bde:	d8 01       	movw	r26, r16
-    2be0:	14 96       	adiw	r26, 0x04	; 4
-    2be2:	ec 91       	ld	r30, X
-    2be4:	8e 2f       	mov	r24, r30
     2be6:	90 e0       	ldi	r25, 0x00	; 0
-				
-				//1. LED-Heat-Meas current Source
-				#pragma region SettingsLED-Source
-				
-				case 'L':					
-					switch(cmd){
     2be8:	fc 01       	movw	r30, r24
     2bea:	e1 54       	subi	r30, 0x41	; 65
     2bec:	f1 09       	sbc	r31, r1
@@ -7460,193 +7497,195 @@ void TransmitStringLn(char *string)
     2bfc:	8f 4f       	sbci	r24, 0xFF	; 255
     2bfe:	0c 94 0f 1e 	jmp	0x3c1e	; 0x3c1e <__tablejump2__>
     2c02:	bd e4       	ldi	r27, 0x4D	; 77
+				
+				//1. LED-Heat-Meas current Source
+				#pragma region SettingsLED-Source
+				
+				case 'L':					
+					switch(cmd){
     2c04:	eb 16       	cp	r14, r27
     2c06:	b3 e4       	ldi	r27, 0x43	; 67
-							
-						//1. Initialization
-						case _MK16('I','N'):
-							if (string[5] != '\n')
     2c08:	fb 06       	cpc	r15, r27
     2c0a:	09 f4       	brne	.+2      	; 0x2c0e <TerminalParseCommand+0x530>
     2c0c:	70 c0       	rjmp	.+224    	; 0x2cee <TerminalParseCommand+0x610>
     2c0e:	e9 e4       	ldi	r30, 0x49	; 73
+    2c10:	ee 16       	cp	r14, r30
+    2c12:	ee e4       	ldi	r30, 0x4E	; 78
+    2c14:	fe 06       	cpc	r15, r30
+    2c16:	39 f0       	breq	.+14     	; 0x2c26 <TerminalParseCommand+0x548>
+    2c18:	f8 e4       	ldi	r31, 0x48	; 72
+    2c1a:	ef 16       	cp	r14, r31
+    2c1c:	f3 e4       	ldi	r31, 0x43	; 67
+    2c1e:	ff 06       	cpc	r15, r31
+    2c20:	09 f0       	breq	.+2      	; 0x2c24 <TerminalParseCommand+0x546>
+    2c22:	b2 c0       	rjmp	.+356    	; 0x2d88 <TerminalParseCommand+0x6aa>
+							
+						//1. Initialization
+						case _MK16('I','N'):
+							if (string[5] != '\n')
+    2c24:	19 c0       	rjmp	.+50     	; 0x2c58 <TerminalParseCommand+0x57a>
+    2c26:	d8 01       	movw	r26, r16
+    2c28:	15 96       	adiw	r26, 0x05	; 5
+    2c2a:	8c 91       	ld	r24, X
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2c10:	ee 16       	cp	r14, r30
-    2c12:	ee e4       	ldi	r30, 0x4E	; 78
-    2c14:	fe 06       	cpc	r15, r30
-    2c16:	39 f0       	breq	.+14     	; 0x2c26 <TerminalParseCommand+0x548>
+    2c2c:	8a 30       	cpi	r24, 0x0A	; 10
+    2c2e:	21 f0       	breq	.+8      	; 0x2c38 <TerminalParseCommand+0x55a>
+    2c30:	8e e0       	ldi	r24, 0x0E	; 14
+    2c32:	92 e0       	ldi	r25, 0x02	; 2
 								//to many signs
 								TransmitStringLn("FORMAT ERR");
 							}
 							else
 							{
 								LED_Source_Init(slotNr);
-    2c18:	f8 e4       	ldi	r31, 0x48	; 72
-    2c1a:	ef 16       	cp	r14, r31
-    2c1c:	f3 e4       	ldi	r31, 0x43	; 67
-    2c1e:	ff 06       	cpc	r15, r31
+    2c34:	cf d5       	rcall	.+2974   	; 0x37d4 <UART0TransmitStringLn>
+    2c36:	35 c4       	rjmp	.+2154   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2c38:	0d 2d       	mov	r16, r13
+    2c3a:	dd 0c       	add	r13, r13
+    2c3c:	11 0b       	sbc	r17, r17
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2c20:	09 f0       	breq	.+2      	; 0x2c24 <TerminalParseCommand+0x546>
-    2c22:	b2 c0       	rjmp	.+356    	; 0x2d88 <TerminalParseCommand+0x6aa>
+    2c3e:	c8 01       	movw	r24, r16
+    2c40:	0e 94 b6 04 	call	0x96c	; 0x96c <LED_Source_Init>
 							{
 								LED_Source_Init(slotNr);
 												
 								//Answer
 								TransmitString("SIN");
 								TransmitInt(slotNr, 1);
-    2c24:	19 c0       	rjmp	.+50     	; 0x2c58 <TerminalParseCommand+0x57a>
-    2c26:	d8 01       	movw	r26, r16
+    2c44:	89 e1       	ldi	r24, 0x19	; 25
+    2c46:	92 e0       	ldi	r25, 0x02	; 2
+    2c48:	b4 d5       	rcall	.+2920   	; 0x37b2 <UART0TransmitString>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2c28:	15 96       	adiw	r26, 0x05	; 5
-    2c2a:	8c 91       	ld	r24, X
-    2c2c:	8a 30       	cpi	r24, 0x0A	; 10
-    2c2e:	21 f0       	breq	.+8      	; 0x2c38 <TerminalParseCommand+0x55a>
-    2c30:	8e e0       	ldi	r24, 0x0E	; 14
+    2c4a:	61 e0       	ldi	r22, 0x01	; 1
+    2c4c:	c8 01       	movw	r24, r16
+    2c4e:	38 db       	rcall	.-2448   	; 0x22c0 <TransmitInt>
+    2c50:	82 e7       	ldi	r24, 0x72	; 114
+    2c52:	92 e0       	ldi	r25, 0x02	; 2
 							
 							
 						//2. Set Heat Current	
 						case _MK16('H','C'):
 								
 							if (!ParseIntLn(&string[6],4,&temp16))
-    2c32:	92 e0       	ldi	r25, 0x02	; 2
-    2c34:	cf d5       	rcall	.+2974   	; 0x37d4 <UART0TransmitStringLn>
-    2c36:	35 c4       	rjmp	.+2154   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2c38:	0d 2d       	mov	r16, r13
-    2c3a:	dd 0c       	add	r13, r13
-    2c3c:	11 0b       	sbc	r17, r17
-    2c3e:	c8 01       	movw	r24, r16
-    2c40:	0e 94 b6 04 	call	0x96c	; 0x96c <LED_Source_Init>
-    2c44:	89 e1       	ldi	r24, 0x19	; 25
+    2c54:	bf d5       	rcall	.+2942   	; 0x37d4 <UART0TransmitStringLn>
+    2c56:	25 c4       	rjmp	.+2122   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2c58:	ae 01       	movw	r20, r28
+    2c5a:	4e 5f       	subi	r20, 0xFE	; 254
+    2c5c:	5f 4f       	sbci	r21, 0xFF	; 255
+    2c5e:	64 e0       	ldi	r22, 0x04	; 4
+    2c60:	c8 01       	movw	r24, r16
+    2c62:	06 96       	adiw	r24, 0x06	; 6
+    2c64:	f4 d9       	rcall	.-3096   	; 0x204e <ParseIntLn>
+    2c66:	81 11       	cpse	r24, r1
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2c46:	92 e0       	ldi	r25, 0x02	; 2
-    2c48:	b4 d5       	rcall	.+2920   	; 0x37b2 <UART0TransmitString>
-    2c4a:	61 e0       	ldi	r22, 0x01	; 1
-    2c4c:	c8 01       	movw	r24, r16
-    2c4e:	38 db       	rcall	.-2448   	; 0x22c0 <TransmitInt>
+    2c68:	04 c0       	rjmp	.+8      	; 0x2c72 <TerminalParseCommand+0x594>
+    2c6a:	8e e0       	ldi	r24, 0x0E	; 14
+    2c6c:	92 e0       	ldi	r25, 0x02	; 2
+    2c6e:	b2 d5       	rcall	.+2916   	; 0x37d4 <UART0TransmitStringLn>
+    2c70:	18 c4       	rjmp	.+2096   	; 0x34a2 <TerminalParseCommand+0xdc4>
 							if (!ParseIntLn(&string[6],4,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 1500 || temp16 < 0)
-    2c50:	82 e7       	ldi	r24, 0x72	; 114
-    2c52:	92 e0       	ldi	r25, 0x02	; 2
-    2c54:	bf d5       	rcall	.+2942   	; 0x37d4 <UART0TransmitStringLn>
-    2c56:	25 c4       	rjmp	.+2122   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2c58:	ae 01       	movw	r20, r28
+    2c72:	8a 81       	ldd	r24, Y+2	; 0x02
+    2c74:	9b 81       	ldd	r25, Y+3	; 0x03
+    2c76:	8d 3d       	cpi	r24, 0xDD	; 221
+    2c78:	95 40       	sbci	r25, 0x05	; 5
+    2c7a:	20 f0       	brcs	.+8      	; 0x2c84 <TerminalParseCommand+0x5a6>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2c5a:	4e 5f       	subi	r20, 0xFE	; 254
-    2c5c:	5f 4f       	sbci	r21, 0xFF	; 255
-    2c5e:	64 e0       	ldi	r22, 0x04	; 4
-    2c60:	c8 01       	movw	r24, r16
-    2c62:	06 96       	adiw	r24, 0x06	; 6
+    2c7c:	8d e1       	ldi	r24, 0x1D	; 29
+    2c7e:	92 e0       	ldi	r25, 0x02	; 2
+    2c80:	a9 d5       	rcall	.+2898   	; 0x37d4 <UART0TransmitStringLn>
+    2c82:	0f c4       	rjmp	.+2078   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2c84:	87 e1       	ldi	r24, 0x17	; 23
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2c64:	f4 d9       	rcall	.-3096   	; 0x204e <ParseIntLn>
-    2c66:	81 11       	cpse	r24, r1
-    2c68:	04 c0       	rjmp	.+8      	; 0x2c72 <TerminalParseCommand+0x594>
-    2c6a:	8e e0       	ldi	r24, 0x0E	; 14
+    2c86:	93 e0       	ldi	r25, 0x03	; 3
+    2c88:	94 d5       	rcall	.+2856   	; 0x37b2 <UART0TransmitString>
+    2c8a:	0d 2d       	mov	r16, r13
+    2c8c:	dd 0c       	add	r13, r13
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SHC");
 								TransmitInt(slotNr, 1);
-    2c6c:	92 e0       	ldi	r25, 0x02	; 2
-    2c6e:	b2 d5       	rcall	.+2916   	; 0x37d4 <UART0TransmitStringLn>
-    2c70:	18 c4       	rjmp	.+2096   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2c72:	8a 81       	ldd	r24, Y+2	; 0x02
-    2c74:	9b 81       	ldd	r25, Y+3	; 0x03
-    2c76:	8d 3d       	cpi	r24, 0xDD	; 221
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
-    2c78:	95 40       	sbci	r25, 0x05	; 5
-    2c7a:	20 f0       	brcs	.+8      	; 0x2c84 <TerminalParseCommand+0x5a6>
-    2c7c:	8d e1       	ldi	r24, 0x1D	; 29
-							else
-							{
-								TransmitString("SHC");
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitInt(temp16, 1);
-    2c7e:	92 e0       	ldi	r25, 0x02	; 2
-    2c80:	a9 d5       	rcall	.+2898   	; 0x37d4 <UART0TransmitStringLn>
-    2c82:	0f c4       	rjmp	.+2078   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2c84:	87 e1       	ldi	r24, 0x17	; 23
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2c86:	93 e0       	ldi	r25, 0x03	; 3
-    2c88:	94 d5       	rcall	.+2856   	; 0x37b2 <UART0TransmitString>
-    2c8a:	0d 2d       	mov	r16, r13
-    2c8c:	dd 0c       	add	r13, r13
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitInt(temp16, 1);
-								TransmitStringLn(" mA");
-
-								if (led_Source_Heat_Current_mA[slotNr-1] != temp16)
     2c8e:	11 0b       	sbc	r17, r17
     2c90:	61 e0       	ldi	r22, 0x01	; 1
     2c92:	c8 01       	movw	r24, r16
     2c94:	15 db       	rcall	.-2518   	; 0x22c0 <TransmitInt>
     2c96:	8b e1       	ldi	r24, 0x1B	; 27
     2c98:	93 e0       	ldi	r25, 0x03	; 3
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     2c9a:	8b d5       	rcall	.+2838   	; 0x37b2 <UART0TransmitString>
     2c9c:	61 e0       	ldi	r22, 0x01	; 1
     2c9e:	8a 81       	ldd	r24, Y+2	; 0x02
     2ca0:	9b 81       	ldd	r25, Y+3	; 0x03
+							else
+							{
+								TransmitString("SHC");
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
+								TransmitInt(temp16, 1);
     2ca2:	0e db       	rcall	.-2532   	; 0x22c0 <TransmitInt>
-								{
-									led_Source_Heat_Current_mA[slotNr-1] = temp16;
     2ca4:	8f e8       	ldi	r24, 0x8F	; 143
     2ca6:	92 e0       	ldi	r25, 0x02	; 2
     2ca8:	95 d5       	rcall	.+2858   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     2caa:	c8 01       	movw	r24, r16
     2cac:	01 97       	sbiw	r24, 0x01	; 1
     2cae:	6a 81       	ldd	r22, Y+2	; 0x02
-									eeprom_write_word(&parameter1_eeprom[slotNr-1], temp16);
     2cb0:	7b 81       	ldd	r23, Y+3	; 0x03
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
+								TransmitInt(temp16, 1);
+								TransmitStringLn(" mA");
+
+								if (led_Source_Heat_Current_mA[slotNr-1] != temp16)
     2cb2:	fc 01       	movw	r30, r24
     2cb4:	ee 0f       	add	r30, r30
     2cb6:	ff 1f       	adc	r31, r31
-									LED_Source_Set_Heat_Current(led_Source_Heat_Current_mA[slotNr-1], slotNr);
     2cb8:	eb 54       	subi	r30, 0x4B	; 75
     2cba:	fb 4f       	sbci	r31, 0xFB	; 251
     2cbc:	20 81       	ld	r18, Z
@@ -7654,14 +7693,10 @@ void TransmitStringLn(char *string)
     2cc0:	26 17       	cp	r18, r22
     2cc2:	37 07       	cpc	r19, r23
     2cc4:	09 f4       	brne	.+2      	; 0x2cc8 <TerminalParseCommand+0x5ea>
-							break;
-	
-						//3. Set Meas Current
-						case _MK16('M','C'):
-						
-							if (!ParseIntLn(&string[6],3,&temp16))
     2cc6:	ed c3       	rjmp	.+2010   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2cc8:	88 0f       	add	r24, r24
+								{
+									led_Source_Heat_Current_mA[slotNr-1] = temp16;
     2cca:	99 1f       	adc	r25, r25
     2ccc:	fc 01       	movw	r30, r24
     2cce:	eb 54       	subi	r30, 0x4B	; 75
@@ -7669,98 +7704,82 @@ void TransmitStringLn(char *string)
     2cd2:	7f 01       	movw	r14, r30
     2cd4:	71 83       	std	Z+1, r23	; 0x01
     2cd6:	60 83       	st	Z, r22
+									eeprom_write_word(&parameter1_eeprom[slotNr-1], temp16);
     2cd8:	80 5e       	subi	r24, 0xE0	; 224
+    2cda:	9f 4f       	sbci	r25, 0xFF	; 255
+    2cdc:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
+									LED_Source_Set_Heat_Current(led_Source_Heat_Current_mA[slotNr-1], slotNr);
+    2ce0:	b8 01       	movw	r22, r16
+    2ce2:	d7 01       	movw	r26, r14
+    2ce4:	8d 91       	ld	r24, X+
+    2ce6:	9c 91       	ld	r25, X
+    2ce8:	0e 94 88 04 	call	0x910	; 0x910 <LED_Source_Set_Heat_Current>
+    2cec:	da c3       	rjmp	.+1972   	; 0x34a2 <TerminalParseCommand+0xdc4>
+							break;
+	
+						//3. Set Meas Current
+						case _MK16('M','C'):
+						
+							if (!ParseIntLn(&string[6],3,&temp16))
+    2cee:	ae 01       	movw	r20, r28
+    2cf0:	4e 5f       	subi	r20, 0xFE	; 254
+    2cf2:	5f 4f       	sbci	r21, 0xFF	; 255
+    2cf4:	63 e0       	ldi	r22, 0x03	; 3
+    2cf6:	c8 01       	movw	r24, r16
+    2cf8:	06 96       	adiw	r24, 0x06	; 6
+    2cfa:	a9 d9       	rcall	.-3246   	; 0x204e <ParseIntLn>
+    2cfc:	81 11       	cpse	r24, r1
+    2cfe:	04 c0       	rjmp	.+8      	; 0x2d08 <TerminalParseCommand+0x62a>
+    2d00:	8e e0       	ldi	r24, 0x0E	; 14
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2cda:	9f 4f       	sbci	r25, 0xFF	; 255
-    2cdc:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
-    2ce0:	b8 01       	movw	r22, r16
-    2ce2:	d7 01       	movw	r26, r14
+    2d02:	92 e0       	ldi	r25, 0x02	; 2
+    2d04:	67 d5       	rcall	.+2766   	; 0x37d4 <UART0TransmitStringLn>
+    2d06:	cd c3       	rjmp	.+1946   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2d08:	8a 81       	ldd	r24, Y+2	; 0x02
+    2d0a:	9b 81       	ldd	r25, Y+3	; 0x03
 							if (!ParseIntLn(&string[6],3,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 250 || temp16 < 50)
-    2ce4:	8d 91       	ld	r24, X+
-    2ce6:	9c 91       	ld	r25, X
-    2ce8:	0e 94 88 04 	call	0x910	; 0x910 <LED_Source_Set_Heat_Current>
-    2cec:	da c3       	rjmp	.+1972   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2cee:	ae 01       	movw	r20, r28
+    2d0c:	c2 97       	sbiw	r24, 0x32	; 50
+    2d0e:	89 3c       	cpi	r24, 0xC9	; 201
+    2d10:	91 05       	cpc	r25, r1
+    2d12:	20 f0       	brcs	.+8      	; 0x2d1c <TerminalParseCommand+0x63e>
+    2d14:	8d e1       	ldi	r24, 0x1D	; 29
+    2d16:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2cf0:	4e 5f       	subi	r20, 0xFE	; 254
-    2cf2:	5f 4f       	sbci	r21, 0xFF	; 255
-    2cf4:	63 e0       	ldi	r22, 0x03	; 3
-    2cf6:	c8 01       	movw	r24, r16
+    2d18:	5d d5       	rcall	.+2746   	; 0x37d4 <UART0TransmitStringLn>
+    2d1a:	c3 c3       	rjmp	.+1926   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2d1c:	8e e1       	ldi	r24, 0x1E	; 30
+    2d1e:	93 e0       	ldi	r25, 0x03	; 3
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2cf8:	06 96       	adiw	r24, 0x06	; 6
-    2cfa:	a9 d9       	rcall	.-3246   	; 0x204e <ParseIntLn>
-    2cfc:	81 11       	cpse	r24, r1
-    2cfe:	04 c0       	rjmp	.+8      	; 0x2d08 <TerminalParseCommand+0x62a>
+    2d20:	48 d5       	rcall	.+2704   	; 0x37b2 <UART0TransmitString>
+    2d22:	0d 2d       	mov	r16, r13
+    2d24:	dd 0c       	add	r13, r13
+    2d26:	11 0b       	sbc	r17, r17
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SMC");
 								TransmitInt(slotNr, 1);
-    2d00:	8e e0       	ldi	r24, 0x0E	; 14
-    2d02:	92 e0       	ldi	r25, 0x02	; 2
-    2d04:	67 d5       	rcall	.+2766   	; 0x37d4 <UART0TransmitStringLn>
-    2d06:	cd c3       	rjmp	.+1946   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2d08:	8a 81       	ldd	r24, Y+2	; 0x02
-    2d0a:	9b 81       	ldd	r25, Y+3	; 0x03
-    2d0c:	c2 97       	sbiw	r24, 0x32	; 50
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
-    2d0e:	89 3c       	cpi	r24, 0xC9	; 201
-    2d10:	91 05       	cpc	r25, r1
-    2d12:	20 f0       	brcs	.+8      	; 0x2d1c <TerminalParseCommand+0x63e>
-    2d14:	8d e1       	ldi	r24, 0x1D	; 29
-							else
-							{
-								TransmitString("SMC");
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitFloat(temp16, 1, 1);
-    2d16:	92 e0       	ldi	r25, 0x02	; 2
-    2d18:	5d d5       	rcall	.+2746   	; 0x37d4 <UART0TransmitStringLn>
-    2d1a:	c3 c3       	rjmp	.+1926   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2d1c:	8e e1       	ldi	r24, 0x1E	; 30
-    2d1e:	93 e0       	ldi	r25, 0x03	; 3
-    2d20:	48 d5       	rcall	.+2704   	; 0x37b2 <UART0TransmitString>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2d22:	0d 2d       	mov	r16, r13
-    2d24:	dd 0c       	add	r13, r13
-    2d26:	11 0b       	sbc	r17, r17
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitFloat(temp16, 1, 1);
-								TransmitStringLn(" mA");
-
-								if (led_Source_Meas_Current_0mA1[slotNr-1] != temp16)
     2d28:	61 e0       	ldi	r22, 0x01	; 1
     2d2a:	c8 01       	movw	r24, r16
     2d2c:	c9 da       	rcall	.-2670   	; 0x22c0 <TransmitInt>
@@ -7768,411 +7787,419 @@ void TransmitStringLn(char *string)
     2d30:	93 e0       	ldi	r25, 0x03	; 3
     2d32:	3f d5       	rcall	.+2686   	; 0x37b2 <UART0TransmitString>
     2d34:	41 e0       	ldi	r20, 0x01	; 1
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     2d36:	61 e0       	ldi	r22, 0x01	; 1
     2d38:	8a 81       	ldd	r24, Y+2	; 0x02
     2d3a:	9b 81       	ldd	r25, Y+3	; 0x03
     2d3c:	91 db       	rcall	.-2270   	; 0x2460 <TransmitFloat>
+							else
+							{
+								TransmitString("SMC");
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
+								TransmitFloat(temp16, 1, 1);
     2d3e:	8f e8       	ldi	r24, 0x8F	; 143
-								{
-									led_Source_Meas_Current_0mA1[slotNr-1] = temp16;
     2d40:	92 e0       	ldi	r25, 0x02	; 2
     2d42:	48 d5       	rcall	.+2704   	; 0x37d4 <UART0TransmitStringLn>
     2d44:	c8 01       	movw	r24, r16
     2d46:	01 97       	sbiw	r24, 0x01	; 1
     2d48:	6a 81       	ldd	r22, Y+2	; 0x02
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     2d4a:	7b 81       	ldd	r23, Y+3	; 0x03
-									eeprom_write_word(&parameter2_eeprom[slotNr-1],temp16);									
     2d4c:	fc 01       	movw	r30, r24
     2d4e:	ee 0f       	add	r30, r30
-									LED_Source_Set_Meas_Current(led_Source_Meas_Current_0mA1[slotNr-1], slotNr);
     2d50:	ff 1f       	adc	r31, r31
+								TransmitInt(slotNr, 1);
+								TransmitString("L=");
+								TransmitFloat(temp16, 1, 1);
+								TransmitStringLn(" mA");
+
+								if (led_Source_Meas_Current_0mA1[slotNr-1] != temp16)
     2d52:	e9 5e       	subi	r30, 0xE9	; 233
     2d54:	fb 4f       	sbci	r31, 0xFB	; 251
     2d56:	20 81       	ld	r18, Z
     2d58:	31 81       	ldd	r19, Z+1	; 0x01
     2d5a:	26 17       	cp	r18, r22
     2d5c:	37 07       	cpc	r19, r23
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
     2d5e:	09 f4       	brne	.+2      	; 0x2d62 <TerminalParseCommand+0x684>
     2d60:	a0 c3       	rjmp	.+1856   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2d62:	88 0f       	add	r24, r24
     2d64:	99 1f       	adc	r25, r25
     2d66:	fc 01       	movw	r30, r24
-				//2. MOSFET-Heat-Meas current Source
-				#pragma region SettingsMOSFET-Source
-				
-				case 'M':
-									
-					switch(cmd){
     2d68:	e9 5e       	subi	r30, 0xE9	; 233
     2d6a:	fb 4f       	sbci	r31, 0xFB	; 251
+								{
+									led_Source_Meas_Current_0mA1[slotNr-1] = temp16;
     2d6c:	7f 01       	movw	r14, r30
     2d6e:	71 83       	std	Z+1, r23	; 0x01
     2d70:	60 83       	st	Z, r22
     2d72:	80 5f       	subi	r24, 0xF0	; 240
     2d74:	9f 4f       	sbci	r25, 0xFF	; 255
     2d76:	0e 94 e8 1e 	call	0x3dd0	; 0x3dd0 <eeprom_write_word>
+									eeprom_write_word(&parameter2_eeprom[slotNr-1],temp16);									
     2d7a:	b8 01       	movw	r22, r16
     2d7c:	d7 01       	movw	r26, r14
+									LED_Source_Set_Meas_Current(led_Source_Meas_Current_0mA1[slotNr-1], slotNr);
     2d7e:	8d 91       	ld	r24, X+
     2d80:	9c 91       	ld	r25, X
     2d82:	0e 94 9f 04 	call	0x93e	; 0x93e <LED_Source_Set_Meas_Current>
     2d86:	8d c3       	rjmp	.+1818   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2d88:	84 e4       	ldi	r24, 0x44	; 68
     2d8a:	92 e0       	ldi	r25, 0x02	; 2
-					
-						//1. Set Heat Current
-						case _MK16('H','C'):						
-							if (!ParseIntLn(&string[6],4,&temp16))
-    2d8c:	23 d5       	rcall	.+2630   	; 0x37d4 <UART0TransmitStringLn>
-    2d8e:	89 c3       	rjmp	.+1810   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2d90:	bd e4       	ldi	r27, 0x4D	; 77
-    2d92:	eb 16       	cp	r14, r27
-    2d94:	b3 e4       	ldi	r27, 0x43	; 67
-    2d96:	fb 06       	cpc	r15, r27
-    2d98:	09 f4       	brne	.+2      	; 0x2d9c <TerminalParseCommand+0x6be>
-    2d9a:	45 c0       	rjmp	.+138    	; 0x2e26 <TerminalParseCommand+0x748>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
+    2d8c:	23 d5       	rcall	.+2630   	; 0x37d4 <UART0TransmitStringLn>
+    2d8e:	89 c3       	rjmp	.+1810   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2d90:	bd e4       	ldi	r27, 0x4D	; 77
+    2d92:	eb 16       	cp	r14, r27
+    2d94:	b3 e4       	ldi	r27, 0x43	; 67
+				//2. MOSFET-Heat-Meas current Source
+				#pragma region SettingsMOSFET-Source
+				
+				case 'M':
+									
+					switch(cmd){
+    2d96:	fb 06       	cpc	r15, r27
+    2d98:	09 f4       	brne	.+2      	; 0x2d9c <TerminalParseCommand+0x6be>
+    2d9a:	45 c0       	rjmp	.+138    	; 0x2e26 <TerminalParseCommand+0x748>
     2d9c:	ed e4       	ldi	r30, 0x4D	; 77
     2d9e:	ee 16       	cp	r14, r30
     2da0:	e6 e5       	ldi	r30, 0x56	; 86
     2da2:	fe 06       	cpc	r15, r30
     2da4:	09 f4       	brne	.+2      	; 0x2da8 <TerminalParseCommand+0x6ca>
+    2da6:	7a c0       	rjmp	.+244    	; 0x2e9c <TerminalParseCommand+0x7be>
+    2da8:	f8 e4       	ldi	r31, 0x48	; 72
+    2daa:	ef 16       	cp	r14, r31
+    2dac:	f3 e4       	ldi	r31, 0x43	; 67
+    2dae:	ff 06       	cpc	r15, r31
+    2db0:	09 f0       	breq	.+2      	; 0x2db4 <TerminalParseCommand+0x6d6>
+    2db2:	ae c0       	rjmp	.+348    	; 0x2f10 <TerminalParseCommand+0x832>
+    2db4:	ae 01       	movw	r20, r28
+    2db6:	4e 5f       	subi	r20, 0xFE	; 254
+    2db8:	5f 4f       	sbci	r21, 0xFF	; 255
+					
+						//1. Set Heat Current
+						case _MK16('H','C'):						
+							if (!ParseIntLn(&string[6],4,&temp16))
+    2dba:	64 e0       	ldi	r22, 0x04	; 4
+    2dbc:	c8 01       	movw	r24, r16
+    2dbe:	06 96       	adiw	r24, 0x06	; 6
+    2dc0:	46 d9       	rcall	.-3444   	; 0x204e <ParseIntLn>
+    2dc2:	81 11       	cpse	r24, r1
+    2dc4:	04 c0       	rjmp	.+8      	; 0x2dce <TerminalParseCommand+0x6f0>
+    2dc6:	8e e0       	ldi	r24, 0x0E	; 14
+    2dc8:	92 e0       	ldi	r25, 0x02	; 2
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2dca:	04 d5       	rcall	.+2568   	; 0x37d4 <UART0TransmitStringLn>
+    2dcc:	6a c3       	rjmp	.+1748   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2dce:	8a 81       	ldd	r24, Y+2	; 0x02
+    2dd0:	9b 81       	ldd	r25, Y+3	; 0x03
+    2dd2:	89 38       	cpi	r24, 0x89	; 137
 							if (!ParseIntLn(&string[6],4,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 5000 || temp16 < 0)
-    2da6:	7a c0       	rjmp	.+244    	; 0x2e9c <TerminalParseCommand+0x7be>
-    2da8:	f8 e4       	ldi	r31, 0x48	; 72
-    2daa:	ef 16       	cp	r14, r31
+    2dd4:	93 41       	sbci	r25, 0x13	; 19
+    2dd6:	20 f0       	brcs	.+8      	; 0x2de0 <TerminalParseCommand+0x702>
+    2dd8:	8d e1       	ldi	r24, 0x1D	; 29
+    2dda:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2dac:	f3 e4       	ldi	r31, 0x43	; 67
-    2dae:	ff 06       	cpc	r15, r31
-    2db0:	09 f0       	breq	.+2      	; 0x2db4 <TerminalParseCommand+0x6d6>
+    2ddc:	fb d4       	rcall	.+2550   	; 0x37d4 <UART0TransmitStringLn>
+    2dde:	61 c3       	rjmp	.+1730   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2de0:	82 e2       	ldi	r24, 0x22	; 34
+    2de2:	93 e0       	ldi	r25, 0x03	; 3
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2db2:	ae c0       	rjmp	.+348    	; 0x2f10 <TerminalParseCommand+0x832>
+    2de4:	e6 d4       	rcall	.+2508   	; 0x37b2 <UART0TransmitString>
+    2de6:	61 e0       	ldi	r22, 0x01	; 1
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SHC MOSFET=");
 								TransmitInt(temp16, 1);
-    2db4:	ae 01       	movw	r20, r28
-    2db6:	4e 5f       	subi	r20, 0xFE	; 254
-    2db8:	5f 4f       	sbci	r21, 0xFF	; 255
-    2dba:	64 e0       	ldi	r22, 0x04	; 4
-    2dbc:	c8 01       	movw	r24, r16
+    2de8:	8a 81       	ldd	r24, Y+2	; 0x02
+    2dea:	9b 81       	ldd	r25, Y+3	; 0x03
+    2dec:	69 da       	rcall	.-2862   	; 0x22c0 <TransmitInt>
+    2dee:	8f e8       	ldi	r24, 0x8F	; 143
+    2df0:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2dbe:	06 96       	adiw	r24, 0x06	; 6
-    2dc0:	46 d9       	rcall	.-3444   	; 0x204e <ParseIntLn>
-    2dc2:	81 11       	cpse	r24, r1
-    2dc4:	04 c0       	rjmp	.+8      	; 0x2dce <TerminalParseCommand+0x6f0>
+    2df2:	f0 d4       	rcall	.+2528   	; 0x37d4 <UART0TransmitStringLn>
+    2df4:	6a 81       	ldd	r22, Y+2	; 0x02
+    2df6:	7b 81       	ldd	r23, Y+3	; 0x03
+    2df8:	80 91 d8 04 	lds	r24, 0x04D8	; 0x8004d8 <heat_pulse_current>
 							{
 								TransmitString("SHC MOSFET=");
 								TransmitInt(temp16, 1);
 								TransmitStringLn(" mA");
 
 								if (heat_pulse_current != temp16)
-    2dc6:	8e e0       	ldi	r24, 0x0E	; 14
-    2dc8:	92 e0       	ldi	r25, 0x02	; 2
-    2dca:	04 d5       	rcall	.+2568   	; 0x37d4 <UART0TransmitStringLn>
-    2dcc:	6a c3       	rjmp	.+1748   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2dce:	8a 81       	ldd	r24, Y+2	; 0x02
-    2dd0:	9b 81       	ldd	r25, Y+3	; 0x03
-    2dd2:	89 38       	cpi	r24, 0x89	; 137
-    2dd4:	93 41       	sbci	r25, 0x13	; 19
-    2dd6:	20 f0       	brcs	.+8      	; 0x2de0 <TerminalParseCommand+0x702>
-    2dd8:	8d e1       	ldi	r24, 0x1D	; 29
-								{
-									heat_pulse_current = temp16;
-    2dda:	92 e0       	ldi	r25, 0x02	; 2
-    2ddc:	fb d4       	rcall	.+2550   	; 0x37d4 <UART0TransmitStringLn>
-    2dde:	61 c3       	rjmp	.+1730   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2de0:	82 e2       	ldi	r24, 0x22	; 34
-									eeprom_write_word(&heat_pulse_current_eeprom,temp16);
-    2de2:	93 e0       	ldi	r25, 0x03	; 3
-    2de4:	e6 d4       	rcall	.+2508   	; 0x37b2 <UART0TransmitString>
-    2de6:	61 e0       	ldi	r22, 0x01	; 1
-    2de8:	8a 81       	ldd	r24, Y+2	; 0x02
-
-									MOSFETSource_set_Heat_Current(heat_pulse_current, slotNr);
-    2dea:	9b 81       	ldd	r25, Y+3	; 0x03
-    2dec:	69 da       	rcall	.-2862   	; 0x22c0 <TransmitInt>
-    2dee:	8f e8       	ldi	r24, 0x8F	; 143
-    2df0:	92 e0       	ldi	r25, 0x02	; 2
-    2df2:	f0 d4       	rcall	.+2528   	; 0x37d4 <UART0TransmitStringLn>
-    2df4:	6a 81       	ldd	r22, Y+2	; 0x02
-    2df6:	7b 81       	ldd	r23, Y+3	; 0x03
-							}
-							break;
-						
-						//2. Set Meas Current
-						case _MK16('M','C'):						
-														if (!ParseIntLn(&string[6],3,&temp16))
-    2df8:	80 91 d8 04 	lds	r24, 0x04D8	; 0x8004d8 <heat_pulse_current>
     2dfc:	90 91 d9 04 	lds	r25, 0x04D9	; 0x8004d9 <heat_pulse_current+0x1>
     2e00:	86 17       	cp	r24, r22
     2e02:	97 07       	cpc	r25, r23
     2e04:	09 f4       	brne	.+2      	; 0x2e08 <TerminalParseCommand+0x72a>
     2e06:	4d c3       	rjmp	.+1690   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2e08:	70 93 d9 04 	sts	0x04D9, r23	; 0x8004d9 <heat_pulse_current+0x1>
+    2e0c:	60 93 d8 04 	sts	0x04D8, r22	; 0x8004d8 <heat_pulse_current>
+								{
+									heat_pulse_current = temp16;
+    2e10:	8d e4       	ldi	r24, 0x4D	; 77
+    2e12:	90 e0       	ldi	r25, 0x00	; 0
+    2e14:	dd d7       	rcall	.+4026   	; 0x3dd0 <eeprom_write_word>
+									eeprom_write_word(&heat_pulse_current_eeprom,temp16);
+    2e16:	6d 2d       	mov	r22, r13
+    2e18:	80 91 d8 04 	lds	r24, 0x04D8	; 0x8004d8 <heat_pulse_current>
+    2e1c:	90 91 d9 04 	lds	r25, 0x04D9	; 0x8004d9 <heat_pulse_current+0x1>
+
+									MOSFETSource_set_Heat_Current(heat_pulse_current, slotNr);
+    2e20:	0e 94 df 00 	call	0x1be	; 0x1be <MOSFETSource_set_Heat_Current>
+    2e24:	3e c3       	rjmp	.+1660   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2e26:	ae 01       	movw	r20, r28
+    2e28:	4e 5f       	subi	r20, 0xFE	; 254
+    2e2a:	5f 4f       	sbci	r21, 0xFF	; 255
+							}
+							break;
+						
+						//2. Set Meas Current
+						case _MK16('M','C'):						
+														if (!ParseIntLn(&string[6],3,&temp16))
+    2e2c:	63 e0       	ldi	r22, 0x03	; 3
+    2e2e:	c8 01       	movw	r24, r16
+    2e30:	06 96       	adiw	r24, 0x06	; 6
+    2e32:	0d d9       	rcall	.-3558   	; 0x204e <ParseIntLn>
+    2e34:	81 11       	cpse	r24, r1
+    2e36:	04 c0       	rjmp	.+8      	; 0x2e40 <TerminalParseCommand+0x762>
+    2e38:	8e e0       	ldi	r24, 0x0E	; 14
+    2e3a:	92 e0       	ldi	r25, 0x02	; 2
+    2e3c:	cb d4       	rcall	.+2454   	; 0x37d4 <UART0TransmitStringLn>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2e0c:	60 93 d8 04 	sts	0x04D8, r22	; 0x8004d8 <heat_pulse_current>
-    2e10:	8d e4       	ldi	r24, 0x4D	; 77
+    2e3e:	31 c3       	rjmp	.+1634   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2e40:	8a 81       	ldd	r24, Y+2	; 0x02
+    2e42:	9b 81       	ldd	r25, Y+3	; 0x03
+    2e44:	c2 97       	sbiw	r24, 0x32	; 50
 														if (!ParseIntLn(&string[6],3,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 250 || temp16 < 50)
-    2e12:	90 e0       	ldi	r25, 0x00	; 0
-    2e14:	dd d7       	rcall	.+4026   	; 0x3dd0 <eeprom_write_word>
-    2e16:	6d 2d       	mov	r22, r13
-    2e18:	80 91 d8 04 	lds	r24, 0x04D8	; 0x8004d8 <heat_pulse_current>
+    2e46:	89 3c       	cpi	r24, 0xC9	; 201
+    2e48:	91 05       	cpc	r25, r1
+    2e4a:	20 f0       	brcs	.+8      	; 0x2e54 <TerminalParseCommand+0x776>
+    2e4c:	8d e1       	ldi	r24, 0x1D	; 29
+    2e4e:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2e1c:	90 91 d9 04 	lds	r25, 0x04D9	; 0x8004d9 <heat_pulse_current+0x1>
+    2e50:	c1 d4       	rcall	.+2434   	; 0x37d4 <UART0TransmitStringLn>
+    2e52:	27 c3       	rjmp	.+1614   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2e54:	8e e2       	ldi	r24, 0x2E	; 46
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2e20:	0e 94 df 00 	call	0x1be	; 0x1be <MOSFETSource_set_Heat_Current>
-    2e24:	3e c3       	rjmp	.+1660   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2e26:	ae 01       	movw	r20, r28
+    2e56:	93 e0       	ldi	r25, 0x03	; 3
+    2e58:	ac d4       	rcall	.+2392   	; 0x37b2 <UART0TransmitString>
+    2e5a:	41 e0       	ldi	r20, 0x01	; 1
+    2e5c:	61 e0       	ldi	r22, 0x01	; 1
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SMC MOSFET=");
 								TransmitFloat(temp16, 1, 1);
-    2e28:	4e 5f       	subi	r20, 0xFE	; 254
-    2e2a:	5f 4f       	sbci	r21, 0xFF	; 255
-    2e2c:	63 e0       	ldi	r22, 0x03	; 3
-    2e2e:	c8 01       	movw	r24, r16
-    2e30:	06 96       	adiw	r24, 0x06	; 6
-    2e32:	0d d9       	rcall	.-3558   	; 0x204e <ParseIntLn>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2e34:	81 11       	cpse	r24, r1
-    2e36:	04 c0       	rjmp	.+8      	; 0x2e40 <TerminalParseCommand+0x762>
-    2e38:	8e e0       	ldi	r24, 0x0E	; 14
-    2e3a:	92 e0       	ldi	r25, 0x02	; 2
-							{
-								TransmitString("SMC MOSFET=");
-								TransmitFloat(temp16, 1, 1);
-								TransmitStringLn(" mA");
-
-								if (measure_pulse_current != temp16)
-    2e3c:	cb d4       	rcall	.+2454   	; 0x37d4 <UART0TransmitStringLn>
-    2e3e:	31 c3       	rjmp	.+1634   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2e40:	8a 81       	ldd	r24, Y+2	; 0x02
-    2e42:	9b 81       	ldd	r25, Y+3	; 0x03
-    2e44:	c2 97       	sbiw	r24, 0x32	; 50
-    2e46:	89 3c       	cpi	r24, 0xC9	; 201
-    2e48:	91 05       	cpc	r25, r1
-    2e4a:	20 f0       	brcs	.+8      	; 0x2e54 <TerminalParseCommand+0x776>
-    2e4c:	8d e1       	ldi	r24, 0x1D	; 29
-    2e4e:	92 e0       	ldi	r25, 0x02	; 2
-								{
-									measure_pulse_current = temp16;
-    2e50:	c1 d4       	rcall	.+2434   	; 0x37d4 <UART0TransmitStringLn>
-    2e52:	27 c3       	rjmp	.+1614   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2e54:	8e e2       	ldi	r24, 0x2E	; 46
-									eeprom_write_word(&measure_pulse_current_eeprom,temp16);
-    2e56:	93 e0       	ldi	r25, 0x03	; 3
-    2e58:	ac d4       	rcall	.+2392   	; 0x37b2 <UART0TransmitString>
-    2e5a:	41 e0       	ldi	r20, 0x01	; 1
-								
-									MOSFETSource_set_Meas_Current(measure_pulse_current, slotNr);
-    2e5c:	61 e0       	ldi	r22, 0x01	; 1
     2e5e:	8a 81       	ldd	r24, Y+2	; 0x02
     2e60:	9b 81       	ldd	r25, Y+3	; 0x03
     2e62:	fe da       	rcall	.-2564   	; 0x2460 <TransmitFloat>
     2e64:	8f e8       	ldi	r24, 0x8F	; 143
     2e66:	92 e0       	ldi	r25, 0x02	; 2
     2e68:	b5 d4       	rcall	.+2410   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     2e6a:	6a 81       	ldd	r22, Y+2	; 0x02
-							
-							break;
-							
-						//3. Set Meas Voltage
-						case _MK16('M','V'):
-							if (!ParseIntLn(&string[6],4,&temp16))
     2e6c:	7b 81       	ldd	r23, Y+3	; 0x03
     2e6e:	80 91 b3 04 	lds	r24, 0x04B3	; 0x8004b3 <measure_pulse_current>
+							{
+								TransmitString("SMC MOSFET=");
+								TransmitFloat(temp16, 1, 1);
+								TransmitStringLn(" mA");
+
+								if (measure_pulse_current != temp16)
     2e72:	90 91 b4 04 	lds	r25, 0x04B4	; 0x8004b4 <measure_pulse_current+0x1>
     2e76:	86 17       	cp	r24, r22
     2e78:	97 07       	cpc	r25, r23
     2e7a:	09 f4       	brne	.+2      	; 0x2e7e <TerminalParseCommand+0x7a0>
     2e7c:	12 c3       	rjmp	.+1572   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2e7e:	70 93 b4 04 	sts	0x04B4, r23	; 0x8004b4 <measure_pulse_current+0x1>
+    2e82:	60 93 b3 04 	sts	0x04B3, r22	; 0x8004b3 <measure_pulse_current>
+								{
+									measure_pulse_current = temp16;
+    2e86:	87 e4       	ldi	r24, 0x47	; 71
+    2e88:	90 e0       	ldi	r25, 0x00	; 0
+    2e8a:	a2 d7       	rcall	.+3908   	; 0x3dd0 <eeprom_write_word>
+									eeprom_write_word(&measure_pulse_current_eeprom,temp16);
+    2e8c:	6d 2d       	mov	r22, r13
+    2e8e:	80 91 b3 04 	lds	r24, 0x04B3	; 0x8004b3 <measure_pulse_current>
+								
+									MOSFETSource_set_Meas_Current(measure_pulse_current, slotNr);
+    2e92:	90 91 b4 04 	lds	r25, 0x04B4	; 0x8004b4 <measure_pulse_current+0x1>
+    2e96:	0e 94 03 01 	call	0x206	; 0x206 <MOSFETSource_set_Meas_Current>
+    2e9a:	03 c3       	rjmp	.+1542   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2e9c:	ae 01       	movw	r20, r28
+    2e9e:	4e 5f       	subi	r20, 0xFE	; 254
+    2ea0:	5f 4f       	sbci	r21, 0xFF	; 255
+							
+							break;
+							
+						//3. Set Meas Voltage
+						case _MK16('M','V'):
+							if (!ParseIntLn(&string[6],4,&temp16))
+    2ea2:	64 e0       	ldi	r22, 0x04	; 4
+    2ea4:	c8 01       	movw	r24, r16
+    2ea6:	06 96       	adiw	r24, 0x06	; 6
+    2ea8:	d2 d8       	rcall	.-3676   	; 0x204e <ParseIntLn>
+    2eaa:	81 11       	cpse	r24, r1
+    2eac:	04 c0       	rjmp	.+8      	; 0x2eb6 <TerminalParseCommand+0x7d8>
+    2eae:	8e e0       	ldi	r24, 0x0E	; 14
+    2eb0:	92 e0       	ldi	r25, 0x02	; 2
+    2eb2:	90 d4       	rcall	.+2336   	; 0x37d4 <UART0TransmitStringLn>
+    2eb4:	f6 c2       	rjmp	.+1516   	; 0x34a2 <TerminalParseCommand+0xdc4>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2e82:	60 93 b3 04 	sts	0x04B3, r22	; 0x8004b3 <measure_pulse_current>
-    2e86:	87 e4       	ldi	r24, 0x47	; 71
-    2e88:	90 e0       	ldi	r25, 0x00	; 0
+    2eb6:	8a 81       	ldd	r24, Y+2	; 0x02
+    2eb8:	9b 81       	ldd	r25, Y+3	; 0x03
+    2eba:	84 56       	subi	r24, 0x64	; 100
+    2ebc:	91 09       	sbc	r25, r1
+    2ebe:	8d 36       	cpi	r24, 0x6D	; 109
 							if (!ParseIntLn(&string[6],4,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 2000 || temp16 < 100)
-    2e8a:	a2 d7       	rcall	.+3908   	; 0x3dd0 <eeprom_write_word>
-    2e8c:	6d 2d       	mov	r22, r13
-    2e8e:	80 91 b3 04 	lds	r24, 0x04B3	; 0x8004b3 <measure_pulse_current>
-    2e92:	90 91 b4 04 	lds	r25, 0x04B4	; 0x8004b4 <measure_pulse_current+0x1>
+    2ec0:	97 40       	sbci	r25, 0x07	; 7
+    2ec2:	20 f0       	brcs	.+8      	; 0x2ecc <TerminalParseCommand+0x7ee>
+    2ec4:	8d e1       	ldi	r24, 0x1D	; 29
+    2ec6:	92 e0       	ldi	r25, 0x02	; 2
+    2ec8:	85 d4       	rcall	.+2314   	; 0x37d4 <UART0TransmitStringLn>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2e96:	0e 94 03 01 	call	0x206	; 0x206 <MOSFETSource_set_Meas_Current>
-    2e9a:	03 c3       	rjmp	.+1542   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2eca:	eb c2       	rjmp	.+1494   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2ecc:	8a e3       	ldi	r24, 0x3A	; 58
+    2ece:	93 e0       	ldi	r25, 0x03	; 3
+    2ed0:	70 d4       	rcall	.+2272   	; 0x37b2 <UART0TransmitString>
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2e9c:	ae 01       	movw	r20, r28
-    2e9e:	4e 5f       	subi	r20, 0xFE	; 254
-    2ea0:	5f 4f       	sbci	r21, 0xFF	; 255
+    2ed2:	42 e0       	ldi	r20, 0x02	; 2
+    2ed4:	61 e0       	ldi	r22, 0x01	; 1
+    2ed6:	8a 81       	ldd	r24, Y+2	; 0x02
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SMV MOSFET=");
 								TransmitFloat(temp16, 1, 2);
-    2ea2:	64 e0       	ldi	r22, 0x04	; 4
-    2ea4:	c8 01       	movw	r24, r16
-    2ea6:	06 96       	adiw	r24, 0x06	; 6
-    2ea8:	d2 d8       	rcall	.-3676   	; 0x204e <ParseIntLn>
-    2eaa:	81 11       	cpse	r24, r1
+    2ed8:	9b 81       	ldd	r25, Y+3	; 0x03
+    2eda:	c2 da       	rcall	.-2684   	; 0x2460 <TransmitFloat>
+    2edc:	8d e3       	ldi	r24, 0x3D	; 61
+    2ede:	92 e0       	ldi	r25, 0x02	; 2
+    2ee0:	79 d4       	rcall	.+2290   	; 0x37d4 <UART0TransmitStringLn>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2eac:	04 c0       	rjmp	.+8      	; 0x2eb6 <TerminalParseCommand+0x7d8>
-    2eae:	8e e0       	ldi	r24, 0x0E	; 14
-    2eb0:	92 e0       	ldi	r25, 0x02	; 2
-    2eb2:	90 d4       	rcall	.+2336   	; 0x37d4 <UART0TransmitStringLn>
+    2ee2:	6a 81       	ldd	r22, Y+2	; 0x02
+    2ee4:	7b 81       	ldd	r23, Y+3	; 0x03
+    2ee6:	80 91 15 04 	lds	r24, 0x0415	; 0x800415 <measure_pulse_voltage>
 							{
 								TransmitString("SMV MOSFET=");
 								TransmitFloat(temp16, 1, 2);
 								TransmitStringLn(" V");
 
 								if (measure_pulse_voltage != temp16)
-    2eb4:	f6 c2       	rjmp	.+1516   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2eb6:	8a 81       	ldd	r24, Y+2	; 0x02
-    2eb8:	9b 81       	ldd	r25, Y+3	; 0x03
-    2eba:	84 56       	subi	r24, 0x64	; 100
-    2ebc:	91 09       	sbc	r25, r1
-    2ebe:	8d 36       	cpi	r24, 0x6D	; 109
-    2ec0:	97 40       	sbci	r25, 0x07	; 7
-    2ec2:	20 f0       	brcs	.+8      	; 0x2ecc <TerminalParseCommand+0x7ee>
-    2ec4:	8d e1       	ldi	r24, 0x1D	; 29
-								{
-									measure_pulse_voltage = temp16;
-    2ec6:	92 e0       	ldi	r25, 0x02	; 2
-    2ec8:	85 d4       	rcall	.+2314   	; 0x37d4 <UART0TransmitStringLn>
-    2eca:	eb c2       	rjmp	.+1494   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2ecc:	8a e3       	ldi	r24, 0x3A	; 58
-									eeprom_write_word(&measure_pulse_voltage_eeprom,temp16);
-    2ece:	93 e0       	ldi	r25, 0x03	; 3
-    2ed0:	70 d4       	rcall	.+2272   	; 0x37b2 <UART0TransmitString>
-    2ed2:	42 e0       	ldi	r20, 0x02	; 2
-									
-																						
-									MOSFETSource_set_Meas_Voltage(temp16, slotNr);
-    2ed4:	61 e0       	ldi	r22, 0x01	; 1
-    2ed6:	8a 81       	ldd	r24, Y+2	; 0x02
-    2ed8:	9b 81       	ldd	r25, Y+3	; 0x03
-    2eda:	c2 da       	rcall	.-2684   	; 0x2460 <TransmitFloat>
-    2edc:	8d e3       	ldi	r24, 0x3D	; 61
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2ede:	92 e0       	ldi	r25, 0x02	; 2
-    2ee0:	79 d4       	rcall	.+2290   	; 0x37d4 <UART0TransmitStringLn>
-    2ee2:	6a 81       	ldd	r22, Y+2	; 0x02
-    2ee4:	7b 81       	ldd	r23, Y+3	; 0x03
-    2ee6:	80 91 15 04 	lds	r24, 0x0415	; 0x800415 <measure_pulse_voltage>
     2eea:	90 91 16 04 	lds	r25, 0x0416	; 0x800416 <measure_pulse_voltage+0x1>
-								
-				//4. Amplifier
-				#pragma region SettingsFrontend
-				
-				case 'A':
-					switch(cmd){
     2eee:	86 17       	cp	r24, r22
     2ef0:	97 07       	cpc	r25, r23
     2ef2:	09 f4       	brne	.+2      	; 0x2ef6 <TerminalParseCommand+0x818>
     2ef4:	d6 c2       	rjmp	.+1452   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2ef6:	70 93 16 04 	sts	0x0416, r23	; 0x800416 <measure_pulse_voltage+0x1>
     2efa:	60 93 15 04 	sts	0x0415, r22	; 0x800415 <measure_pulse_voltage>
+								{
+									measure_pulse_voltage = temp16;
     2efe:	81 e4       	ldi	r24, 0x41	; 65
     2f00:	90 e0       	ldi	r25, 0x00	; 0
     2f02:	66 d7       	rcall	.+3788   	; 0x3dd0 <eeprom_write_word>
+									eeprom_write_word(&measure_pulse_voltage_eeprom,temp16);
     2f04:	6d 2d       	mov	r22, r13
     2f06:	8a 81       	ldd	r24, Y+2	; 0x02
     2f08:	9b 81       	ldd	r25, Y+3	; 0x03
+									
+																						
+									MOSFETSource_set_Meas_Voltage(temp16, slotNr);
     2f0a:	0e 94 27 01 	call	0x24e	; 0x24e <MOSFETSource_set_Meas_Voltage>
-						
-						//1. Initialization
-						case _MK16('I','N'):
-							if (string[5] != '\n')
     2f0e:	c9 c2       	rjmp	.+1426   	; 0x34a2 <TerminalParseCommand+0xdc4>
     2f10:	84 e4       	ldi	r24, 0x44	; 68
     2f12:	92 e0       	ldi	r25, 0x02	; 2
@@ -8187,127 +8214,101 @@ void TransmitStringLn(char *string)
     2f18:	86 e4       	ldi	r24, 0x46	; 70
     2f1a:	93 e0       	ldi	r25, 0x03	; 3
     2f1c:	5b d4       	rcall	.+2230   	; 0x37d4 <UART0TransmitStringLn>
+    2f1e:	c1 c2       	rjmp	.+1410   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2f20:	89 e4       	ldi	r24, 0x49	; 73
+    2f22:	e8 16       	cp	r14, r24
+								
+				//4. Amplifier
+				#pragma region SettingsFrontend
+				
+				case 'A':
+					switch(cmd){
+    2f24:	8e e4       	ldi	r24, 0x4E	; 78
+    2f26:	f8 06       	cpc	r15, r24
+    2f28:	69 f0       	breq	.+26     	; 0x2f44 <TerminalParseCommand+0x866>
+    2f2a:	a7 e5       	ldi	r26, 0x57	; 87
+    2f2c:	ea 16       	cp	r14, r26
+    2f2e:	af e4       	ldi	r26, 0x4F	; 79
+    2f30:	fa 06       	cpc	r15, r26
+    2f32:	09 f4       	brne	.+2      	; 0x2f36 <TerminalParseCommand+0x858>
+    2f34:	6b c0       	rjmp	.+214    	; 0x300c <TerminalParseCommand+0x92e>
+    2f36:	b7 e5       	ldi	r27, 0x57	; 87
+    2f38:	eb 16       	cp	r14, r27
+    2f3a:	b7 e4       	ldi	r27, 0x47	; 71
+    2f3c:	fb 06       	cpc	r15, r27
+    2f3e:	09 f0       	breq	.+2      	; 0x2f42 <TerminalParseCommand+0x864>
+    2f40:	ad c0       	rjmp	.+346    	; 0x309c <TerminalParseCommand+0x9be>
+    2f42:	18 c0       	rjmp	.+48     	; 0x2f74 <TerminalParseCommand+0x896>
+    2f44:	f8 01       	movw	r30, r16
+						
+						//1. Initialization
+						case _MK16('I','N'):
+							if (string[5] != '\n')
+    2f46:	85 81       	ldd	r24, Z+5	; 0x05
+    2f48:	8a 30       	cpi	r24, 0x0A	; 10
+    2f4a:	21 f0       	breq	.+8      	; 0x2f54 <TerminalParseCommand+0x876>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2f4c:	8e e0       	ldi	r24, 0x0E	; 14
+    2f4e:	92 e0       	ldi	r25, 0x02	; 2
+    2f50:	41 d4       	rcall	.+2178   	; 0x37d4 <UART0TransmitStringLn>
+    2f52:	a7 c2       	rjmp	.+1358   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2f54:	0d 2d       	mov	r16, r13
 								//to many signs
 								TransmitStringLn("FORMAT ERR");
 							}
 							else
 							{
 								Amplifier_Init(slotNr);
-    2f1e:	c1 c2       	rjmp	.+1410   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2f20:	89 e4       	ldi	r24, 0x49	; 73
-    2f22:	e8 16       	cp	r14, r24
-    2f24:	8e e4       	ldi	r24, 0x4E	; 78
-    2f26:	f8 06       	cpc	r15, r24
+    2f56:	dd 0c       	add	r13, r13
+    2f58:	11 0b       	sbc	r17, r17
+    2f5a:	c8 01       	movw	r24, r16
+    2f5c:	0e 94 8d 01 	call	0x31a	; 0x31a <Amplifier_Init>
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2f28:	69 f0       	breq	.+26     	; 0x2f44 <TerminalParseCommand+0x866>
-    2f2a:	a7 e5       	ldi	r26, 0x57	; 87
-    2f2c:	ea 16       	cp	r14, r26
-    2f2e:	af e4       	ldi	r26, 0x4F	; 79
+    2f60:	89 e1       	ldi	r24, 0x19	; 25
+    2f62:	92 e0       	ldi	r25, 0x02	; 2
+    2f64:	26 d4       	rcall	.+2124   	; 0x37b2 <UART0TransmitString>
+    2f66:	61 e0       	ldi	r22, 0x01	; 1
 							{
 								Amplifier_Init(slotNr);
 							
 								//Answer
 								TransmitString("SIN");
 								TransmitInt(slotNr, 1);
-    2f30:	fa 06       	cpc	r15, r26
-    2f32:	09 f4       	brne	.+2      	; 0x2f36 <TerminalParseCommand+0x858>
-    2f34:	6b c0       	rjmp	.+214    	; 0x300c <TerminalParseCommand+0x92e>
-    2f36:	b7 e5       	ldi	r27, 0x57	; 87
+    2f68:	c8 01       	movw	r24, r16
+    2f6a:	aa d9       	rcall	.-3244   	; 0x22c0 <TransmitInt>
+    2f6c:	81 e9       	ldi	r24, 0x91	; 145
+    2f6e:	92 e0       	ldi	r25, 0x02	; 2
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2f38:	eb 16       	cp	r14, r27
-    2f3a:	b7 e4       	ldi	r27, 0x47	; 71
-    2f3c:	fb 06       	cpc	r15, r27
-    2f3e:	09 f0       	breq	.+2      	; 0x2f42 <TerminalParseCommand+0x864>
-    2f40:	ad c0       	rjmp	.+346    	; 0x309c <TerminalParseCommand+0x9be>
+    2f70:	31 d4       	rcall	.+2146   	; 0x37d4 <UART0TransmitStringLn>
+    2f72:	97 c2       	rjmp	.+1326   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2f74:	ae 01       	movw	r20, r28
+    2f76:	4e 5f       	subi	r20, 0xFE	; 254
+    2f78:	5f 4f       	sbci	r21, 0xFF	; 255
 							break;
 						
 						//2. Window Gain (Fixed to 2)
 						case _MK16('W','G'):
 						
 							if (!ParseIntLn(&string[6],4,&temp16))
-    2f42:	18 c0       	rjmp	.+48     	; 0x2f74 <TerminalParseCommand+0x896>
-    2f44:	f8 01       	movw	r30, r16
-    2f46:	85 81       	ldd	r24, Z+5	; 0x05
-    2f48:	8a 30       	cpi	r24, 0x0A	; 10
-    2f4a:	21 f0       	breq	.+8      	; 0x2f54 <TerminalParseCommand+0x876>
-    2f4c:	8e e0       	ldi	r24, 0x0E	; 14
-    2f4e:	92 e0       	ldi	r25, 0x02	; 2
-    2f50:	41 d4       	rcall	.+2178   	; 0x37d4 <UART0TransmitStringLn>
-    2f52:	a7 c2       	rjmp	.+1358   	; 0x34a2 <TerminalParseCommand+0xdc4>
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2f54:	0d 2d       	mov	r16, r13
-    2f56:	dd 0c       	add	r13, r13
-    2f58:	11 0b       	sbc	r17, r17
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 100 || temp16 < 1)
-    2f5a:	c8 01       	movw	r24, r16
-    2f5c:	0e 94 8d 01 	call	0x31a	; 0x31a <Amplifier_Init>
-    2f60:	89 e1       	ldi	r24, 0x19	; 25
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    2f62:	92 e0       	ldi	r25, 0x02	; 2
-    2f64:	26 d4       	rcall	.+2124   	; 0x37b2 <UART0TransmitString>
-    2f66:	61 e0       	ldi	r22, 0x01	; 1
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
-    2f68:	c8 01       	movw	r24, r16
-    2f6a:	aa d9       	rcall	.-3244   	; 0x22c0 <TransmitInt>
-    2f6c:	81 e9       	ldi	r24, 0x91	; 145
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SWG");
-								TransmitInt(slotNr, 1);
-    2f6e:	92 e0       	ldi	r25, 0x02	; 2
-    2f70:	31 d4       	rcall	.+2146   	; 0x37d4 <UART0TransmitStringLn>
-    2f72:	97 c2       	rjmp	.+1326   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2f74:	ae 01       	movw	r20, r28
-    2f76:	4e 5f       	subi	r20, 0xFE	; 254
-    2f78:	5f 4f       	sbci	r21, 0xFF	; 255
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
     2f7a:	64 e0       	ldi	r22, 0x04	; 4
     2f7c:	c8 01       	movw	r24, r16
     2f7e:	06 96       	adiw	r24, 0x06	; 6
     2f80:	66 d8       	rcall	.-3892   	; 0x204e <ParseIntLn>
-							{
-								TransmitString("SWG");
-								TransmitInt(slotNr, 1);
-								TransmitString("A=");
-								//TransmitInt(temp16, 1);
-								TransmitInt(2, 1);
     2f82:	81 11       	cpse	r24, r1
     2f84:	04 c0       	rjmp	.+8      	; 0x2f8e <TerminalParseCommand+0x8b0>
     2f86:	8e e0       	ldi	r24, 0x0E	; 14
@@ -8323,52 +8324,84 @@ void TransmitStringLn(char *string)
     2f8e:	8a 81       	ldd	r24, Y+2	; 0x02
     2f90:	9b 81       	ldd	r25, Y+3	; 0x03
     2f92:	01 97       	sbiw	r24, 0x01	; 1
+							if (!ParseIntLn(&string[6],4,&temp16))
+							{
+								//no number
+								TransmitStringLn("FORMAT ERR");
+							}
+							else if (temp16 > 100 || temp16 < 1)
+    2f94:	84 36       	cpi	r24, 0x64	; 100
+    2f96:	91 05       	cpc	r25, r1
+    2f98:	20 f0       	brcs	.+8      	; 0x2fa2 <TerminalParseCommand+0x8c4>
+    2f9a:	8d e1       	ldi	r24, 0x1D	; 29
+    2f9c:	92 e0       	ldi	r25, 0x02	; 2
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2f9e:	1a d4       	rcall	.+2100   	; 0x37d4 <UART0TransmitStringLn>
+    2fa0:	80 c2       	rjmp	.+1280   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2fa2:	88 e2       	ldi	r24, 0x28	; 40
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
+    2fa4:	92 e0       	ldi	r25, 0x02	; 2
+    2fa6:	05 d4       	rcall	.+2058   	; 0x37b2 <UART0TransmitString>
+    2fa8:	0d 2d       	mov	r16, r13
+								TransmitStringLn("NUMBER ERR");
+							}
+							else
+							{
+								TransmitString("SWG");
+								TransmitInt(slotNr, 1);
+    2faa:	dd 0c       	add	r13, r13
+    2fac:	11 0b       	sbc	r17, r17
+    2fae:	61 e0       	ldi	r22, 0x01	; 1
+    2fb0:	c8 01       	movw	r24, r16
+    2fb2:	86 d9       	rcall	.-3316   	; 0x22c0 <TransmitInt>
+    2fb4:	81 e6       	ldi	r24, 0x61	; 97
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
+    2fb6:	93 e0       	ldi	r25, 0x03	; 3
+    2fb8:	fc d3       	rcall	.+2040   	; 0x37b2 <UART0TransmitString>
+    2fba:	61 e0       	ldi	r22, 0x01	; 1
+    2fbc:	82 e0       	ldi	r24, 0x02	; 2
+							{
+								TransmitString("SWG");
+								TransmitInt(slotNr, 1);
+								TransmitString("A=");
+								//TransmitInt(temp16, 1);
+								TransmitInt(2, 1);
+    2fbe:	90 e0       	ldi	r25, 0x00	; 0
+    2fc0:	7f d9       	rcall	.-3330   	; 0x22c0 <TransmitInt>
+    2fc2:	8f e2       	ldi	r24, 0x2F	; 47
+    2fc4:	92 e0       	ldi	r25, 0x02	; 2
+    2fc6:	06 d4       	rcall	.+2060   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    2fc8:	c8 01       	movw	r24, r16
+    2fca:	01 97       	sbiw	r24, 0x01	; 1
+    2fcc:	fc 01       	movw	r30, r24
+    2fce:	ee 0f       	add	r30, r30
 								TransmitString("A=");
 								//TransmitInt(temp16, 1);
 								TransmitInt(2, 1);
 								TransmitStringLn(" W/O-Unit");
 
 								if (amplifier_gain[slotNr-1] != temp16)
-    2f94:	84 36       	cpi	r24, 0x64	; 100
-    2f96:	91 05       	cpc	r25, r1
-    2f98:	20 f0       	brcs	.+8      	; 0x2fa2 <TerminalParseCommand+0x8c4>
-    2f9a:	8d e1       	ldi	r24, 0x1D	; 29
-    2f9c:	92 e0       	ldi	r25, 0x02	; 2
-    2f9e:	1a d4       	rcall	.+2100   	; 0x37d4 <UART0TransmitStringLn>
-    2fa0:	80 c2       	rjmp	.+1280   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2fa2:	88 e2       	ldi	r24, 0x28	; 40
-    2fa4:	92 e0       	ldi	r25, 0x02	; 2
-    2fa6:	05 d4       	rcall	.+2058   	; 0x37b2 <UART0TransmitString>
-    2fa8:	0d 2d       	mov	r16, r13
-    2faa:	dd 0c       	add	r13, r13
-    2fac:	11 0b       	sbc	r17, r17
-								{
-									amplifier_gain[slotNr-1] = 2;
-    2fae:	61 e0       	ldi	r22, 0x01	; 1
-    2fb0:	c8 01       	movw	r24, r16
-    2fb2:	86 d9       	rcall	.-3316   	; 0x22c0 <TransmitInt>
-    2fb4:	81 e6       	ldi	r24, 0x61	; 97
-    2fb6:	93 e0       	ldi	r25, 0x03	; 3
-    2fb8:	fc d3       	rcall	.+2040   	; 0x37b2 <UART0TransmitString>
-									eeprom_write_word(&parameter1_eeprom[slotNr-1], 2);
-    2fba:	61 e0       	ldi	r22, 0x01	; 1
-    2fbc:	82 e0       	ldi	r24, 0x02	; 2
-    2fbe:	90 e0       	ldi	r25, 0x00	; 0
-    2fc0:	7f d9       	rcall	.-3330   	; 0x22c0 <TransmitInt>
-    2fc2:	8f e2       	ldi	r24, 0x2F	; 47
-    2fc4:	92 e0       	ldi	r25, 0x02	; 2
-									Amplifier_Set_Gain(amplifier_gain[slotNr-1], slotNr);
-    2fc6:	06 d4       	rcall	.+2060   	; 0x37d4 <UART0TransmitStringLn>
-    2fc8:	c8 01       	movw	r24, r16
-    2fca:	01 97       	sbiw	r24, 0x01	; 1
-    2fcc:	fc 01       	movw	r30, r24
-    2fce:	ee 0f       	add	r30, r30
-							}
-							break;
-						//3. Set Window Offset Voltage
-						case _MK16('W','O'):
-						
-							if (!ParseIntLn(&string[6],4,&temp16))
     2fd0:	ff 1f       	adc	r31, r31
     2fd2:	e4 52       	subi	r30, 0x24	; 36
     2fd4:	fb 4f       	sbci	r31, 0xFB	; 251
@@ -8377,264 +8410,280 @@ void TransmitStringLn(char *string)
     2fda:	2a 81       	ldd	r18, Y+2	; 0x02
     2fdc:	3b 81       	ldd	r19, Y+3	; 0x03
     2fde:	42 17       	cp	r20, r18
+    2fe0:	53 07       	cpc	r21, r19
+    2fe2:	09 f4       	brne	.+2      	; 0x2fe6 <TerminalParseCommand+0x908>
+    2fe4:	5e c2       	rjmp	.+1212   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    2fe6:	88 0f       	add	r24, r24
+    2fe8:	99 1f       	adc	r25, r25
+    2fea:	7f 01       	movw	r14, r30
+								{
+									amplifier_gain[slotNr-1] = 2;
+    2fec:	22 e0       	ldi	r18, 0x02	; 2
+    2fee:	30 e0       	ldi	r19, 0x00	; 0
+    2ff0:	31 83       	std	Z+1, r19	; 0x01
+    2ff2:	20 83       	st	Z, r18
+    2ff4:	62 e0       	ldi	r22, 0x02	; 2
+    2ff6:	70 e0       	ldi	r23, 0x00	; 0
+									eeprom_write_word(&parameter1_eeprom[slotNr-1], 2);
+    2ff8:	80 5e       	subi	r24, 0xE0	; 224
+    2ffa:	9f 4f       	sbci	r25, 0xFF	; 255
+    2ffc:	e9 d6       	rcall	.+3538   	; 0x3dd0 <eeprom_write_word>
+    2ffe:	b8 01       	movw	r22, r16
+    3000:	f7 01       	movw	r30, r14
+    3002:	80 81       	ld	r24, Z
+									Amplifier_Set_Gain(amplifier_gain[slotNr-1], slotNr);
+    3004:	91 81       	ldd	r25, Z+1	; 0x01
+    3006:	0e 94 74 01 	call	0x2e8	; 0x2e8 <Amplifier_Set_Gain>
+    300a:	4b c2       	rjmp	.+1174   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    300c:	ae 01       	movw	r20, r28
+							}
+							break;
+						//3. Set Window Offset Voltage
+						case _MK16('W','O'):
+						
+							if (!ParseIntLn(&string[6],4,&temp16))
+    300e:	4e 5f       	subi	r20, 0xFE	; 254
+    3010:	5f 4f       	sbci	r21, 0xFF	; 255
+    3012:	64 e0       	ldi	r22, 0x04	; 4
+    3014:	c8 01       	movw	r24, r16
+    3016:	06 96       	adiw	r24, 0x06	; 6
+    3018:	1a d8       	rcall	.-4044   	; 0x204e <ParseIntLn>
+    301a:	81 11       	cpse	r24, r1
+    301c:	04 c0       	rjmp	.+8      	; 0x3026 <TerminalParseCommand+0x948>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2fe0:	53 07       	cpc	r21, r19
-    2fe2:	09 f4       	brne	.+2      	; 0x2fe6 <TerminalParseCommand+0x908>
-    2fe4:	5e c2       	rjmp	.+1212   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    2fe6:	88 0f       	add	r24, r24
-    2fe8:	99 1f       	adc	r25, r25
+    301e:	8e e0       	ldi	r24, 0x0E	; 14
+    3020:	92 e0       	ldi	r25, 0x02	; 2
+    3022:	d8 d3       	rcall	.+1968   	; 0x37d4 <UART0TransmitStringLn>
+    3024:	3e c2       	rjmp	.+1148   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    3026:	8a 81       	ldd	r24, Y+2	; 0x02
 							if (!ParseIntLn(&string[6],4,&temp16))
 							{
 								//no number
 								TransmitStringLn("FORMAT ERR");
 							}
 							else if (temp16 > 10000 || temp16 < 0)
-    2fea:	7f 01       	movw	r14, r30
-    2fec:	22 e0       	ldi	r18, 0x02	; 2
-    2fee:	30 e0       	ldi	r19, 0x00	; 0
-    2ff0:	31 83       	std	Z+1, r19	; 0x01
-    2ff2:	20 83       	st	Z, r18
+    3028:	9b 81       	ldd	r25, Y+3	; 0x03
+    302a:	81 31       	cpi	r24, 0x11	; 17
+    302c:	97 42       	sbci	r25, 0x27	; 39
+    302e:	20 f0       	brcs	.+8      	; 0x3038 <TerminalParseCommand+0x95a>
+    3030:	8d e1       	ldi	r24, 0x1D	; 29
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    2ff4:	62 e0       	ldi	r22, 0x02	; 2
-    2ff6:	70 e0       	ldi	r23, 0x00	; 0
-    2ff8:	80 5e       	subi	r24, 0xE0	; 224
-    2ffa:	9f 4f       	sbci	r25, 0xFF	; 255
+    3032:	92 e0       	ldi	r25, 0x02	; 2
+    3034:	cf d3       	rcall	.+1950   	; 0x37d4 <UART0TransmitStringLn>
+    3036:	35 c2       	rjmp	.+1130   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    3038:	89 e3       	ldi	r24, 0x39	; 57
+    303a:	92 e0       	ldi	r25, 0x02	; 2
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    2ffc:	e9 d6       	rcall	.+3538   	; 0x3dd0 <eeprom_write_word>
-    2ffe:	b8 01       	movw	r22, r16
+    303c:	ba d3       	rcall	.+1908   	; 0x37b2 <UART0TransmitString>
+    303e:	0d 2d       	mov	r16, r13
+    3040:	dd 0c       	add	r13, r13
 								TransmitStringLn("NUMBER ERR");
 							}
 							else
 							{
 								TransmitString("SWO");
 								TransmitInt(slotNr, 1);
-    3000:	f7 01       	movw	r30, r14
-    3002:	80 81       	ld	r24, Z
-    3004:	91 81       	ldd	r25, Z+1	; 0x01
-    3006:	0e 94 74 01 	call	0x2e8	; 0x2e8 <Amplifier_Set_Gain>
-    300a:	4b c2       	rjmp	.+1174   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    3042:	11 0b       	sbc	r17, r17
+    3044:	61 e0       	ldi	r22, 0x01	; 1
+    3046:	c8 01       	movw	r24, r16
+    3048:	3b d9       	rcall	.-3466   	; 0x22c0 <TransmitInt>
+    304a:	81 e6       	ldi	r24, 0x61	; 97
+    304c:	93 e0       	ldi	r25, 0x03	; 3
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    300c:	ae 01       	movw	r20, r28
-    300e:	4e 5f       	subi	r20, 0xFE	; 254
-    3010:	5f 4f       	sbci	r21, 0xFF	; 255
-    3012:	64 e0       	ldi	r22, 0x04	; 4
+    304e:	b1 d3       	rcall	.+1890   	; 0x37b2 <UART0TransmitString>
+    3050:	43 e0       	ldi	r20, 0x03	; 3
+    3052:	61 e0       	ldi	r22, 0x01	; 1
+    3054:	8a 81       	ldd	r24, Y+2	; 0x02
 							else
 							{
 								TransmitString("SWO");
 								TransmitInt(slotNr, 1);
 								TransmitString("A=");
 								TransmitFloat(temp16,1, 3);
-    3014:	c8 01       	movw	r24, r16
-    3016:	06 96       	adiw	r24, 0x06	; 6
-    3018:	1a d8       	rcall	.-4044   	; 0x204e <ParseIntLn>
-    301a:	81 11       	cpse	r24, r1
-    301c:	04 c0       	rjmp	.+8      	; 0x3026 <TerminalParseCommand+0x948>
-    301e:	8e e0       	ldi	r24, 0x0E	; 14
+    3056:	9b 81       	ldd	r25, Y+3	; 0x03
+    3058:	03 da       	rcall	.-3066   	; 0x2460 <TransmitFloat>
+    305a:	8d e3       	ldi	r24, 0x3D	; 61
+    305c:	92 e0       	ldi	r25, 0x02	; 2
+    305e:	ba d3       	rcall	.+1908   	; 0x37d4 <UART0TransmitStringLn>
+    3060:	c8 01       	movw	r24, r16
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    3020:	92 e0       	ldi	r25, 0x02	; 2
-    3022:	d8 d3       	rcall	.+1968   	; 0x37d4 <UART0TransmitStringLn>
-    3024:	3e c2       	rjmp	.+1148   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    3026:	8a 81       	ldd	r24, Y+2	; 0x02
+    3062:	01 97       	sbiw	r24, 0x01	; 1
+    3064:	6a 81       	ldd	r22, Y+2	; 0x02
+    3066:	7b 81       	ldd	r23, Y+3	; 0x03
+    3068:	fc 01       	movw	r30, r24
 								TransmitInt(slotNr, 1);
 								TransmitString("A=");
 								TransmitFloat(temp16,1, 3);
 								TransmitStringLn(" V");
 
 								if (amplifier_offset_voltage_mV[slotNr-1] != temp16)
-    3028:	9b 81       	ldd	r25, Y+3	; 0x03
-    302a:	81 31       	cpi	r24, 0x11	; 17
-    302c:	97 42       	sbci	r25, 0x27	; 39
-    302e:	20 f0       	brcs	.+8      	; 0x3038 <TerminalParseCommand+0x95a>
-    3030:	8d e1       	ldi	r24, 0x1D	; 29
-    3032:	92 e0       	ldi	r25, 0x02	; 2
-    3034:	cf d3       	rcall	.+1950   	; 0x37d4 <UART0TransmitStringLn>
-    3036:	35 c2       	rjmp	.+1130   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    3038:	89 e3       	ldi	r24, 0x39	; 57
-    303a:	92 e0       	ldi	r25, 0x02	; 2
-    303c:	ba d3       	rcall	.+1908   	; 0x37b2 <UART0TransmitString>
-    303e:	0d 2d       	mov	r16, r13
-    3040:	dd 0c       	add	r13, r13
-    3042:	11 0b       	sbc	r17, r17
-    3044:	61 e0       	ldi	r22, 0x01	; 1
-								{
-									amplifier_offset_voltage_mV[slotNr-1] = temp16;
-    3046:	c8 01       	movw	r24, r16
-    3048:	3b d9       	rcall	.-3466   	; 0x22c0 <TransmitInt>
-    304a:	81 e6       	ldi	r24, 0x61	; 97
-    304c:	93 e0       	ldi	r25, 0x03	; 3
-    304e:	b1 d3       	rcall	.+1890   	; 0x37b2 <UART0TransmitString>
-									eeprom_write_word(&parameter2_eeprom[slotNr-1], temp16);
-    3050:	43 e0       	ldi	r20, 0x03	; 3
-    3052:	61 e0       	ldi	r22, 0x01	; 1
-    3054:	8a 81       	ldd	r24, Y+2	; 0x02
-    3056:	9b 81       	ldd	r25, Y+3	; 0x03
-									Amplifier_Set_Offset_Voltage(amplifier_offset_voltage_mV[slotNr-1], slotNr);
-    3058:	03 da       	rcall	.-3066   	; 0x2460 <TransmitFloat>
-    305a:	8d e3       	ldi	r24, 0x3D	; 61
-    305c:	92 e0       	ldi	r25, 0x02	; 2
-    305e:	ba d3       	rcall	.+1908   	; 0x37d4 <UART0TransmitStringLn>
-    3060:	c8 01       	movw	r24, r16
-    3062:	01 97       	sbiw	r24, 0x01	; 1
-    3064:	6a 81       	ldd	r22, Y+2	; 0x02
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-    3066:	7b 81       	ldd	r23, Y+3	; 0x03
-    3068:	fc 01       	movw	r30, r24
     306a:	ee 0f       	add	r30, r30
     306c:	ff 1f       	adc	r31, r31
-					
-				//5. SlotTester
-				#pragma region Setting_SlotTester
-					
-				case 'T':
-					switch(cmd){
     306e:	ef 5c       	subi	r30, 0xCF	; 207
     3070:	fa 4f       	sbci	r31, 0xFA	; 250
     3072:	20 81       	ld	r18, Z
     3074:	31 81       	ldd	r19, Z+1	; 0x01
     3076:	26 17       	cp	r18, r22
     3078:	37 07       	cpc	r19, r23
-						
-						//1. Set Heat Current
-						case _MK16('S','T'):						
-							if (string[5] != '\n')
     307a:	09 f4       	brne	.+2      	; 0x307e <TerminalParseCommand+0x9a0>
     307c:	12 c2       	rjmp	.+1060   	; 0x34a2 <TerminalParseCommand+0xdc4>
     307e:	88 0f       	add	r24, r24
     3080:	99 1f       	adc	r25, r25
     3082:	7f 01       	movw	r14, r30
+    3084:	71 83       	std	Z+1, r23	; 0x01
+    3086:	60 83       	st	Z, r22
+								{
+									amplifier_offset_voltage_mV[slotNr-1] = temp16;
+    3088:	80 5f       	subi	r24, 0xF0	; 240
+    308a:	9f 4f       	sbci	r25, 0xFF	; 255
+    308c:	a1 d6       	rcall	.+3394   	; 0x3dd0 <eeprom_write_word>
+    308e:	b8 01       	movw	r22, r16
+    3090:	f7 01       	movw	r30, r14
+									eeprom_write_word(&parameter2_eeprom[slotNr-1], temp16);
+    3092:	80 81       	ld	r24, Z
+    3094:	91 81       	ldd	r25, Z+1	; 0x01
+    3096:	0e 94 75 01 	call	0x2ea	; 0x2ea <Amplifier_Set_Offset_Voltage>
+									Amplifier_Set_Offset_Voltage(amplifier_offset_voltage_mV[slotNr-1], slotNr);
+    309a:	03 c2       	rjmp	.+1030   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    309c:	84 e4       	ldi	r24, 0x44	; 68
+    309e:	92 e0       	ldi	r25, 0x02	; 2
+    30a0:	99 d3       	rcall	.+1842   	; 0x37d4 <UART0TransmitStringLn>
+    30a2:	f3 e5       	ldi	r31, 0x53	; 83
+    30a4:	ef 16       	cp	r14, r31
+    30a6:	f4 e5       	ldi	r31, 0x54	; 84
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    3084:	71 83       	std	Z+1, r23	; 0x01
-    3086:	60 83       	st	Z, r22
-    3088:	80 5f       	subi	r24, 0xF0	; 240
-    308a:	9f 4f       	sbci	r25, 0xFF	; 255
+    30a8:	ff 06       	cpc	r15, r31
+    30aa:	09 f0       	breq	.+2      	; 0x30ae <TerminalParseCommand+0x9d0>
+    30ac:	fa c1       	rjmp	.+1012   	; 0x34a2 <TerminalParseCommand+0xdc4>
+    30ae:	d8 01       	movw	r26, r16
+					
+				//5. SlotTester
+				#pragma region Setting_SlotTester
+					
+				case 'T':
+					switch(cmd){
+    30b0:	15 96       	adiw	r26, 0x05	; 5
+    30b2:	8c 91       	ld	r24, X
+    30b4:	8a 30       	cpi	r24, 0x0A	; 10
+    30b6:	21 f0       	breq	.+8      	; 0x30c0 <TerminalParseCommand+0x9e2>
+    30b8:	8e e0       	ldi	r24, 0x0E	; 14
+    30ba:	92 e0       	ldi	r25, 0x02	; 2
+						
+						//1. Set Heat Current
+						case _MK16('S','T'):						
+							if (string[5] != '\n')
+    30bc:	8b d3       	rcall	.+1814   	; 0x37d4 <UART0TransmitStringLn>
+    30be:	f1 c1       	rjmp	.+994    	; 0x34a2 <TerminalParseCommand+0xdc4>
+    30c0:	84 e6       	ldi	r24, 0x64	; 100
+    30c2:	93 e0       	ldi	r25, 0x03	; 3
+    30c4:	76 d3       	rcall	.+1772   	; 0x37b2 <UART0TransmitString>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
+    30c6:	0d 2d       	mov	r16, r13
+    30c8:	dd 0c       	add	r13, r13
+    30ca:	11 0b       	sbc	r17, r17
+    30cc:	61 e0       	ldi	r22, 0x01	; 1
+    30ce:	c8 01       	movw	r24, r16
 // String auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitString(char *string)
 {
     UART0TransmitString(string);
-    308c:	a1 d6       	rcall	.+3394   	; 0x3dd0 <eeprom_write_word>
-    308e:	b8 01       	movw	r22, r16
-    3090:	f7 01       	movw	r30, r14
+    30d0:	f7 d8       	rcall	.-3602   	; 0x22c0 <TransmitInt>
+    30d2:	83 e7       	ldi	r24, 0x73	; 115
+    30d4:	93 e0       	ldi	r25, 0x03	; 3
 							}
 							else
 							{
 								//Antrowrt
 								TransmitString("SST Slot-Test: ");
 								TransmitInt(slotNr, 1);
-    3092:	80 81       	ld	r24, Z
-    3094:	91 81       	ldd	r25, Z+1	; 0x01
-    3096:	0e 94 75 01 	call	0x2ea	; 0x2ea <Amplifier_Set_Offset_Voltage>
-    309a:	03 c2       	rjmp	.+1030   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    309c:	84 e4       	ldi	r24, 0x44	; 68
-    309e:	92 e0       	ldi	r25, 0x02	; 2
+    30d6:	7e d3       	rcall	.+1788   	; 0x37d4 <UART0TransmitStringLn>
+    30d8:	c8 01       	movw	r24, r16
+    30da:	0e 94 11 08 	call	0x1022	; 0x1022 <Slot_Tester_Init>
+    30de:	c8 01       	movw	r24, r16
+    30e0:	0e 94 9b 09 	call	0x1336	; 0x1336 <Slot_Tester_Gesamtablauf>
 // String & CRLF auf Interface ausgeben
 // -------------------------------------------------------------
 
 void TransmitStringLn(char *string)
 {
     UART0TransmitStringLn(string);
-    30a0:	99 d3       	rcall	.+1842   	; 0x37d4 <UART0TransmitStringLn>
-    30a2:	f3 e5       	ldi	r31, 0x53	; 83
-    30a4:	ef 16       	cp	r14, r31
-    30a6:	f4 e5       	ldi	r31, 0x54	; 84
+    30e4:	de c1       	rjmp	.+956    	; 0x34a2 <TerminalParseCommand+0xdc4>
+    30e6:	c8 01       	movw	r24, r16
+    30e8:	0e 94 29 06 	call	0xc52	; 0xc52 <Terminal_SET_BreakDown>
 								TransmitString("SST Slot-Test: ");
 								TransmitInt(slotNr, 1);
 								TransmitStringLn("");
 							
 								//Test
 								Slot_Tester_Init(slotNr);
-    30a8:	ff 06       	cpc	r15, r31
-    30aa:	09 f0       	breq	.+2      	; 0x30ae <TerminalParseCommand+0x9d0>
+    30ec:	da c1       	rjmp	.+948    	; 0x34a2 <TerminalParseCommand+0xdc4>
+    30ee:	c8 01       	movw	r24, r16
 								Slot_Tester_Gesamtablauf(slotNr);								
-    30ac:	fa c1       	rjmp	.+1012   	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30ae:	d8 01       	movw	r26, r16
-    30b0:	15 96       	adiw	r26, 0x05	; 5
-    30b2:	8c 91       	ld	r24, X
+    30f0:	0e 94 c7 02 	call	0x58e	; 0x58e <Terminal_SET_FrontEnd>
+    30f4:	d6 c1       	rjmp	.+940    	; 0x34a2 <TerminalParseCommand+0xdc4>
+    30f6:	84 e4       	ldi	r24, 0x44	; 68
 					
 				#pragma endregion Setting_SlotTester
 				
 				//6. BreakDownVoltage Test								
 				case 'B':
 					Terminal_SET_BreakDown(string);
-    30b4:	8a 30       	cpi	r24, 0x0A	; 10
-    30b6:	21 f0       	breq	.+8      	; 0x30c0 <TerminalParseCommand+0x9e2>
-    30b8:	8e e0       	ldi	r24, 0x0E	; 14
+    30f8:	92 e0       	ldi	r25, 0x02	; 2
+    30fa:	6c d3       	rcall	.+1752   	; 0x37d4 <UART0TransmitStringLn>
+    30fc:	d2 c1       	rjmp	.+932    	; 0x34a2 <TerminalParseCommand+0xdc4>
 					break;
+    30fe:	84 e4       	ldi	r24, 0x44	; 68
 												
 				//7. Heller Frontend (F)								
 				case 'F':
 					Terminal_SET_FrontEnd(string);
-    30ba:	92 e0       	ldi	r25, 0x02	; 2
-    30bc:	8b d3       	rcall	.+1814   	; 0x37d4 <UART0TransmitStringLn>
-					break;
-    30be:	f1 c1       	rjmp	.+994    	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30c0:	84 e6       	ldi	r24, 0x64	; 100
-    30c2:	93 e0       	ldi	r25, 0x03	; 3
-    30c4:	76 d3       	rcall	.+1772   	; 0x37b2 <UART0TransmitString>
-    30c6:	0d 2d       	mov	r16, r13
-    30c8:	dd 0c       	add	r13, r13
-    30ca:	11 0b       	sbc	r17, r17
-    30cc:	61 e0       	ldi	r22, 0x01	; 1
-    30ce:	c8 01       	movw	r24, r16
-    30d0:	f7 d8       	rcall	.-3602   	; 0x22c0 <TransmitInt>
-    30d2:	83 e7       	ldi	r24, 0x73	; 115
-    30d4:	93 e0       	ldi	r25, 0x03	; 3
-    30d6:	7e d3       	rcall	.+1788   	; 0x37d4 <UART0TransmitStringLn>
-    30d8:	c8 01       	movw	r24, r16
-    30da:	0e 94 11 08 	call	0x1022	; 0x1022 <Slot_Tester_Init>
-    30de:	c8 01       	movw	r24, r16
-    30e0:	0e 94 9b 09 	call	0x1336	; 0x1336 <Slot_Tester_Gesamtablauf>
-    30e4:	de c1       	rjmp	.+956    	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30e6:	c8 01       	movw	r24, r16
-    30e8:	0e 94 29 06 	call	0xc52	; 0xc52 <Terminal_SET_BreakDown>
-    30ec:	da c1       	rjmp	.+948    	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30ee:	c8 01       	movw	r24, r16
-    30f0:	0e 94 c7 02 	call	0x58e	; 0x58e <Terminal_SET_FrontEnd>
-    30f4:	d6 c1       	rjmp	.+940    	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30f6:	84 e4       	ldi	r24, 0x44	; 68
-    30f8:	92 e0       	ldi	r25, 0x02	; 2
-    30fa:	6c d3       	rcall	.+1752   	; 0x37d4 <UART0TransmitStringLn>
-    30fc:	d2 c1       	rjmp	.+932    	; 0x34a2 <TerminalParseCommand+0xdc4>
-    30fe:	84 e4       	ldi	r24, 0x44	; 68
     3100:	92 e0       	ldi	r25, 0x02	; 2
     3102:	68 d3       	rcall	.+1744   	; 0x37d4 <UART0TransmitStringLn>
+					break;
     3104:	ce c1       	rjmp	.+924    	; 0x34a2 <TerminalParseCommand+0xdc4>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3106:	97 34       	cpi	r25, 0x47	; 71
     3108:	09 f0       	breq	.+2      	; 0x310c <TerminalParseCommand+0xa2e>
     310a:	c8 c1       	rjmp	.+912    	; 0x349c <TerminalParseCommand+0xdbe>
@@ -8643,10 +8692,24 @@ void TransmitStringLn(char *string)
     3110:	8a 30       	cpi	r24, 0x0A	; 10
     3112:	09 f0       	breq	.+2      	; 0x3116 <TerminalParseCommand+0xa38>
     3114:	10 c1       	rjmp	.+544    	; 0x3336 <TerminalParseCommand+0xc58>
+	//									GET
+	//***************************************************************************
+	
+	#pragma region Get
+			
+	else if (string[0] == 'G')
     3116:	f8 e4       	ldi	r31, 0x48	; 72
     3118:	ef 16       	cp	r14, r31
+		//Get-Commands, that apply for all 19''-Cards (Definition: Space @ 3 character)
+		//*****************************************************************************
+		
+		#pragma region Gerneral_Get
+		
+		if(string[3] == '\n'){
     311a:	f0 e5       	ldi	r31, 0x50	; 80
     311c:	ff 06       	cpc	r15, r31
+		
+			switch (cmd)
     311e:	09 f4       	brne	.+2      	; 0x3122 <TerminalParseCommand+0xa44>
     3120:	53 c0       	rjmp	.+166    	; 0x31c8 <TerminalParseCommand+0xaea>
     3122:	00 f5       	brcc	.+64     	; 0x3164 <TerminalParseCommand+0xa86>
@@ -8709,21 +8772,51 @@ void TransmitStringLn(char *string)
     3194:	77 c0       	rjmp	.+238    	; 0x3284 <TerminalParseCommand+0xba6>
     3196:	e6 e4       	ldi	r30, 0x46	; 70
     3198:	ee 16       	cp	r14, r30
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     319a:	e7 e5       	ldi	r30, 0x57	; 87
     319c:	fe 06       	cpc	r15, r30
     319e:	09 f4       	brne	.+2      	; 0x31a2 <TerminalParseCommand+0xac4>
+			switch (cmd)
+			{
+				//1.1 GEN, get enable status......................................................
+				case _MK16('E','N'):			
+					TransmitString("GEN=");
+					TransmitInt(current_source_enabled, 1);
     31a0:	80 c0       	rjmp	.+256    	; 0x32a2 <TerminalParseCommand+0xbc4>
     31a2:	f8 e4       	ldi	r31, 0x48	; 72
     31a4:	ef 16       	cp	r14, r31
     31a6:	f6 e5       	ldi	r31, 0x56	; 86
     31a8:	ff 06       	cpc	r15, r31
     31aa:	09 f0       	breq	.+2      	; 0x31ae <TerminalParseCommand+0xad0>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     31ac:	c0 c0       	rjmp	.+384    	; 0x332e <TerminalParseCommand+0xc50>
     31ae:	59 c0       	rjmp	.+178    	; 0x3262 <TerminalParseCommand+0xb84>
     31b0:	84 e7       	ldi	r24, 0x74	; 116
     31b2:	93 e0       	ldi	r25, 0x03	; 3
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     31b4:	fe d2       	rcall	.+1532   	; 0x37b2 <UART0TransmitString>
     31b6:	80 91 41 05 	lds	r24, 0x0541	; 0x800541 <current_source_enabled>
+					break;
+				
+				//3.1 GHP, get heat pulse length.................................................
+				case _MK16('H','P'):							
+					TransmitString("GHP=");
+					TransmitLong(heat_pulse_length, 1);
     31ba:	61 e0       	ldi	r22, 0x01	; 1
     31bc:	90 e0       	ldi	r25, 0x00	; 0
     31be:	80 d8       	rcall	.-3840   	; 0x22c0 <TransmitInt>
@@ -8733,34 +8826,88 @@ void TransmitStringLn(char *string)
     31c6:	6d c1       	rjmp	.+730    	; 0x34a2 <TerminalParseCommand+0xdc4>
     31c8:	89 e7       	ldi	r24, 0x79	; 121
     31ca:	93 e0       	ldi	r25, 0x03	; 3
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     31cc:	f2 d2       	rcall	.+1508   	; 0x37b2 <UART0TransmitString>
     31ce:	60 91 2b 04 	lds	r22, 0x042B	; 0x80042b <heat_pulse_length>
     31d2:	70 91 2c 04 	lds	r23, 0x042C	; 0x80042c <heat_pulse_length+0x1>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     31d6:	80 91 2d 04 	lds	r24, 0x042D	; 0x80042d <heat_pulse_length+0x2>
     31da:	90 91 2e 04 	lds	r25, 0x042E	; 0x80042e <heat_pulse_length+0x3>
+					break;
+
+				//3.2 GMP, get measure pulse length
+				case _MK16('M','P'):							
+					TransmitString("GMP=");
+					TransmitInt(measure_pulse_length, 1);
     31de:	41 e0       	ldi	r20, 0x01	; 1
     31e0:	d5 d8       	rcall	.-3670   	; 0x238c <TransmitLong>
     31e2:	82 ef       	ldi	r24, 0xF2	; 242
     31e4:	92 e0       	ldi	r25, 0x02	; 2
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     31e6:	f6 d2       	rcall	.+1516   	; 0x37d4 <UART0TransmitStringLn>
     31e8:	5c c1       	rjmp	.+696    	; 0x34a2 <TerminalParseCommand+0xdc4>
     31ea:	8e e7       	ldi	r24, 0x7E	; 126
     31ec:	93 e0       	ldi	r25, 0x03	; 3
     31ee:	e1 d2       	rcall	.+1474   	; 0x37b2 <UART0TransmitString>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     31f0:	61 e0       	ldi	r22, 0x01	; 1
     31f2:	80 91 2c 05 	lds	r24, 0x052C	; 0x80052c <measure_pulse_length>
+					break;
+				
+				//3.3 GND, get deterministic pulse count
+				case _MK16('N','D'):			
+					TransmitString("GND=");
+					TransmitInt(deterministic_pulse_cycles, 1);
     31f6:	90 91 2d 05 	lds	r25, 0x052D	; 0x80052d <measure_pulse_length+0x1>
     31fa:	62 d8       	rcall	.-3900   	; 0x22c0 <TransmitInt>
     31fc:	82 ef       	ldi	r24, 0xF2	; 242
     31fe:	92 e0       	ldi	r25, 0x02	; 2
     3200:	e9 d2       	rcall	.+1490   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3202:	4f c1       	rjmp	.+670    	; 0x34a2 <TerminalParseCommand+0xdc4>
     3204:	83 e8       	ldi	r24, 0x83	; 131
     3206:	93 e0       	ldi	r25, 0x03	; 3
     3208:	d4 d2       	rcall	.+1448   	; 0x37b2 <UART0TransmitString>
     320a:	61 e0       	ldi	r22, 0x01	; 1
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     320c:	80 91 2f 04 	lds	r24, 0x042F	; 0x80042f <deterministic_pulse_cycles>
     3210:	90 91 30 04 	lds	r25, 0x0430	; 0x800430 <deterministic_pulse_cycles+0x1>
+					break;
+			
+				//3.4 GTD, get deterministic pulse length
+				case _MK16('T','D'):
+					TransmitString("GTD=");
+					TransmitFloat(deterministic_pulse_length, 1, 1);
     3214:	55 d8       	rcall	.-3926   	; 0x22c0 <TransmitInt>
     3216:	80 e0       	ldi	r24, 0x00	; 0
     3218:	93 e0       	ldi	r25, 0x03	; 3
@@ -8768,20 +8915,50 @@ void TransmitStringLn(char *string)
     321c:	42 c1       	rjmp	.+644    	; 0x34a2 <TerminalParseCommand+0xdc4>
     321e:	88 e8       	ldi	r24, 0x88	; 136
     3220:	93 e0       	ldi	r25, 0x03	; 3
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3222:	c7 d2       	rcall	.+1422   	; 0x37b2 <UART0TransmitString>
     3224:	41 e0       	ldi	r20, 0x01	; 1
     3226:	61 e0       	ldi	r22, 0x01	; 1
     3228:	80 91 27 04 	lds	r24, 0x0427	; 0x800427 <deterministic_pulse_length>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     322c:	90 91 28 04 	lds	r25, 0x0428	; 0x800428 <deterministic_pulse_length+0x1>
     3230:	17 d9       	rcall	.-3538   	; 0x2460 <TransmitFloat>
+					break;
+				
+				//3.5, get Slot pulse info
+				case _MK16('P','R'):
+					TransmitString("GPR=");
+					TransmitByte_Reverse(pulse_output_register);
     3232:	82 ef       	ldi	r24, 0xF2	; 242
     3234:	92 e0       	ldi	r25, 0x02	; 2
     3236:	ce d2       	rcall	.+1436   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3238:	34 c1       	rjmp	.+616    	; 0x34a2 <TerminalParseCommand+0xdc4>
     323a:	8d e8       	ldi	r24, 0x8D	; 141
     323c:	93 e0       	ldi	r25, 0x03	; 3
     323e:	b9 d2       	rcall	.+1394   	; 0x37b2 <UART0TransmitString>
     3240:	80 91 4b 05 	lds	r24, 0x054B	; 0x80054b <pulse_output_register>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3244:	13 da       	rcall	.-3034   	; 0x266c <TransmitByte_Reverse>
     3246:	83 e7       	ldi	r24, 0x73	; 115
     3248:	93 e0       	ldi	r25, 0x03	; 3
@@ -8789,15 +8966,33 @@ void TransmitStringLn(char *string)
     324c:	2a c1       	rjmp	.+596    	; 0x34a2 <TerminalParseCommand+0xdc4>
     324e:	82 e9       	ldi	r24, 0x92	; 146
     3250:	93 e0       	ldi	r25, 0x03	; 3
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3252:	af d2       	rcall	.+1374   	; 0x37b2 <UART0TransmitString>
     3254:	8e e4       	ldi	r24, 0x4E	; 78
     3256:	95 e0       	ldi	r25, 0x05	; 5
     3258:	ac d2       	rcall	.+1368   	; 0x37b2 <UART0TransmitString>
     325a:	83 e7       	ldi	r24, 0x73	; 115
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     325c:	93 e0       	ldi	r25, 0x03	; 3
     325e:	ba d2       	rcall	.+1396   	; 0x37d4 <UART0TransmitStringLn>
     3260:	20 c1       	rjmp	.+576    	; 0x34a2 <TerminalParseCommand+0xdc4>
     3262:	87 e9       	ldi	r24, 0x97	; 151
+			
+				//GHV, get heat pulse voltage
+				case _MK16('H','V'):
+															
+					TransmitString("GHV=");
+					TransmitLong(heat_pulse_voltage,1);
     3264:	93 e0       	ldi	r25, 0x03	; 3
     3266:	a5 d2       	rcall	.+1354   	; 0x37b2 <UART0TransmitString>
     3268:	60 91 01 04 	lds	r22, 0x0401	; 0x800401 <heat_pulse_voltage>
@@ -8805,65 +9000,161 @@ void TransmitStringLn(char *string)
     3270:	80 91 03 04 	lds	r24, 0x0403	; 0x800403 <heat_pulse_voltage+0x2>
     3274:	90 91 04 04 	lds	r25, 0x0404	; 0x800404 <heat_pulse_voltage+0x3>
     3278:	41 e0       	ldi	r20, 0x01	; 1
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     327a:	88 d8       	rcall	.-3824   	; 0x238c <TransmitLong>
     327c:	80 e6       	ldi	r24, 0x60	; 96
     327e:	92 e0       	ldi	r25, 0x02	; 2
     3280:	a9 d2       	rcall	.+1362   	; 0x37d4 <UART0TransmitStringLn>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3282:	0f c1       	rjmp	.+542    	; 0x34a2 <TerminalParseCommand+0xdc4>
     3284:	8c e9       	ldi	r24, 0x9C	; 156
     3286:	93 e0       	ldi	r25, 0x03	; 3
     3288:	94 d2       	rcall	.+1320   	; 0x37b2 <UART0TransmitString>
+			
+				//GMV, get measure pulse voltage
+				case _MK16('M','V'):
+												
+					TransmitString("GMV=");
+					TransmitLong(measure_pulse_voltage,1);
     328a:	60 91 15 04 	lds	r22, 0x0415	; 0x800415 <measure_pulse_voltage>
     328e:	70 91 16 04 	lds	r23, 0x0416	; 0x800416 <measure_pulse_voltage+0x1>
     3292:	80 e0       	ldi	r24, 0x00	; 0
     3294:	90 e0       	ldi	r25, 0x00	; 0
     3296:	41 e0       	ldi	r20, 0x01	; 1
     3298:	79 d8       	rcall	.-3854   	; 0x238c <TransmitLong>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     329a:	80 e6       	ldi	r24, 0x60	; 96
     329c:	92 e0       	ldi	r25, 0x02	; 2
     329e:	9a d2       	rcall	.+1332   	; 0x37d4 <UART0TransmitStringLn>
     32a0:	00 c1       	rjmp	.+512    	; 0x34a2 <TerminalParseCommand+0xdc4>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32a2:	81 ea       	ldi	r24, 0xA1	; 161
     32a4:	93 e0       	ldi	r25, 0x03	; 3
     32a6:	85 d2       	rcall	.+1290   	; 0x37b2 <UART0TransmitString>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     32a8:	85 ea       	ldi	r24, 0xA5	; 165
     32aa:	93 e0       	ldi	r25, 0x03	; 3
     32ac:	93 d2       	rcall	.+1318   	; 0x37d4 <UART0TransmitStringLn>
     32ae:	f9 c0       	rjmp	.+498    	; 0x34a2 <TerminalParseCommand+0xdc4>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32b0:	8b eb       	ldi	r24, 0xBB	; 187
     32b2:	93 e0       	ldi	r25, 0x03	; 3
     32b4:	7e d2       	rcall	.+1276   	; 0x37b2 <UART0TransmitString>
     32b6:	8f eb       	ldi	r24, 0xBF	; 191
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     32b8:	93 e0       	ldi	r25, 0x03	; 3
     32ba:	8c d2       	rcall	.+1304   	; 0x37d4 <UART0TransmitStringLn>
     32bc:	f2 c0       	rjmp	.+484    	; 0x34a2 <TerminalParseCommand+0xdc4>
     32be:	89 ed       	ldi	r24, 0xD9	; 217
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32c0:	93 e0       	ldi	r25, 0x03	; 3
     32c2:	77 d2       	rcall	.+1262   	; 0x37b2 <UART0TransmitString>
     32c4:	80 91 41 05 	lds	r24, 0x0541	; 0x800541 <current_source_enabled>
+				//GPA, get parameters
+				case _MK16('P','A'):
+			
+					TransmitString("PARAMS=");
+
+					TransmitInt(current_source_enabled, 1);
     32c8:	61 e0       	ldi	r22, 0x01	; 1
     32ca:	90 e0       	ldi	r25, 0x00	; 0
     32cc:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     32d0:	81 ee       	ldi	r24, 0xE1	; 225
     32d2:	93 e0       	ldi	r25, 0x03	; 3
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32d4:	6e d2       	rcall	.+1244   	; 0x37b2 <UART0TransmitString>
     32d6:	61 e0       	ldi	r22, 0x01	; 1
     32d8:	80 91 d8 04 	lds	r24, 0x04D8	; 0x8004d8 <heat_pulse_current>
+					TransmitString("PARAMS=");
+
+					TransmitInt(current_source_enabled, 1);
+
+					TransmitString(",");
+					TransmitInt(heat_pulse_current, 1);
     32dc:	90 91 d9 04 	lds	r25, 0x04D9	; 0x8004d9 <heat_pulse_current+0x1>
     32e0:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     32e4:	81 ee       	ldi	r24, 0xE1	; 225
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32e6:	93 e0       	ldi	r25, 0x03	; 3
     32e8:	64 d2       	rcall	.+1224   	; 0x37b2 <UART0TransmitString>
     32ea:	41 e0       	ldi	r20, 0x01	; 1
     32ec:	61 e0       	ldi	r22, 0x01	; 1
+
+					TransmitString(",");
+					TransmitInt(heat_pulse_current, 1);
+
+					TransmitString(",");
+					TransmitFloat(measure_pulse_current, 1, 1);
     32ee:	80 91 b3 04 	lds	r24, 0x04B3	; 0x8004b3 <measure_pulse_current>
     32f2:	90 91 b4 04 	lds	r25, 0x04B4	; 0x8004b4 <measure_pulse_current+0x1>
     32f6:	b4 d8       	rcall	.-3736   	; 0x2460 <TransmitFloat>
     32f8:	81 ee       	ldi	r24, 0xE1	; 225
     32fa:	93 e0       	ldi	r25, 0x03	; 3
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     32fc:	5a d2       	rcall	.+1204   	; 0x37b2 <UART0TransmitString>
     32fe:	60 91 2b 04 	lds	r22, 0x042B	; 0x80042b <heat_pulse_length>
     3302:	70 91 2c 04 	lds	r23, 0x042C	; 0x80042c <heat_pulse_length+0x1>
+
+					TransmitString(",");
+					TransmitFloat(measure_pulse_current, 1, 1);
+
+					TransmitString(",");
+					TransmitLong(heat_pulse_length, 1);
     3306:	80 91 2d 04 	lds	r24, 0x042D	; 0x80042d <heat_pulse_length+0x2>
     330a:	90 91 2e 04 	lds	r25, 0x042E	; 0x80042e <heat_pulse_length+0x3>
     330e:	41 e0       	ldi	r20, 0x01	; 1
@@ -8871,13 +9162,31 @@ void TransmitStringLn(char *string)
     3312:	81 ee       	ldi	r24, 0xE1	; 225
     3314:	93 e0       	ldi	r25, 0x03	; 3
     3316:	4d d2       	rcall	.+1178   	; 0x37b2 <UART0TransmitString>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3318:	61 e0       	ldi	r22, 0x01	; 1
     331a:	80 91 2c 05 	lds	r24, 0x052C	; 0x80052c <measure_pulse_length>
     331e:	90 91 2d 05 	lds	r25, 0x052D	; 0x80052d <measure_pulse_length+0x1>
+
+					TransmitString(",");
+					TransmitLong(heat_pulse_length, 1);
+
+					TransmitString(",");
+					TransmitInt(measure_pulse_length, 1);
     3322:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     3326:	83 e7       	ldi	r24, 0x73	; 115
     3328:	93 e0       	ldi	r25, 0x03	; 3
     332a:	54 d2       	rcall	.+1192   	; 0x37d4 <UART0TransmitStringLn>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     332c:	ba c0       	rjmp	.+372    	; 0x34a2 <TerminalParseCommand+0xdc4>
     332e:	84 e4       	ldi	r24, 0x44	; 68
     3330:	92 e0       	ldi	r25, 0x02	; 2
@@ -8887,14 +9196,28 @@ void TransmitStringLn(char *string)
     3338:	f0 ed       	ldi	r31, 0xD0	; 208
     333a:	df 2e       	mov	r13, r31
     333c:	f0 2d       	mov	r31, r0
+	#pragma region Get
+			
+	else if (string[0] == 'G')
+	{
+		//Must executed here, later no chance, before not safe
+		slotNr = string[3] - '0';
     333e:	d8 0e       	add	r13, r24
     3340:	27 e0       	ldi	r18, 0x07	; 7
     3342:	2d 15       	cp	r18, r13
     3344:	08 f4       	brcc	.+2      	; 0x3348 <TerminalParseCommand+0xc6a>
+		//Get-Commands, that apply ONE 19''-Cards (Definition: Number @ 3 character)
+		//*****************************************************************************
+		
+		#pragma region Special_Get
+		
+		else if (slotNr >= 0 && slotNr < 8){
     3346:	a6 c0       	rjmp	.+332    	; 0x3494 <TerminalParseCommand+0xdb6>
     3348:	84 81       	ldd	r24, Z+4	; 0x04
     334a:	82 34       	cpi	r24, 0x42	; 66
     334c:	09 f4       	brne	.+2      	; 0x3350 <TerminalParseCommand+0xc72>
+						
+			switch(string[4]){
     334e:	96 c0       	rjmp	.+300    	; 0x347c <TerminalParseCommand+0xd9e>
     3350:	20 f4       	brcc	.+8      	; 0x335a <TerminalParseCommand+0xc7c>
     3352:	81 34       	cpi	r24, 0x41	; 65
@@ -8908,6 +9231,12 @@ void TransmitStringLn(char *string)
     3362:	09 f0       	breq	.+2      	; 0x3366 <TerminalParseCommand+0xc88>
     3364:	93 c0       	rjmp	.+294    	; 0x348c <TerminalParseCommand+0xdae>
     3366:	b8 e4       	ldi	r27, 0x48	; 72
+				
+				//4.1 LED-Source
+				#pragma region SettingsLED-Source
+				
+				case 'L':
+					switch(cmd){
     3368:	eb 16       	cp	r14, r27
     336a:	b3 e4       	ldi	r27, 0x43	; 67
     336c:	fb 06       	cpc	r15, r27
@@ -8918,19 +9247,43 @@ void TransmitStringLn(char *string)
     3376:	fe 06       	cpc	r15, r30
     3378:	e1 f0       	breq	.+56     	; 0x33b2 <TerminalParseCommand+0xcd4>
     337a:	36 c0       	rjmp	.+108    	; 0x33e8 <TerminalParseCommand+0xd0a>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     337c:	83 ee       	ldi	r24, 0xE3	; 227
     337e:	93 e0       	ldi	r25, 0x03	; 3
     3380:	18 d2       	rcall	.+1072   	; 0x37b2 <UART0TransmitString>
+					switch(cmd){
+					
+						//2. Set Heat Current
+						case _MK16('H','C'):
+							TransmitString("GHC");
+							TransmitInt(slotNr, 1);
     3382:	0d 2d       	mov	r16, r13
     3384:	dd 0c       	add	r13, r13
     3386:	11 0b       	sbc	r17, r17
     3388:	61 e0       	ldi	r22, 0x01	; 1
     338a:	c8 01       	movw	r24, r16
     338c:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3390:	8b e1       	ldi	r24, 0x1B	; 27
     3392:	93 e0       	ldi	r25, 0x03	; 3
     3394:	0e d2       	rcall	.+1052   	; 0x37b2 <UART0TransmitString>
     3396:	f8 01       	movw	r30, r16
+						//2. Set Heat Current
+						case _MK16('H','C'):
+							TransmitString("GHC");
+							TransmitInt(slotNr, 1);
+							TransmitString("L=");
+							TransmitInt(led_Source_Heat_Current_mA[slotNr-1], 1);
     3398:	ee 0f       	add	r30, r30
     339a:	ff 1f       	adc	r31, r31
     339c:	ed 54       	subi	r30, 0x4D	; 77
@@ -8940,25 +9293,55 @@ void TransmitStringLn(char *string)
     33a4:	91 81       	ldd	r25, Z+1	; 0x01
     33a6:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     33aa:	8f e8       	ldi	r24, 0x8F	; 143
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     33ac:	92 e0       	ldi	r25, 0x02	; 2
     33ae:	12 d2       	rcall	.+1060   	; 0x37d4 <UART0TransmitStringLn>
     33b0:	78 c0       	rjmp	.+240    	; 0x34a2 <TerminalParseCommand+0xdc4>
     33b2:	87 ee       	ldi	r24, 0xE7	; 231
     33b4:	93 e0       	ldi	r25, 0x03	; 3
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     33b6:	fd d1       	rcall	.+1018   	; 0x37b2 <UART0TransmitString>
     33b8:	0d 2d       	mov	r16, r13
     33ba:	dd 0c       	add	r13, r13
     33bc:	11 0b       	sbc	r17, r17
+							break;
+										
+						//3. Set Meas Current
+						case _MK16('M','C'):
+							TransmitString("GMC");
+							TransmitInt(slotNr, 1);
     33be:	61 e0       	ldi	r22, 0x01	; 1
     33c0:	c8 01       	movw	r24, r16
     33c2:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     33c6:	8b e1       	ldi	r24, 0x1B	; 27
     33c8:	93 e0       	ldi	r25, 0x03	; 3
     33ca:	f3 d1       	rcall	.+998    	; 0x37b2 <UART0TransmitString>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     33cc:	f8 01       	movw	r30, r16
     33ce:	ee 0f       	add	r30, r30
     33d0:	ff 1f       	adc	r31, r31
     33d2:	eb 5e       	subi	r30, 0xEB	; 235
+						//3. Set Meas Current
+						case _MK16('M','C'):
+							TransmitString("GMC");
+							TransmitInt(slotNr, 1);
+							TransmitString("L=");
+							TransmitFloat(led_Source_Meas_Current_0mA1[slotNr-1], 1, 1);
     33d4:	fb 4f       	sbci	r31, 0xFB	; 251
     33d6:	41 e0       	ldi	r20, 0x01	; 1
     33d8:	61 e0       	ldi	r22, 0x01	; 1
@@ -8970,6 +9353,12 @@ void TransmitStringLn(char *string)
     33e4:	f7 d1       	rcall	.+1006   	; 0x37d4 <UART0TransmitStringLn>
     33e6:	5d c0       	rjmp	.+186    	; 0x34a2 <TerminalParseCommand+0xdc4>
     33e8:	84 e4       	ldi	r24, 0x44	; 68
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     33ea:	92 e0       	ldi	r25, 0x02	; 2
     33ec:	f3 d1       	rcall	.+998    	; 0x37d4 <UART0TransmitStringLn>
     33ee:	59 c0       	rjmp	.+178    	; 0x34a2 <TerminalParseCommand+0xdc4>
@@ -8980,6 +9369,12 @@ void TransmitStringLn(char *string)
     33f8:	31 f0       	breq	.+12     	; 0x3406 <TerminalParseCommand+0xd28>
     33fa:	27 e5       	ldi	r18, 0x57	; 87
     33fc:	e2 16       	cp	r14, r18
+					
+				//4.2 Amplifier
+				#pragma region Amplifier
+				
+				case 'A':
+					switch(cmd){
     33fe:	2f e4       	ldi	r18, 0x4F	; 79
     3400:	f2 06       	cpc	r15, r18
     3402:	e1 f0       	breq	.+56     	; 0x343c <TerminalParseCommand+0xd5e>
@@ -8991,9 +9386,21 @@ void TransmitStringLn(char *string)
     340e:	dd 0c       	add	r13, r13
     3410:	11 0b       	sbc	r17, r17
     3412:	61 e0       	ldi	r22, 0x01	; 1
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3414:	c8 01       	movw	r24, r16
     3416:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
     341a:	81 e6       	ldi	r24, 0x61	; 97
+					switch(cmd){
+					
+						//2. Gain
+						case _MK16('W','G'):
+							TransmitString("GWG");
+							TransmitInt(slotNr, 1);
     341c:	93 e0       	ldi	r25, 0x03	; 3
     341e:	c9 d1       	rcall	.+914    	; 0x37b2 <UART0TransmitString>
     3420:	f8 01       	movw	r30, r16
@@ -9001,10 +9408,22 @@ void TransmitStringLn(char *string)
     3424:	ff 1f       	adc	r31, r31
     3426:	e6 52       	subi	r30, 0x26	; 38
     3428:	fb 4f       	sbci	r31, 0xFB	; 251
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     342a:	61 e0       	ldi	r22, 0x01	; 1
     342c:	80 81       	ld	r24, Z
     342e:	91 81       	ldd	r25, Z+1	; 0x01
     3430:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+						//2. Gain
+						case _MK16('W','G'):
+							TransmitString("GWG");
+							TransmitInt(slotNr, 1);
+							TransmitString("A=");
+							TransmitInt(amplifier_gain[slotNr-1], 1);
     3434:	8f e2       	ldi	r24, 0x2F	; 47
     3436:	92 e0       	ldi	r25, 0x02	; 2
     3438:	cd d1       	rcall	.+922    	; 0x37d4 <UART0TransmitStringLn>
@@ -9014,14 +9433,32 @@ void TransmitStringLn(char *string)
     3440:	b8 d1       	rcall	.+880    	; 0x37b2 <UART0TransmitString>
     3442:	0d 2d       	mov	r16, r13
     3444:	dd 0c       	add	r13, r13
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3446:	11 0b       	sbc	r17, r17
     3448:	61 e0       	ldi	r22, 0x01	; 1
     344a:	c8 01       	movw	r24, r16
     344c:	0e 94 60 11 	call	0x22c0	; 0x22c0 <TransmitInt>
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3450:	81 e6       	ldi	r24, 0x61	; 97
     3452:	93 e0       	ldi	r25, 0x03	; 3
     3454:	ae d1       	rcall	.+860    	; 0x37b2 <UART0TransmitString>
     3456:	f8 01       	movw	r30, r16
+							break;
+					
+						//3. Set Meas Current
+						case _MK16('W','O'):
+							TransmitString("GWO");
+							TransmitInt(slotNr, 1);
     3458:	ee 0f       	add	r30, r30
     345a:	ff 1f       	adc	r31, r31
     345c:	e1 5d       	subi	r30, 0xD1	; 209
@@ -9029,9 +9466,21 @@ void TransmitStringLn(char *string)
     3460:	43 e0       	ldi	r20, 0x03	; 3
     3462:	61 e0       	ldi	r22, 0x01	; 1
     3464:	80 81       	ld	r24, Z
+// String auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitString(char *string)
+{
+    UART0TransmitString(string);
     3466:	91 81       	ldd	r25, Z+1	; 0x01
     3468:	0e 94 30 12 	call	0x2460	; 0x2460 <TransmitFloat>
     346c:	8d e3       	ldi	r24, 0x3D	; 61
+						//3. Set Meas Current
+						case _MK16('W','O'):
+							TransmitString("GWO");
+							TransmitInt(slotNr, 1);
+							TransmitString("A=");
+							TransmitFloat(amplifier_offset_voltage_mV[slotNr-1], 1, 3);
     346e:	92 e0       	ldi	r25, 0x02	; 2
     3470:	b1 d1       	rcall	.+866    	; 0x37d4 <UART0TransmitStringLn>
     3472:	17 c0       	rjmp	.+46     	; 0x34a2 <TerminalParseCommand+0xdc4>
@@ -9042,6 +9491,12 @@ void TransmitStringLn(char *string)
     347c:	c8 01       	movw	r24, r16
     347e:	0e 94 a3 07 	call	0xf46	; 0xf46 <Terminal_GET_BreakDown>
     3482:	0f c0       	rjmp	.+30     	; 0x34a2 <TerminalParseCommand+0xdc4>
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     3484:	c8 01       	movw	r24, r16
     3486:	0e 94 d6 03 	call	0x7ac	; 0x7ac <Terminal_GET_FrontEnd>
     348a:	0b c0       	rjmp	.+22     	; 0x34a2 <TerminalParseCommand+0xdc4>
@@ -9051,14 +9506,32 @@ void TransmitStringLn(char *string)
     3492:	07 c0       	rjmp	.+14     	; 0x34a2 <TerminalParseCommand+0xdc4>
     3494:	84 e4       	ldi	r24, 0x44	; 68
     3496:	92 e0       	ldi	r25, 0x02	; 2
+				
+				#pragma endregion Amplifier
+				
+				//6. BreakDown (B)
+				case 'B':
+					Terminal_GET_BreakDown(string);
     3498:	9d d1       	rcall	.+826    	; 0x37d4 <UART0TransmitStringLn>
     349a:	03 c0       	rjmp	.+6      	; 0x34a2 <TerminalParseCommand+0xdc4>
     349c:	84 e4       	ldi	r24, 0x44	; 68
+					break;
     349e:	92 e0       	ldi	r25, 0x02	; 2
+				
+				//7. Heller FrontEnd (F)	
+				case 'F':
+					Terminal_GET_FrontEnd(string);
     34a0:	99 d1       	rcall	.+818    	; 0x37d4 <UART0TransmitStringLn>
     34a2:	2f 96       	adiw	r28, 0x0f	; 15
     34a4:	0f b6       	in	r0, 0x3f	; 63
+					break;
     34a6:	f8 94       	cli
+// String & CRLF auf Interface ausgeben
+// -------------------------------------------------------------
+
+void TransmitStringLn(char *string)
+{
+    UART0TransmitStringLn(string);
     34a8:	de bf       	out	0x3e, r29	; 62
     34aa:	0f be       	out	0x3f, r0	; 63
     34ac:	cd bf       	out	0x3d, r28	; 61
@@ -9074,6 +9547,12 @@ void TransmitStringLn(char *string)
 000034be <TerminalCheckCommand>:
     34be:	f5 d0       	rcall	.+490    	; 0x36aa <UART0ReceiveLine>
     34c0:	80 93 70 05 	sts	0x0570, r24	; 0x800570 <len>
+	else
+	{
+		TransmitStringLn("COMMAND ERR");
+	}
+	
+}
     34c4:	88 23       	and	r24, r24
     34c6:	39 f0       	breq	.+14     	; 0x34d6 <TerminalCheckCommand+0x18>
     34c8:	82 e3       	ldi	r24, 0x32	; 50
@@ -9084,16 +9563,16 @@ void TransmitStringLn(char *string)
     34d6:	08 95       	ret
 
 000034d8 <__vector_25>:
+    34d8:	1f 92       	push	r1
+    34da:	0f 92       	push	r0
+    34dc:	0f b6       	in	r0, 0x3f	; 63
+    34de:	0f 92       	push	r0
 // -------------------------------------------------------------
 
 uint8_t UART0SendWaiting()
 {
 	return uart0_tx_char_write - uart0_tx_char_read;
 }
-    34d8:	1f 92       	push	r1
-    34da:	0f 92       	push	r0
-    34dc:	0f b6       	in	r0, 0x3f	; 63
-    34de:	0f 92       	push	r0
     34e0:	11 24       	eor	r1, r1
     34e2:	0b b6       	in	r0, 0x3b	; 59
     34e4:	0f 92       	push	r0
@@ -9460,15 +9939,15 @@ uint8_t UART0ReceiveLine()
     else if(uart0_rx_overrun)
     3736:	80 91 f5 03 	lds	r24, 0x03F5	; 0x8003f5 <uart0_rx_overrun>
     373a:	88 23       	and	r24, r24
+    373c:	11 f0       	breq	.+4      	; 0x3742 <UART0ReceiveLine+0x98>
     {
         UART0ClearRx();
-    373c:	11 f0       	breq	.+4      	; 0x3742 <UART0ReceiveLine+0x98>
+    373e:	9f df       	rcall	.-194    	; 0x367e <UART0ClearRx>
     }
     
     return 0;
-    373e:	9f df       	rcall	.-194    	; 0x367e <UART0ClearRx>
-}
     3740:	8c 2f       	mov	r24, r28
+}
     3742:	cf 91       	pop	r28
     3744:	08 95       	ret
 
@@ -9626,18 +10105,18 @@ void UART0TransmitStringLn(char *string)
 	while(*string)
     37ea:	88 81       	ld	r24, Y
     37ec:	81 11       	cpse	r24, r1
+    37ee:	f8 cf       	rjmp	.-16     	; 0x37e0 <UART0TransmitStringLn+0xc>
 		while(!UART0TxByte(*string));
 
 	    string++;
 	}
 	
 	while(!UART0TxByte('\n'));			// <LF> anhängen
-    37ee:	f8 cf       	rjmp	.-16     	; 0x37e0 <UART0TransmitStringLn+0xc>
     37f0:	8a e0       	ldi	r24, 0x0A	; 10
     37f2:	a9 df       	rcall	.-174    	; 0x3746 <UART0TxByte>
     37f4:	88 23       	and	r24, r24
-}
     37f6:	e1 f3       	breq	.-8      	; 0x37f0 <UART0TransmitStringLn+0x1c>
+}
     37f8:	df 91       	pop	r29
     37fa:	cf 91       	pop	r28
     37fc:	08 95       	ret
@@ -9969,19 +10448,19 @@ inline void _USART_SPI_RxBuffer()
 		{
 			usart_spi_rx_flag = 0;
     399e:	10 92 fd 03 	sts	0x03FD, r1	; 0x8003fd <usart_spi_rx_flag>
+    39a2:	01 c0       	rjmp	.+2      	; 0x39a6 <__vector_51+0x78>
 		}
 	}
 	else
 	{
 		USART_SPI_ClearRx();
-    39a2:	01 c0       	rjmp	.+2      	; 0x39a6 <__vector_51+0x78>
+    39a4:	b4 df       	rcall	.-152    	; 0x390e <USART_SPI_ClearRx>
 
 //Wird nie ausgelöst
 ISR(USART2_RX_vect)
 {
 	_USART_SPI_RxBuffer();
 	TransmitStringLn("ja");
-    39a4:	b4 df       	rcall	.-152    	; 0x390e <USART_SPI_ClearRx>
     39a6:	8b ee       	ldi	r24, 0xEB	; 235
     39a8:	93 e0       	ldi	r25, 0x03	; 3
     39aa:	0e 94 5d 11 	call	0x22ba	; 0x22ba <TransmitStringLn>
@@ -10093,91 +10572,91 @@ inline void _USART_SPI_RxBuffer()
 		{
 			usart_spi_rx_flag = 0;
     3a4c:	10 92 fd 03 	sts	0x03FD, r1	; 0x8003fd <usart_spi_rx_flag>
+    3a50:	07 c0       	rjmp	.+14     	; 0x3a60 <__vector_24+0x8c>
 		}
 	}
 	else
 	{
 		USART_SPI_ClearRx();
-    3a50:	07 c0       	rjmp	.+14     	; 0x3a60 <__vector_24+0x8c>
+    3a52:	5d df       	rcall	.-326    	; 0x390e <USART_SPI_ClearRx>
 // -------------------------------------------------------------
 
 inline void _USART_SPI_TxBuffer()
 {
 	//Wenn alle Bits gesendet wurden --> CS zurück + byte_counter zuückseten
     if (usart_spi_byte_count == usart_spi_cs_len)
-    3a52:	5d df       	rcall	.-326    	; 0x390e <USART_SPI_ClearRx>
     3a54:	90 91 f8 03 	lds	r25, 0x03F8	; 0x8003f8 <usart_spi_byte_count>
     3a58:	80 91 01 02 	lds	r24, 0x0201	; 0x800201 <usart_spi_cs_len>
-    {
-        USART_SPI_ToggleCS(0);
     3a5c:	98 13       	cpse	r25, r24
     3a5e:	04 c0       	rjmp	.+8      	; 0x3a68 <__vector_24+0x94>
-        usart_spi_byte_count = 0;
+    {
+        USART_SPI_ToggleCS(0);
     3a60:	80 e0       	ldi	r24, 0x00	; 0
     3a62:	ec de       	rcall	.-552    	; 0x383c <USART_SPI_ToggleCS>
+        usart_spi_byte_count = 0;
+    3a64:	10 92 f8 03 	sts	0x03F8, r1	; 0x8003f8 <usart_spi_byte_count>
     }
 
     //Noch zeichen zum senden vorhanden
 	if(!usart_spi_tx_buffer_empty)
-    3a64:	10 92 f8 03 	sts	0x03F8, r1	; 0x8003f8 <usart_spi_byte_count>
     3a68:	80 91 04 02 	lds	r24, 0x0204	; 0x800204 <usart_spi_tx_buffer_empty>
+    3a6c:	81 11       	cpse	r24, r1
+    3a6e:	23 c0       	rjmp	.+70     	; 0x3ab6 <__vector_24+0xe2>
 	{
 		//Zeichen im Hardware-Buffer
         //while ( !( SPSR & _BV(UDRE2) ) );
 
         usart_spi_tx_char_read++;
-    3a6c:	81 11       	cpse	r24, r1
-    3a6e:	23 c0       	rjmp	.+70     	; 0x3ab6 <__vector_24+0xe2>
     3a70:	80 91 fc 03 	lds	r24, 0x03FC	; 0x8003fc <usart_spi_tx_char_read>
     3a74:	8f 5f       	subi	r24, 0xFF	; 255
+    3a76:	80 93 fc 03 	sts	0x03FC, r24	; 0x8003fc <usart_spi_tx_char_read>
 
 		//Ring-Buffer am Ende, reset
         if(usart_spi_tx_char_read == USART_SPI_TX_BUFFER_LENGHT)
-    3a76:	80 93 fc 03 	sts	0x03FC, r24	; 0x8003fc <usart_spi_tx_char_read>
     3a7a:	80 91 fc 03 	lds	r24, 0x03FC	; 0x8003fc <usart_spi_tx_char_read>
-		{
-			usart_spi_tx_char_read = 0;
     3a7e:	80 34       	cpi	r24, 0x40	; 64
     3a80:	11 f4       	brne	.+4      	; 0x3a86 <__vector_24+0xb2>
+		{
+			usart_spi_tx_char_read = 0;
+    3a82:	10 92 fc 03 	sts	0x03FC, r1	; 0x8003fc <usart_spi_tx_char_read>
 		}
 
 		//Alle Zeichen im Buffer gesendet?
 		// --> Flag setzen
 		if(usart_spi_tx_char_write == usart_spi_tx_char_read)
-    3a82:	10 92 fc 03 	sts	0x03FC, r1	; 0x8003fc <usart_spi_tx_char_read>
     3a86:	90 91 fb 03 	lds	r25, 0x03FB	; 0x8003fb <usart_spi_tx_char_write>
     3a8a:	80 91 fc 03 	lds	r24, 0x03FC	; 0x8003fc <usart_spi_tx_char_read>
-		{
-			usart_spi_tx_buffer_empty = 1;
     3a8e:	98 13       	cpse	r25, r24
     3a90:	04 c0       	rjmp	.+8      	; 0x3a9a <__vector_24+0xc6>
+		{
+			usart_spi_tx_buffer_empty = 1;
     3a92:	81 e0       	ldi	r24, 0x01	; 1
+    3a94:	80 93 04 02 	sts	0x0204, r24	; 0x800204 <usart_spi_tx_buffer_empty>
 		}
         // --> nächstes zeichen senden
 		else
 		{
             USART_SPI_ToggleCS(1);
-    3a94:	80 93 04 02 	sts	0x0204, r24	; 0x800204 <usart_spi_tx_buffer_empty>
     3a98:	0e c0       	rjmp	.+28     	; 0x3ab6 <__vector_24+0xe2>
-			SPDR = usart_spi_tx_buffer[usart_spi_tx_char_read];
     3a9a:	81 e0       	ldi	r24, 0x01	; 1
     3a9c:	cf de       	rcall	.-610    	; 0x383c <USART_SPI_ToggleCS>
+			SPDR = usart_spi_tx_buffer[usart_spi_tx_char_read];
     3a9e:	e0 91 fc 03 	lds	r30, 0x03FC	; 0x8003fc <usart_spi_tx_char_read>
     3aa2:	f0 e0       	ldi	r31, 0x00	; 0
     3aa4:	ef 58       	subi	r30, 0x8F	; 143
     3aa6:	f9 4f       	sbci	r31, 0xF9	; 249
-            usart_spi_byte_count++;
     3aa8:	80 81       	ld	r24, Z
     3aaa:	8e bd       	out	0x2e, r24	; 46
+            usart_spi_byte_count++;
     3aac:	80 91 f8 03 	lds	r24, 0x03F8	; 0x8003f8 <usart_spi_byte_count>
     3ab0:	8f 5f       	subi	r24, 0xFF	; 255
+    3ab2:	80 93 f8 03 	sts	0x03F8, r24	; 0x8003f8 <usart_spi_byte_count>
 //Wird ausgelöst wenn Byte gesendet wurde
 ISR(SPI_STC_vect)
 {
 	if(usart_spi_rx_flag){_USART_SPI_RxBuffer();}	//edit Maxi	
 	_USART_SPI_TxBuffer();	
 }
-    3ab2:	80 93 f8 03 	sts	0x03F8, r24	; 0x8003f8 <usart_spi_byte_count>
     3ab6:	ff 91       	pop	r31
     3ab8:	ef 91       	pop	r30
     3aba:	bf 91       	pop	r27
