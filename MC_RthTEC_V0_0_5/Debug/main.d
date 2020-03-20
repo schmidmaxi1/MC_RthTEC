@@ -1,4 +1,4 @@
-main.d main.o: .././main.c .././main.h .././helper.h \
+main.d main.o: .././main.c .././main.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -19,18 +19,18 @@ main.d main.o: .././main.c .././main.h .././helper.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\power.h \
- .././uart0.h .././ad5752.h .././usart_spi.h .././my_Timers.h \
- .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
+ .././Config.h .././helper.h .././uart0.h .././usart_spi.h \
+ .././my_Timers.h .././Cards/Slot_Tester.h .././Cards/MOSFET_BreakDown.h \
  .././Cards/LED_Source.h .././Cards/Amplifier.h .././Cards/FrontEnd.h \
- .././Cards/MOSFET_Source.h .././ICs/MCP23S08.h \
+ .././Cards/MOSFET_Source.h .././Cards/../Config.h .././Cards/../helper.h \
+ .././Cards/../ICs/AD5752.h .././Cards/../ICs/LTC1864.h \
+ .././ICs/MCP23S08.h .././ICs/../usart_spi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
 .././main.h:
-
-.././helper.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -72,9 +72,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\power.h:
 
-.././uart0.h:
+.././Config.h:
 
-.././ad5752.h:
+.././helper.h:
+
+.././uart0.h:
 
 .././usart_spi.h:
 
@@ -92,7 +94,17 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././Cards/MOSFET_Source.h:
 
+.././Cards/../Config.h:
+
+.././Cards/../helper.h:
+
+.././Cards/../ICs/AD5752.h:
+
+.././Cards/../ICs/LTC1864.h:
+
 .././ICs/MCP23S08.h:
+
+.././ICs/../usart_spi.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\pgmspace.h:
 

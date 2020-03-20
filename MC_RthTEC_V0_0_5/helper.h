@@ -14,7 +14,6 @@
 #define _HELPER_FUNCS_
 
 
-
 /*
  ** Compiler macros
  */

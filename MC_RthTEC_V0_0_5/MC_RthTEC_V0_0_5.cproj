@@ -180,6 +180,9 @@
     <Compile Include="Cards\Slot_Tester.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Config.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="helper.h">
       <SubType>compile</SubType>
     </Compile>

@@ -16,6 +16,7 @@
  */
 
 #include <string.h>
+#include "Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
 
 #include "main.h"
 

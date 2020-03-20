@@ -5,6 +5,13 @@
  *  Author: schmidm
  */ 
 
+//General Includes
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "../helper.h"
+
+//Includes for ICs
+#include "../ICs/AD5752.h"
+#include "../ICs/LTC1864.h"
 
 /*
  ** Compiler-Constants

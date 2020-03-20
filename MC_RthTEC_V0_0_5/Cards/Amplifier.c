@@ -5,6 +5,8 @@
  *  Author: schmidm
  */ 
 
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
 #include <util/delay.h>
 #include "../helper.h"
@@ -38,14 +40,14 @@ void Amplifier_Init(int slot_nr)
 	//Set HP&MP to LOW, and all CS to HIGH
 	_clear_bit(HP_Port, slot_nr - 1);
 	_clear_bit(MP_Port, slot_nr - 1);
-	_set_bit(IO_Port3, slot_nr - 1);
+	_set_bit(IO_PORT3, slot_nr - 1);
 	_set_bit(IO_PORT4, slot_nr - 1);
 	_set_bit(IO_PORT5, slot_nr - 1);
 	_set_bit(IO_PORT6, slot_nr - 1);
 	//Set all as Output
 	_set_out(HP_Port, slot_nr - 1);
 	_set_out(MP_Port, slot_nr - 1);
-	_set_out(IO_Port3, slot_nr - 1);
+	_set_out(IO_PORT3, slot_nr - 1);
 	_set_out(IO_PORT4, slot_nr - 1);
 	_set_out(IO_PORT5, slot_nr - 1);
 	_set_out(IO_PORT6, slot_nr - 1);
@@ -54,7 +56,7 @@ void Amplifier_Init(int slot_nr)
 	//ADC initialization
 	//Range: +5V
 	//Both Channels on
-	DAC_AD5752_Range_and_PowerUp(Range_p5V, PowerUp_A, &IO_Port3, slot_nr-1);	
+	DAC_AD5752_Range_and_PowerUp(Range_p5V, PowerUp_A, &IO_PORT3, slot_nr-1);	
 	
 	//Set DAC output
 	Amplifier_Set_Gain(amplifier_gain[slot_nr-1], slot_nr);		
@@ -97,6 +99,6 @@ void Amplifier_Set_Offset_Voltage(uint16_t voltage_in_mV, int slot_nr)
 	uint16_t binary_value = (((uint32_t) voltage_in_mV) * 0xffff) / 5000 / 2;
 	
 	//Send
-	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);
+	DAC_AD5752_Set(binary_value, &IO_PORT3, slot_nr-1, DAC_ADR_DAC_A);
 	
 }

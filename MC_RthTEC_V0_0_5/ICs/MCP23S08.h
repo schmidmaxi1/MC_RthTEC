@@ -12,7 +12,7 @@
 
 //#include "../usart_spi.h"
 #include <stdint.h>
-//#include "../usart_spi.h"
+#include "../usart_spi.h"
 
 /*
  ** Compiler-Konstanten

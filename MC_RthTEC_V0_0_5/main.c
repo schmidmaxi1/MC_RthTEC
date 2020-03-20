@@ -21,6 +21,10 @@
 
 #include "main.h"
 
+
+
+
+
 #include "avr/pgmspace.h"
 
 #include <util/delay.h>
@@ -287,12 +291,12 @@ void Init_IO_Pins(){
 		//Auf 0 setzen
 		_clear_bit(HP_Port, i);
 		_clear_bit(MP_Port, i);
-		_set_bit(IO_Port3, i);
+		_set_bit(IO_PORT3, i);
 		_set_bit(IO_PORT4, i);
 		//Als Output setzen
 		_set_out(HP_Port, i);
 		_set_out(MP_Port, i);
-		_set_out(IO_Port3, i);
+		_set_out(IO_PORT3, i);
 		_set_out(IO_PORT4, i);
 	}
 	

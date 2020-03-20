@@ -9,6 +9,8 @@
  ** Includes
  */
 
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
 #include <util/delay.h>
 #include "../helper.h"
@@ -55,14 +57,14 @@ void MOSFET_BreakDown_Init(int slot_nr)
 	//Set HP&MP to LOW, and all CS to HIGH
 	_clear_bit(HP_Port, slot_nr - 1);
 	_clear_bit(MP_Port, slot_nr - 1);
-	_set_bit(IO_Port3, slot_nr - 1);
+	_set_bit(IO_PORT3, slot_nr - 1);
 	_set_bit(IO_PORT4, slot_nr - 1);
 	_set_bit(IO_PORT5, slot_nr - 1);
 	_set_bit(IO_PORT6, slot_nr - 1);
 	//Set all as Output
 	_set_out(HP_Port, slot_nr - 1);
 	_set_out(MP_Port, slot_nr - 1);
-	_set_out(IO_Port3, slot_nr - 1);
+	_set_out(IO_PORT3, slot_nr - 1);
 	_set_out(IO_PORT4, slot_nr - 1);
 	_set_out(IO_PORT5, slot_nr - 1);
 	_set_out(IO_PORT6, slot_nr - 1);
@@ -71,7 +73,7 @@ void MOSFET_BreakDown_Init(int slot_nr)
 	//Range: +10V
 	//Only Channel A
 	//DAC_AD5752_Range_and_PowerUp(Range_p5V, PowerUp_A, &IO_Port3, slot_nr-1);
-	DAC_AD5752_Range_and_PowerUp(Range_pm5V, PowerUp_A, &IO_Port3, slot_nr-1);
+	DAC_AD5752_Range_and_PowerUp(Range_pm5V, PowerUp_A, &IO_PORT3, slot_nr-1);
 	
 	//Register in MCP23S08:
 	//All as Outputs
@@ -182,7 +184,7 @@ void BreakDown_Set_V_GS_mV(int16_t V_GS_mV, int slot_nr)
 	uint16_t binary_value = (((int32_t)V_GS_mV) * 0xffff) / 40000;
 	V_GS_mV = binary_value;
 	//Send
-	DAC_AD5752_Set(binary_value, &IO_Port3, slot_nr-1, DAC_ADR_DAC_A);		
+	DAC_AD5752_Set(binary_value, &IO_PORT3, slot_nr-1, DAC_ADR_DAC_A);		
 }
 
 //*******************************************************************

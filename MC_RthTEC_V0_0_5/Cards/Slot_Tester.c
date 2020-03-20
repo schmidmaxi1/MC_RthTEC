@@ -9,6 +9,8 @@
  ** Includes
  */
 
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
 #include <util/delay.h>
 #include "../helper.h"
@@ -35,14 +37,14 @@ void Slot_Tester_Init(int slot_nr)
 	//Set all to 0
 	_clear_bit(HP_Port, slot_nr - 1);
 	_clear_bit(MP_Port, slot_nr - 1);
-	_clear_bit(IO_Port3, slot_nr - 1);
+	_clear_bit(IO_PORT3, slot_nr - 1);
 	_clear_bit(IO_PORT4, slot_nr - 1);
 	_clear_bit(IO_PORT5, slot_nr - 1);
 	_clear_bit(IO_PORT6, slot_nr - 1);
 	//Set all as Output
 	_set_out(HP_Port, slot_nr - 1);
 	_set_out(MP_Port, slot_nr - 1);
-	_set_out(IO_Port3, slot_nr - 1);
+	_set_out(IO_PORT3, slot_nr - 1);
 	_set_out(IO_PORT4, slot_nr - 1);
 	_set_out(IO_PORT5, slot_nr - 1);
 	_set_out(IO_PORT6, slot_nr - 1);
@@ -193,12 +195,12 @@ void Slot_Tester_IO_Lauflicht(int slot_nr)
 	_set_bit(MP_Port, slot_nr - 1);
 	_delay_ms(500);	
 	wdt_reset();
-	_set_bit(IO_Port3, slot_nr - 1);
+	_set_bit(IO_PORT3, slot_nr - 1);
 	_clear_bit(MP_Port, slot_nr - 1);
 	_delay_ms(500);
 	wdt_reset();
 	_set_bit(IO_PORT4, slot_nr - 1);
-	_clear_bit(IO_Port3, slot_nr - 1);
+	_clear_bit(IO_PORT3, slot_nr - 1);
 	_delay_ms(500);
 	wdt_reset();
 	_set_bit(IO_PORT5, slot_nr - 1);

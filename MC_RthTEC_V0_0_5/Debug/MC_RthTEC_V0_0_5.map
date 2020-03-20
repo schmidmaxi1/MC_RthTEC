@@ -3,7 +3,7 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodhi4.o)
                               terminal.o (__udivmodhi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                              ad5752.o (__udivmodsi4)
+                              Cards/Amplifier.o (__udivmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_divmodsi4.o)
                               Cards/MOSFET_BreakDown.o (__divmodsi4)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_negsi2.o)
@@ -15,9 +15,9 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
                               Cards/FrontEnd.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                              ad5752.o (__do_clear_bss)
+                              Cards/Amplifier.o (__do_clear_bss)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                              ad5752.o (__umulhisi3)
+                              Cards/Amplifier.o (__umulhisi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
                               Cards/MOSFET_BreakDown.o (__usmulhisi3)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
@@ -62,82 +62,82 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 Allocating common symbols
 Common symbol       size              file
 
-heat_pulse_voltage  0x4               ad5752.o
+heat_pulse_voltage  0x4               Cards/Amplifier.o
 frontEnd_offset_voltage_mV
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 measure_pulse_voltage
-                    0x2               ad5752.o
+                    0x2               Cards/Amplifier.o
 led_Source_Meas_Current_0mA1
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 deterministic_pulse_length
-                    0x2               ad5752.o
+                    0x2               Cards/Amplifier.o
 mosfet_Source_Meas_Current_0mA1
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 uart0_tx_buffer     0x80              uart0.o
-flag_DPA_TTA        0x1               ad5752.o
-interrupt_1ms       0x1               ad5752.o
-heat_pulse_length   0x4               ad5752.o
+flag_DPA_TTA        0x1               Cards/Amplifier.o
+interrupt_1ms       0x1               Cards/Amplifier.o
+heat_pulse_length   0x4               Cards/Amplifier.o
 deterministic_pulse_cycles
-                    0x2               ad5752.o
-interrupt_1hz       0x1               ad5752.o
-uart0_rx            0x81              ad5752.o
+                    0x2               Cards/Amplifier.o
+interrupt_1hz       0x1               Cards/Amplifier.o
+uart0_rx            0x81              Cards/Amplifier.o
 deterministic_pulse_counter
                     0x2               my_Timers.o
 string              0x2               terminal.o
 measure_pulse_current
-                    0x2               ad5752.o
+                    0x2               Cards/Amplifier.o
 heat_pulse_precount
                     0x1               my_Timers.o
 measured_binary_meas
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 led_Source_Heat_Current_mA
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 usart_spi_tx_buffer
                     0x40              usart_spi.o
-offset_voltage      0x2               ad5752.o
-frontEnd_gain       0x10              ad5752.o
+offset_voltage      0x2               Cards/Amplifier.o
+frontEnd_gain       0x10              Cards/Amplifier.o
 mosfet_Source_Heat_Current_mA
-                    0x10              ad5752.o
-led_hp              0x1               ad5752.o
-heat_pulse_current  0x2               ad5752.o
-flag_std_TTA        0x1               ad5752.o
-led_mp              0x1               ad5752.o
-amplifier_gain      0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
+led_hp              0x1               Cards/Amplifier.o
+heat_pulse_current  0x2               Cards/Amplifier.o
+flag_std_TTA        0x1               Cards/Amplifier.o
+led_mp              0x1               Cards/Amplifier.o
+amplifier_gain      0x10              Cards/Amplifier.o
 mosfet_Source_Meas_Voltage_10mV
-                    0x10              ad5752.o
-usart_spi_rx        0x40              ad5752.o
+                    0x10              Cards/Amplifier.o
+usart_spi_rx        0x40              Cards/Amplifier.o
 measure_pulse_length
-                    0x4               ad5752.o
-debug_send          0x1               ad5752.o
+                    0x4               Cards/Amplifier.o
+debug_send          0x1               Cards/Amplifier.o
 amplifier_offset_voltage_mV
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 current_source_enabled
-                    0x1               ad5752.o
+                    0x1               Cards/Amplifier.o
 heat_pulse_lastcount
                     0x2               my_Timers.o
 usart_spi_rx_buffer
                     0x40              usart_spi.o
 startup_wait_counter
-                    0x1               ad5752.o
+                    0x1               Cards/Amplifier.o
 measure_pules_voltage
-                    0x4               ad5752.o
+                    0x4               Cards/Amplifier.o
 measure_pulse_precount
                     0x1               my_Timers.o
-window_offset       0x2               ad5752.o
-interrupt_10hz      0x1               ad5752.o
-uart0_active_timer  0x1               ad5752.o
+window_offset       0x2               Cards/Amplifier.o
+interrupt_10hz      0x1               Cards/Amplifier.o
+uart0_active_timer  0x1               Cards/Amplifier.o
 breakDown_V_GS_mV   0x10              Cards/MOSFET_BreakDown.o
 pulse_output_register
-                    0x1               ad5752.o
+                    0x1               Cards/Amplifier.o
 measure_pulse_lastcount
                     0x2               my_Timers.o
-flag_HPP_TTA        0x1               ad5752.o
+flag_HPP_TTA        0x1               Cards/Amplifier.o
 len                 0x1               terminal.o
 measured_binary_heat
-                    0x10              ad5752.o
+                    0x10              Cards/Amplifier.o
 uart0_rx_buffer     0x80              uart0.o
-terminal_timeout    0x1               ad5752.o
-card_Type           0x8               ad5752.o
+terminal_timeout    0x1               Cards/Amplifier.o
+card_Type           0x8               Cards/Amplifier.o
 
 Discarded input sections
 
@@ -146,21 +146,9 @@ Discarded input sections
  .text          0x00000000        0x0 ad5752.o
  .data          0x00000000        0x0 ad5752.o
  .bss           0x00000000        0x0 ad5752.o
- .text.DAC_TXWaiting
-                0x00000000        0x6 ad5752.o
- .text.SPI_Send
-                0x00000000       0x5a ad5752.o
- .text.DAC_Range_and_PowerUp
-                0x00000000       0x4e ad5752.o
- .text.DAC_Set  0x00000000       0x38 ad5752.o
- .text.FrontEnd_set_Offset_Voltage
-                0x00000000       0x4e ad5752.o
- .text.DAC_Init
-                0x00000000       0x76 ad5752.o
- .bss.last_ChipSelectPin
-                0x00000000        0x1 ad5752.o
- .bss.last_ChipSelectPort
-                0x00000000        0x2 ad5752.o
+ .debug_line    0x00000000        0x0 ad5752.o
+ .debug_str     0x00000000       0xf9 ad5752.o
+ .comment       0x00000000       0x31 ad5752.o
  .text          0x00000000        0x0 Cards/Amplifier.o
  .data          0x00000000        0x0 Cards/Amplifier.o
  .bss           0x00000000        0x0 Cards/Amplifier.o
@@ -1287,7 +1275,7 @@ END GROUP
                 0x0080040f        0x1 usart_spi.o
                 0x0080040f                usart_spi_rx_char_read
  *(COMMON)
- COMMON         0x00800410      0x1a5 ad5752.o
+ COMMON         0x00800410      0x1a5 Cards/Amplifier.o
                 0x00800410                heat_pulse_voltage
                 0x00800414                frontEnd_offset_voltage_mV
                 0x00800424                measure_pulse_voltage
@@ -1410,9 +1398,8 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 ad5752.o
+ .comment       0x00000000       0x30 Cards/Amplifier.o
                                  0x31 (size before relaxing)
- .comment       0x00000030       0x31 Cards/Amplifier.o
  .comment       0x00000030       0x31 Cards/FrontEnd.o
  .comment       0x00000030       0x31 Cards/LED_Source.o
  .comment       0x00000030       0x31 Cards/MOSFET_BreakDown.o
@@ -1447,168 +1434,159 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x5a0
+.debug_aranges  0x00000000      0x558
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 ad5752.o
+                0x00000000       0x40 Cards/Amplifier.o
  .debug_aranges
-                0x00000048       0x40 Cards/Amplifier.o
+                0x00000040       0x60 Cards/FrontEnd.o
  .debug_aranges
-                0x00000088       0x60 Cards/FrontEnd.o
+                0x000000a0       0x50 Cards/LED_Source.o
  .debug_aranges
-                0x000000e8       0x50 Cards/LED_Source.o
+                0x000000f0       0x80 Cards/MOSFET_BreakDown.o
  .debug_aranges
-                0x00000138       0x80 Cards/MOSFET_BreakDown.o
+                0x00000170       0x80 Cards/MOSFET_Source.o
  .debug_aranges
-                0x000001b8       0x80 Cards/MOSFET_Source.o
+                0x000001f0       0x40 Cards/Slot_Tester.o
  .debug_aranges
-                0x00000238       0x40 Cards/Slot_Tester.o
+                0x00000230       0x28 ICs/AD5752.o
  .debug_aranges
-                0x00000278       0x28 ICs/AD5752.o
+                0x00000258       0x28 ICs/LTC1864.o
  .debug_aranges
-                0x000002a0       0x28 ICs/LTC1864.o
+                0x00000280       0x30 ICs/MCP23S08.o
  .debug_aranges
-                0x000002c8       0x30 ICs/MCP23S08.o
+                0x000002b0       0x88 main.o
  .debug_aranges
-                0x000002f8       0x88 main.o
+                0x00000338       0x80 my_Timers.o
  .debug_aranges
-                0x00000380       0x80 my_Timers.o
+                0x000003b8       0x90 terminal.o
  .debug_aranges
-                0x00000400       0x90 terminal.o
+                0x00000448       0x88 uart0.o
  .debug_aranges
-                0x00000490       0x88 uart0.o
- .debug_aranges
-                0x00000518       0x88 usart_spi.o
+                0x000004d0       0x88 usart_spi.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xbf16
+.debug_info     0x00000000     0xb699
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x865 ad5752.o
- .debug_info    0x00001421      0x583 Cards/Amplifier.o
- .debug_info    0x000019a4      0xe59 Cards/FrontEnd.o
- .debug_info    0x000027fd      0xaa5 Cards/LED_Source.o
- .debug_info    0x000032a2     0x124b Cards/MOSFET_BreakDown.o
- .debug_info    0x000044ed      0xed4 Cards/MOSFET_Source.o
- .debug_info    0x000053c1      0x89d Cards/Slot_Tester.o
- .debug_info    0x00005c5e      0x585 ICs/AD5752.o
- .debug_info    0x000061e3      0x611 ICs/LTC1864.o
- .debug_info    0x000067f4      0x59b ICs/MCP23S08.o
- .debug_info    0x00006d8f      0xf0a main.o
- .debug_info    0x00007c99      0x5fc my_Timers.o
- .debug_info    0x00008295     0x2ca0 terminal.o
- .debug_info    0x0000af35      0x76e uart0.o
- .debug_info    0x0000b6a3      0x873 usart_spi.o
+ .debug_info    0x00000bbc      0x583 Cards/Amplifier.o
+ .debug_info    0x0000113f      0xe54 Cards/FrontEnd.o
+ .debug_info    0x00001f93      0xaa0 Cards/LED_Source.o
+ .debug_info    0x00002a33     0x1246 Cards/MOSFET_BreakDown.o
+ .debug_info    0x00003c79      0xecf Cards/MOSFET_Source.o
+ .debug_info    0x00004b48      0x89d Cards/Slot_Tester.o
+ .debug_info    0x000053e5      0x585 ICs/AD5752.o
+ .debug_info    0x0000596a      0x611 ICs/LTC1864.o
+ .debug_info    0x00005f7b      0x59b ICs/MCP23S08.o
+ .debug_info    0x00006516      0xf08 main.o
+ .debug_info    0x0000741e      0x5fc my_Timers.o
+ .debug_info    0x00007a1a     0x2c9f terminal.o
+ .debug_info    0x0000a6b9      0x76e uart0.o
+ .debug_info    0x0000ae27      0x872 usart_spi.o
 
-.debug_abbrev   0x00000000     0x23b3
+.debug_abbrev   0x00000000     0x2245
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_abbrev  0x00000b1a      0x126 ad5752.o
- .debug_abbrev  0x00000c40      0x116 Cards/Amplifier.o
- .debug_abbrev  0x00000d56      0x1a6 Cards/FrontEnd.o
- .debug_abbrev  0x00000efc      0x117 Cards/LED_Source.o
- .debug_abbrev  0x00001013      0x1ed Cards/MOSFET_BreakDown.o
- .debug_abbrev  0x00001200      0x185 Cards/MOSFET_Source.o
- .debug_abbrev  0x00001385      0x17e Cards/Slot_Tester.o
- .debug_abbrev  0x00001503       0xe5 ICs/AD5752.o
- .debug_abbrev  0x000015e8      0x15e ICs/LTC1864.o
- .debug_abbrev  0x00001746      0x126 ICs/MCP23S08.o
- .debug_abbrev  0x0000186c      0x281 main.o
- .debug_abbrev  0x00001aed      0x134 my_Timers.o
- .debug_abbrev  0x00001c21      0x32e terminal.o
- .debug_abbrev  0x00001f4f      0x1fd uart0.o
- .debug_abbrev  0x0000214c      0x267 usart_spi.o
+ .debug_abbrev  0x00000b1a      0x116 Cards/Amplifier.o
+ .debug_abbrev  0x00000c30      0x1a6 Cards/FrontEnd.o
+ .debug_abbrev  0x00000dd6      0x105 Cards/LED_Source.o
+ .debug_abbrev  0x00000edb      0x1db Cards/MOSFET_BreakDown.o
+ .debug_abbrev  0x000010b6      0x173 Cards/MOSFET_Source.o
+ .debug_abbrev  0x00001229      0x17e Cards/Slot_Tester.o
+ .debug_abbrev  0x000013a7       0xe5 ICs/AD5752.o
+ .debug_abbrev  0x0000148c      0x15e ICs/LTC1864.o
+ .debug_abbrev  0x000015ea      0x126 ICs/MCP23S08.o
+ .debug_abbrev  0x00001710      0x26f main.o
+ .debug_abbrev  0x0000197f      0x134 my_Timers.o
+ .debug_abbrev  0x00001ab3      0x32e terminal.o
+ .debug_abbrev  0x00001de1      0x1fd uart0.o
+ .debug_abbrev  0x00001fde      0x267 usart_spi.o
 
-.debug_line     0x00000000     0x4821
+.debug_line     0x00000000     0x45ad
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_line    0x0000001a      0x273 ad5752.o
- .debug_line    0x0000028d      0x279 Cards/Amplifier.o
- .debug_line    0x00000506      0x4f8 Cards/FrontEnd.o
- .debug_line    0x000009fe      0x3f1 Cards/LED_Source.o
- .debug_line    0x00000def      0x6ad Cards/MOSFET_BreakDown.o
- .debug_line    0x0000149c      0x55a Cards/MOSFET_Source.o
- .debug_line    0x000019f6      0x488 Cards/Slot_Tester.o
- .debug_line    0x00001e7e      0x190 ICs/AD5752.o
- .debug_line    0x0000200e      0x229 ICs/LTC1864.o
- .debug_line    0x00002237      0x19f ICs/MCP23S08.o
- .debug_line    0x000023d6      0x7f5 main.o
- .debug_line    0x00002bcb      0x41d my_Timers.o
- .debug_line    0x00002fe8      0xdd6 terminal.o
- .debug_line    0x00003dbe      0x554 uart0.o
- .debug_line    0x00004312      0x50f usart_spi.o
+ .debug_line    0x0000001a      0x279 Cards/Amplifier.o
+ .debug_line    0x00000293      0x4f8 Cards/FrontEnd.o
+ .debug_line    0x0000078b      0x3f1 Cards/LED_Source.o
+ .debug_line    0x00000b7c      0x6ac Cards/MOSFET_BreakDown.o
+ .debug_line    0x00001228      0x55a Cards/MOSFET_Source.o
+ .debug_line    0x00001782      0x488 Cards/Slot_Tester.o
+ .debug_line    0x00001c0a      0x190 ICs/AD5752.o
+ .debug_line    0x00001d9a      0x229 ICs/LTC1864.o
+ .debug_line    0x00001fc3      0x19f ICs/MCP23S08.o
+ .debug_line    0x00002162      0x7f5 main.o
+ .debug_line    0x00002957      0x41d my_Timers.o
+ .debug_line    0x00002d74      0xdd6 terminal.o
+ .debug_line    0x00003b4a      0x554 uart0.o
+ .debug_line    0x0000409e      0x50f usart_spi.o
 
-.debug_frame    0x00000000     0x1224
+.debug_frame    0x00000000     0x1160
  *(.debug_frame)
- .debug_frame   0x00000000       0xc4 ad5752.o
- .debug_frame   0x000000c4       0xa0 Cards/Amplifier.o
- .debug_frame   0x00000164      0x11c Cards/FrontEnd.o
- .debug_frame   0x00000280      0x108 Cards/LED_Source.o
- .debug_frame   0x00000388      0x158 Cards/MOSFET_BreakDown.o
- .debug_frame   0x000004e0      0x1b0 Cards/MOSFET_Source.o
- .debug_frame   0x00000690       0x98 Cards/Slot_Tester.o
- .debug_frame   0x00000728       0x70 ICs/AD5752.o
- .debug_frame   0x00000798       0x74 ICs/LTC1864.o
- .debug_frame   0x0000080c       0x84 ICs/MCP23S08.o
- .debug_frame   0x00000890      0x178 main.o
- .debug_frame   0x00000a08      0x254 my_Timers.o
- .debug_frame   0x00000c5c      0x29c terminal.o
- .debug_frame   0x00000ef8      0x198 uart0.o
- .debug_frame   0x00001090      0x194 usart_spi.o
+ .debug_frame   0x00000000       0xa0 Cards/Amplifier.o
+ .debug_frame   0x000000a0      0x11c Cards/FrontEnd.o
+ .debug_frame   0x000001bc      0x108 Cards/LED_Source.o
+ .debug_frame   0x000002c4      0x158 Cards/MOSFET_BreakDown.o
+ .debug_frame   0x0000041c      0x1b0 Cards/MOSFET_Source.o
+ .debug_frame   0x000005cc       0x98 Cards/Slot_Tester.o
+ .debug_frame   0x00000664       0x70 ICs/AD5752.o
+ .debug_frame   0x000006d4       0x74 ICs/LTC1864.o
+ .debug_frame   0x00000748       0x84 ICs/MCP23S08.o
+ .debug_frame   0x000007cc      0x178 main.o
+ .debug_frame   0x00000944      0x254 my_Timers.o
+ .debug_frame   0x00000b98      0x29c terminal.o
+ .debug_frame   0x00000e34      0x198 uart0.o
+ .debug_frame   0x00000fcc      0x194 usart_spi.o
 
-.debug_str      0x00000000     0x1b93
+.debug_str      0x00000000     0x1a97
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x573 ad5752.o
-                                0x5c8 (size before relaxing)
- .debug_str     0x00000959      0x116 Cards/Amplifier.o
+ .debug_str     0x000003e6      0x541 Cards/Amplifier.o
                                 0x591 (size before relaxing)
- .debug_str     0x00000a6f      0x191 Cards/FrontEnd.o
+ .debug_str     0x00000927      0x191 Cards/FrontEnd.o
                                 0x6bc (size before relaxing)
- .debug_str     0x00000c00       0xe4 Cards/LED_Source.o
+ .debug_str     0x00000ab8       0xe4 Cards/LED_Source.o
                                 0x641 (size before relaxing)
- .debug_str     0x00000ce4      0x1b8 Cards/MOSFET_BreakDown.o
+ .debug_str     0x00000b9c      0x1b8 Cards/MOSFET_BreakDown.o
                                 0x748 (size before relaxing)
- .debug_str     0x00000e9c      0x1fd Cards/MOSFET_Source.o
+ .debug_str     0x00000d54      0x1fd Cards/MOSFET_Source.o
                                 0x775 (size before relaxing)
- .debug_str     0x00001099       0x92 Cards/Slot_Tester.o
+ .debug_str     0x00000f51       0x92 Cards/Slot_Tester.o
                                 0x57d (size before relaxing)
- .debug_str     0x0000112b       0x1e ICs/AD5752.o
+ .debug_str     0x00000fe3       0x53 ICs/AD5752.o
                                 0x4ed (size before relaxing)
- .debug_str     0x00001149       0x63 ICs/LTC1864.o
+ .debug_str     0x00001036       0x63 ICs/LTC1864.o
                                 0x565 (size before relaxing)
- .debug_str     0x000011ac       0x23 ICs/MCP23S08.o
+ .debug_str     0x00001099       0x23 ICs/MCP23S08.o
                                 0x541 (size before relaxing)
- .debug_str     0x000011cf      0x44d main.o
+ .debug_str     0x000010bc      0x464 main.o
                                 0xa88 (size before relaxing)
- .debug_str     0x0000161c       0xc1 my_Timers.o
+ .debug_str     0x00001520       0xc1 my_Timers.o
                                 0x660 (size before relaxing)
- .debug_str     0x000016dd      0x12f terminal.o
+ .debug_str     0x000015e1      0x12f terminal.o
                                 0x90c (size before relaxing)
- .debug_str     0x0000180c      0x1a3 uart0.o
+ .debug_str     0x00001710      0x1a3 uart0.o
                                 0x66a (size before relaxing)
- .debug_str     0x000019af      0x1e4 usart_spi.o
+ .debug_str     0x000018b3      0x1e4 usart_spi.o
                                 0x708 (size before relaxing)
 
-.debug_loc      0x00000000     0x5c97
+.debug_loc      0x00000000     0x5943
  *(.debug_loc)
- .debug_loc     0x00000000      0x354 ad5752.o
- .debug_loc     0x00000354      0x212 Cards/Amplifier.o
- .debug_loc     0x00000566      0x749 Cards/FrontEnd.o
- .debug_loc     0x00000caf      0x5a2 Cards/LED_Source.o
- .debug_loc     0x00001251      0x9e6 Cards/MOSFET_BreakDown.o
- .debug_loc     0x00001c37      0x898 Cards/MOSFET_Source.o
- .debug_loc     0x000024cf      0x64d Cards/Slot_Tester.o
- .debug_loc     0x00002b1c      0x227 ICs/AD5752.o
- .debug_loc     0x00002d43      0x22c ICs/LTC1864.o
- .debug_loc     0x00002f6f      0x21a ICs/MCP23S08.o
- .debug_loc     0x00003189      0x320 main.o
- .debug_loc     0x000034a9      0x441 my_Timers.o
- .debug_loc     0x000038ea     0x1cc3 terminal.o
- .debug_loc     0x000055ad      0x386 uart0.o
- .debug_loc     0x00005933      0x364 usart_spi.o
+ .debug_loc     0x00000000      0x212 Cards/Amplifier.o
+ .debug_loc     0x00000212      0x749 Cards/FrontEnd.o
+ .debug_loc     0x0000095b      0x5a2 Cards/LED_Source.o
+ .debug_loc     0x00000efd      0x9e6 Cards/MOSFET_BreakDown.o
+ .debug_loc     0x000018e3      0x898 Cards/MOSFET_Source.o
+ .debug_loc     0x0000217b      0x64d Cards/Slot_Tester.o
+ .debug_loc     0x000027c8      0x227 ICs/AD5752.o
+ .debug_loc     0x000029ef      0x22c ICs/LTC1864.o
+ .debug_loc     0x00002c1b      0x21a ICs/MCP23S08.o
+ .debug_loc     0x00002e35      0x320 main.o
+ .debug_loc     0x00003155      0x441 my_Timers.o
+ .debug_loc     0x00003596     0x1cc3 terminal.o
+ .debug_loc     0x00005259      0x386 uart0.o
+ .debug_loc     0x000055df      0x364 usart_spi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1628,23 +1606,22 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x518
+.debug_ranges   0x00000000      0x4e0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 ad5752.o
- .debug_ranges  0x00000038       0x30 Cards/Amplifier.o
- .debug_ranges  0x00000068       0x50 Cards/FrontEnd.o
- .debug_ranges  0x000000b8       0x40 Cards/LED_Source.o
- .debug_ranges  0x000000f8       0x70 Cards/MOSFET_BreakDown.o
- .debug_ranges  0x00000168       0x70 Cards/MOSFET_Source.o
- .debug_ranges  0x000001d8       0x30 Cards/Slot_Tester.o
- .debug_ranges  0x00000208       0x18 ICs/AD5752.o
- .debug_ranges  0x00000220       0x18 ICs/LTC1864.o
- .debug_ranges  0x00000238       0x20 ICs/MCP23S08.o
- .debug_ranges  0x00000258       0x78 main.o
- .debug_ranges  0x000002d0       0x70 my_Timers.o
- .debug_ranges  0x00000340       0xe8 terminal.o
- .debug_ranges  0x00000428       0x78 uart0.o
- .debug_ranges  0x000004a0       0x78 usart_spi.o
+ .debug_ranges  0x00000000       0x30 Cards/Amplifier.o
+ .debug_ranges  0x00000030       0x50 Cards/FrontEnd.o
+ .debug_ranges  0x00000080       0x40 Cards/LED_Source.o
+ .debug_ranges  0x000000c0       0x70 Cards/MOSFET_BreakDown.o
+ .debug_ranges  0x00000130       0x70 Cards/MOSFET_Source.o
+ .debug_ranges  0x000001a0       0x30 Cards/Slot_Tester.o
+ .debug_ranges  0x000001d0       0x18 ICs/AD5752.o
+ .debug_ranges  0x000001e8       0x18 ICs/LTC1864.o
+ .debug_ranges  0x00000200       0x20 ICs/MCP23S08.o
+ .debug_ranges  0x00000220       0x78 main.o
+ .debug_ranges  0x00000298       0x70 my_Timers.o
+ .debug_ranges  0x00000308       0xe8 terminal.o
+ .debug_ranges  0x000003f0       0x78 uart0.o
+ .debug_ranges  0x00000468       0x78 usart_spi.o
 
 .debug_macro
  *(.debug_macro)
