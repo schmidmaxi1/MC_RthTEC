@@ -21,11 +21,10 @@ Cards/MOSFET_BreakDown.d Cards/MOSFET_BreakDown.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\power.h \
  ../Cards/../uart0.h ../Cards/../ad5752.h ../Cards/../usart_spi.h \
- ../Cards/../LTC1864.h ../Cards/../my_Timers.h \
- ../Cards/../Cards/Slot_Tester.h ../Cards/../Cards/MOSFET_BreakDown.h \
- ../Cards/../Cards/LED_Source.h ../Cards/../Cards/Amplifier.h \
- ../Cards/../Cards/FrontEnd.h ../Cards/../Cards/MOSFET_Source.h \
- ../Cards/../ICs/MCP23S08.h \
+ ../Cards/../my_Timers.h ../Cards/../Cards/Slot_Tester.h \
+ ../Cards/../Cards/MOSFET_BreakDown.h ../Cards/../Cards/LED_Source.h \
+ ../Cards/../Cards/Amplifier.h ../Cards/../Cards/FrontEnd.h \
+ ../Cards/../Cards/MOSFET_Source.h ../Cards/../ICs/MCP23S08.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
@@ -82,8 +81,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../Cards/../ad5752.h:
 
 ../Cards/../usart_spi.h:
-
-../Cards/../LTC1864.h:
 
 ../Cards/../my_Timers.h:
 

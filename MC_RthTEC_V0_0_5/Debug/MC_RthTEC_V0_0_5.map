@@ -200,27 +200,6 @@ Discarded input sections
  .bss           0x00000000        0x0 ICs/MCP23S08.o
  .text.IO_Expander_Init
                 0x00000000        0x2 ICs/MCP23S08.o
- .text          0x00000000        0x0 LTC1864.o
- .data          0x00000000        0x0 LTC1864.o
- .bss           0x00000000        0x0 LTC1864.o
- .text.Measure_Voltage_MOSFET_with_DataAnalyse
-                0x00000000       0x72 LTC1864.o
- .text.Measure_Voltage_MOSFET_without_DataAnalyse
-                0x00000000       0x46 LTC1864.o
- .text.Measure_Voltage_MOSFET_get_Data
-                0x00000000       0x26 LTC1864.o
- .text.Measure_Voltage_LED
-                0x00000000        0x8 LTC1864.o
- .debug_info    0x00000000      0x662 LTC1864.o
- .debug_abbrev  0x00000000      0x18e LTC1864.o
- .debug_loc     0x00000000      0x2ae LTC1864.o
- .debug_aranges
-                0x00000000       0x38 LTC1864.o
- .debug_ranges  0x00000000       0x28 LTC1864.o
- .debug_line    0x00000000      0x264 LTC1864.o
- .debug_str     0x00000000      0x5a0 LTC1864.o
- .comment       0x00000000       0x31 LTC1864.o
- .debug_frame   0x00000000       0x74 LTC1864.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -541,7 +520,6 @@ LOAD Cards/Slot_Tester.o
 LOAD ICs/AD5752.o
 LOAD ICs/LTC1864.o
 LOAD ICs/MCP23S08.o
-LOAD LTC1864.o
 LOAD main.o
 LOAD my_Timers.o
 LOAD terminal.o

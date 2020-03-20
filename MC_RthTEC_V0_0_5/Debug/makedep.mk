@@ -22,8 +22,6 @@ ICs\LTC1864.c
 
 ICs\MCP23S08.c
 
-LTC1864.c
-
 main.c
 
 my_Timers.c

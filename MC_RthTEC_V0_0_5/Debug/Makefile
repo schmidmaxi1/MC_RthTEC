@@ -49,7 +49,6 @@ C_SRCS +=  \
 ../ICs/AD5752.c \
 ../ICs/LTC1864.c \
 ../ICs/MCP23S08.c \
-../LTC1864.c \
 ../main.c \
 ../my_Timers.c \
 ../terminal.c \
@@ -74,7 +73,6 @@ Cards/Slot_Tester.o \
 ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
-LTC1864.o \
 main.o \
 my_Timers.o \
 terminal.o \
@@ -92,7 +90,6 @@ Cards/Slot_Tester.o \
 ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
-LTC1864.o \
 main.o \
 my_Timers.o \
 terminal.o \
@@ -110,7 +107,6 @@ Cards/Slot_Tester.d \
 ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
-LTC1864.d \
 main.d \
 my_Timers.d \
 terminal.d \
@@ -128,7 +124,6 @@ Cards/Slot_Tester.d \
 ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
-LTC1864.d \
 main.d \
 my_Timers.d \
 terminal.d \
@@ -213,13 +208,6 @@ ICs/LTC1864.o: ../ICs/LTC1864.c
 	
 
 ICs/MCP23S08.o: ../ICs/MCP23S08.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-./LTC1864.o: .././LTC1864.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
