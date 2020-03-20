@@ -27,9 +27,6 @@ uint16_t measure_pulse_lastcount;
 uint16_t deterministic_pulse_counter;
 
 
-
-
-
 /*
  ** Functions
  */
@@ -367,30 +364,38 @@ ISR(TIMER5_COMPB_vect)
 	//Timer 4  stopen-> Prescaler
 	Stop_Timer_100us();
 	
+	//Execute Heat-Measurements for all active slots which need it
+	for(int i = 0; i < 8; i++)
+	{
+		//Only execute if slot is active
+		if(pulse_output_register & 0x1 << i)
+		{
+			//Only execute for a few card types
+			//MOSFET
+			if(card_Type[i] == 'M')
+			{
+				measured_binary_heat[i] = MOSFET_Source_sample_Meas_receive_Heat(i+1);
+				measured_binary_meas[i] = MOSFET_Source_receive_Meas(i+1);
+			}
+			else if(card_Type[i] == 'F')
+			{
+				//Not realized yet
+			}
+				
+		}
+	}
+	
+/*	OLD
 	//Daten der Heat-Puls Spannungsmessung abholen
 	heat_pulse_voltage = Measure_Voltage_MOSFET_get_Data();
 	//Spannung für Mess-Pulse messen
-	/*
-	Measure_Voltage_MOSFET_without_DataAnalyse();
-	
-	//Kurze Pause bis alle Daten da sind
-	//_delay_ms(10);
-	volatile uint8_t abc = 0;
-	while(USART_SPI_RXWaiting() < 2){
-		_delay_ms(1); 
-		abc = USART_SPI_RXWaiting();
-		TransmitInt(USART_SPI_RXWaiting(),1);
-	}
-	
-	//Measurment Puls Spannung messen und abholen
-	measure_pulse_voltage = Measure_Voltage_MOSFET_get_Data();
-	*/
 	measure_pulse_voltage = Measure_Voltage_MOSFET_with_DataAnalyse();
+*/
 	
 	//Switch of STD_TTA
 	MP_Port = 0;
 		
-	//clear Compare Register
+	//clear Compare Registera
 	OCR5B = -1;
 						
 	//Status LED for Pulses
@@ -403,8 +408,29 @@ ISR(TIMER5_COMPC_vect)
 	//Interrupt für Tx und Rx zulassen (Alle Interrupts zulassen)
 	//Flag wurde vohrer auf falsch gesetzt
 	SREG |= _BV(SREG_I); 
-
-	Measure_Voltage_MOSFET_without_DataAnalyse();	
+	
+	//Execute Heat-Measurements for all active slots which need it
+	for(volatile int i = 0; i < 8; i++)
+	{
+		//Only execute if slot is active
+		if(pulse_output_register & 0x1 << i)
+		{
+			//Only execute for a few card types
+			//MOSFET
+			if(card_Type[i] == 'M')
+			{
+				MOSFET_Source_sample_Heat(i+1);
+			}
+			else if(card_Type[i] == 'F')
+			{
+				//Not realized yet
+			}
+		
+		}		
+	}
+	
+	//OLD
+	//Measure_Voltage_MOSFET_without_DataAnalyse();	
 }
 
 #pragma endregion Timer5

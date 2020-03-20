@@ -33,3 +33,6 @@ void BreakDown_Set_V_GS_mV(int16_t V_GS_mV, int slot_nr);
 
 int B_Get_V_DS_in_mV(int slot_nr);
 int B_Get_I_DS_in_mA(int slot_nr);
+
+void Terminal_SET_BreakDown(char *myMessage);
+void Terminal_GET_BreakDown(char *myMessage);

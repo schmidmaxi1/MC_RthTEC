@@ -52,7 +52,7 @@ uint16_t window_offset_eeprom EEMEM;
 uint32_t measure_pulse_length_eeprom EEMEM;
 uint32_t heat_pulse_length_eeprom EEMEM;
 
-//Edit: Maxi 20.12.17
+//Edit: Maxi 20.12.17 *MUSS WEG**********************************
 uint16_t offset_voltage_eeprom EEMEM;
 uint16_t offset_voltage;
 
@@ -420,6 +420,10 @@ void EEPROM_last_Values()
 			case 'L':
 				LED_Source_Variables_from_EEPROM(i+1);
 				break;
+
+			case 'M':
+				MOSFET_Source_Variables_from_EEPROM(i+1);
+				break;
 				
 			case 'F':
 				FrontEnd_Variables_from_EEPROM(i+1);
@@ -460,7 +464,7 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 					break;
 					
 				case 'M':
-					
+					MOSFET_Source_Init(i+1);
 					break;
 					
 				case 'B':

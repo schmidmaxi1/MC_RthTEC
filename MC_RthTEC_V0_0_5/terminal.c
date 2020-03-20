@@ -460,220 +460,21 @@ void TerminalParseCommand(char *string)
 			
 			switch(string[4]){
 				
-				//1. LED-Heat-Meas current Source
-				#pragma region SettingsLED-Source
-				
-				case 'L':					
-					switch(cmd){
-							
-						//1. Initialization
-						case _MK16('I','N'):
-							if (string[5] != '\n')
-							{
-								//to many signs
-								TransmitStringLn("FORMAT ERR");
-							}
-							else
-							{
-								LED_Source_Init(slotNr);
-												
-								//Answer
-								TransmitString("SIN");
-								TransmitInt(slotNr, 1);
-								TransmitStringLn("L");
-							}
-							break;
-							
-							
-						//2. Set Heat Current	
-						case _MK16('H','C'):
-								
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 1500 || temp16 < 0)
-							{
-								//new current limit not between 0 and 1.5A
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SHC");
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitInt(temp16, 1);
-								TransmitStringLn(" mA");
-
-								if (led_Source_Heat_Current_mA[slotNr-1] != temp16)
-								{
-									led_Source_Heat_Current_mA[slotNr-1] = temp16;
-									eeprom_write_word(&parameter1_eeprom[slotNr-1], temp16);
-									LED_Source_Set_Heat_Current(led_Source_Heat_Current_mA[slotNr-1], slotNr);
-								}						
-							}
-							break;
-	
-						//3. Set Meas Current
-						case _MK16('M','C'):
-						
-							if (!ParseIntLn(&string[6],3,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 250 || temp16 < 50)
-							{
-								//new current limit not between 5 and 25mA
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SMC");
-								TransmitInt(slotNr, 1);
-								TransmitString("L=");
-								TransmitFloat(temp16, 1, 1);
-								TransmitStringLn(" mA");
-
-								if (led_Source_Meas_Current_0mA1[slotNr-1] != temp16)
-								{
-									led_Source_Meas_Current_0mA1[slotNr-1] = temp16;
-									eeprom_write_word(&parameter2_eeprom[slotNr-1],temp16);									
-									LED_Source_Set_Meas_Current(led_Source_Meas_Current_0mA1[slotNr-1], slotNr);
-								}
-								
-							}
-							break;
-						
-						//Default --> Fehler
-						default:
-						TransmitStringLn("COMMAND ERR");
-						break;
-						
-						}			
+				//4.1 LED-Heat-Meas current Source				
+				case 'L':	
+					Terminal_SET_LED_Source(string);
 					break;
-					
-				#pragma endregion SettingsLED-Source
-					
-				//2. MOSFET-Heat-Meas current Source
-				#pragma region SettingsMOSFET-Source
-				
+									
+				//4.2 MOSFET-Heat-Meas current Source				
 				case 'M':
-									
-					switch(cmd){
-					
-						//1. Set Heat Current
-						case _MK16('H','C'):						
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 5000 || temp16 < 0)
-							{
-								//new current limit not between 0 and 1.5A
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SHC MOSFET=");
-								TransmitInt(temp16, 1);
-								TransmitStringLn(" mA");
-
-								if (heat_pulse_current != temp16)
-								{
-									heat_pulse_current = temp16;
-									eeprom_write_word(&heat_pulse_current_eeprom,temp16);
-
-									MOSFETSource_set_Heat_Current(heat_pulse_current, slotNr);
-									//DAC_Set((((uint32_t) heat_pulse_current) * 0xffff) / 1500, DAC_1, DAC_ADR_DAC_A);
-								}
-							}
-							break;
-						
-						//2. Set Meas Current
-						case _MK16('M','C'):						
-														if (!ParseIntLn(&string[6],3,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 250 || temp16 < 50)
-							{
-								//new current limit not between 5 and 25mA
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SMC MOSFET=");
-								TransmitFloat(temp16, 1, 1);
-								TransmitStringLn(" mA");
-
-								if (measure_pulse_current != temp16)
-								{
-									measure_pulse_current = temp16;
-									eeprom_write_word(&measure_pulse_current_eeprom,temp16);
-								
-									MOSFETSource_set_Meas_Current(measure_pulse_current, slotNr);
-									//DAC_Set((((uint32_t) measure_pulse_current) * 0xffff) / 250, DAC_1, DAC_ADR_DAC_B);
-								}
-							
-							}
-							
-							break;
-							
-						//3. Set Meas Voltage
-						case _MK16('M','V'):
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 2000 || temp16 < 100)
-							{
-								//new current limit not between 5 and 25mA
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SMV MOSFET=");
-								TransmitFloat(temp16, 1, 2);
-								TransmitStringLn(" V");
-
-								if (measure_pulse_voltage != temp16)
-								{
-									measure_pulse_voltage = temp16;
-									eeprom_write_word(&measure_pulse_voltage_eeprom,temp16);
-									
-																						
-									MOSFETSource_set_Meas_Voltage(temp16, slotNr);
-									//DAC_Set((((uint32_t) measure_pulse_current) * 0xffff) / 250, DAC_1, DAC_ADR_DAC_B);
-								}
-
-																					
-							}
-																				
-							break;
-						//Default --> Fehler
-						default:
-							TransmitStringLn("COMMAND ERR");
-							break;	
-							
-					}
+					Terminal_SET_MOSFET_Source(string);
 					break;
-					
-					#pragma endregion SettingsMOSFET-Source
-				
-				//3. Boost-Heat current Source
-				#pragma region SettingsPowerDiode-Source
-				
+									
+				//3. Boost-Heat current Source				
 				case 'H':
 					TransmitStringLn("Function not realized yet!");			
 					break;
-					
-				#pragma endregion SettingsPowerDiode-Source
-								
+													
 				//4. Amplifier
 				#pragma region SettingsFrontend
 				
@@ -969,70 +770,14 @@ void TerminalParseCommand(char *string)
 						
 			switch(string[4]){
 				
-				//4.1 LED-Source
-				#pragma region SettingsLED-Source
-				
+				//4.1 LED-Source				
 				case 'L':
-					switch(cmd){
-					
-						//2. Set Heat Current
-						case _MK16('H','C'):
-							TransmitString("GHC");
-							TransmitInt(slotNr, 1);
-							TransmitString("L=");
-							TransmitInt(led_Source_Heat_Current_mA[slotNr-1], 1);
-							TransmitStringLn(" mA");
-							break;
-										
-						//3. Set Meas Current
-						case _MK16('M','C'):
-							TransmitString("GMC");
-							TransmitInt(slotNr, 1);
-							TransmitString("L=");
-							TransmitFloat(led_Source_Meas_Current_0mA1[slotNr-1], 1, 1);
-							TransmitStringLn(" mA");
-							break;
-									
-						//Default --> Fehler
-						default:
-							TransmitStringLn("COMMAND ERR");
-							break;
-					
-					}
+					Terminal_GET_LED_Source(string);
 					break;
-					
-				#pragma endregion SettingsLED-Source
-				
-				//4.2 MOSFET heat-meas current source
-				#pragma region SettingsMOSFET-Source
 								
+				//4.2 MOSFET heat-meas current source								
 				case 'M':
-					switch(cmd){
-									
-						//2. Set Heat Current
-						case _MK16('H','C'):
-							TransmitString("GHC");
-							TransmitInt(slotNr, 1);
-							TransmitString("M=");
-							TransmitInt(mosfet_Source_Heat_Current_mA[slotNr-1], 1);
-							TransmitStringLn(" mA");
-							break;
-									
-						//3. Set Meas Current
-							case _MK16('M','C'):
-							TransmitString("GMC");
-							TransmitInt(slotNr, 1);
-							TransmitString("M=");
-							TransmitFloat(mosfet_Source_Meas_Current_0mA1[slotNr-1], 1, 1);
-							TransmitStringLn(" mA");
-							break;
-									
-						//Default --> Fehler
-						default:
-						TransmitStringLn("COMMAND ERR");
-						break;
-									
-					}
+					Terminal_GET_MOSFET_Source(string);
 					break;
 								
 				#pragma endregion SettingsMOSFET-Source

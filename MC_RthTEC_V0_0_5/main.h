@@ -14,10 +14,10 @@
  ** Compiler constants
  */
 
-#define FIRMWARE_VER_R      V0.0.5
-#define FIRMWARE_CODE       0x0005
+#define FIRMWARE_VER_R      V0.0.6
+#define FIRMWARE_CODE       0x0006
 
-#define CONTROLLER_TYPE_R   RthTEC_mC_Unit
+#define CONTROLLER_TYPE_R   RthTEC_mC_Unit_V2
 
 #define FIRMWARE_VERSION    S(CONTROLLER_TYPE_R FIRMWARE_VER_R)
 #define CONTROLLER_TYPE     S(CONTROLLER_TYPE_R)
@@ -146,6 +146,7 @@
 #include "Cards/LED_Source.h"
 #include "Cards/Amplifier.h"
 #include "Cards/FrontEnd.h"
+#include "Cards/MOSFET_Source.h"
 
 #include "ICs/MCP23S08.h"
 
@@ -215,6 +216,11 @@ extern uint16_t parameter1_eeprom[8] EEMEM;
 extern uint16_t parameter2_eeprom[8] EEMEM;
 extern uint16_t parameter3_eeprom[8] EEMEM;
 
+//Measurment_storage for every slot (19.03.2020, Maxi)
+//Dependent on Card-Type if necessary
+//Global for storage save
+uint16_t measured_binary_heat[8];
+uint16_t measured_binary_meas[8];
 
 //Flags
 uint8_t flag_std_TTA;
