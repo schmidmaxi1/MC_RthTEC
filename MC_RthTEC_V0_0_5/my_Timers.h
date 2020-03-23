@@ -5,40 +5,50 @@
  *  Author: schmidm
  */ 
 
+#ifndef _MYTIMERS_H_
+#define _MYTIMERS_H_
 
-/*
- ** Includes
- */
 
-//No needed
 
-/*
- ** Compiler-Constants
- */
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
-//Flags
-uint8_t flag_std_TTA;
-uint8_t flag_DPA_TTA;
-uint8_t flag_HPP_TTA;	//Heat Pre Pulse
+#include <stdio.h>
 
-/*
- ** Compiler-Constants
- */
+
+//*******************************************************************
+//						Compiler-Constants
+//*******************************************************************
 
 #define CounterPin          PORTB,5		//Output Compare Pin A from Timer 1 
 
-/*
- ** Functions
- */
+//*******************************************************************
+//								Variables
+//*******************************************************************
 
+//Interrupt Counters
+volatile uint8_t interrupt_1ms;
+volatile uint8_t interrupt_10hz;
+volatile uint8_t interrupt_1hz;
+
+
+
+
+//*******************************************************************
+//								Functions
+//*******************************************************************
 
 void Init_Timer_1ms();
-
 void Init_Timer_100us();
+void Init_Counter_100us();
+
 void Start_Timer_100us();
 void Stop_Timer_100us();
 
-void Init_Counter_100us();
 void Setup_Counter_for_stdTTA();
 void Setup_Counter_for_DPA_TTA();
 void Setup_Counter_for_DPA_TTA_HighLevel();
+
+
+#endif

@@ -5,13 +5,33 @@
  *  Author: schmidm
  */ 
 
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
 #include "MOSFET_Source.h"
 
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "../helper.h"
+#include "../globalVAR.h"
+#include "../Serial_ReadWrite.h"
+
+//Includes for ICs
+#include "../ICs/AD5752.h"
+#include "../ICs/LTC1864.h"
+
+//*******************************************************************
+//								Variables
+//*******************************************************************
 
 uint16_t mosfet_Source_Heat_Current_mA[8];
 uint16_t mosfet_Source_Meas_Current_0mA1[8];
 uint16_t mosfet_Source_Meas_Voltage_10mV[8];
+
+//*******************************************************************
+//								Explanation
+//*******************************************************************
+
 //Heat-Voltage is adjusted by an external voltage-Source
 
 /*

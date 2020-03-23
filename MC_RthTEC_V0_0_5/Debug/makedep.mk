@@ -24,6 +24,8 @@ ICs\MCP23S08.c
 
 main.c
 
+my_PulseSequences.c
+
 my_Timers.c
 
 Serial_ReadWrite.c

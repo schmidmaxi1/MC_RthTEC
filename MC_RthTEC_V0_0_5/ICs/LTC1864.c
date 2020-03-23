@@ -5,13 +5,23 @@
  *  Author: schmidm
  */ 
 
-#include <avr/io.h>	//Is neccessary because IOs are switch directly
+//*******************************************************************
+//								Includes
+//*******************************************************************
+
+//Check Order!!!
+
+#include "LTC1864.h"
 
 #include "../helper.h"
-#include "LTC1864.h"
 #include "../usart_spi.h"
 
 #include <util/delay.h>
+#include <avr/io.h>	//Is neccessary because IOs are switch directly
+
+//*******************************************************************
+//								Explanation
+//*******************************************************************
 
 /*	Explanation: Communication Protocol
 

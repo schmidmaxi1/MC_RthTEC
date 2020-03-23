@@ -1,68 +1,48 @@
-/* ----------------------------------------------------------
- *
- * Project:  LED Test system
- * Module:   Main
- *
- * Version:  see main.h
- *
- * Author:   Johannes Knauss 2017, mail@iet-chiemsee.de
- *
- * Clock:    16.000 MHz
- *
- *
- * ----------------------------------------------------------
- */
-
-
-
 /*
- ** Includes
- */
+ * main.c
+ * Project: RthTEC µC 
+ *
+ * Created: 20.03.2019 12:47:49
+ *  Author: schmidm
+ */ 
+
+
+
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
 #include "main.h"
 
-#include "avr/pgmspace.h"
+#include "Config.h"					//Config must be placed at first, either F_CPU is not defined
+#include "helper.h"
+#include "globalVAR.h"
 
-#include <util/delay.h>
+#include "uart0.h"
+#include "usart_spi.h"
+#include "my_Timers.h"
+#include "my_PulseSequence.h"
+
+#include <avr/wdt.h>				//Watchdog
+#include <avr/interrupt.h>			//to enable all interrupts
+#include <util/delay.h>				//Delay in "Lauflicht"
+#include <avr/power.h>				//for Clock divider
+#include <avr/pgmspace.h>			//for Program Memory definitions
+
+#include "Cards/All_Cards.h"		//Headers of all Cards combined
 
 
-/*
- ** Constants
- */
+//*******************************************************************
+//							Constants
+//*******************************************************************
 
 //Firmware Version
 const char firmware_version[] PROGMEM = S(VER_START:FIRMWARE_VERSION:VER_END);
 
 
-
-/*
- ** Variables
- */
-
-
-//Moved to Global var
-//uint16_t firmware_code_eeprom EEMEM;
-//uint32_t measure_pulse_length_eeprom EEMEM;
-//uint32_t heat_pulse_length_eeprom EEMEM;
-//uint16_t deterministic_pulse_length_eeprom EEMEM;
-//uint16_t deterministic_pulse_cycles_eeprom EEMEM;
-//uint8_t pulse_output_register_eeprom EEMEM;
-//uint8_t pulse_output_register;
-//char card_Type[8];
-//char card_Type_register_eeprom[8] EEMEM;
-//uint16_t deterministic_pulse_length;
-//uint16_t deterministic_pulse_cycles;
-
-
-
-
-/*
- ** Functions
- */ 
-
-// -------------------------------------------------------------
-// Main function
-// -------------------------------------------------------------
+//*******************************************************************
+//							MAIN - LOOP
+//*******************************************************************
 
 int main()
 {	
@@ -70,17 +50,15 @@ int main()
 
     UART0ClearRx();
 	
-
     //Main loop
 	while (1)
 	{
-		
-    
+		   
         //Watchdog
         wdt_reset();
 
+		//Check for new messages
         TerminalCheckCommand();
-
 
         //100Hz
         if (interrupt_1ms >= 10)
@@ -88,7 +66,6 @@ int main()
             interrupt_1ms = 0;
             interrupt_10hz++;
         }
-
 
         //10Hz
         else if (interrupt_10hz >= 10)
@@ -118,8 +95,7 @@ int main()
             {
                 set_bit(LED_1A);
                 clear_bit(LED_1B);
-            }
-			
+            }			
         }
 
         //1Hz
@@ -130,9 +106,9 @@ int main()
     }
 }
 
-// -------------------------------------------------------------
-// Initialize
-// -------------------------------------------------------------
+//*******************************************************************
+//							Local FCT
+//*******************************************************************
 
 void Init()
 {
@@ -291,7 +267,8 @@ void Init_IO_Pins(){
 }
 
 void Lauflicht(){
-	startup_wait_counter = 6;
+	
+	uint8_t startup_wait_counter = 6;
 		
 	while (startup_wait_counter)
 	{
@@ -479,168 +456,168 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 	}	
 }
 
-// -------------------------------------------------------------
-// Stop all Pulses									  (complete)
-// -------------------------------------------------------------
-
-void PulseStop()
-{
-	//Timer 100us stop
-	Stop_Timer_100us();
-
-	//Clear all Pulses
-	MP_Port = 0;
-	HP_Port = 0;
-	
-	//Status LED for Pulses
-	clear_bit(LED_Pulse);
-}
-
-// -------------------------------------------------------------
-// stdTTA-Pulse start								  (complete)
-// -------------------------------------------------------------
-
-void PulseStart_stdTTA()
-{
-	//Stop Timer 1
-	Stop_Timer_100us();
-	
-	//Set flags
-	flag_std_TTA = 1;
-	flag_DPA_TTA = 0;
-	flag_HPP_TTA = 0;
-	
-	//Reset Timer 5 and change Compare Values
-	Setup_Counter_for_stdTTA();
-	
-	//Status LED for Pulses
-	set_bit(LED_Pulse);
-	
-	//HP and MP set
-	if(heat_pulse_length > 0 )
-	{ 
-		HP_Port = pulse_output_register;
-	}
-	MP_Port = pulse_output_register;
-	
-	//Start Timer 100us
-	Start_Timer_100us();
-	
-}
-
-// -------------------------------------------------------------
-// Sensitivity start								  (complete)
-// -------------------------------------------------------------
-
-void PulseStart_Sensitivity()
-{
-	//Status LED for Pulses
-	set_bit(LED_Pulse);
-	
-	//Ports set
-	MP_Port = pulse_output_register;
-}
-
-// -------------------------------------------------------------
-// Deterministic Pulses (edit Maxi 26.09.2018)		  (complete)
-// -------------------------------------------------------------
-
-void PulseStart_DPA_TTA()
-{
-	//Stop Timer 1
-	Stop_Timer_100us();
-	
-	// Set Flags
-	flag_DPA_TTA = 1;
-	flag_std_TTA = 0;
-	flag_HPP_TTA = 0;
-		
-	//Setup for det TTA
-	Setup_Counter_for_DPA_TTA();
-		
-	//Status LED for Pulses
-	set_bit(LED_Pulse);
-			
-	//Switch off all Heat pulses
-	HP_Port = 0;
-	MP_Port = 0;
-	
-	//Start Timer 1
-	Start_Timer_100us();	    	
-}
-
-// -------------------------------------------------------------
-// Deterministic Pulses with Heat PrePulse (edit Maxi 12.09.2019)		  
-//													  ()
-// -------------------------------------------------------------
-
-void PulseStart_DPA_TTA_HighStart()
-{
-	//Stop Timer 1
-	Stop_Timer_100us();
-		
-	// Set Flags
-	flag_DPA_TTA = 0;
-	flag_std_TTA = 0;
-	flag_HPP_TTA = 1;
-	
-	//Setup for HeatPrePulse
-	Setup_Counter_for_DPA_TTA_HighLevel();
-	
-	//Status LED for Pulses
-	set_bit(LED_Pulse);
-		
-	//Switch ON all pulses
-	HP_Port = pulse_output_register;
-	MP_Port = pulse_output_register;
-		
-	//Start Timer 1
-	Start_Timer_100us();
-}
-
-void PulseStart_DPA_TTA_fromHPP()
-{
-	//Stop Timer 1
-	Stop_Timer_100us();
-	
-	// Set Flags
-	flag_DPA_TTA = 1;
-	flag_std_TTA = 0;
-	flag_HPP_TTA = 0;
-	
-	//Setup for det TTA
-	Setup_Counter_for_DPA_TTA();
-	
-	//Status LED for Pulses
-	set_bit(LED_Pulse);
-	
-	//Switch off all Heat pulses (don't switch off here)
+//// -------------------------------------------------------------
+//// Stop all Pulses									  (complete)
+//// -------------------------------------------------------------
+//
+//void PulseStop()
+//{
+	////Timer 100us stop
+	//Stop_Timer_100us();
+//
+	////Clear all Pulses
+	//MP_Port = 0;
+	//HP_Port = 0;
+	//
+	////Status LED for Pulses
+	//clear_bit(LED_Pulse);
+//}
+//
+//// -------------------------------------------------------------
+//// stdTTA-Pulse start								  (complete)
+//// -------------------------------------------------------------
+//
+//void PulseStart_stdTTA()
+//{
+	////Stop Timer 1
+	//Stop_Timer_100us();
+	//
+	////Set flags
+	//flag_std_TTA = 1;
+	//flag_DPA_TTA = 0;
+	//flag_HPP_TTA = 0;
+	//
+	////Reset Timer 5 and change Compare Values
+	//Setup_Counter_for_stdTTA();
+	//
+	////Status LED for Pulses
+	//set_bit(LED_Pulse);
+	//
+	////HP and MP set
+	//if(heat_pulse_length > 0 )
+	//{ 
+		//HP_Port = pulse_output_register;
+	//}
+	//MP_Port = pulse_output_register;
+	//
+	////Start Timer 100us
+	//Start_Timer_100us();
+	//
+//}
+//
+//// -------------------------------------------------------------
+//// Sensitivity start								  (complete)
+//// -------------------------------------------------------------
+//
+//void PulseStart_Sensitivity()
+//{
+	////Status LED for Pulses
+	//set_bit(LED_Pulse);
+	//
+	////Ports set
+	//MP_Port = pulse_output_register;
+//}
+//
+//// -------------------------------------------------------------
+//// Deterministic Pulses (edit Maxi 26.09.2018)		  (complete)
+//// -------------------------------------------------------------
+//
+//void PulseStart_DPA_TTA()
+//{
+	////Stop Timer 1
+	//Stop_Timer_100us();
+	//
+	//// Set Flags
+	//flag_DPA_TTA = 1;
+	//flag_std_TTA = 0;
+	//flag_HPP_TTA = 0;
+		//
+	////Setup for det TTA
+	//Setup_Counter_for_DPA_TTA();
+		//
+	////Status LED for Pulses
+	//set_bit(LED_Pulse);
+			//
+	////Switch off all Heat pulses
 	//HP_Port = 0;
 	//MP_Port = 0;
-	
-	//Start Timer 1
-	Start_Timer_100us();
-}
-
-// -------------------------------------------------------------
-// PrePulse (edit Maxi 27.09.2018)					  (complete)
-// -------------------------------------------------------------
-
-void PulseStart_PrePulse()
-{
-	//Stop all Pulses
-	PulseStop();
-
-	//Start Pulse
-	MP_Port = pulse_output_register;
-	
-	//Wait
-	_delay_ms(20);
-	
-	//Stop all Pulses
-	PulseStop();
-}
-
-
-
+	//
+	////Start Timer 1
+	//Start_Timer_100us();	    	
+//}
+//
+//// -------------------------------------------------------------
+//// Deterministic Pulses with Heat PrePulse (edit Maxi 12.09.2019)		  
+////													  ()
+//// -------------------------------------------------------------
+//
+//void PulseStart_DPA_TTA_HighStart()
+//{
+	////Stop Timer 1
+	//Stop_Timer_100us();
+		//
+	//// Set Flags
+	//flag_DPA_TTA = 0;
+	//flag_std_TTA = 0;
+	//flag_HPP_TTA = 1;
+	//
+	////Setup for HeatPrePulse
+	//Setup_Counter_for_DPA_TTA_HighLevel();
+	//
+	////Status LED for Pulses
+	//set_bit(LED_Pulse);
+		//
+	////Switch ON all pulses
+	//HP_Port = pulse_output_register;
+	//MP_Port = pulse_output_register;
+		//
+	////Start Timer 1
+	//Start_Timer_100us();
+//}
+//
+//void PulseStart_DPA_TTA_fromHPP()
+//{
+	////Stop Timer 1
+	//Stop_Timer_100us();
+	//
+	//// Set Flags
+	//flag_DPA_TTA = 1;
+	//flag_std_TTA = 0;
+	//flag_HPP_TTA = 0;
+	//
+	////Setup for det TTA
+	//Setup_Counter_for_DPA_TTA();
+	//
+	////Status LED for Pulses
+	//set_bit(LED_Pulse);
+	//
+	////Switch off all Heat pulses (don't switch off here)
+	////HP_Port = 0;
+	////MP_Port = 0;
+	//
+	////Start Timer 1
+	//Start_Timer_100us();
+//}
+//
+//// -------------------------------------------------------------
+//// PrePulse (edit Maxi 27.09.2018)					  (complete)
+//// -------------------------------------------------------------
+//
+//void PulseStart_PrePulse()
+//{
+	////Stop all Pulses
+	//PulseStop();
+//
+	////Start Pulse
+	//MP_Port = pulse_output_register;
+	//
+	////Wait
+	//_delay_ms(20);
+	//
+	////Stop all Pulses
+	//PulseStop();
+//}
+//
+//
+//
 

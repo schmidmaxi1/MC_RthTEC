@@ -18,11 +18,10 @@
 #include "helper.h"
 
 
-void TerminalInit();
-void TerminalWaitCount();
-void TerminalCheckCommand();
-void TerminalParseCommand(char *string);
+
 void TransmitAll();
+
+
 void TransmitString(char *string);
 void TransmitStringLn(char *string);
 void TransmitInt(int16_t i, uint8_t digits);
@@ -33,6 +32,11 @@ void TransmitByte(uint8_t byte);
 void TransmitByte_Reverse(uint8_t byte);
 
 extern uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num);
+uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num);
+uint8_t ParseLongLn(char *string, uint8_t digits, int32_t *num);
+uint8_t ParseBool(char *string, uint8_t *value);
+uint8_t ParseByte(char *string, uint8_t *value);
+
 
 
 

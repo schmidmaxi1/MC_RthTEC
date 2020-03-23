@@ -11,36 +11,34 @@
 
 
 
-/*
- ** Includes
- */
+//*******************************************************************
+//								Includes
+//*******************************************************************
+
+#include "main.h"			//Main und Terminal nutzen gleichen Header
+
+#include "Config.h" 
+#include "helper.h"
+#include "globalVAR.h"
+#include "Serial_ReadWrite.h"
+
+#include "my_PulseSequence.h"
 
 #include <string.h>
-#include "Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include <avr/wdt.h>
 
-#include "main.h"
+#include "Cards/All_Cards.h"
 
 
 
-/*
- ** Variables
- */
+//*******************************************************************
+//						Variables (local)
+//*******************************************************************
 
 uint8_t len;
 char *string;
 
 
-
-/*
- ** Functions
- */
-
-uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num);
-uint8_t ParseLongLn(char *string, uint8_t digits, int32_t *num);
-uint8_t ParseBool(char *string, uint8_t *value);
-uint8_t ParseByte(char *string, uint8_t *value);
-void TransmitByte(uint8_t byte);
-void TransmitByte_Reverse(uint8_t byte);
 
 //This line is used to suppress the warnings for code Folding
 // It is ignored by the compiler
@@ -583,17 +581,14 @@ void TerminalParseCommand(char *string)
 					TransmitStringLn("");
 					break;
 							
-
 				//GFW, get firmware version
-				case _MK16('F','W'):
-			
+				case _MK16('F','W'):			
 					TransmitString("FW=");
 					TransmitStringLn(FIRMWARE_VERSION);
 					break;
 			
 				//GFW, get firmware version
-				case _MK16('I','D'):
-			
+				case _MK16('I','D'):			
 					TransmitString("ID=");
 					TransmitStringLn("RthTEC TTA-Equipment V1_0");
 					break;

@@ -5,16 +5,32 @@
  *  Author: schmidm
  */ 
 
-/*
- ** Includes
- */
-
-
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
 #include "MOSFET_BreakDown.h"
 
+#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "../helper.h"
+#include "../globalVAR.h"
+#include "../Serial_ReadWrite.h"
+
+#include <util/delay.h>
+
+#include "../ICs/AD5752.h"
+#include "../ICs/MCP23S08.h"
+#include "../ICs/LTC1864.h"
+
+//*******************************************************************
+//								Variables
+//*******************************************************************
 
 uint16_t breakDown_V_GS_mV[8];
+
+//*******************************************************************
+//								Explanation
+//*******************************************************************
 
 /*
 PinBelegung:

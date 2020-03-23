@@ -138,6 +138,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cards\All_Cards.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Cards\Amplifier.c">
       <SubType>compile</SubType>
     </Compile>
@@ -208,6 +211,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="my_PulseSequences.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="my_PulseSequence.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="my_Timers.c">

@@ -61,7 +61,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "main.h"
+#include "helper.h"
+#include "Config.h"
+
+//#include "main.h"
 #include "usart_spi.h"
 
 
@@ -109,7 +112,7 @@ inline void _USART_SPI_TxBuffer();
 ISR(USART2_RX_vect)
 {
 	_USART_SPI_RxBuffer();
-	TransmitStringLn("ja");
+	//TransmitStringLn("ja");
 }
 
 /*

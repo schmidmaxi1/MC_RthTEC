@@ -6,17 +6,16 @@
  */ 
 
 
-/*
- ** Includes
- */
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
-//#include "../usart_spi.h"
 #include <stdint.h>
-//#include "../usart_spi.h"
 
-/*
- ** Compiler-Konstanten
- */
+
+//*******************************************************************
+//						Compiler - Constants
+//*******************************************************************
 
 //Read /Write
 #define DAC_R           0b10000000
@@ -48,9 +47,9 @@
 #define PowerUp_NON		0b00000000
 
 
-/*
- ** Functions
- */
+//*******************************************************************
+//						Functions
+//*******************************************************************
 
 void DAC_AD5752_Range_and_PowerUp(uint8_t range, uint8_t powerUP, volatile uint8_t *port, uint8_t pin);
 void DAC_AD5752_Set(uint16_t val, volatile uint8_t *port, uint8_t pin, uint8_t ch);

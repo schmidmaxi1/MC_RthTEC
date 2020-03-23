@@ -50,6 +50,7 @@ C_SRCS +=  \
 ../ICs/LTC1864.c \
 ../ICs/MCP23S08.c \
 ../main.c \
+../my_PulseSequences.c \
 ../my_Timers.c \
 ../Serial_ReadWrite.c \
 ../terminal.c \
@@ -75,6 +76,7 @@ ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
 main.o \
+my_PulseSequences.o \
 my_Timers.o \
 Serial_ReadWrite.o \
 terminal.o \
@@ -93,6 +95,7 @@ ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
 main.o \
+my_PulseSequences.o \
 my_Timers.o \
 Serial_ReadWrite.o \
 terminal.o \
@@ -111,6 +114,7 @@ ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
 main.d \
+my_PulseSequences.d \
 my_Timers.d \
 Serial_ReadWrite.d \
 terminal.d \
@@ -129,6 +133,7 @@ ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
 main.d \
+my_PulseSequences.d \
 my_Timers.d \
 Serial_ReadWrite.d \
 terminal.d \
@@ -220,6 +225,13 @@ ICs/MCP23S08.o: ../ICs/MCP23S08.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./my_PulseSequences.o: .././my_PulseSequences.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

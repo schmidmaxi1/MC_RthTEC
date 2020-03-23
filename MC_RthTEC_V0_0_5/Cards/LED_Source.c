@@ -5,12 +5,29 @@
  *  Author: schmidm
  */ 
 
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
 #include "LED_Source.h"
 
+#include "../Config.h"		//Doppelpunkte um einen Ordner zurück zu gehen
+#include "../helper.h"
+#include "../globalVAR.h"
+#include "../Serial_ReadWrite.h"
+
+#include "../ICs/AD5752.h"
+
+//*******************************************************************
+//								Variables
+//*******************************************************************
 
 uint16_t led_Source_Heat_Current_mA[8];
 uint16_t led_Source_Meas_Current_0mA1[8];
+
+//*******************************************************************
+//								Explanation
+//*******************************************************************
 
 /*
 PinBelegung:

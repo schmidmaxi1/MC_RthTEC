@@ -10,17 +10,27 @@
  */
 
 #include "Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "helper.h"
 #include "globalVAR.h"
 
-#include "main.h"
+#include "my_PulseSequence.h"
+
+//#include "main.h"
 #include "my_Timers.h"
 #include "avr/common.h"
 
 #include <util/delay.h>
+#include "avr/interrupt.h"
+
+#include "Cards/All_Cards.h"
 
 /*
  ** Local Variables
  */
+
+volatile uint8_t interrupt_1ms;
+volatile uint8_t interrupt_10hz;
+volatile uint8_t interrupt_1hz;
 
 uint8_t heat_pulse_precount;
 uint16_t heat_pulse_lastcount;
