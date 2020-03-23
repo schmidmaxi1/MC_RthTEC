@@ -183,6 +183,12 @@
     <Compile Include="Config.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="globalVAR.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="globalVAR.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="helper.h">
       <SubType>compile</SubType>
     </Compile>

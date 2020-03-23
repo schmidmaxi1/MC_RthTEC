@@ -7,6 +7,8 @@
 
 #include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
 #include "../helper.h"
+#include "../globalVAR.h"
+
 
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
 #include <util/delay.h>

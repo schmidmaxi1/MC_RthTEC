@@ -62,82 +62,70 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 Allocating common symbols
 Common symbol       size              file
 
-heat_pulse_voltage  0x4               Cards/Amplifier.o
 frontEnd_offset_voltage_mV
                     0x10              Cards/Amplifier.o
-measure_pulse_voltage
-                    0x2               Cards/Amplifier.o
 led_Source_Meas_Current_0mA1
                     0x10              Cards/Amplifier.o
 deterministic_pulse_length
-                    0x2               Cards/Amplifier.o
+                    0x2               globalVAR.o
 mosfet_Source_Meas_Current_0mA1
                     0x10              Cards/Amplifier.o
 uart0_tx_buffer     0x80              uart0.o
 flag_DPA_TTA        0x1               Cards/Amplifier.o
 interrupt_1ms       0x1               Cards/Amplifier.o
-heat_pulse_length   0x4               Cards/Amplifier.o
+heat_pulse_length   0x4               globalVAR.o
 deterministic_pulse_cycles
-                    0x2               Cards/Amplifier.o
+                    0x2               globalVAR.o
 interrupt_1hz       0x1               Cards/Amplifier.o
 uart0_rx            0x81              Cards/Amplifier.o
 deterministic_pulse_counter
                     0x2               my_Timers.o
 string              0x2               terminal.o
-measure_pulse_current
-                    0x2               Cards/Amplifier.o
 heat_pulse_precount
                     0x1               my_Timers.o
 measured_binary_meas
-                    0x10              Cards/Amplifier.o
+                    0x10              globalVAR.o
 led_Source_Heat_Current_mA
                     0x10              Cards/Amplifier.o
 usart_spi_tx_buffer
                     0x40              usart_spi.o
-offset_voltage      0x2               Cards/Amplifier.o
 frontEnd_gain       0x10              Cards/Amplifier.o
 mosfet_Source_Heat_Current_mA
                     0x10              Cards/Amplifier.o
-led_hp              0x1               Cards/Amplifier.o
-heat_pulse_current  0x2               Cards/Amplifier.o
 flag_std_TTA        0x1               Cards/Amplifier.o
-led_mp              0x1               Cards/Amplifier.o
 amplifier_gain      0x10              Cards/Amplifier.o
 mosfet_Source_Meas_Voltage_10mV
                     0x10              Cards/Amplifier.o
 usart_spi_rx        0x40              Cards/Amplifier.o
 measure_pulse_length
-                    0x4               Cards/Amplifier.o
+                    0x4               globalVAR.o
 debug_send          0x1               Cards/Amplifier.o
 amplifier_offset_voltage_mV
                     0x10              Cards/Amplifier.o
 current_source_enabled
-                    0x1               Cards/Amplifier.o
+                    0x1               globalVAR.o
 heat_pulse_lastcount
                     0x2               my_Timers.o
 usart_spi_rx_buffer
                     0x40              usart_spi.o
 startup_wait_counter
                     0x1               Cards/Amplifier.o
-measure_pules_voltage
-                    0x4               Cards/Amplifier.o
 measure_pulse_precount
                     0x1               my_Timers.o
-window_offset       0x2               Cards/Amplifier.o
 interrupt_10hz      0x1               Cards/Amplifier.o
 uart0_active_timer  0x1               Cards/Amplifier.o
 breakDown_V_GS_mV   0x10              Cards/MOSFET_BreakDown.o
 pulse_output_register
-                    0x1               Cards/Amplifier.o
+                    0x1               globalVAR.o
 measure_pulse_lastcount
                     0x2               my_Timers.o
 flag_HPP_TTA        0x1               Cards/Amplifier.o
 len                 0x1               terminal.o
 measured_binary_heat
-                    0x10              Cards/Amplifier.o
+                    0x10              globalVAR.o
 uart0_rx_buffer     0x80              uart0.o
 terminal_timeout    0x1               Cards/Amplifier.o
-card_Type           0x8               Cards/Amplifier.o
+card_Type           0x8               globalVAR.o
 
 Discarded input sections
 
@@ -152,31 +140,24 @@ Discarded input sections
  .text          0x00000000        0x0 Cards/Amplifier.o
  .data          0x00000000        0x0 Cards/Amplifier.o
  .bss           0x00000000        0x0 Cards/Amplifier.o
- .text.Amplifier_Default_Values
-                0x00000000       0x56 Cards/Amplifier.o
  .text          0x00000000        0x0 Cards/FrontEnd.o
  .data          0x00000000        0x0 Cards/FrontEnd.o
  .bss           0x00000000        0x0 Cards/FrontEnd.o
- .text.FrontEnd_Default_Values
-                0x00000000       0x56 Cards/FrontEnd.o
  .text          0x00000000        0x0 Cards/LED_Source.o
  .data          0x00000000        0x0 Cards/LED_Source.o
  .bss           0x00000000        0x0 Cards/LED_Source.o
- .text.LED_Source_Default_Values
-                0x00000000       0x56 Cards/LED_Source.o
  .text          0x00000000        0x0 Cards/MOSFET_BreakDown.o
  .data          0x00000000        0x0 Cards/MOSFET_BreakDown.o
  .bss           0x00000000        0x0 Cards/MOSFET_BreakDown.o
- .text.BreakDown_Default_Values
-                0x00000000       0x1e Cards/MOSFET_BreakDown.o
  .text          0x00000000        0x0 Cards/MOSFET_Source.o
  .data          0x00000000        0x0 Cards/MOSFET_Source.o
  .bss           0x00000000        0x0 Cards/MOSFET_Source.o
- .text.MOSFET_Source_Default_Values
-                0x00000000       0x80 Cards/MOSFET_Source.o
  .text          0x00000000        0x0 Cards/Slot_Tester.o
  .data          0x00000000        0x0 Cards/Slot_Tester.o
  .bss           0x00000000        0x0 Cards/Slot_Tester.o
+ .text          0x00000000        0x0 globalVAR.o
+ .data          0x00000000        0x0 globalVAR.o
+ .bss           0x00000000        0x0 globalVAR.o
  .text          0x00000000        0x0 ICs/AD5752.o
  .data          0x00000000        0x0 ICs/AD5752.o
  .bss           0x00000000        0x0 ICs/AD5752.o
@@ -505,6 +486,7 @@ LOAD Cards/LED_Source.o
 LOAD Cards/MOSFET_BreakDown.o
 LOAD Cards/MOSFET_Source.o
 LOAD Cards/Slot_Tester.o
+LOAD globalVAR.o
 LOAD ICs/AD5752.o
 LOAD ICs/LTC1864.o
 LOAD ICs/MCP23S08.o
@@ -620,7 +602,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x435e
+.text           0x00000000     0x4420
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -736,428 +718,446 @@ END GROUP
  .text.Amplifier_Variables_from_EEPROM
                 0x00000164       0x38 Cards/Amplifier.o
                 0x00000164                Amplifier_Variables_from_EEPROM
+ .text.Amplifier_Default_Values
+                0x0000019c       0x56 Cards/Amplifier.o
+                0x0000019c                Amplifier_Default_Values
  .text.Amplifier_Set_Gain
-                0x0000019c        0x2 Cards/Amplifier.o
-                0x0000019c                Amplifier_Set_Gain
+                0x000001f2        0x2 Cards/Amplifier.o
+                0x000001f2                Amplifier_Set_Gain
  .text.Amplifier_Set_Offset_Voltage
-                0x0000019e       0x30 Cards/Amplifier.o
-                0x0000019e                Amplifier_Set_Offset_Voltage
+                0x000001f4       0x30 Cards/Amplifier.o
+                0x000001f4                Amplifier_Set_Offset_Voltage
  .text.Amplifier_Init
-                0x000001ce       0xac Cards/Amplifier.o
-                0x000001ce                Amplifier_Init
+                0x00000224       0xac Cards/Amplifier.o
+                0x00000224                Amplifier_Init
  .text.FrontEnd_Variables_from_EEPROM
-                0x0000027a       0x38 Cards/FrontEnd.o
-                0x0000027a                FrontEnd_Variables_from_EEPROM
+                0x000002d0       0x38 Cards/FrontEnd.o
+                0x000002d0                FrontEnd_Variables_from_EEPROM
+ .text.FrontEnd_Default_Values
+                0x00000308       0x56 Cards/FrontEnd.o
+                0x00000308                FrontEnd_Default_Values
  .text.FrontEnd_Set_Gain
-                0x000002b2       0x46 Cards/FrontEnd.o
-                0x000002b2                FrontEnd_Set_Gain
+                0x0000035e       0x46 Cards/FrontEnd.o
+                0x0000035e                FrontEnd_Set_Gain
  .text.FrontEnd_Set_Offset_Voltage
-                0x000002f8       0x30 Cards/FrontEnd.o
-                0x000002f8                FrontEnd_Set_Offset_Voltage
+                0x000003a4       0x30 Cards/FrontEnd.o
+                0x000003a4                FrontEnd_Set_Offset_Voltage
  .text.FrontEnd_Init
-                0x00000328       0xda Cards/FrontEnd.o
-                0x00000328                FrontEnd_Init
+                0x000003d4       0xda Cards/FrontEnd.o
+                0x000003d4                FrontEnd_Init
  .text.FrontEnd_Get_Voltage_in_mV_FullRange
-                0x00000402       0x18 Cards/FrontEnd.o
-                0x00000402                FrontEnd_Get_Voltage_in_mV_FullRange
+                0x000004ae       0x18 Cards/FrontEnd.o
+                0x000004ae                FrontEnd_Get_Voltage_in_mV_FullRange
  .text.FrontEnd_Reset_FlipFlops
-                0x0000041a       0x3c Cards/FrontEnd.o
-                0x0000041a                FrontEnd_Reset_FlipFlops
+                0x000004c6       0x3c Cards/FrontEnd.o
+                0x000004c6                FrontEnd_Reset_FlipFlops
  .text.Terminal_SET_FrontEnd
-                0x00000456      0x21e Cards/FrontEnd.o
-                0x00000456                Terminal_SET_FrontEnd
+                0x00000502      0x21e Cards/FrontEnd.o
+                0x00000502                Terminal_SET_FrontEnd
  .text.Terminal_GET_FrontEnd
-                0x00000674      0x12e Cards/FrontEnd.o
-                0x00000674                Terminal_GET_FrontEnd
+                0x00000720      0x12e Cards/FrontEnd.o
+                0x00000720                Terminal_GET_FrontEnd
  .text.LED_Source_Variables_from_EEPROM
-                0x000007a2       0x38 Cards/LED_Source.o
-                0x000007a2                LED_Source_Variables_from_EEPROM
+                0x0000084e       0x38 Cards/LED_Source.o
+                0x0000084e                LED_Source_Variables_from_EEPROM
+ .text.LED_Source_Default_Values
+                0x00000886       0x56 Cards/LED_Source.o
+                0x00000886                LED_Source_Default_Values
  .text.LED_Source_Set_Heat_Current
-                0x000007da       0x48 Cards/LED_Source.o
-                0x000007da                LED_Source_Set_Heat_Current
+                0x000008dc       0x48 Cards/LED_Source.o
+                0x000008dc                LED_Source_Set_Heat_Current
  .text.LED_Source_Set_Meas_Current
-                0x00000822       0x30 Cards/LED_Source.o
-                0x00000822                LED_Source_Set_Meas_Current
+                0x00000924       0x30 Cards/LED_Source.o
+                0x00000924                LED_Source_Set_Meas_Current
  .text.LED_Source_Init
-                0x00000852       0xba Cards/LED_Source.o
-                0x00000852                LED_Source_Init
+                0x00000954       0xba Cards/LED_Source.o
+                0x00000954                LED_Source_Init
  .text.Terminal_SET_LED_Source
-                0x0000090c      0x1d2 Cards/LED_Source.o
-                0x0000090c                Terminal_SET_LED_Source
+                0x00000a0e      0x1d2 Cards/LED_Source.o
+                0x00000a0e                Terminal_SET_LED_Source
  .text.Terminal_GET_LED_Source
-                0x00000ade       0xaa Cards/LED_Source.o
-                0x00000ade                Terminal_GET_LED_Source
+                0x00000be0       0xaa Cards/LED_Source.o
+                0x00000be0                Terminal_GET_LED_Source
  .text.BreakDown_Variables_from_EEPROM
-                0x00000b88       0x24 Cards/MOSFET_BreakDown.o
-                0x00000b88                BreakDown_Variables_from_EEPROM
+                0x00000c8a       0x24 Cards/MOSFET_BreakDown.o
+                0x00000c8a                BreakDown_Variables_from_EEPROM
+ .text.BreakDown_Default_Values
+                0x00000cae       0x1e Cards/MOSFET_BreakDown.o
+                0x00000cae                BreakDown_Default_Values
  .text.B_Set_Relais_to_BreakDownTest
-                0x00000bac       0x38 Cards/MOSFET_BreakDown.o
-                0x00000bac                B_Set_Relais_to_BreakDownTest
+                0x00000ccc       0x38 Cards/MOSFET_BreakDown.o
+                0x00000ccc                B_Set_Relais_to_BreakDownTest
  .text.B_Set_Relais_to_Leakage_GS
-                0x00000be4       0x38 Cards/MOSFET_BreakDown.o
-                0x00000be4                B_Set_Relais_to_Leakage_GS
+                0x00000d04       0x38 Cards/MOSFET_BreakDown.o
+                0x00000d04                B_Set_Relais_to_Leakage_GS
  .text.B_Set_Relais_to_Characteristic_Curve
-                0x00000c1c       0x38 Cards/MOSFET_BreakDown.o
-                0x00000c1c                B_Set_Relais_to_Characteristic_Curve
+                0x00000d3c       0x38 Cards/MOSFET_BreakDown.o
+                0x00000d3c                B_Set_Relais_to_Characteristic_Curve
  .text.B_Set_Relais_to_BodyDiode_Curve
-                0x00000c54       0x38 Cards/MOSFET_BreakDown.o
-                0x00000c54                B_Set_Relais_to_BodyDiode_Curve
+                0x00000d74       0x38 Cards/MOSFET_BreakDown.o
+                0x00000d74                B_Set_Relais_to_BodyDiode_Curve
  .text.B_Set_Relais_all_off
-                0x00000c8c       0x24 Cards/MOSFET_BreakDown.o
-                0x00000c8c                B_Set_Relais_all_off
+                0x00000dac       0x24 Cards/MOSFET_BreakDown.o
+                0x00000dac                B_Set_Relais_all_off
  .text.BreakDown_Set_V_GS_mV
-                0x00000cb0       0x2e Cards/MOSFET_BreakDown.o
-                0x00000cb0                BreakDown_Set_V_GS_mV
+                0x00000dd0       0x2e Cards/MOSFET_BreakDown.o
+                0x00000dd0                BreakDown_Set_V_GS_mV
  .text.MOSFET_BreakDown_Init
-                0x00000cde       0xc2 Cards/MOSFET_BreakDown.o
-                0x00000cde                MOSFET_BreakDown_Init
+                0x00000dfe       0xc4 Cards/MOSFET_BreakDown.o
+                0x00000dfe                MOSFET_BreakDown_Init
  .text.B_Get_V_DS_in_mV
-                0x00000da0       0x14 Cards/MOSFET_BreakDown.o
-                0x00000da0                B_Get_V_DS_in_mV
+                0x00000ec2       0x14 Cards/MOSFET_BreakDown.o
+                0x00000ec2                B_Get_V_DS_in_mV
  .text.B_Get_I_DS_in_mA
-                0x00000db4       0x14 Cards/MOSFET_BreakDown.o
-                0x00000db4                B_Get_I_DS_in_mA
+                0x00000ed6       0x14 Cards/MOSFET_BreakDown.o
+                0x00000ed6                B_Get_I_DS_in_mA
  .text.Terminal_SET_BreakDown
-                0x00000dc8      0x2f4 Cards/MOSFET_BreakDown.o
-                0x00000dc8                Terminal_SET_BreakDown
+                0x00000eea      0x30e Cards/MOSFET_BreakDown.o
+                0x00000eea                Terminal_SET_BreakDown
  .text.Terminal_GET_BreakDown
-                0x000010bc       0xdc Cards/MOSFET_BreakDown.o
-                0x000010bc                Terminal_GET_BreakDown
+                0x000011f8       0xe8 Cards/MOSFET_BreakDown.o
+                0x000011f8                Terminal_GET_BreakDown
  .text.MOSFET_Source_Variables_from_EEPROM
-                0x00001198       0x4c Cards/MOSFET_Source.o
-                0x00001198                MOSFET_Source_Variables_from_EEPROM
+                0x000012e0       0x4c Cards/MOSFET_Source.o
+                0x000012e0                MOSFET_Source_Variables_from_EEPROM
+ .text.MOSFET_Source_Default_Values
+                0x0000132c       0x80 Cards/MOSFET_Source.o
+                0x0000132c                MOSFET_Source_Default_Values
  .text.MOSFET_Source_Set_Heat_Current
-                0x000011e4       0x2e Cards/MOSFET_Source.o
-                0x000011e4                MOSFET_Source_Set_Heat_Current
+                0x000013ac       0x2e Cards/MOSFET_Source.o
+                0x000013ac                MOSFET_Source_Set_Heat_Current
  .text.MOSFET_Source_Set_Meas_Current
-                0x00001212       0x2e Cards/MOSFET_Source.o
-                0x00001212                MOSFET_Source_Set_Meas_Current
+                0x000013da       0x2e Cards/MOSFET_Source.o
+                0x000013da                MOSFET_Source_Set_Meas_Current
  .text.MOSFET_Source_Set_Meas_Voltage
-                0x00001240       0xc6 Cards/MOSFET_Source.o
-                0x00001240                MOSFET_Source_Set_Meas_Voltage
+                0x00001408       0xc6 Cards/MOSFET_Source.o
+                0x00001408                MOSFET_Source_Set_Meas_Voltage
  .text.MOSFET_Source_Init
-                0x00001306       0xda Cards/MOSFET_Source.o
-                0x00001306                MOSFET_Source_Init
+                0x000014ce       0xda Cards/MOSFET_Source.o
+                0x000014ce                MOSFET_Source_Init
  .text.MOSFET_Source_Get_measured_Heat_Voltage_in_mV
-                0x000013e0       0x26 Cards/MOSFET_Source.o
-                0x000013e0                MOSFET_Source_Get_measured_Heat_Voltage_in_mV
+                0x000015a8       0x26 Cards/MOSFET_Source.o
+                0x000015a8                MOSFET_Source_Get_measured_Heat_Voltage_in_mV
  .text.MOSFET_Source_Get_measured_Meas_Voltage_in_mV
-                0x00001406       0x26 Cards/MOSFET_Source.o
-                0x00001406                MOSFET_Source_Get_measured_Meas_Voltage_in_mV
+                0x000015ce       0x26 Cards/MOSFET_Source.o
+                0x000015ce                MOSFET_Source_Get_measured_Meas_Voltage_in_mV
  .text.MOSFET_Source_sample_Heat
-                0x0000142c        0xc Cards/MOSFET_Source.o
-                0x0000142c                MOSFET_Source_sample_Heat
+                0x000015f4        0xc Cards/MOSFET_Source.o
+                0x000015f4                MOSFET_Source_sample_Heat
  .text.MOSFET_Source_sample_Meas_receive_Heat
-                0x00001438        0xc Cards/MOSFET_Source.o
-                0x00001438                MOSFET_Source_sample_Meas_receive_Heat
+                0x00001600        0xc Cards/MOSFET_Source.o
+                0x00001600                MOSFET_Source_sample_Meas_receive_Heat
  .text.MOSFET_Source_receive_Meas
-                0x00001444        0xc Cards/MOSFET_Source.o
-                0x00001444                MOSFET_Source_receive_Meas
+                0x0000160c        0xc Cards/MOSFET_Source.o
+                0x0000160c                MOSFET_Source_receive_Meas
  .text.Terminal_SET_MOSFET_Source
-                0x00001450      0x250 Cards/MOSFET_Source.o
-                0x00001450                Terminal_SET_MOSFET_Source
+                0x00001618      0x250 Cards/MOSFET_Source.o
+                0x00001618                Terminal_SET_MOSFET_Source
  .text.Terminal_GET_MOSFET_Source
-                0x000016a0      0x16c Cards/MOSFET_Source.o
-                0x000016a0                Terminal_GET_MOSFET_Source
+                0x00001868      0x16c Cards/MOSFET_Source.o
+                0x00001868                Terminal_GET_MOSFET_Source
  .text.Slot_Tester_Init
-                0x0000180c       0xb8 Cards/Slot_Tester.o
-                0x0000180c                Slot_Tester_Init
+                0x000019d4       0xb8 Cards/Slot_Tester.o
+                0x000019d4                Slot_Tester_Init
+ .text.Slot_Tester_Default_Values
+                0x00001a8c        0x2 Cards/Slot_Tester.o
+                0x00001a8c                Slot_Tester_Default_Values
  .text.Slot_Tester_set_7Segment
-                0x000018c4       0xae Cards/Slot_Tester.o
-                0x000018c4                Slot_Tester_set_7Segment
+                0x00001a8e       0xae Cards/Slot_Tester.o
+                0x00001a8e                Slot_Tester_set_7Segment
  .text.Slot_Tester_get_7Segment
-                0x00001972       0xc8 Cards/Slot_Tester.o
-                0x00001972                Slot_Tester_get_7Segment
+                0x00001b3c       0xc8 Cards/Slot_Tester.o
+                0x00001b3c                Slot_Tester_get_7Segment
  .text.Slot_Tester_IO_Lauflicht
-                0x00001a3a       0xe6 Cards/Slot_Tester.o
-                0x00001a3a                Slot_Tester_IO_Lauflicht
+                0x00001c04       0xe6 Cards/Slot_Tester.o
+                0x00001c04                Slot_Tester_IO_Lauflicht
  .text.Slot_Tester_Gesamtablauf
-                0x00001b20       0x1c Cards/Slot_Tester.o
-                0x00001b20                Slot_Tester_Gesamtablauf
+                0x00001cea       0x1c Cards/Slot_Tester.o
+                0x00001cea                Slot_Tester_Gesamtablauf
  .text.DAC_AD5752_Range_and_PowerUp
-                0x00001b3c       0x56 ICs/AD5752.o
-                0x00001b3c                DAC_AD5752_Range_and_PowerUp
+                0x00001d06       0x56 ICs/AD5752.o
+                0x00001d06                DAC_AD5752_Range_and_PowerUp
  .text.DAC_AD5752_Set
-                0x00001b92       0x4a ICs/AD5752.o
-                0x00001b92                DAC_AD5752_Set
+                0x00001d5c       0x4a ICs/AD5752.o
+                0x00001d5c                DAC_AD5752_Set
  .text.LTC1864_getBIT_OneShot
-                0x00001bdc       0x98 ICs/LTC1864.o
-                0x00001bdc                LTC1864_getBIT_OneShot
+                0x00001da6       0x98 ICs/LTC1864.o
+                0x00001da6                LTC1864_getBIT_OneShot
  .text.LTC1864_getBIT_LastSample_and_NewShot
-                0x00001c74       0x66 ICs/LTC1864.o
-                0x00001c74                LTC1864_getBIT_LastSample_and_NewShot
+                0x00001e3e       0x66 ICs/LTC1864.o
+                0x00001e3e                LTC1864_getBIT_LastSample_and_NewShot
  .text.IO_Expander_set_Register
-                0x00001cda       0x44 ICs/MCP23S08.o
-                0x00001cda                IO_Expander_set_Register
+                0x00001ea4       0x44 ICs/MCP23S08.o
+                0x00001ea4                IO_Expander_set_Register
  .text.IO_Expander_get_Register
-                0x00001d1e       0x64 ICs/MCP23S08.o
-                0x00001d1e                IO_Expander_get_Register
+                0x00001ee8       0x64 ICs/MCP23S08.o
+                0x00001ee8                IO_Expander_get_Register
  .text.Init_IO_Pins
-                0x00001d82       0xc4 main.o
-                0x00001d82                Init_IO_Pins
+                0x00001f4c       0xc4 main.o
+                0x00001f4c                Init_IO_Pins
  .text.Lauflicht
-                0x00001e46       0x84 main.o
-                0x00001e46                Lauflicht
+                0x00002010       0x84 main.o
+                0x00002010                Lauflicht
  .text.EEPROM_default_Values
-                0x00001eca       0xc8 main.o
-                0x00001eca                EEPROM_default_Values
+                0x00002094       0x98 main.o
+                0x00002094                EEPROM_default_Values
  .text.EEPROM_last_Values
-                0x00001f92      0x112 main.o
-                0x00001f92                EEPROM_last_Values
+                0x0000212c       0xd2 main.o
+                0x0000212c                EEPROM_last_Values
  .text.Init_All_Cards
-                0x000020a4       0x84 main.o
-                0x000020a4                Init_All_Cards
+                0x000021fe       0xc0 main.o
+                0x000021fe                Init_All_Cards
  .text.PulseStop
-                0x00002128        0xe main.o
-                0x00002128                PulseStop
- .text.Init     0x00002136       0xa2 main.o
-                0x00002136                Init
- .text.main     0x000021d8       0x70 main.o
-                0x000021d8                main
+                0x000022be        0xe main.o
+                0x000022be                PulseStop
+ .text.Init     0x000022cc       0xa2 main.o
+                0x000022cc                Init
+ .text.main     0x0000236e       0x70 main.o
+                0x0000236e                main
  .text.PulseStart_stdTTA
-                0x00002248       0x40 main.o
-                0x00002248                PulseStart_stdTTA
+                0x000023de       0x40 main.o
+                0x000023de                PulseStart_stdTTA
  .text.PulseStart_Sensitivity
-                0x00002288        0xc main.o
-                0x00002288                PulseStart_Sensitivity
+                0x0000241e        0xc main.o
+                0x0000241e                PulseStart_Sensitivity
  .text.PulseStart_DPA_TTA
-                0x00002294       0x20 main.o
-                0x00002294                PulseStart_DPA_TTA
+                0x0000242a       0x20 main.o
+                0x0000242a                PulseStart_DPA_TTA
  .text.PulseStart_DPA_TTA_fromHPP
-                0x000022b4       0x18 main.o
-                0x000022b4                PulseStart_DPA_TTA_fromHPP
+                0x0000244a       0x18 main.o
+                0x0000244a                PulseStart_DPA_TTA_fromHPP
  .text.PulseStart_PrePulse
-                0x000022cc       0x20 main.o
-                0x000022cc                PulseStart_PrePulse
+                0x00002462       0x20 main.o
+                0x00002462                PulseStart_PrePulse
  .text.Init_Timer_1ms
-                0x000022ec       0x1a my_Timers.o
-                0x000022ec                Init_Timer_1ms
+                0x00002482       0x1a my_Timers.o
+                0x00002482                Init_Timer_1ms
  .text.__vector_13
-                0x00002306       0x22 my_Timers.o
-                0x00002306                __vector_13
+                0x0000249c       0x22 my_Timers.o
+                0x0000249c                __vector_13
  .text.Init_Timer_100us
-                0x00002328       0x3c my_Timers.o
-                0x00002328                Init_Timer_100us
+                0x000024be       0x3c my_Timers.o
+                0x000024be                Init_Timer_100us
  .text.Start_Timer_100us
-                0x00002364        0xc my_Timers.o
-                0x00002364                Start_Timer_100us
+                0x000024fa        0xc my_Timers.o
+                0x000024fa                Start_Timer_100us
  .text.Stop_Timer_100us
-                0x00002370       0x18 my_Timers.o
-                0x00002370                Stop_Timer_100us
+                0x00002506       0x18 my_Timers.o
+                0x00002506                Stop_Timer_100us
  .text.Init_Counter_100us
-                0x00002388       0x3c my_Timers.o
-                0x00002388                Init_Counter_100us
+                0x0000251e       0x3c my_Timers.o
+                0x0000251e                Init_Counter_100us
  .text.Setup_Counter_for_stdTTA
-                0x000023c4      0x184 my_Timers.o
-                0x000023c4                Setup_Counter_for_stdTTA
+                0x0000255a      0x184 my_Timers.o
+                0x0000255a                Setup_Counter_for_stdTTA
  .text.Setup_Counter_for_DPA_TTA
-                0x00002548       0x66 my_Timers.o
-                0x00002548                Setup_Counter_for_DPA_TTA
+                0x000026de       0x66 my_Timers.o
+                0x000026de                Setup_Counter_for_DPA_TTA
  .text.__vector_50
-                0x000025ae       0xf0 my_Timers.o
-                0x000025ae                __vector_50
+                0x00002744       0xf0 my_Timers.o
+                0x00002744                __vector_50
  .text.__vector_47
-                0x0000269e       0x5c my_Timers.o
-                0x0000269e                __vector_47
+                0x00002834       0x5c my_Timers.o
+                0x00002834                __vector_47
  .text.__vector_48
-                0x000026fa      0x104 my_Timers.o
-                0x000026fa                __vector_48
+                0x00002890      0x104 my_Timers.o
+                0x00002890                __vector_48
  .text.__vector_49
-                0x000027fe       0xba my_Timers.o
-                0x000027fe                __vector_49
+                0x00002994       0xba my_Timers.o
+                0x00002994                __vector_49
  .text.TerminalInit
-                0x000028b8        0xa terminal.o
-                0x000028b8                TerminalInit
+                0x00002a4e        0xa terminal.o
+                0x00002a4e                TerminalInit
  .text.ParseIntLn
-                0x000028c2       0xea terminal.o
-                0x000028c2                ParseIntLn
+                0x00002a58       0xea terminal.o
+                0x00002a58                ParseIntLn
  .text.ParseLongLn
-                0x000029ac      0x140 terminal.o
-                0x000029ac                ParseLongLn
+                0x00002b42      0x140 terminal.o
+                0x00002b42                ParseLongLn
  .text.ParseByte
-                0x00002aec       0x3c terminal.o
-                0x00002aec                ParseByte
+                0x00002c82       0x3c terminal.o
+                0x00002c82                ParseByte
  .text.TransmitString
-                0x00002b28        0x6 terminal.o
-                0x00002b28                TransmitString
+                0x00002cbe        0x6 terminal.o
+                0x00002cbe                TransmitString
  .text.TransmitStringLn
-                0x00002b2e        0x6 terminal.o
-                0x00002b2e                TransmitStringLn
+                0x00002cc4        0x6 terminal.o
+                0x00002cc4                TransmitStringLn
  .text.TransmitInt
-                0x00002b34       0xcc terminal.o
-                0x00002b34                TransmitInt
+                0x00002cca       0xca terminal.o
+                0x00002cca                TransmitInt
  .text.TransmitLong
-                0x00002c00       0xd2 terminal.o
-                0x00002c00                TransmitLong
+                0x00002d94       0xd2 terminal.o
+                0x00002d94                TransmitLong
  .text.TransmitFloat
-                0x00002cd2      0x196 terminal.o
-                0x00002cd2                TransmitFloat
+                0x00002e66      0x196 terminal.o
+                0x00002e66                TransmitFloat
  .text.TransmitByte
-                0x00002e68       0x72 terminal.o
-                0x00002e68                TransmitByte
+                0x00002ffc       0x72 terminal.o
+                0x00002ffc                TransmitByte
  .text.TransmitByte_Reverse
-                0x00002eda       0x70 terminal.o
-                0x00002eda                TransmitByte_Reverse
+                0x0000306e       0x70 terminal.o
+                0x0000306e                TransmitByte_Reverse
  .text.TerminalParseCommand
-                0x00002f4a      0xa5e terminal.o
-                0x00002f4a                TerminalParseCommand
+                0x000030de      0x98c terminal.o
+                0x000030de                TerminalParseCommand
  .text.TerminalCheckCommand
-                0x000039a8       0x1a terminal.o
-                0x000039a8                TerminalCheckCommand
+                0x00003a6a       0x1a terminal.o
+                0x00003a6a                TerminalCheckCommand
  .text.__vector_25
-                0x000039c2       0xa8 uart0.o
-                0x000039c2                __vector_25
+                0x00003a84       0xa8 uart0.o
+                0x00003a84                __vector_25
  .text.__vector_27
-                0x00003a6a       0x74 uart0.o
-                0x00003a6a                __vector_27
+                0x00003b2c       0x74 uart0.o
+                0x00003b2c                __vector_27
  .text.UART0InitBaudrate
-                0x00003ade       0x82 uart0.o
-                0x00003ade                UART0InitBaudrate
+                0x00003ba0       0x82 uart0.o
+                0x00003ba0                UART0InitBaudrate
  .text.UART0Init
-                0x00003b60        0x8 uart0.o
-                0x00003b60                UART0Init
+                0x00003c22        0x8 uart0.o
+                0x00003c22                UART0Init
  .text.UART0ClearRx
-                0x00003b68       0x2c uart0.o
-                0x00003b68                UART0ClearRx
+                0x00003c2a       0x2c uart0.o
+                0x00003c2a                UART0ClearRx
  .text.UART0ReceiveLine
-                0x00003b94       0x9c uart0.o
-                0x00003b94                UART0ReceiveLine
+                0x00003c56       0x9c uart0.o
+                0x00003c56                UART0ReceiveLine
  .text.UART0TxByte
-                0x00003c30       0x6c uart0.o
-                0x00003c30                UART0TxByte
+                0x00003cf2       0x6c uart0.o
+                0x00003cf2                UART0TxByte
  .text.UART0TransmitString
-                0x00003c9c       0x22 uart0.o
-                0x00003c9c                UART0TransmitString
+                0x00003d5e       0x22 uart0.o
+                0x00003d5e                UART0TransmitString
  .text.UART0TransmitStringLn
-                0x00003cbe       0x2a uart0.o
-                0x00003cbe                UART0TransmitStringLn
+                0x00003d80       0x2a uart0.o
+                0x00003d80                UART0TransmitStringLn
  .text.USART_SPI_InitBaudrate
-                0x00003ce8       0x28 usart_spi.o
-                0x00003ce8                USART_SPI_InitBaudrate
+                0x00003daa       0x28 usart_spi.o
+                0x00003daa                USART_SPI_InitBaudrate
  .text.USART_SPI_SetCS
-                0x00003d10       0x16 usart_spi.o
-                0x00003d10                USART_SPI_SetCS
+                0x00003dd2       0x16 usart_spi.o
+                0x00003dd2                USART_SPI_SetCS
  .text.USART_SPI_ToggleCS
-                0x00003d26       0x58 usart_spi.o
-                0x00003d26                USART_SPI_ToggleCS
+                0x00003de8       0x58 usart_spi.o
+                0x00003de8                USART_SPI_ToggleCS
  .text.USART_SPI_ReceiveLen
-                0x00003d7e       0x56 usart_spi.o
-                0x00003d7e                USART_SPI_ReceiveLen
+                0x00003e40       0x56 usart_spi.o
+                0x00003e40                USART_SPI_ReceiveLen
  .text.USART_SPI_RXWaiting
-                0x00003dd4       0x18 usart_spi.o
-                0x00003dd4                USART_SPI_RXWaiting
+                0x00003e96       0x18 usart_spi.o
+                0x00003e96                USART_SPI_RXWaiting
  .text.USART_SPI_TXWaiting
-                0x00003dec        0xc usart_spi.o
-                0x00003dec                USART_SPI_TXWaiting
+                0x00003eae        0xc usart_spi.o
+                0x00003eae                USART_SPI_TXWaiting
  .text.USART_SPI_ClearRx
-                0x00003df8       0x20 usart_spi.o
-                0x00003df8                USART_SPI_ClearRx
+                0x00003eba       0x20 usart_spi.o
+                0x00003eba                USART_SPI_ClearRx
  .text.__vector_51
-                0x00003e18       0xa6 usart_spi.o
-                0x00003e18                __vector_51
+                0x00003eda       0xa6 usart_spi.o
+                0x00003eda                __vector_51
  .text.__vector_24
-                0x00003ebe      0x108 usart_spi.o
-                0x00003ebe                __vector_24
+                0x00003f80      0x108 usart_spi.o
+                0x00003f80                __vector_24
  .text.USART_SPI_TxByte
-                0x00003fc6       0x70 usart_spi.o
-                0x00003fc6                USART_SPI_TxByte
+                0x00004088       0x70 usart_spi.o
+                0x00004088                USART_SPI_TxByte
  .text.USART_SPI_TxBytes
-                0x00004036       0x24 usart_spi.o
-                0x00004036                USART_SPI_TxBytes
+                0x000040f8       0x24 usart_spi.o
+                0x000040f8                USART_SPI_TxBytes
  .text.USART_SPI_RxBytes
-                0x0000405a        0xa usart_spi.o
-                0x0000405a                USART_SPI_RxBytes
+                0x0000411c        0xa usart_spi.o
+                0x0000411c                USART_SPI_RxBytes
  .text.libgcc.div
-                0x00004064       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodhi4.o)
-                0x00004064                __udivmodhi4
+                0x00004126       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodhi4.o)
+                0x00004126                __udivmodhi4
  .text.libgcc.div
-                0x0000408c       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                0x0000408c                __udivmodsi4
+                0x0000414e       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
+                0x0000414e                __udivmodsi4
  .text.libgcc.div
-                0x000040d0       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_divmodsi4.o)
-                0x000040d0                __divmodsi4
+                0x00004192       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_divmodsi4.o)
+                0x00004192                __divmodsi4
  .text.libgcc.div
-                0x000040f8       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_negsi2.o)
-                0x000040f8                __negsi2
- .text.libgcc   0x00004108       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00004108                __tablejump2__
+                0x000041ba       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_negsi2.o)
+                0x000041ba                __negsi2
+ .text.libgcc   0x000041ca       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x000041ca                __tablejump2__
  .text.libgcc.mul
-                0x00004118       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x00004118                __umulhisi3
+                0x000041da       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x000041da                __umulhisi3
  .text.libgcc.mul
-                0x00004136        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
-                0x00004136                __usmulhisi3
-                0x00004138                __usmulhisi3_tail
+                0x000041f8        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_usmulhisi3.o)
+                0x000041f8                __usmulhisi3
+                0x000041fa                __usmulhisi3_tail
  .text.libgcc.mul
-                0x00004142       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
-                0x00004142                __muluhisi3
+                0x00004204       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
+                0x00004204                __muluhisi3
  .text.libgcc.mul
-                0x00004156       0x4e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulsidi3.o)
-                0x00004156                __umulsidi3
-                0x00004158                __umulsidi3_helper
+                0x00004218       0x4e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulsidi3.o)
+                0x00004218                __umulsidi3
+                0x0000421a                __umulsidi3_helper
  .text.libgcc.builtins
-                0x000041a4       0x3c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashrdi3.o)
-                0x000041a4                __ashrdi3
-                0x000041a8                __lshrdi3
+                0x00004266       0x3c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashrdi3.o)
+                0x00004266                __ashrdi3
+                0x0000426a                __lshrdi3
  .text.libgcc.mul
-                0x000041e0       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3_6.o)
-                0x000041e0                __muldi3_6
+                0x000042a2       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3_6.o)
+                0x000042a2                __muldi3_6
  .text.avr-libc
-                0x000041f0       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcat.o)
-                0x000041f0                strcat
+                0x000042b2       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcat.o)
+                0x000042b2                strcat
  .text.avr-libc
-                0x00004206        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
-                0x00004206                strcpy
+                0x000042c8        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
+                0x000042c8                strcpy
  .text.avr-libc
-                0x00004214       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
-                0x00004214                __itoa_ncheck
+                0x000042d6       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(itoa_ncheck.o)
+                0x000042d6                __itoa_ncheck
  .text.avr-libc
-                0x00004228       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ltoa_ncheck.o)
-                0x00004228                __ltoa_ncheck
+                0x000042ea       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ltoa_ncheck.o)
+                0x000042ea                __ltoa_ncheck
  .text.avr-libc
-                0x00004244       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ultoa_ncheck.o)
-                0x00004244                __ultoa_ncheck
-                0x00004246                __ultoa_common
+                0x00004306       0x42 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(ultoa_ncheck.o)
+                0x00004306                __ultoa_ncheck
+                0x00004308                __ultoa_common
  .text.avr-libc
-                0x00004286       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
-                0x00004286                __utoa_ncheck
-                0x00004288                __utoa_common
+                0x00004348       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(utoa_ncheck.o)
+                0x00004348                __utoa_ncheck
+                0x0000434a                __utoa_common
  .text.avr-libc
-                0x000042b8       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
-                0x000042b8                strrev
+                0x0000437a       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strrev.o)
+                0x0000437a                strrev
  .text.avr-libc
-                0x000042d8       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
-                0x000042d8                eeprom_read_block
-                0x000042dc                eeprom_read_blraw
+                0x0000439a       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_block.o)
+                0x0000439a                eeprom_read_block
+                0x0000439e                eeprom_read_blraw
  .text.avr-libc
-                0x000042f8       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
-                0x000042f8                eeprom_read_byte
+                0x000043ba       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_byte.o)
+                0x000043ba                eeprom_read_byte
  .text.avr-libc
-                0x00004308        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
-                0x00004308                eeprom_read_float
-                0x00004308                eeprom_read_dword
+                0x000043ca        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_dword.o)
+                0x000043ca                eeprom_read_float
+                0x000043ca                eeprom_read_dword
  .text.avr-libc
-                0x00004312        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
-                0x00004312                eeprom_read_word
+                0x000043d4        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eerd_word.o)
+                0x000043d4                eeprom_read_word
  .text.avr-libc
-                0x0000431c       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
-                0x0000431c                eeprom_write_block
+                0x000043de       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_block.o)
+                0x000043de                eeprom_write_block
  .text.avr-libc
-                0x0000432e       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
-                0x0000432e                eeprom_write_byte
-                0x00004330                eeprom_write_r18
+                0x000043f0       0x1c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_byte.o)
+                0x000043f0                eeprom_write_byte
+                0x000043f2                eeprom_write_r18
  .text.avr-libc
-                0x0000434a        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
-                0x0000434a                eeprom_write_dword
-                0x0000434a                eeprom_write_float
+                0x0000440c        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_dword.o)
+                0x0000440c                eeprom_write_dword
+                0x0000440c                eeprom_write_float
  .text.avr-libc
-                0x00004354        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
-                0x00004354                eeprom_write_word
-                0x0000435a                . = ALIGN (0x2)
+                0x00004416        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libatmega2560.a(eewr_word.o)
+                0x00004416                eeprom_write_word
+                0x0000441c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000435a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x0000435a                _exit
-                0x0000435a                exit
+ .fini9         0x0000441c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x0000441c                _exit
+                0x0000441c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1176,11 +1176,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000435a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x0000441c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000435e                _etext = .
+                0x00004420                _etext = .
 
-.data           0x00800200      0x200 load address 0x0000435e
+.data           0x00800200      0x1f6 load address 0x00004420
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1198,170 +1198,158 @@ END GROUP
                 0x00800204                usart_spi_tx_buffer_empty
  *(.gnu.linkonce.d*)
  *(.rodata)
- .rodata        0x00800205        0x9 main.o
+ .rodata        0x00800205       0x12 main.o
  *(.rodata*)
  .rodata.str1.1
-                0x0080020e       0x56 Cards/FrontEnd.o
+                0x00800217       0x56 Cards/FrontEnd.o
                                  0x59 (size before relaxing)
  .rodata.str1.1
-                0x00800264       0x17 Cards/LED_Source.o
+                0x0080026d       0x17 Cards/LED_Source.o
                                  0x3f (size before relaxing)
  .rodata.str1.1
-                0x0080027b       0x2b Cards/MOSFET_BreakDown.o
+                0x00800284       0x2b Cards/MOSFET_BreakDown.o
                                  0x5e (size before relaxing)
  .rodata.str1.1
-                0x008002a6       0x33 Cards/MOSFET_Source.o
+                0x008002af       0x33 Cards/MOSFET_Source.o
                                  0x6a (size before relaxing)
  .rodata.str1.1
-                0x008002d9      0x124 terminal.o
-                                0x16e (size before relaxing)
+                0x008002e2      0x110 terminal.o
+                                0x156 (size before relaxing)
  .rodata.str1.1
-                0x008003fd        0x3 usart_spi.o
+                0x008003f2        0x3 usart_spi.o
  *(.gnu.linkonce.r*)
-                0x00800400                . = ALIGN (0x2)
-                0x00800400                _edata = .
-                0x00800400                PROVIDE (__data_end, .)
+                0x008003f6                . = ALIGN (0x2)
+ *fill*         0x008003f5        0x1 
+                0x008003f6                _edata = .
+                0x008003f6                PROVIDE (__data_end, .)
 
-.bss            0x00800400      0x350
-                0x00800400                PROVIDE (__bss_start, .)
+.bss            0x008003f6      0x33c
+                0x008003f6                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.uart0_tx_char_write
-                0x00800400        0x1 uart0.o
-                0x00800400                uart0_tx_char_write
+                0x008003f6        0x1 uart0.o
+                0x008003f6                uart0_tx_char_write
  .bss.uart0_tx_char_read
-                0x00800401        0x1 uart0.o
-                0x00800401                uart0_tx_char_read
+                0x008003f7        0x1 uart0.o
+                0x008003f7                uart0_tx_char_read
  .bss.uart0_rx_blocked
-                0x00800402        0x1 uart0.o
-                0x00800402                uart0_rx_blocked
+                0x008003f8        0x1 uart0.o
+                0x008003f8                uart0_rx_blocked
  .bss.uart0_rx_lines
-                0x00800403        0x1 uart0.o
-                0x00800403                uart0_rx_lines
+                0x008003f9        0x1 uart0.o
+                0x008003f9                uart0_rx_lines
  .bss.uart0_rx_overrun
-                0x00800404        0x1 uart0.o
-                0x00800404                uart0_rx_overrun
+                0x008003fa        0x1 uart0.o
+                0x008003fa                uart0_rx_overrun
  .bss.uart0_rx_char_write
-                0x00800405        0x1 uart0.o
-                0x00800405                uart0_rx_char_write
+                0x008003fb        0x1 uart0.o
+                0x008003fb                uart0_rx_char_write
  .bss.uart0_rx_char_read
-                0x00800406        0x1 uart0.o
-                0x00800406                uart0_rx_char_read
+                0x008003fc        0x1 uart0.o
+                0x008003fc                uart0_rx_char_read
  .bss.usart_spi_byte_count
-                0x00800407        0x1 usart_spi.o
-                0x00800407                usart_spi_byte_count
+                0x008003fd        0x1 usart_spi.o
+                0x008003fd                usart_spi_byte_count
  .bss.usart_spi_cs_neg
-                0x00800408        0x1 usart_spi.o
-                0x00800408                usart_spi_cs_neg
+                0x008003fe        0x1 usart_spi.o
+                0x008003fe                usart_spi_cs_neg
  .bss.usart_spi_cs_pin
-                0x00800409        0x1 usart_spi.o
-                0x00800409                usart_spi_cs_pin
+                0x008003ff        0x1 usart_spi.o
+                0x008003ff                usart_spi_cs_pin
  .bss.usart_spi_tx_char_write
-                0x0080040a        0x1 usart_spi.o
-                0x0080040a                usart_spi_tx_char_write
+                0x00800400        0x1 usart_spi.o
+                0x00800400                usart_spi_tx_char_write
  .bss.usart_spi_tx_char_read
-                0x0080040b        0x1 usart_spi.o
-                0x0080040b                usart_spi_tx_char_read
+                0x00800401        0x1 usart_spi.o
+                0x00800401                usart_spi_tx_char_read
  .bss.usart_spi_rx_flag
-                0x0080040c        0x1 usart_spi.o
-                0x0080040c                usart_spi_rx_flag
+                0x00800402        0x1 usart_spi.o
+                0x00800402                usart_spi_rx_flag
  .bss.usart_spi_rx_buffer_overrun
-                0x0080040d        0x1 usart_spi.o
-                0x0080040d                usart_spi_rx_buffer_overrun
+                0x00800403        0x1 usart_spi.o
+                0x00800403                usart_spi_rx_buffer_overrun
  .bss.usart_spi_rx_char_write
-                0x0080040e        0x1 usart_spi.o
-                0x0080040e                usart_spi_rx_char_write
+                0x00800404        0x1 usart_spi.o
+                0x00800404                usart_spi_rx_char_write
  .bss.usart_spi_rx_char_read
-                0x0080040f        0x1 usart_spi.o
-                0x0080040f                usart_spi_rx_char_read
+                0x00800405        0x1 usart_spi.o
+                0x00800405                usart_spi_rx_char_read
  *(COMMON)
- COMMON         0x00800410      0x1a5 Cards/Amplifier.o
-                0x00800410                heat_pulse_voltage
-                0x00800414                frontEnd_offset_voltage_mV
-                0x00800424                measure_pulse_voltage
-                0x00800426                led_Source_Meas_Current_0mA1
-                0x00800436                deterministic_pulse_length
-                0x00800438                mosfet_Source_Meas_Current_0mA1
-                0x00800448                flag_DPA_TTA
-                0x00800449                interrupt_1ms
-                0x0080044a                heat_pulse_length
-                0x0080044e                deterministic_pulse_cycles
-                0x00800450                interrupt_1hz
-                0x00800451                uart0_rx
-                0x008004d2                measure_pulse_current
-                0x008004d4                measured_binary_meas
-                0x008004e4                led_Source_Heat_Current_mA
-                0x008004f4                offset_voltage
-                0x008004f6                frontEnd_gain
-                0x00800506                mosfet_Source_Heat_Current_mA
-                0x00800516                led_hp
-                0x00800517                heat_pulse_current
-                0x00800519                flag_std_TTA
-                0x0080051a                led_mp
-                0x0080051b                amplifier_gain
-                0x0080052b                mosfet_Source_Meas_Voltage_10mV
-                0x0080053b                usart_spi_rx
-                0x0080057b                measure_pulse_length
-                0x0080057f                debug_send
-                0x00800580                amplifier_offset_voltage_mV
-                0x00800590                current_source_enabled
-                0x00800591                startup_wait_counter
-                0x00800592                measure_pules_voltage
-                0x00800596                window_offset
-                0x00800598                interrupt_10hz
-                0x00800599                uart0_active_timer
-                0x0080059a                pulse_output_register
-                0x0080059b                flag_HPP_TTA
-                0x0080059c                measured_binary_heat
-                0x008005ac                terminal_timeout
-                0x008005ad                card_Type
- COMMON         0x008005b5       0x10 Cards/MOSFET_BreakDown.o
-                0x008005b5                breakDown_V_GS_mV
- COMMON         0x008005c5        0x8 my_Timers.o
-                0x008005c5                deterministic_pulse_counter
-                0x008005c7                heat_pulse_precount
-                0x008005c8                heat_pulse_lastcount
-                0x008005ca                measure_pulse_precount
-                0x008005cb                measure_pulse_lastcount
- COMMON         0x008005cd        0x3 terminal.o
-                0x008005cd                string
-                0x008005cf                len
- COMMON         0x008005d0      0x100 uart0.o
-                0x008005d0                uart0_tx_buffer
-                0x00800650                uart0_rx_buffer
- COMMON         0x008006d0       0x80 usart_spi.o
-                0x008006d0                usart_spi_tx_buffer
-                0x00800710                usart_spi_rx_buffer
-                0x00800750                PROVIDE (__bss_end, .)
-                0x0000435e                __data_load_start = LOADADDR (.data)
-                0x0000455e                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800406      0x15b Cards/Amplifier.o
+                0x00800406                frontEnd_offset_voltage_mV
+                0x00800416                led_Source_Meas_Current_0mA1
+                0x00800426                mosfet_Source_Meas_Current_0mA1
+                0x00800436                flag_DPA_TTA
+                0x00800437                interrupt_1ms
+                0x00800438                interrupt_1hz
+                0x00800439                uart0_rx
+                0x008004ba                led_Source_Heat_Current_mA
+                0x008004ca                frontEnd_gain
+                0x008004da                mosfet_Source_Heat_Current_mA
+                0x008004ea                flag_std_TTA
+                0x008004eb                amplifier_gain
+                0x008004fb                mosfet_Source_Meas_Voltage_10mV
+                0x0080050b                usart_spi_rx
+                0x0080054b                debug_send
+                0x0080054c                amplifier_offset_voltage_mV
+                0x0080055c                startup_wait_counter
+                0x0080055d                interrupt_10hz
+                0x0080055e                uart0_active_timer
+                0x0080055f                flag_HPP_TTA
+                0x00800560                terminal_timeout
+ COMMON         0x00800561       0x10 Cards/MOSFET_BreakDown.o
+                0x00800561                breakDown_V_GS_mV
+ COMMON         0x00800571       0x36 globalVAR.o
+                0x00800571                deterministic_pulse_length
+                0x00800573                heat_pulse_length
+                0x00800577                deterministic_pulse_cycles
+                0x00800579                measured_binary_meas
+                0x00800589                measure_pulse_length
+                0x0080058d                current_source_enabled
+                0x0080058e                pulse_output_register
+                0x0080058f                measured_binary_heat
+                0x0080059f                card_Type
+ COMMON         0x008005a7        0x8 my_Timers.o
+                0x008005a7                deterministic_pulse_counter
+                0x008005a9                heat_pulse_precount
+                0x008005aa                heat_pulse_lastcount
+                0x008005ac                measure_pulse_precount
+                0x008005ad                measure_pulse_lastcount
+ COMMON         0x008005af        0x3 terminal.o
+                0x008005af                string
+                0x008005b1                len
+ COMMON         0x008005b2      0x100 uart0.o
+                0x008005b2                uart0_tx_buffer
+                0x00800632                uart0_rx_buffer
+ COMMON         0x008006b2       0x80 usart_spi.o
+                0x008006b2                usart_spi_tx_buffer
+                0x008006f2                usart_spi_rx_buffer
+                0x00800732                PROVIDE (__bss_end, .)
+                0x00004420                __data_load_start = LOADADDR (.data)
+                0x00004616                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800750        0x0
+.noinit         0x00800732        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800750                _end = .
+                0x00800732                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
-.eeprom         0x00810000       0x51
+.eeprom         0x00810000       0x47
  *(.eeprom*)
- .eeprom        0x00810000       0x51 main.o
-                0x00810000                parameter3_eeprom
-                0x00810010                parameter2_eeprom
-                0x00810020                parameter1_eeprom
-                0x00810030                card_Type_register_eeprom
-                0x00810038                pulse_output_register_eeprom
-                0x00810039                deterministic_pulse_cycles_eeprom
-                0x0081003b                deterministic_pulse_length_eeprom
-                0x0081003d                window_offset_eeprom
-                0x0081003f                offset_voltage_eeprom
-                0x00810041                measure_pulse_voltage_eeprom
-                0x00810043                measure_pulse_length_eeprom
-                0x00810047                measure_pulse_current_eeprom
-                0x00810049                heat_pulse_length_eeprom
-                0x0081004d                heat_pulse_current_eeprom
-                0x0081004f                firmware_code_eeprom
-                0x00810051                __eeprom_end = .
+ .eeprom        0x00810000       0x47 globalVAR.o
+                0x00810000                deterministic_pulse_cycles_eeprom
+                0x00810002                deterministic_pulse_length_eeprom
+                0x00810004                measure_pulse_length_eeprom
+                0x00810008                heat_pulse_length_eeprom
+                0x0081000c                parameter3_eeprom
+                0x0081001c                parameter2_eeprom
+                0x0081002c                parameter1_eeprom
+                0x0081003c                card_Type_register_eeprom
+                0x00810044                pulse_output_register_eeprom
+                0x00810045                firmware_code_eeprom
+                0x00810047                __eeprom_end = .
 
 .fuse
  *(.fuse)
@@ -1405,6 +1393,7 @@ END GROUP
  .comment       0x00000030       0x31 Cards/MOSFET_BreakDown.o
  .comment       0x00000030       0x31 Cards/MOSFET_Source.o
  .comment       0x00000030       0x31 Cards/Slot_Tester.o
+ .comment       0x00000030       0x31 globalVAR.o
  .comment       0x00000030       0x31 ICs/AD5752.o
  .comment       0x00000030       0x31 ICs/LTC1864.o
  .comment       0x00000030       0x31 ICs/MCP23S08.o
@@ -1434,7 +1423,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x558
+.debug_aranges  0x00000000      0x578
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 Cards/Amplifier.o
@@ -1447,131 +1436,138 @@ END GROUP
  .debug_aranges
                 0x00000170       0x80 Cards/MOSFET_Source.o
  .debug_aranges
-                0x000001f0       0x40 Cards/Slot_Tester.o
+                0x000001f0       0x48 Cards/Slot_Tester.o
  .debug_aranges
-                0x00000230       0x28 ICs/AD5752.o
+                0x00000238       0x18 globalVAR.o
  .debug_aranges
-                0x00000258       0x28 ICs/LTC1864.o
+                0x00000250       0x28 ICs/AD5752.o
  .debug_aranges
-                0x00000280       0x30 ICs/MCP23S08.o
+                0x00000278       0x28 ICs/LTC1864.o
  .debug_aranges
-                0x000002b0       0x88 main.o
+                0x000002a0       0x30 ICs/MCP23S08.o
  .debug_aranges
-                0x00000338       0x80 my_Timers.o
+                0x000002d0       0x88 main.o
  .debug_aranges
-                0x000003b8       0x90 terminal.o
+                0x00000358       0x80 my_Timers.o
  .debug_aranges
-                0x00000448       0x88 uart0.o
+                0x000003d8       0x90 terminal.o
  .debug_aranges
-                0x000004d0       0x88 usart_spi.o
+                0x00000468       0x88 uart0.o
+ .debug_aranges
+                0x000004f0       0x88 usart_spi.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xb699
+.debug_info     0x00000000     0xa0a7
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x583 Cards/Amplifier.o
- .debug_info    0x0000113f      0xe54 Cards/FrontEnd.o
- .debug_info    0x00001f93      0xaa0 Cards/LED_Source.o
- .debug_info    0x00002a33     0x1246 Cards/MOSFET_BreakDown.o
- .debug_info    0x00003c79      0xecf Cards/MOSFET_Source.o
- .debug_info    0x00004b48      0x89d Cards/Slot_Tester.o
- .debug_info    0x000053e5      0x585 ICs/AD5752.o
- .debug_info    0x0000596a      0x611 ICs/LTC1864.o
- .debug_info    0x00005f7b      0x59b ICs/MCP23S08.o
- .debug_info    0x00006516      0xf08 main.o
- .debug_info    0x0000741e      0x5fc my_Timers.o
- .debug_info    0x00007a1a     0x2c9f terminal.o
- .debug_info    0x0000a6b9      0x76e uart0.o
- .debug_info    0x0000ae27      0x872 usart_spi.o
+ .debug_info    0x00000bbc      0x424 Cards/Amplifier.o
+ .debug_info    0x00000fe0      0xd00 Cards/FrontEnd.o
+ .debug_info    0x00001ce0      0x94c Cards/LED_Source.o
+ .debug_info    0x0000262c     0x13d1 Cards/MOSFET_BreakDown.o
+ .debug_info    0x000039fd      0xd95 Cards/MOSFET_Source.o
+ .debug_info    0x00004792      0x76b Cards/Slot_Tester.o
+ .debug_info    0x00004efd      0x1fb globalVAR.o
+ .debug_info    0x000050f8      0x293 ICs/AD5752.o
+ .debug_info    0x0000538b      0x32a ICs/LTC1864.o
+ .debug_info    0x000056b5      0x29e ICs/MCP23S08.o
+ .debug_info    0x00005953      0xc38 main.o
+ .debug_info    0x0000658b      0x515 my_Timers.o
+ .debug_info    0x00006aa0     0x28f0 terminal.o
+ .debug_info    0x00009390      0x60f uart0.o
+ .debug_info    0x0000999f      0x708 usart_spi.o
 
-.debug_abbrev   0x00000000     0x2245
+.debug_abbrev   0x00000000     0x230d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x116 Cards/Amplifier.o
  .debug_abbrev  0x00000c30      0x1a6 Cards/FrontEnd.o
  .debug_abbrev  0x00000dd6      0x105 Cards/LED_Source.o
- .debug_abbrev  0x00000edb      0x1db Cards/MOSFET_BreakDown.o
- .debug_abbrev  0x000010b6      0x173 Cards/MOSFET_Source.o
- .debug_abbrev  0x00001229      0x17e Cards/Slot_Tester.o
- .debug_abbrev  0x000013a7       0xe5 ICs/AD5752.o
- .debug_abbrev  0x0000148c      0x15e ICs/LTC1864.o
- .debug_abbrev  0x000015ea      0x126 ICs/MCP23S08.o
- .debug_abbrev  0x00001710      0x26f main.o
- .debug_abbrev  0x0000197f      0x134 my_Timers.o
- .debug_abbrev  0x00001ab3      0x32e terminal.o
- .debug_abbrev  0x00001de1      0x1fd uart0.o
- .debug_abbrev  0x00001fde      0x267 usart_spi.o
+ .debug_abbrev  0x00000edb      0x21c Cards/MOSFET_BreakDown.o
+ .debug_abbrev  0x000010f7      0x173 Cards/MOSFET_Source.o
+ .debug_abbrev  0x0000126a      0x18d Cards/Slot_Tester.o
+ .debug_abbrev  0x000013f7       0x56 globalVAR.o
+ .debug_abbrev  0x0000144d       0xe5 ICs/AD5752.o
+ .debug_abbrev  0x00001532      0x15e ICs/LTC1864.o
+ .debug_abbrev  0x00001690      0x126 ICs/MCP23S08.o
+ .debug_abbrev  0x000017b6      0x280 main.o
+ .debug_abbrev  0x00001a36      0x145 my_Timers.o
+ .debug_abbrev  0x00001b7b      0x32e terminal.o
+ .debug_abbrev  0x00001ea9      0x1fd uart0.o
+ .debug_abbrev  0x000020a6      0x267 usart_spi.o
 
-.debug_line     0x00000000     0x45ad
+.debug_line     0x00000000     0x45f1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_line    0x0000001a      0x279 Cards/Amplifier.o
- .debug_line    0x00000293      0x4f8 Cards/FrontEnd.o
- .debug_line    0x0000078b      0x3f1 Cards/LED_Source.o
- .debug_line    0x00000b7c      0x6ac Cards/MOSFET_BreakDown.o
- .debug_line    0x00001228      0x55a Cards/MOSFET_Source.o
- .debug_line    0x00001782      0x488 Cards/Slot_Tester.o
- .debug_line    0x00001c0a      0x190 ICs/AD5752.o
- .debug_line    0x00001d9a      0x229 ICs/LTC1864.o
- .debug_line    0x00001fc3      0x19f ICs/MCP23S08.o
- .debug_line    0x00002162      0x7f5 main.o
- .debug_line    0x00002957      0x41d my_Timers.o
- .debug_line    0x00002d74      0xdd6 terminal.o
- .debug_line    0x00003b4a      0x554 uart0.o
- .debug_line    0x0000409e      0x50f usart_spi.o
+ .debug_line    0x0000001a      0x2ac Cards/Amplifier.o
+ .debug_line    0x000002c6      0x52b Cards/FrontEnd.o
+ .debug_line    0x000007f1      0x40f Cards/LED_Source.o
+ .debug_line    0x00000c00      0x697 Cards/MOSFET_BreakDown.o
+ .debug_line    0x00001297      0x58d Cards/MOSFET_Source.o
+ .debug_line    0x00001824      0x4ae Cards/Slot_Tester.o
+ .debug_line    0x00001cd2       0x90 globalVAR.o
+ .debug_line    0x00001d62      0x12b ICs/AD5752.o
+ .debug_line    0x00001e8d      0x1c4 ICs/LTC1864.o
+ .debug_line    0x00002051      0x13a ICs/MCP23S08.o
+ .debug_line    0x0000218b      0x82a main.o
+ .debug_line    0x000029b5      0x42d my_Timers.o
+ .debug_line    0x00002de2      0xd8e terminal.o
+ .debug_line    0x00003b70      0x563 uart0.o
+ .debug_line    0x000040d3      0x51e usart_spi.o
 
-.debug_frame    0x00000000     0x1160
+.debug_frame    0x00000000     0x1170
  *(.debug_frame)
  .debug_frame   0x00000000       0xa0 Cards/Amplifier.o
  .debug_frame   0x000000a0      0x11c Cards/FrontEnd.o
  .debug_frame   0x000001bc      0x108 Cards/LED_Source.o
  .debug_frame   0x000002c4      0x158 Cards/MOSFET_BreakDown.o
  .debug_frame   0x0000041c      0x1b0 Cards/MOSFET_Source.o
- .debug_frame   0x000005cc       0x98 Cards/Slot_Tester.o
- .debug_frame   0x00000664       0x70 ICs/AD5752.o
- .debug_frame   0x000006d4       0x74 ICs/LTC1864.o
- .debug_frame   0x00000748       0x84 ICs/MCP23S08.o
- .debug_frame   0x000007cc      0x178 main.o
- .debug_frame   0x00000944      0x254 my_Timers.o
- .debug_frame   0x00000b98      0x29c terminal.o
- .debug_frame   0x00000e34      0x198 uart0.o
- .debug_frame   0x00000fcc      0x194 usart_spi.o
+ .debug_frame   0x000005cc       0xa8 Cards/Slot_Tester.o
+ .debug_frame   0x00000674       0x70 ICs/AD5752.o
+ .debug_frame   0x000006e4       0x74 ICs/LTC1864.o
+ .debug_frame   0x00000758       0x84 ICs/MCP23S08.o
+ .debug_frame   0x000007dc      0x178 main.o
+ .debug_frame   0x00000954      0x254 my_Timers.o
+ .debug_frame   0x00000ba8      0x29c terminal.o
+ .debug_frame   0x00000e44      0x198 uart0.o
+ .debug_frame   0x00000fdc      0x194 usart_spi.o
 
-.debug_str      0x00000000     0x1a97
+.debug_str      0x00000000     0x19b1
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x541 Cards/Amplifier.o
-                                0x591 (size before relaxing)
- .debug_str     0x00000927      0x191 Cards/FrontEnd.o
-                                0x6bc (size before relaxing)
- .debug_str     0x00000ab8       0xe4 Cards/LED_Source.o
-                                0x641 (size before relaxing)
- .debug_str     0x00000b9c      0x1b8 Cards/MOSFET_BreakDown.o
-                                0x748 (size before relaxing)
- .debug_str     0x00000d54      0x1fd Cards/MOSFET_Source.o
-                                0x775 (size before relaxing)
- .debug_str     0x00000f51       0x92 Cards/Slot_Tester.o
-                                0x57d (size before relaxing)
- .debug_str     0x00000fe3       0x53 ICs/AD5752.o
-                                0x4ed (size before relaxing)
- .debug_str     0x00001036       0x63 ICs/LTC1864.o
-                                0x565 (size before relaxing)
- .debug_str     0x00001099       0x23 ICs/MCP23S08.o
-                                0x541 (size before relaxing)
- .debug_str     0x000010bc      0x464 main.o
-                                0xa88 (size before relaxing)
- .debug_str     0x00001520       0xc1 my_Timers.o
-                                0x660 (size before relaxing)
- .debug_str     0x000015e1      0x12f terminal.o
-                                0x90c (size before relaxing)
- .debug_str     0x00001710      0x1a3 uart0.o
-                                0x66a (size before relaxing)
- .debug_str     0x000018b3      0x1e4 usart_spi.o
-                                0x708 (size before relaxing)
+ .debug_str     0x000003e6      0x3fa Cards/Amplifier.o
+                                0x438 (size before relaxing)
+ .debug_str     0x000007e0      0x191 Cards/FrontEnd.o
+                                0x56b (size before relaxing)
+ .debug_str     0x00000971       0xe4 Cards/LED_Source.o
+                                0x4f0 (size before relaxing)
+ .debug_str     0x00000a55      0x1b8 Cards/MOSFET_BreakDown.o
+                                0x46e (size before relaxing)
+ .debug_str     0x00000c0d      0x227 Cards/MOSFET_Source.o
+                                0x64e (size before relaxing)
+ .debug_str     0x00000e34       0xad Cards/Slot_Tester.o
+                                0x43f (size before relaxing)
+ .debug_str     0x00000ee1      0x160 globalVAR.o
+                                0x344 (size before relaxing)
+ .debug_str     0x00001041       0x53 ICs/AD5752.o
+                                0x202 (size before relaxing)
+ .debug_str     0x00001094       0x63 ICs/LTC1864.o
+                                0x283 (size before relaxing)
+ .debug_str     0x000010f7       0x23 ICs/MCP23S08.o
+                                0x24d (size before relaxing)
+ .debug_str     0x0000111a      0x320 main.o
+                                0x9aa (size before relaxing)
+ .debug_str     0x0000143a       0xc1 my_Timers.o
+                                0x5ae (size before relaxing)
+ .debug_str     0x000014fb      0x12f terminal.o
+                                0x84f (size before relaxing)
+ .debug_str     0x0000162a      0x1a3 uart0.o
+                                0x511 (size before relaxing)
+ .debug_str     0x000017cd      0x1e4 usart_spi.o
+                                0x5a6 (size before relaxing)
 
-.debug_loc      0x00000000     0x5943
+.debug_loc      0x00000000     0x5865
  *(.debug_loc)
  .debug_loc     0x00000000      0x212 Cards/Amplifier.o
  .debug_loc     0x00000212      0x749 Cards/FrontEnd.o
@@ -1584,9 +1580,9 @@ END GROUP
  .debug_loc     0x00002c1b      0x21a ICs/MCP23S08.o
  .debug_loc     0x00002e35      0x320 main.o
  .debug_loc     0x00003155      0x441 my_Timers.o
- .debug_loc     0x00003596     0x1cc3 terminal.o
- .debug_loc     0x00005259      0x386 uart0.o
- .debug_loc     0x000055df      0x364 usart_spi.o
+ .debug_loc     0x00003596     0x1be5 terminal.o
+ .debug_loc     0x0000517b      0x386 uart0.o
+ .debug_loc     0x00005501      0x364 usart_spi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1606,22 +1602,22 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x4e0
+.debug_ranges   0x00000000      0x4e8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x30 Cards/Amplifier.o
  .debug_ranges  0x00000030       0x50 Cards/FrontEnd.o
  .debug_ranges  0x00000080       0x40 Cards/LED_Source.o
  .debug_ranges  0x000000c0       0x70 Cards/MOSFET_BreakDown.o
  .debug_ranges  0x00000130       0x70 Cards/MOSFET_Source.o
- .debug_ranges  0x000001a0       0x30 Cards/Slot_Tester.o
- .debug_ranges  0x000001d0       0x18 ICs/AD5752.o
- .debug_ranges  0x000001e8       0x18 ICs/LTC1864.o
- .debug_ranges  0x00000200       0x20 ICs/MCP23S08.o
- .debug_ranges  0x00000220       0x78 main.o
- .debug_ranges  0x00000298       0x70 my_Timers.o
- .debug_ranges  0x00000308       0xe8 terminal.o
- .debug_ranges  0x000003f0       0x78 uart0.o
- .debug_ranges  0x00000468       0x78 usart_spi.o
+ .debug_ranges  0x000001a0       0x38 Cards/Slot_Tester.o
+ .debug_ranges  0x000001d8       0x18 ICs/AD5752.o
+ .debug_ranges  0x000001f0       0x18 ICs/LTC1864.o
+ .debug_ranges  0x00000208       0x20 ICs/MCP23S08.o
+ .debug_ranges  0x00000228       0x78 main.o
+ .debug_ranges  0x000002a0       0x70 my_Timers.o
+ .debug_ranges  0x00000310       0xe8 terminal.o
+ .debug_ranges  0x000003f8       0x78 uart0.o
+ .debug_ranges  0x00000470       0x78 usart_spi.o
 
 .debug_macro
  *(.debug_macro)

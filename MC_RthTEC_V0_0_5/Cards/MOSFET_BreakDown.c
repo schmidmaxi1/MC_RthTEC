@@ -10,10 +10,12 @@
  */
 
 #include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
-
-#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-#include <util/delay.h>
 #include "../helper.h"
+#include "../globalVAR.h"
+
+//#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
+#include <util/delay.h>
+
 
 #include "MOSFET_BreakDown.h"
 

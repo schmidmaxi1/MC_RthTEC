@@ -16,7 +16,10 @@
  ** Compiler-Constants
  */
 
-//No needed
+//Flags
+uint8_t flag_std_TTA;
+uint8_t flag_DPA_TTA;
+uint8_t flag_HPP_TTA;	//Heat Pre Pulse
 
 /*
  ** Compiler-Constants

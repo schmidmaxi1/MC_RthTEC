@@ -10,10 +10,12 @@
  */
 
 #include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "../helper.h"
+#include "../globalVAR.h"
 
 #include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
 #include <util/delay.h>
-#include "../helper.h"
+
 
 #include "Slot_Tester.h"
 
@@ -61,6 +63,13 @@ void Slot_Tester_Init(int slot_nr)
 	//CS wieder auf 0
 	_clear_bit(IO_PORT6, slot_nr - 1);
 }
+
+
+void Slot_Tester_Default_Values(int slot_nr)
+{
+	//Nothing to do
+}
+					
 
 void Slot_Tester_Gesamtablauf(int slot_nr)
 {

@@ -16,6 +16,8 @@ Cards\MOSFET_Source.c
 
 Cards\Slot_Tester.c
 
+globalVAR.c
+
 ICs\AD5752.c
 
 ICs\LTC1864.c

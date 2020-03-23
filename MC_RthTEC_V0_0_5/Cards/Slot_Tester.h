@@ -28,6 +28,7 @@
  */
 
 void Slot_Tester_Init(int slot_nr);
+void Slot_Tester_Default_Values(int slot_nr);
 
 void Slot_Tester_Gesamtablauf(int slot_nr);
 

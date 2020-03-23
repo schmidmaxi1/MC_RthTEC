@@ -46,6 +46,7 @@ C_SRCS +=  \
 ../Cards/MOSFET_BreakDown.c \
 ../Cards/MOSFET_Source.c \
 ../Cards/Slot_Tester.c \
+../globalVAR.c \
 ../ICs/AD5752.c \
 ../ICs/LTC1864.c \
 ../ICs/MCP23S08.c \
@@ -70,6 +71,7 @@ Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/MOSFET_Source.o \
 Cards/Slot_Tester.o \
+globalVAR.o \
 ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
@@ -87,6 +89,7 @@ Cards/LED_Source.o \
 Cards/MOSFET_BreakDown.o \
 Cards/MOSFET_Source.o \
 Cards/Slot_Tester.o \
+globalVAR.o \
 ICs/AD5752.o \
 ICs/LTC1864.o \
 ICs/MCP23S08.o \
@@ -104,6 +107,7 @@ Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/MOSFET_Source.d \
 Cards/Slot_Tester.d \
+globalVAR.d \
 ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
@@ -121,6 +125,7 @@ Cards/LED_Source.d \
 Cards/MOSFET_BreakDown.d \
 Cards/MOSFET_Source.d \
 Cards/Slot_Tester.d \
+globalVAR.d \
 ICs/AD5752.d \
 ICs/LTC1864.d \
 ICs/MCP23S08.d \
@@ -187,6 +192,13 @@ Cards/MOSFET_Source.o: ../Cards/MOSFET_Source.c
 	
 
 Cards/Slot_Tester.o: ../Cards/Slot_Tester.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./globalVAR.o: .././globalVAR.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

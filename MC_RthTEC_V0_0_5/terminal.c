@@ -694,29 +694,7 @@ void TerminalParseCommand(char *string)
 					TransmitString(card_Type);
 					TransmitStringLn("");
 					break;
-			
-			
-			
-				//GHV, get heat pulse voltage
-				case _MK16('H','V'):
-															
-					TransmitString("GHV=");
-					TransmitLong(heat_pulse_voltage,1);
-					TransmitStringLn(" mV");
-					break;
-			
-				//GMV, get measure pulse voltage
-				case _MK16('M','V'):
-												
-					TransmitString("GMV=");
-					TransmitLong(measure_pulse_voltage,1);
-					TransmitStringLn(" mV");
-					break;
-
-
-				
-
-				
+							
 
 				//GFW, get firmware version
 				case _MK16('F','W'):
@@ -732,27 +710,6 @@ void TerminalParseCommand(char *string)
 					TransmitStringLn("RthTEC TTA-Equipment V1_0");
 					break;
 
-				//GPA, get parameters
-				case _MK16('P','A'):
-			
-					TransmitString("PARAMS=");
-
-					TransmitInt(current_source_enabled, 1);
-
-					TransmitString(",");
-					TransmitInt(heat_pulse_current, 1);
-
-					TransmitString(",");
-					TransmitFloat(measure_pulse_current, 1, 1);
-
-					TransmitString(",");
-					TransmitLong(heat_pulse_length, 1);
-
-					TransmitString(",");
-					TransmitInt(measure_pulse_length, 1);
-
-					TransmitStringLn("");
-					break;
 
 				default:
 				TransmitStringLn("COMMAND ERR");

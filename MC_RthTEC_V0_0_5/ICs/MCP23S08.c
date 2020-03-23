@@ -6,8 +6,8 @@
  */ 
 
 #include "MCP23S08.h"
-#include "../main.h"
-//#include "../usart_spi.h"
+//#include "../main.h"
+#include "../usart_spi.h"
 
 /*	Explanation: Communication Protocol
  *	1. Byte: Address & Read/Write (Write: 0 | Read: 1)

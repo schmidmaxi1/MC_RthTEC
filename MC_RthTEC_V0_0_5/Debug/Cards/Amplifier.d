@@ -26,8 +26,9 @@ Cards/Amplifier.d Cards/Amplifier.o: ../Cards/Amplifier.c \
  ../Cards/../Cards/LED_Source.h ../Cards/../Cards/Amplifier.h \
  ../Cards/../Cards/FrontEnd.h ../Cards/../Cards/MOSFET_Source.h \
  ../Cards/../Cards/../Config.h ../Cards/../Cards/../helper.h \
- ../Cards/../Cards/../ICs/AD5752.h ../Cards/../Cards/../ICs/LTC1864.h \
- ../Cards/../ICs/MCP23S08.h ../Cards/../ICs/../usart_spi.h \
+ ../Cards/../Cards/../globalVAR.h ../Cards/../Cards/../ICs/AD5752.h \
+ ../Cards/../Cards/../ICs/LTC1864.h ../Cards/../ICs/MCP23S08.h \
+ ../Cards/../ICs/../usart_spi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
@@ -102,6 +103,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../Cards/../Cards/../Config.h:
 
 ../Cards/../Cards/../helper.h:
+
+../Cards/../Cards/../globalVAR.h:
 
 ../Cards/../Cards/../ICs/AD5752.h:
 

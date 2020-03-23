@@ -21,10 +21,6 @@
 
 #include "main.h"
 
-
-
-
-
 #include "avr/pgmspace.h"
 
 #include <util/delay.h>
@@ -43,46 +39,22 @@ const char firmware_version[] PROGMEM = S(VER_START:FIRMWARE_VERSION:VER_END);
  ** Variables
  */
 
-//General
-uint16_t firmware_code_eeprom EEMEM;
-uint16_t heat_pulse_current_eeprom EEMEM;
 
-uint16_t measure_pulse_current_eeprom EEMEM;
+//Moved to Global var
+//uint16_t firmware_code_eeprom EEMEM;
+//uint32_t measure_pulse_length_eeprom EEMEM;
+//uint32_t heat_pulse_length_eeprom EEMEM;
+//uint16_t deterministic_pulse_length_eeprom EEMEM;
+//uint16_t deterministic_pulse_cycles_eeprom EEMEM;
+//uint8_t pulse_output_register_eeprom EEMEM;
+//uint8_t pulse_output_register;
+//char card_Type[8];
+//char card_Type_register_eeprom[8] EEMEM;
+//uint16_t deterministic_pulse_length;
+//uint16_t deterministic_pulse_cycles;
 
-uint16_t measure_pulse_voltage_eeprom EEMEM;
-uint16_t window_offset_eeprom EEMEM;
 
 
-uint32_t measure_pulse_length_eeprom EEMEM;
-uint32_t heat_pulse_length_eeprom EEMEM;
-
-//Edit: Maxi 20.12.17 *MUSS WEG**********************************
-uint16_t offset_voltage_eeprom EEMEM;
-uint16_t offset_voltage;
-
-//For Deterministic pulses
-uint16_t deterministic_pulse_length;
-uint16_t deterministic_pulse_cycles;
-uint16_t deterministic_pulse_length_eeprom EEMEM;
-uint16_t deterministic_pulse_cycles_eeprom EEMEM;
-
-//For Pulse Output Register (Bit-Values if HP & MP are pulsed for this slot)
-uint8_t pulse_output_register;
-uint8_t pulse_output_register_eeprom EEMEM;
-
-//Which Card is in Slot (Char authenticates the Type of Card in Slot)
-char card_Type[8];
-char card_Type_register_eeprom[8] EEMEM;
-
-//EEPROM Register neu (08.07.2018, Maxi)
-uint16_t parameter1_eeprom[8] EEMEM;
-uint16_t parameter2_eeprom[8] EEMEM;
-uint16_t parameter3_eeprom[8] EEMEM;
-
-//Flags
-uint8_t flag_std_TTA;
-uint8_t flag_DPA_TTA;
-uint8_t flag_HPP_TTA;	//Heat Pre Pulse
 
 /*
  ** Functions
@@ -248,7 +220,8 @@ void Init()
 	
 	
 	//Is compared to 00...0 to initialize all used cards
-	char init_card_types[8] = "00000000"; 
+	//"!" is used to avoid overwriting epromm with default values
+	char init_card_types[8] = "!!!!!!!!"; 
 	Init_All_Cards(card_Type, init_card_types);
 
 
@@ -377,14 +350,6 @@ void EEPROM_default_Values()
 {
 	eeprom_write_word(&firmware_code_eeprom, FIRMWARE_CODE);
 	
-	eeprom_write_word(&heat_pulse_current_eeprom, 50);
-	eeprom_write_word(&measure_pulse_current_eeprom, 50);
-	eeprom_write_word(&window_offset_eeprom, 12000);
-	
-	//Edit: Maxi 20.12.17
-	eeprom_write_word(&offset_voltage_eeprom, 3000);
-
-
 	
 	eeprom_write_dword(&heat_pulse_length_eeprom, 25);
 	eeprom_write_dword(&measure_pulse_length_eeprom, 25);
@@ -438,14 +403,7 @@ void EEPROM_last_Values()
 				break;			
 		}
 	}
-
 	
-	
-    heat_pulse_current = eeprom_read_word(&heat_pulse_current_eeprom);
-    measure_pulse_current = eeprom_read_word(&measure_pulse_current_eeprom);
-		
-    window_offset = eeprom_read_word(&window_offset_eeprom);
-    offset_voltage = eeprom_read_word(&offset_voltage_eeprom);	
 }
 
 void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
@@ -459,27 +417,52 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 			//Depending on Card-Typ --> Init Card
 			switch(newCard_Type[i])
 			{
+				//'!' means after a RST --> EEPROM values correct --> no default needed
 				case 'A':
+					if(oldCard_Type[i]!= '!')
+					{
+						Amplifier_Default_Values(i+1);
+					}
 					Amplifier_Init(i+1);
 					break;
 					
 				case 'L':
+					if(oldCard_Type[i]!= '!')
+					{
+						LED_Source_Default_Values(i+1);
+					}
 					LED_Source_Init(i+1);
 					break;
 					
 				case 'M':
+					if(oldCard_Type[i]!= '!')
+					{
+						MOSFET_Source_Default_Values(i+1);
+					}
 					MOSFET_Source_Init(i+1);
 					break;
 					
 				case 'B':
+					if(oldCard_Type[i]!= '!')
+					{
+						BreakDown_Default_Values(i+1);
+					}
 					MOSFET_BreakDown_Init(i+1);
 					break;
 					
 				case 'T':
+					if(oldCard_Type[i]!= '!')
+					{
+						Slot_Tester_Default_Values(i+1);
+					}
 					Slot_Tester_Init(i+1);
 					break;
 					
 				case 'F':
+					if(oldCard_Type[i]!= '!')
+					{
+						FrontEnd_Default_Values(i+1);
+					}
 					FrontEnd_Init(i+1);
 					break;
 					

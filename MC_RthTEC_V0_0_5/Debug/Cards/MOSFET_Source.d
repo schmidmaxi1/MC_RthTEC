@@ -26,9 +26,10 @@ Cards/MOSFET_Source.d Cards/MOSFET_Source.o: ../Cards/MOSFET_Source.c \
  ../Cards/../Cards/LED_Source.h ../Cards/../Cards/Amplifier.h \
  ../Cards/../Cards/FrontEnd.h ../Cards/../Cards/MOSFET_Source.h \
  ../Cards/../Cards/../Config.h ../Cards/../Cards/../helper.h \
- ../Cards/../Cards/../ICs/AD5752.h ../Cards/../Cards/../ICs/LTC1864.h \
- ../Cards/../ICs/MCP23S08.h ../Cards/../ICs/../usart_spi.h \
- ../Cards/MOSFET_Source.h ../Cards/../Config.h ../Cards/../helper.h \
+ ../Cards/../Cards/../globalVAR.h ../Cards/../Cards/../ICs/AD5752.h \
+ ../Cards/../Cards/../ICs/LTC1864.h ../Cards/../ICs/MCP23S08.h \
+ ../Cards/../ICs/../usart_spi.h ../Cards/MOSFET_Source.h \
+ ../Cards/../Config.h ../Cards/../helper.h ../Cards/../globalVAR.h \
  ../Cards/../ICs/AD5752.h ../Cards/../ICs/LTC1864.h
 
 ../Cards/../main.h:
@@ -99,6 +100,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../Cards/../Cards/../helper.h:
 
+../Cards/../Cards/../globalVAR.h:
+
 ../Cards/../Cards/../ICs/AD5752.h:
 
 ../Cards/../Cards/../ICs/LTC1864.h:
@@ -112,6 +115,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../Cards/../Config.h:
 
 ../Cards/../helper.h:
+
+../Cards/../globalVAR.h:
 
 ../Cards/../ICs/AD5752.h:
 

@@ -10,6 +10,7 @@
  */
 
 #include "Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
+#include "globalVAR.h"
 
 #include "main.h"
 #include "my_Timers.h"
@@ -27,6 +28,11 @@ uint8_t measure_pulse_precount;
 uint16_t measure_pulse_lastcount;
 
 uint16_t deterministic_pulse_counter;
+
+//Flags
+uint8_t flag_std_TTA;
+uint8_t flag_DPA_TTA;
+uint8_t flag_HPP_TTA;
 
 
 /*

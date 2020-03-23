@@ -8,6 +8,7 @@
 //General Includes
 #include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
 #include "../helper.h"
+#include "../globalVAR.h"
 
 //Includes for ICs
 #include "../ICs/AD5752.h"
