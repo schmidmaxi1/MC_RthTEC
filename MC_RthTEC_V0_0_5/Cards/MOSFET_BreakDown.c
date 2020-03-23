@@ -9,19 +9,10 @@
  ** Includes
  */
 
-#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
-#include "../helper.h"
-#include "../globalVAR.h"
-
-//#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-#include <util/delay.h>
 
 
 #include "MOSFET_BreakDown.h"
 
-#include "../ICs/AD5752.h"
-#include "../ICs/MCP23S08.h"
-#include "../ICs/LTC1864.h"
 
 uint16_t breakDown_V_GS_mV[8];
 
@@ -54,7 +45,7 @@ IO7: N.C.
 //						 Init & EEPROM
 //*******************************************************************
 
-void MOSFET_BreakDown_Init(int slot_nr)
+void BreakDown_Init(int slot_nr)
 {
 	//Set HP&MP to LOW, and all CS to HIGH
 	_clear_bit(HP_Port, slot_nr - 1);
@@ -238,7 +229,14 @@ void Terminal_SET_BreakDown(char *myMessage)
 			}
 			else
 			{
-				MOSFET_BreakDown_Init(mySlotNr);
+				//Overwrite old settings
+				card_Type[mySlotNr-1] = 'B';
+				eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
+								
+				//Take default values
+				BreakDown_Default_Values(mySlotNr);
+				//Init
+				BreakDown_Init(mySlotNr);
 			
 				//Answer
 				TransmitString("SIN");

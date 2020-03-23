@@ -6,11 +6,6 @@
  */ 
 
 
-
-#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-
-
-
 #include "MOSFET_Source.h"
 
 
@@ -214,6 +209,13 @@ void Terminal_SET_MOSFET_Source(char *myMessage)
 			}
 			else
 			{
+				//Overwrite old settings
+				card_Type[mySlotNr-1] = 'M';
+				eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
+				
+				//Take default values
+				MOSFET_Source_Default_Values(mySlotNr);
+				//Init
 				MOSFET_Source_Init(mySlotNr);
 					
 				//Answer

@@ -85,20 +85,20 @@ void PulseStart_PrePulse();			//edit: Maxi 27.09.2018
 
 
 
-//Terminal
-void TerminalInit();
-void TerminalWaitCount();
-void TerminalCheckCommand();
-void TerminalParseCommand(char *string);
-void TransmitAll();
-void TransmitString(char *string);
-void TransmitStringLn(char *string);
-void TransmitInt(int16_t i, uint8_t digits);
-void TransmitLong(int32_t i, uint8_t digits);
-void TransmitInt0(int16_t i, uint8_t digits);
-void TransmitFloat(int16_t i, uint8_t digits, uint8_t div);
-
-extern uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num);
+////Terminal
+//void TerminalInit();
+//void TerminalWaitCount();
+//void TerminalCheckCommand();
+//void TerminalParseCommand(char *string);
+//void TransmitAll();
+//void TransmitString(char *string);
+//void TransmitStringLn(char *string);
+//void TransmitInt(int16_t i, uint8_t digits);
+//void TransmitLong(int32_t i, uint8_t digits);
+//void TransmitInt0(int16_t i, uint8_t digits);
+//void TransmitFloat(int16_t i, uint8_t digits, uint8_t div);
+//
+//extern uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num);
 
 
 

@@ -4,19 +4,9 @@
  * Created: 19.08.2019 15:39:12
  *  Author: schmidm
  */
-#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
-#include "../helper.h"
-//#include "../globalVAR.h"
-
-#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-
-
 
 #include "FrontEnd.h"
 
-#include "../ICs/AD5752.h"
-#include "../ICs/MCP23S08.h"
-#include "../ICs/LTC1864.h"
 
 
 uint16_t frontEnd_gain[8];
@@ -196,7 +186,15 @@ void Terminal_SET_FrontEnd(char *myMessage)
 			}
 			else
 			{
-				FrontEnd_Init(mySlotNr);									
+				//Overwrite old settings
+				card_Type[mySlotNr-1] = 'F';
+				eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
+								
+				//Take default values
+				FrontEnd_Default_Values(mySlotNr);
+				//Init
+				FrontEnd_Init(mySlotNr);
+																
 				//Answer
 				TransmitString("SIN");
 				TransmitInt(mySlotNr, 1);

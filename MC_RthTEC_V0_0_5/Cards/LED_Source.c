@@ -5,17 +5,9 @@
  *  Author: schmidm
  */ 
 
-#include "../Config.h" //Doppelpunkte um einen Ordner zurück zu gehen
-#include "../helper.h"
-#include "../globalVAR.h"
-
-
-#include "../main.h"	//Doppelpunkte um einen Ordner zurück zu gehen
-#include <util/delay.h>
-
 
 #include "LED_Source.h"
-#include "../ICs/AD5752.h"
+
 
 uint16_t led_Source_Heat_Current_mA[8];
 uint16_t led_Source_Meas_Current_0mA1[8];
@@ -152,6 +144,13 @@ void Terminal_SET_LED_Source(char *myMessage)
 			}
 			else
 			{
+				//Overwrite old settings
+				card_Type[mySlotNr-1] = 'L';
+				eeprom_write_block(card_Type, &card_Type_register_eeprom, 8);
+								
+				//Take default values
+				LED_Source_Default_Values(mySlotNr);
+				//Init
 				LED_Source_Init(mySlotNr);
 			
 				//Answer

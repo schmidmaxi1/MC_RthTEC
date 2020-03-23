@@ -361,6 +361,8 @@ void EEPROM_default_Values()
 	
 	char init_card_types[8] = "00000000"; 
 	eeprom_write_block(&card_Type_register_eeprom, init_card_types ,8);	
+	
+	//Default values of the single cards are first used if a card is initialized
 }
 
 void EEPROM_last_Values()
@@ -400,7 +402,11 @@ void EEPROM_last_Values()
 				
 			case 'B':
 				BreakDown_Variables_from_EEPROM(i+1);
-				break;			
+				break;		
+				
+			case 'T':
+				Slot_Tester_Variables_from_EEPROM(i+1);
+				break;
 		}
 	}
 	
@@ -447,7 +453,7 @@ void Init_All_Cards(char newCard_Type[], char oldCard_Type[])
 					{
 						BreakDown_Default_Values(i+1);
 					}
-					MOSFET_BreakDown_Init(i+1);
+					BreakDown_Init(i+1);
 					break;
 					
 				case 'T':

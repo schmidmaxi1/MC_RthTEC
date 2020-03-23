@@ -470,152 +470,40 @@ void TerminalParseCommand(char *string)
 				case 'M':
 					Terminal_SET_MOSFET_Source(string);
 					break;
-									
-				//3. Boost-Heat current Source				
-				case 'H':
-					TransmitStringLn("Function not realized yet!");			
-					break;
+				
+				//4.3.1 Heller Front-End (F)
+				case 'F':
+					Terminal_SET_FrontEnd(string);
+					break;				
 													
-				//4. Amplifier
-				#pragma region SettingsFrontend
-				
+				//4.3.2 Amplifier			
 				case 'A':
-					switch(cmd){
-						
-						//1. Initialization
-						case _MK16('I','N'):
-							if (string[5] != '\n')
-							{
-								//to many signs
-								TransmitStringLn("FORMAT ERR");
-							}
-							else
-							{
-								Amplifier_Init(slotNr);
-							
-								//Answer
-								TransmitString("SIN");
-								TransmitInt(slotNr, 1);
-								TransmitStringLn("A");
-							}
-							break;
-						
-						//2. Window Gain (Fixed to 2)
-						case _MK16('W','G'):
-						
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 100 || temp16 < 1)
-							{
-								//Kp mit der versterkung
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SWG");
-								TransmitInt(slotNr, 1);
-								TransmitString("A=");
-								//TransmitInt(temp16, 1);
-								TransmitInt(2, 1);
-								TransmitStringLn(" W/O-Unit");
-
-								if (amplifier_gain[slotNr-1] != temp16)
-								{
-									amplifier_gain[slotNr-1] = 2;
-									eeprom_write_word(&parameter1_eeprom[slotNr-1], 2);
-									Amplifier_Set_Gain(amplifier_gain[slotNr-1], slotNr);
-								}
-							}
-							break;
-						//3. Set Window Offset Voltage
-						case _MK16('W','O'):
-						
-							if (!ParseIntLn(&string[6],4,&temp16))
-							{
-								//no number
-								TransmitStringLn("FORMAT ERR");
-							}
-							else if (temp16 > 10000 || temp16 < 0)
-							{
-								//0 bis 10 V
-								TransmitStringLn("NUMBER ERR");
-							}
-							else
-							{
-								TransmitString("SWO");
-								TransmitInt(slotNr, 1);
-								TransmitString("A=");
-								TransmitFloat(temp16,1, 3);
-								TransmitStringLn(" V");
-
-								if (amplifier_offset_voltage_mV[slotNr-1] != temp16)
-								{
-									amplifier_offset_voltage_mV[slotNr-1] = temp16;
-									eeprom_write_word(&parameter2_eeprom[slotNr-1], temp16);
-									Amplifier_Set_Offset_Voltage(amplifier_offset_voltage_mV[slotNr-1], slotNr);
-								}
-							}
-							break;
-							
-						//Default --> Fehler
-						default:
-							TransmitStringLn("COMMAND ERR");
-							break;
-					}
-					#pragma endregion SettingsFrontend
-					
-				//5. SlotTester
-				#pragma region Setting_SlotTester
-					
-				case 'T':
-					switch(cmd){
-						
-						//1. Set Heat Current
-						case _MK16('S','T'):						
-							if (string[5] != '\n')
-							{
-								//zuviele Zeichen
-								TransmitStringLn("FORMAT ERR");
-							}
-							else
-							{
-								//Antrowrt
-								TransmitString("SST Slot-Test: ");
-								TransmitInt(slotNr, 1);
-								TransmitStringLn("");
-							
-								//Test
-								Slot_Tester_Init(slotNr);
-								Slot_Tester_Gesamtablauf(slotNr);								
-							}
-							break;
-					}
+					Terminal_SET_Amplifier(string);
 					break;
 					
-				#pragma endregion Setting_SlotTester
-				
-				//6. BreakDownVoltage Test								
+				//4.4 BreakDownVoltage Test
 				case 'B':
 					Terminal_SET_BreakDown(string);
 					break;
-												
-				//7. Heller Frontend (F)								
-				case 'F':
-					Terminal_SET_FrontEnd(string);
+				
+				//4.99 SlotTester
+				case 'T':
+					Terminal_SET_SlotTester(string);
 					break;
-												
+																	
 				//Default --> Fehler
 				default:
 					TransmitStringLn("COMMAND ERR");
 					break;				
 			}
-			
-		#pragma endregion Special_Set_Commands		
-					
-		}		
+								
+		}
+		
+		#pragma endregion Special_Set_Commands	
+		
+		//*****************************************************************************
+		//Error
+		//*****************************************************************************		
 		else{			
 			//Set Command is not known
 			TransmitStringLn("COMMAND ERR");
@@ -736,56 +624,28 @@ void TerminalParseCommand(char *string)
 				//4.2 MOSFET heat-meas current source								
 				case 'M':
 					Terminal_GET_MOSFET_Source(string);
-					break;
-								
-				#pragma endregion SettingsMOSFET-Source
+					break;	
+						
+				//4.3.1 Heller FrontEnd (F)
+				case 'F':
+					Terminal_GET_FrontEnd(string);
+					break;					
 					
-				//4.3 Amplifier
-				#pragma region Amplifier
-				
+				//4.3.2 Amplifier
 				case 'A':
-					switch(cmd){
-					
-						//2. Gain
-						case _MK16('W','G'):
-							TransmitString("GWG");
-							TransmitInt(slotNr, 1);
-							TransmitString("A=");
-							TransmitInt(amplifier_gain[slotNr-1], 1);
-							TransmitStringLn(" W/O-Unit");
-							break;
-					
-						//3. Set Meas Current
-						case _MK16('W','O'):
-							TransmitString("GWO");
-							TransmitInt(slotNr, 1);
-							TransmitString("A=");
-							TransmitFloat(amplifier_offset_voltage_mV[slotNr-1], 1, 3);
-							TransmitStringLn(" V");
-							break;
-					
-						//Default --> Fehler
-						default:
-							TransmitStringLn("COMMAND ERR");
-							break;
-					
-					}
-				break;
-				
-				#pragma endregion Amplifier
-								
-				
-				//6. BreakDown (B)
+					Terminal_GET_Amplifier(string);
+					break;
+															
+				//4.4 BreakDown (B)
 				case 'B':
 					Terminal_GET_BreakDown(string);
 					break;
-				
-				//7. Heller FrontEnd (F)	
-				case 'F':
-					Terminal_GET_FrontEnd(string);
+					
+				//4.99 Slot-Tester
+				case 'T':
+					Terminal_GET_SlotTester(string);
 					break;
-				
-				
+							
 				//Default --> Fehler
 				default:
 					TransmitStringLn("COMMAND ERR");
@@ -818,442 +678,7 @@ void TerminalParseCommand(char *string)
 	
 }
 
-//////////////////////////////////////////////////////////////////////////////////
-//									Help - Functions							//
-//////////////////////////////////////////////////////////////////////////////////
 
-#pragma region Fuctions_Help
-
-// -------------------------------------------------------------
-// Zeile als Zahl lesen
-// -------------------------------------------------------------
-
-uint8_t ParseIntLn(char *string, uint8_t digits, int16_t *num)
-{
-    uint8_t neg = 0;
-    uint8_t i = 0;
-    uint8_t temp[6];
-
-    *num = 0;
-
-    //negative number
-    if (*string == '-')
-    {
-        neg = 1;
-        string++;
-    }
-
-	while ( (temp[i] = (*(string++) - '0')) < 10)
-    {
-        i++;
-    }
-
-    if (*(string-1) == '\n' && i <= digits)
-    {
-        for (uint8_t j = i;j > 0; j--)
-        {
-            *num *= 10;
-            *num += temp[i-j];
-        }
-
-        if (neg)
-        {
-            *num = - *num;
-        }
-
-        return i;
-    }
-
-    return 0;
-}
-
-// -------------------------------------------------------------
-// Zeile als Zahl lesen
-// -------------------------------------------------------------
-
-uint8_t ParseLongLn(char *string, uint8_t digits, int32_t *num)
-{
-    uint8_t neg = 0;
-    uint8_t i = 0;
-    uint8_t temp[11];
-
-    *num = 0;
-
-    //negative number
-    if (*string == '-')
-    {
-        neg = 1;
-        string++;
-    }
-
-	while ( (temp[i] = (*(string++) - '0')) < 10)
-    {
-        i++;
-    }
-
-    if (*(string-1) == '\n' && i <= digits)
-    {
-        for (uint8_t j = i;j > 0; j--)
-        {
-            *num *= 10;
-            *num += temp[i-j];
-        }
-
-        if (neg)
-        {
-            *num = - *num;
-        }
-
-        return i;
-    }
-
-    return 0;
-}
-
-// -------------------------------------------------------------
-// String als Boolean lesen
-// -------------------------------------------------------------
-
-uint8_t ParseBool(char *string, uint8_t *value)
-{
-    if (*string == '0')
-    {
-        *value = 0;
-
-        return 1;
-    }
-
-    else if (*string == '1')
-    {
-        *value = 1;
-
-        return 1;
-    }
-
-    return 0;
-}
-
-// -------------------------------------------------------------
-// String als Byte lesen
-// -------------------------------------------------------------
-
-uint8_t ParseByte(char *string, uint8_t *value)
-{
-	uint8_t temp = 0;
-	for(int i = 0; i < 8 ; i++)
-	{
-		if(string[i] - '0' == 0)
-		{
-			//Nix zu tun
-		}
-		else if(string[i] - '0' == 1)
-		{
-			temp = temp + (1<<i);
-		}
-		else
-		{
-			return 0;
-		}
-	}
-	
-	*value = temp;
-	return 1;
-	
-}
-
-/*
-uint8_t ParseByte(char *string, uint8_t *value)
-{
-	uint8_t temp[10];
-	uint8_t bit = 0;
-	uint8_t i = 0;
-	uint8_t j = 0;
-	
-	//Write in Tempo Array
-	while ( (temp[i] = (*(string++) - '0')) < 10 && i < 9)
-    {
-        i++;
-    }
-	i--;
-	
-	if(i != 7)
-	{
-		return 0;
-	}
-	
-	while (j <= i) 
-	{
-		if (temp[j]  == 0)
-		{
-			 bit = 0;
-		}
-		
-		else if (temp[j]  == 1)
-		{
-			bit = 1;
-		}
-		else
-		{
-			return 0;
-		}
-		
-		*value += bit << (i-j);
-		j++;
-	}
-	
-	return 1;
-}
-*/
-
-// -------------------------------------------------------------
-// String auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitString(char *string)
-{
-    UART0TransmitString(string);
-}
-
-// -------------------------------------------------------------
-// String & CRLF auf Interface ausgeben
-// -------------------------------------------------------------
-
-void TransmitStringLn(char *string)
-{
-    UART0TransmitStringLn(string);
-}
-
-// -------------------------------------------------------------
-// Zahl dezimal auf Interface ausgeben (ASCII)
-// -------------------------------------------------------------
-
-void TransmitInt(int16_t i, uint8_t digits)
-{
-	char str[6], temp[6];
-
-    // minus sign
-	if(i < 0)
-	{
-		strcpy(temp,"-");
-        i = -i;
-	}
-	else
-	{
-		strcpy(temp,"");
-	}
-
-	itoa(i,str,10);
-	
-	strcat(temp,str);
-    strcpy(str,temp);
-
-
-    //format with leading spaces
-	if(digits > 0)
-	{
-		while(strlen(str) < digits)
-		{
-			strcpy(temp," ");
-			strcat(temp,str);
-			strcpy(str,temp);
-		}
-	}
-    
-
-    //send
-	TransmitString(str);
-}
-
-// -------------------------------------------------------------
-// Zahl dezimal auf Interface ausgeben (ASCII)
-// -------------------------------------------------------------
-
-void TransmitInt0(int16_t i, uint8_t digits)
-{
-	char str[6], temp[6];
-    uint8_t neg = 0;
-
-    // minus sign
-	if(i < 0)
-	{
-        neg = 1;
-        i = -i;
-
-        if(digits) digits--;
-	}
-
-	itoa(i,str,10);
-
-
-    //format with leading zeros
-	if(digits)
-	{
-		while(strlen(str) < digits)
-		{
-			strcpy(temp,"0");
-			strcat(temp,str);
-			strcpy(str,temp);
-		}
-	}
-
-    // minus sign
-	if(neg)
-	{
-		strcpy(temp,"-");
-		strcat(temp,str);
-		strcpy(str,temp);
-	}
-    
-
-    //send
-	TransmitString(str);
-}
-
-// -------------------------------------------------------------
-// Zahl dezimal auf Interface ausgeben (ASCII)
-// -------------------------------------------------------------
-
-void TransmitLong(int32_t i, uint8_t digits)
-{
-	char str[11], temp[11];
-
-    // minus sign
-	if(i < 0)
-	{
-		strcpy(temp,"-");
-        i = -i;
-	}
-	else
-	{
-		strcpy(temp,"");
-	}
-
-	ltoa(i,str,10);
-	
-	strcat(temp,str);
-    strcpy(str,temp);
-
-
-    //format with leading spaces
-	if(digits > 0)
-	{
-		while(strlen(str) < digits)
-		{
-			strcpy(temp," ");
-			strcat(temp,str);
-			strcpy(str,temp);
-		}
-	}
-    
-
-    //send
-	TransmitString(str);
-}
-
-// -------------------------------------------------------------
-// Zahl als Dezimalbruch auf Interface ausgeben (ASCII)
-// -------------------------------------------------------------
-
-void TransmitFloat(int16_t i, uint8_t digits, uint8_t div)
-{
-	char str[10], temp[10];
-	uint16_t pot = 1;
-	uint8_t co = div;
-
-	while(div > 0)
-	{
-		pot *= 10;
-		div--;
-	}
-
-	itoa(abs(i)%pot,str,10);
-
-	while(strlen(str) < co)
-	{
-		strcpy(temp,"0");
-		strcat(temp,str);
-		strcpy(str,temp);
-	}
-
-	itoa(abs(i)/pot,temp,10);
-
-	strcat(temp,".");
-	strcat(temp,str);
-
-
-    // minus sign
-	if(i < 0)
-	{
-		strcpy(str,"-");
-	}
-	else
-	{
-		strcpy(str,"");
-	}
-	
-	strcat(str,temp);
-
-
-    //format with leading spaces
-	if(digits > 0)
-	{
-		while(strlen(str) < digits)
-		{
-			strcpy(temp," ");
-			strcat(temp,str);
-			strcpy(str,temp);
-		}
-	}
-    
-
-    //send
-	TransmitString(str);
-}
-
-// -------------------------------------------------------------
-// Zahl als Dezimalbruch auf Interface ausgeben (ASCII)
-// -------------------------------------------------------------
-
-void TransmitByte(uint8_t byte)
-{
-	char str[] = "00000000";
-	
-	for(int i = 7; i >= 0; i--)
-	{
-		if(byte & (1 << i)){
-			str[7-i] = '1';
-		}
-		else{
-			str[7-i] = '0';		
-		}
-	}
-	
-
-	//send
-	TransmitString(str);
-}
-
-void TransmitByte_Reverse(uint8_t byte)
-{
-	char str[] = "00000000";
-	
-	for(int i = 0; i < 8; i++)
-	{
-		if(byte & (1 << i)){
-			str[i] = '1';
-		}
-		else{
-			str[i] = '0';
-		}
-	}
-	
-
-	//send
-	TransmitString(str);
-}
-
-
-#pragma endregion Fuctions_Help
 
 
 

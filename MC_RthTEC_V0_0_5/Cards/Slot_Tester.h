@@ -5,10 +5,16 @@
  *  Author: schmidm
  */ 
 
+//*******************************************************************
+//								Includes
+//*******************************************************************
 
-/*
- ** Compiler-Konstanten
- */
+#include <stdio.h>
+
+
+//*******************************************************************
+//								Default
+//*******************************************************************
 
 #define Segment_0	0b00000011
 #define Segment_1	0b11001111
@@ -21,17 +27,28 @@
 #define Segment_8	0b00000001
 #define Segment_9	0b10000001
 
+//*******************************************************************
+//								Variables
+//*******************************************************************
 
+uint16_t slot_Tester_Display_number[8];
 
-/*
- ** Funktionen
- */
+//*******************************************************************
+//								Functions
+//*******************************************************************
 
+//Init
 void Slot_Tester_Init(int slot_nr);
 void Slot_Tester_Default_Values(int slot_nr);
+void Slot_Tester_Variables_from_EEPROM(int slot_nr);
 
+//Set
 void Slot_Tester_Gesamtablauf(int slot_nr);
+void Slot_Tester_set_7Segment(int slot_nr, int number);
 
-void Slot_Tester_set_7Segment(int slot_nr);
+//Get
 int Slot_Tester_get_7Segment(int slot_nr);
-void Slot_Tester_IO_Lauflicht(int slot_nr);
+
+//Terminal
+void Terminal_SET_SlotTester(char *myMessage);
+void Terminal_GET_SlotTester(char *myMessage);

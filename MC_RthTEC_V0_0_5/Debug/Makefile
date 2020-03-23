@@ -39,7 +39,6 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../ad5752.c \
 ../Cards/Amplifier.c \
 ../Cards/FrontEnd.c \
 ../Cards/LED_Source.c \
@@ -52,6 +51,7 @@ C_SRCS +=  \
 ../ICs/MCP23S08.c \
 ../main.c \
 ../my_Timers.c \
+../Serial_ReadWrite.c \
 ../terminal.c \
 ../uart0.c \
 ../usart_spi.c
@@ -64,7 +64,6 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-ad5752.o \
 Cards/Amplifier.o \
 Cards/FrontEnd.o \
 Cards/LED_Source.o \
@@ -77,12 +76,12 @@ ICs/LTC1864.o \
 ICs/MCP23S08.o \
 main.o \
 my_Timers.o \
+Serial_ReadWrite.o \
 terminal.o \
 uart0.o \
 usart_spi.o
 
 OBJS_AS_ARGS +=  \
-ad5752.o \
 Cards/Amplifier.o \
 Cards/FrontEnd.o \
 Cards/LED_Source.o \
@@ -95,12 +94,12 @@ ICs/LTC1864.o \
 ICs/MCP23S08.o \
 main.o \
 my_Timers.o \
+Serial_ReadWrite.o \
 terminal.o \
 uart0.o \
 usart_spi.o
 
 C_DEPS +=  \
-ad5752.d \
 Cards/Amplifier.d \
 Cards/FrontEnd.d \
 Cards/LED_Source.d \
@@ -113,12 +112,12 @@ ICs/LTC1864.d \
 ICs/MCP23S08.d \
 main.d \
 my_Timers.d \
+Serial_ReadWrite.d \
 terminal.d \
 uart0.d \
 usart_spi.d
 
 C_DEPS_AS_ARGS +=  \
-ad5752.d \
 Cards/Amplifier.d \
 Cards/FrontEnd.d \
 Cards/LED_Source.d \
@@ -131,6 +130,7 @@ ICs/LTC1864.d \
 ICs/MCP23S08.d \
 main.d \
 my_Timers.d \
+Serial_ReadWrite.d \
 terminal.d \
 uart0.d \
 usart_spi.d
@@ -149,13 +149,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./ad5752.o: .././ad5752.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 Cards/Amplifier.o: ../Cards/Amplifier.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -234,6 +227,13 @@ ICs/MCP23S08.o: ../ICs/MCP23S08.c
 	
 
 ./my_Timers.o: .././my_Timers.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./Serial_ReadWrite.o: .././Serial_ReadWrite.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -2,8 +2,6 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-ad5752.c
-
 Cards\Amplifier.c
 
 Cards\FrontEnd.c
@@ -27,6 +25,8 @@ ICs\MCP23S08.c
 main.c
 
 my_Timers.c
+
+Serial_ReadWrite.c
 
 terminal.c
 
