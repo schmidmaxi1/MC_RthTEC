@@ -157,6 +157,88 @@ void TerminalParseCommand(char *string)
 			
 			//Check the second two characters
 			switch (cmd){
+				
+				//0.2 Info************************************************************
+				#pragma region 0.2 Info
+				
+				//SHW, get hardware version (one one times possible)
+				case _MK16('H','V'):
+					//Check for Format: V[x].[x]
+					if (string[4] == 'V' && string[6] == '.' && string[8] == '\n')
+					{
+						//Read current setting
+						char temp_array[4];
+						temp_array[4] = '\0';	//no clue why to force this. Else string is longer
+						eeprom_read_block(temp_array, &hardware_version_eeprom ,4);
+						
+						//Check if HW Version already written
+						if (temp_array[0] == 'V' && temp_array[2] == '.')
+						{
+							TransmitString("SHV=");
+							TransmitString(temp_array);
+							TransmitStringLn(" can't be overwritten");
+						}
+						else
+						{
+							//Get substring form message
+							memcpy(temp_array, &string[4], 4);
+							
+							//Write to EEPROM
+							eeprom_write_block(temp_array, &hardware_version_eeprom, 4);
+							
+							//Answer
+							TransmitString("SHV=");
+							TransmitString(temp_array);
+							TransmitStringLn("");						
+						}						
+					}
+					else
+					{
+						//no number
+						TransmitStringLn("FORMAT ERR");
+					}
+					break;
+				
+				
+				//SMD, set manufacturing date (one one times possible)
+				case _MK16('M','D'):
+					//Check for Format: CW[WW]-[YYYY]
+					if (string[4] == 'C' && string[5] == 'W' && string[8] == '-' && string[13] == '\n')
+					{
+						//Read current setting
+						char temp_array[9];
+						temp_array[9] = '\0';	//no clue why to force this. Else string is longer
+						eeprom_read_block(temp_array, &manufacturind_date_eeprom ,9);
+					
+						//Check if HW Version already written
+						if (temp_array[0] == 'C' && temp_array[1] == 'W' && temp_array[4] == '-')
+						{
+							TransmitString("SMD=");
+							TransmitString(temp_array);
+							TransmitStringLn(" can't be overwritten");
+						}
+						else
+						{
+							//Get substring form message
+							memcpy(temp_array, &string[4], 9);
+						
+							//Write to EEPROM
+							eeprom_write_block(temp_array, &manufacturind_date_eeprom ,9);
+						
+							//Answer
+							TransmitString("SMD=");
+							TransmitString(temp_array);
+							TransmitStringLn("");
+						}
+					}
+					else
+					{
+						//no number
+						TransmitStringLn("FORMAT ERR");
+					}
+					break;				
+								
+				#pragma endregion 0.2 Info
 			
 				//1. Enable************************************************************
 				#pragma region 1.Enable		
@@ -532,6 +614,38 @@ void TerminalParseCommand(char *string)
 		
 			switch (cmd)
 			{
+				//0.2 Info........................................................................
+				//GFW, get firmware version
+				case _MK16('I','D'):
+					TransmitString("GID=");
+					TransmitStringLn("RthTEC TTA-Equipment V1_0");
+					break;
+					
+				//GFW, get firmware version
+				case _MK16('S','V'):
+					TransmitString("GSV=");
+					TransmitStringLn(SOFTWARE_VERSION);
+					break;
+					
+				//GFW, get firmware version
+				case _MK16('H','V'):;
+					char temp_array[4];
+					temp_array[4] = '\0';	//no clue why to force this. Else string is longer
+					eeprom_read_block(temp_array, &hardware_version_eeprom ,4);					
+					TransmitString("GHV=");
+					TransmitStringLn(temp_array);
+					break;
+					
+				//GFW, get firmware version
+				case _MK16('M','D'):;
+					char temp_array2[9];
+					temp_array2[9] = '\0';	//no clue why to force this. Else string is longer
+					eeprom_read_block(temp_array2, &manufacturind_date_eeprom ,9);
+					TransmitString("GMD=");
+					TransmitStringLn(temp_array2);
+					break;
+								
+								
 				//1.1 GEN, get enable status......................................................
 				case _MK16('E','N'):			
 					TransmitString("GEN=");
@@ -581,17 +695,7 @@ void TerminalParseCommand(char *string)
 					TransmitStringLn("");
 					break;
 							
-				//GFW, get firmware version
-				case _MK16('F','W'):			
-					TransmitString("FW=");
-					TransmitStringLn(FIRMWARE_VERSION);
-					break;
-			
-				//GFW, get firmware version
-				case _MK16('I','D'):			
-					TransmitString("ID=");
-					TransmitStringLn("RthTEC TTA-Equipment V1_0");
-					break;
+
 
 
 				default:

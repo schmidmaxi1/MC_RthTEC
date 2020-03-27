@@ -13,6 +13,8 @@
 
 //General
 uint16_t firmware_code_eeprom EEMEM;
+char hardware_version_eeprom[4] EEMEM;
+char manufacturind_date_eeprom[9] EEMEM;
 
 //Slot-Settings: Active and Type
 uint8_t pulse_output_register_eeprom EEMEM;
