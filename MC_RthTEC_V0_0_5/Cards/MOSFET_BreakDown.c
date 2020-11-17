@@ -166,6 +166,19 @@ void B_Set_Relais_to_BodyDiode_Curve(int slot_nr)
 	IO_Expander_set_Register(register_OLAT, 0x14, &IO_PORT6, slot_nr-1); 
 }
 
+void B_Set_Relais_to_Threshold(int slot_nr)
+{
+	//Switch of all relays
+	IO_Expander_set_Register(register_OLAT, 0x00, &IO_PORT6, slot_nr-1);
+	
+	//Wait to be save that switched of
+	_delay_ms(100);
+	
+	//Switch on relay 2 & 3
+	//GS-->SMU & DS-->SMU
+	IO_Expander_set_Register(register_OLAT, 0x0C, &IO_PORT6, slot_nr-1);
+}
+
 void B_Set_Relais_all_off(int slot_nr)
 {
 	//Switch of all relays
@@ -216,6 +229,33 @@ int B_Get_I_DS_in_mA(int slot_nr)
 	
 	//Convert (DAC Range: 0...2,5V / R=50mOhm, Gain = 25 --> 0...2A)
 	return (temp * 2000)>>16;
+}
+
+//*******************************************************************
+//							 Pulse
+//*******************************************************************
+
+void BreakDown_Start_BreakDown_Pulse(int16_t pulselength_in_us, int slot_nr)
+{
+	/*
+	Input:
+	-PulseLength in µs
+	-channel (Slot_Number)
+	*/
+	
+	//SEt MP to High
+	_set_bit(MP_Port, slot_nr -1);
+	
+	//wait x µs
+	_delay_us(pulselength_in_us);
+	
+	//Measure U_DS and I_D
+	int U_DS = B_Get_V_DS_in_mV(slot_nr);
+	int I_DS = B_Get_I_DS_in_mA(slot_nr);
+	
+	//Set MP to LOW again
+	_clear_bit(MP_Port, slot_nr -1);
+	
 }
 
 //*******************************************************************
@@ -377,7 +417,36 @@ void Terminal_SET_BreakDown(char *myMessage)
 			}
 			break;
 			
-		//6. Set V_GS voltage
+		//6. Relays for BodyDiode
+		case _MK16('R','T'):
+			if (myMessage[6] == '1' && myMessage[7] == '\n')
+			{
+				//Switch Relays
+				B_Set_Relais_to_Threshold(mySlotNr);
+
+				//Answer
+				TransmitString("SRT");
+				TransmitInt(mySlotNr, 1);
+				TransmitStringLn("B=1");
+			}
+			else if (myMessage[6] == '0' && myMessage[7] == '\n')
+			{
+				//Switch Relays off
+				B_Set_Relais_all_off(mySlotNr);
+
+				//Answer
+				TransmitString("SRD");
+				TransmitInt(mySlotNr, 1);
+				TransmitStringLn("B=0");
+			}
+			else
+			{
+				//no number
+				TransmitStringLn("FORMAT ERR");
+			}
+			break;
+			
+		//7. Set V_GS voltage
 		case _MK16('V', 'G'):
 			if (!ParseIntLn(&myMessage[6],5,&temp16))
 			{
@@ -405,6 +474,35 @@ void Terminal_SET_BreakDown(char *myMessage)
 				}
 			}
 			break;
+	
+		//7. Set V_GS voltage
+		case _MK16('V', 'G'):
+			if (!ParseIntLn(&myMessage[6],5,&temp16))
+			{
+				//no number
+				TransmitStringLn("FORMAT ERR");
+			}
+			else if (temp16 > 20000 || temp16 < -20000)
+			{
+				//0 bis 10 V
+				TransmitStringLn("NUMBER ERR");
+			}
+			else
+			{
+				TransmitString("SVG");
+				TransmitInt(mySlotNr, 1);
+				TransmitString("B=");
+				TransmitFloat(temp16,1, 3);
+				TransmitStringLn(" V");
+
+				if (breakDown_V_GS_mV[mySlotNr-1] != temp16)
+				{
+					breakDown_V_GS_mV[mySlotNr-1] = temp16;
+					eeprom_write_word(&parameter1_eeprom[mySlotNr-1], temp16);
+					BreakDown_Set_V_GS_mV(breakDown_V_GS_mV[mySlotNr-1], mySlotNr);
+				}
+			}
+			break;			
 			
 		default:
 			TransmitStringLn("COMMAND ERR");

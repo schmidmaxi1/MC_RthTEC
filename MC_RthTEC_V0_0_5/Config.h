@@ -26,8 +26,8 @@
  ** Compiler constants
  */
 
-#define FIRMWARE_VER_R      V0.0.8
-#define FIRMWARE_CODE       0x0008
+#define FIRMWARE_VER_R      V0.0.9
+#define FIRMWARE_CODE       0x0009
 
 #define CONTROLLER_TYPE_R   RthTEC_mC_Unit_V2
 
